@@ -14,36 +14,36 @@
             <span *ngIf= "!name.valid && name.touched"> El nombre es obligatorio</span>
         </p>
         <p>
-            <label>address</label>
+            <label>Direccion</label>
             <input type="text" #address="ngModel" name= "address" [(ngModel)]="espacio.address" required class="form-control"/>
             <span *ngIf="!address.valid && address.touched"> La dirección es obligatoria</span>
         </p>
         <p>
-            <label>country</label>
+            <label>Pais</label>
             <input type="text" #country="ngModel" name= "country" [(ngModel)]="espacio.country" required class="form-control"/>
             <span *ngIf="!country.valid && country.touched">La ciudad es obligatoria</span>
                 
         </p>
         <p>
-            <label>province</label>
+            <label>Provincia</label>
             <input type="text" #province="ngModel" name= "province" [(ngModel)]="espacio.province" required class="form-control"/>
             <span *ngIf="!province.valid && province.touched">La provincia es obligatoria</span>
                 
         </p>   
         <p>
-            <label>local</label>
+            <label>Localidad</label>
             <input type="text" #local="ngModel" name= "local" [(ngModel)]="espacio.local" required class="form-control"/>
             <span *ngIf="!local.valid && local.touched">La localidad es obligatoria</span>
                 
         </p>   
         <p>
-            <label>phone</label>
+            <label>Telefono</label>
             <input type="text" #phone="ngModel" name= "phone" [(ngModel)]="espacio.phone" required class="form-control"/>
             <span *ngIf="!phone.valid && phone.touched">El numero telefonico es obligatorio</span>
                 
         </p>   
         <p>
-            <label>fax</label>
+            <label>Fax</label>
             <input type="text" #fax="ngModel" name= "fax" [(ngModel)]="espacio.fax" required class="form-control"/>
             <span *ngIf="!fax.valid && fax.touched">El fax es obligatorio</span>
                 
