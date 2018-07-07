@@ -1,0 +1,22 @@
+<div class="col-log-8 col-log-offset-5">
+    <div class="jumbotron">
+        <h1 class="display-4">Hola! Bienvenido a Formaciones CAE prueba 1 daniel</h1>
+        
+        <hr class="my-4">
+        <p>Visita y disfruta de nuestros espacios</p>
+        <a class="btn btn-primary btn-lg"  [routerLink]="['/espacio',1]" role="button">Espacios</a>
+    </div>
+</div>
+<div [class.hidden]="!identity" class="central col-lg-11">
+        <router-outlet></router-outlet>
+</div>
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '460ffceeb3c20ee708d3c2ac0bf8abc20739f890';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
