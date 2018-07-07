@@ -1,4 +1,4 @@
-<div class="col-lg-4" *ngIf = "identity && identity.role == 'ROLE_ADMIN'">
+<div class="col-lg-8" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
     <h1>{{titulo}}</h1>
 
     <div *ngIf="alertMessage">
@@ -7,69 +7,110 @@
         </div>
     </div>
 
-    <form #formEspacio="ngForm" (ngSubmit)="onSubmit()" >
-        <p>
-            <label>Nombre</label>
-            <input type="text" #name="ngModel" name= "name" [(ngModel)]="espacio.name" required class="form-control"/>
-            <span *ngIf= "!name.valid && name.touched"> El nombre es obligatorio</span>
-        </p>
-        <p>
-            <label>Direccion</label>
-            <input type="text" #address="ngModel" name= "address" [(ngModel)]="espacio.address" required class="form-control"/>
-            <span *ngIf="!address.valid && address.touched"> La dirección es obligatoria</span>
-        </p>
-        <p>
-            <label>Pais</label>
-            <input type="text" #country="ngModel" name= "country" [(ngModel)]="espacio.country" required class="form-control"/>
-            <span *ngIf="!country.valid && country.touched">La ciudad es obligatoria</span>
-                
-        </p>
-        <p>
-            <label>Provincia</label>
-            <input type="text" #province="ngModel" name= "province" [(ngModel)]="espacio.province" required class="form-control"/>
-            <span *ngIf="!province.valid && province.touched">La provincia es obligatoria</span>
-                
-        </p>   
-        <p>
-            <label>Localidad</label>
-            <input type="text" #local="ngModel" name= "local" [(ngModel)]="espacio.local" required class="form-control"/>
-            <span *ngIf="!local.valid && local.touched">La localidad es obligatoria</span>
-                
-        </p>   
-        <p>
-            <label>Telefono</label>
-            <input type="text" #phone="ngModel" name= "phone" [(ngModel)]="espacio.phone" required class="form-control"/>
-            <span *ngIf="!phone.valid && phone.touched">El numero telefonico es obligatorio</span>
-                
-        </p>   
-        <p>
-            <label>Fax</label>
-            <input type="text" #fax="ngModel" name= "fax" [(ngModel)]="espacio.fax" required class="form-control"/>
-            <span *ngIf="!fax.valid && fax.touched">El fax es obligatorio</span>
-                
-        </p>    
-        <div *ngIf = "is_edit">
-            <div class="espacio_image-for-edit" *ngIf = "espacio.image && espacio.image != 'null'">
-                <img src = "{{url +'get-image-space/'+ espacio.image}}"/>
+    <form #formEspacio="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-4 col-xs-6 ">
+                <p>
+                    <label>Nombre</label>
+                    <input type="text" #name="ngModel" name="name" [(ngModel)]="espacio.name" required class="form-control" />
+                    <span *ngIf="!name.valid && name.touched"> El nombre es obligatorio</span>
+                </p>
+
             </div>
-            
-            <p>
-                <label>Sube la imagen del Espacio</label>
-                <input type="file" placeholder="Subir imagen.." (change)= "fileChangeEvent($event)"/>
-            </p>
+            <div class="col-md-4 col-xs-6 ">
+                <p>
+                    <label>Provincia</label>
+                    <input type="text" #province="ngModel" name="province" [(ngModel)]="espacio.province" required class="form-control" />
+                    <span *ngIf="!province.valid && province.touched">La provincia es obligatoria</span>
+
+                </p>
+
+
+            </div>
+            <div class="col-md-4">
+
+                <p>
+                    <label>Pais</label>
+                    <input type="text" #country="ngModel" name="country" [(ngModel)]="espacio.country" required class="form-control" />
+                    <span *ngIf="!country.valid && country.touched">La ciudad es obligatoria</span>
+
+                </p>
+
+            </div>
+
         </div>
-            <!-- <p>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <label>Direccion</label>
+                    <input type="text" #address="ngModel" name="address" [(ngModel)]="espacio.address" required class="form-control" />
+                    <span *ngIf="!address.valid && address.touched"> La dirección es obligatoria</span>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="row">
+                <div class="col-sm-4"><p>
+                        <label>Localidad</label>
+                        <input type="text" #local="ngModel" name="local" [(ngModel)]="espacio.local" required class="form-control" />
+                        <span *ngIf="!local.valid && local.touched">La localidad es obligatoria</span>
+            
+                    </p></div>
+                <div class="col-sm-4"> <p>
+                        <label>Telefono</label>
+                        <input type="text" #phone="ngModel" name="phone" [(ngModel)]="espacio.phone" required class="form-control" />
+                        <span *ngIf="!phone.valid && phone.touched">El numero telefonico es obligatorio</span>
+            
+                    </p></div>
+                <div class="col-sm-4">
+                        <p>
+                                <label>Fax</label>
+                                <input type="text" #fax="ngModel" name="fax" [(ngModel)]="espacio.fax" required class="form-control" />
+                                <span *ngIf="!fax.valid && fax.touched">El fax es obligatorio</span>
+                    
+                            </p>
+                </div>
+            </div>
+
+
+
+
+        
+       
+     
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-5" *ngIf="is_edit">
+                <div class="espacio_image-for-edit" *ngIf="espacio.image && espacio.image != 'null'">
+                    <img src="{{url +'get-image-space/'+ espacio.image}}" />
+                </div>
+
+                <p>
+                    <label>Sube la imagen del Espacio</label>
+                    <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
+                </p>
+            </div>
+            <div class="col-md-4">
+
+                <input type="submit" value="{{titulo}}" class="btn btn-success" />
+            </div>
+
+
+
+        </div>
+
+        <!-- <p>
                 <label>image</label>
                 <input type="text" #image="ngModel" name= "image" [(ngModel)]="espacio.image" required class="form-control"/>
                 <span *ngIf="!image.valid && image.touched">La image es obligatoria</span>
                     
             </p>  -->
-        
-        <input type="submit" value="{{titulo}}"  class="btn btn-success" />
+
     </form>
 </div>
 
-<div class="col-lg-4" *ngIf= "!identity || identity.role != 'ROLE_ADMIN'">
+<div class="col-lg-4" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
     <h1>Error</h1>
     <p>No tienes acceso a esta parte del curso</p>
 
