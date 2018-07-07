@@ -13,7 +13,7 @@ function savecliente(req, res) {
     cliente.name = params.name;
     cliente.surname = params.surname;
     cliente.email = params.email;
-    cliente.role = 'ROLE_ADMIN';
+    cliente.role = 'ROLE_USER';
     cliente.image = 'avatar.png';
     cliente.nameEstablishment= params.nameEstablishment;
     cliente.code =params.code;
