@@ -225,7 +225,11 @@ div{
 	box-sizing: border-box;
 	border-radius: 2px;
 	background-clip: padding-box;
+	transition: transform .2s; /* Animation */
   }
+  .card:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
   .card span.card-title {
 	  color: #fff;
 	  font-size: 24px;
@@ -271,13 +275,25 @@ div{
 	box-shadow: 0px 0px 2px #333;
     z-index: 1;
   }
+  .card-title{
+	  font-weight: bold;
+  }
+  .card .card-title {
+	color: black;
+	align-content:center;
+	transition: color 0.3s ease;
+	text-transform: uppercase;
+  }
+  .card .card-title:hover {
+	color: #1976D2;
+	text-decoration: none;
+  }
   .card .card-action a {
 	color: black;
 	margin-right: 16px;
 	transition: color 0.3s ease;
 	text-transform: uppercase;
   }
-  .card .card-action a:hover {
-	color: #ffd8a6;
-	text-decoration: none;
+  .alinear{
+	  align-content: center;
   }
