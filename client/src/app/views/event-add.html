@@ -1,0 +1,42 @@
+<h1></h1>
+<div *ngIf="alertMessage">
+    <div class="alert alert-info">
+        {{alertMessage}}
+    </div>
+
+</div>
+<form #formEvento="ngForm" (ngSubmit)="onSubmit()">
+    <p>
+        <label>Titulo del evento</label>
+        <input type="text" #title="ngModel" title="title"  [(ngModel)]="evento.title" required class="form-control"  placeholder="Introduce Titulo de evento">
+        <span *ngIf="title.touched">
+                El campo titulo es obligatorio!
+            </span>
+    </p>
+  
+            
+           
+
+        
+    <p>
+        <label>Descripcion del evento</label>
+        <input type="text" #description="ngModel" description="description" [(ngModel)]="evento.description" required class="form-control">
+    </p>
+    <p>
+        <label for="brand">Marcas:</label>
+        <select #brand="ngModel" brand="brand" class="form-control" [(ngModel)]="evento.brand" required id="brand">
+            <option selected>Selecciona...</option>
+            <option value="VICHY">VICHY</option>
+            <option value="ROGERANDGALLET">ROGERANDGALLET</option>
+            <option value="SKINCEUTICALS">SKINCEUTICALS</option>
+            <option value="LA ROCHE"> LA ROCHE</option>
+        </select>
+
+    </p>
+    <p>
+        <label>Espacío</label>
+        <input type="text" #space="ngModel" space="space" [(ngModel)]="evento.space" required class="form-control">
+    </p>
+    <input type="submit" value="Crear Evento" [disabled]="!formEvento.form.valid"/>
+
+</form>

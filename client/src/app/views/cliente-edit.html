@@ -1,0 +1,194 @@
+<div class="col-lg-12" *ngIf="identity">
+    <hr/>
+
+    <!--Formulario-->
+    <div class="row">
+        <div class="col-md-8">
+            <h2>{{titulo}}</h2>
+            <hr class="lineatitle" />
+
+            <div *ngIf="AlertMessage" class="alert alert-warning">
+                <strong>Respuesta:</strong>{{AlertMessage}}
+            </div>
+            <form #ClienteupdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-11">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            <label>Nombre:</label>
+                            <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
+                            />
+                            <span *ngIf="name.touched">
+                                El campo Nombre es obligatorio!
+                            </span>
+
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <p>
+                            <label>Apellido:</label>
+                            <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control" placeholder="Introduce tu Apellido"
+                                required />
+
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="image_for_edit" *ngIf="cliente.image && cliente.image !=null">
+                            <img src="{{url+'get-image-user/'+cliente.image}}" class="useravatar" />
+                        </div>
+                        <p>
+                            <label>Sube tu Avatar</label>
+                            <input type="file" placeholder="Subir Imagen.." (change)="fileChangeEvent($event)" />
+
+                        </p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <label>Telefono:</label>
+                            <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control" placeholder="Introduce tu Telefono"
+                            />
+
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <label>Establecimiento:</label>
+                            <input type="text" value="{{identity.nameEstablishment}}" class="form-control" disabled/>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p>
+                            <label>e-Mail:</label>
+                            <input type="text" value="{{identity.email}}" class="form-control" disabled/>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            <label>Dirección:</label>
+                            <input type="text" value="{{identity.street}}" class="form-control" disabled/>
+                        </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>
+                            <label>Zip:</label>
+                            <input type="text" value="{{identity.zip}}" class="form-control" disabled/>
+                        </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>
+                            <label>Rol:</label>
+                            <input type="text" value="{{identity.role}}" class="form-control" disabled/>
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>
+                            <label>Vichy</label>
+                            <input type="text" *ngIf="cliente.brandV==1" value="Si" class="form-control" disabled/>
+                            <input type="text" *ngIf="cliente.brandV==0" value="No" class="form-control" disabled/>
+                        </p>
+
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <label>La Roche</label>
+                            <input type="text" *ngIf="cliente.brandLR==1" value="Si" class="form-control" disabled/>
+                            <input type="text" *ngIf="cliente.brandLR==0" value="No" class="form-control" disabled/>
+                        </p>
+
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            <label>Roger and Gallet</label>
+                            <input type="text" *ngIf="cliente.brandRG==1" value="Si" class="form-control" disabled/>
+                            <input type="text" *ngIf="cliente.brandRG==0" value="No" class="form-control" disabled/>
+                        </p>
+
+                    </div>
+                    <div class="col-md-3">
+
+                        <p>
+                            <label>Skinceuticals</label>
+                            <input type="text" *ngIf="cliente.brandSK==1" value="Si" class="form-control" disabled/>
+                            <input type="text" *ngIf="cliente.brandSK==0" value="No" class="form-control" disabled/>
+
+
+                        </p>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+                <input type="submit" value="Actualizar" class="btn btn-primary">
+
+            </form>
+
+
+        </div>
+        <div class="col-md-3 promos">
+            <div class="col-md-12">
+                <div class="single-blog-item">
+                    <div class="blog-thumnail">
+                        <a href="">
+                            <img class="promos" src="http://formacionescae.com/public/common/img/VICHY.png" alt="blog-img">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="single-blog-item">
+                    <div class="blog-thumnail">
+                        <a href="">
+                            <img class="promos" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png" alt="blog-img">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="single-blog-item">
+                    <div class="blog-thumnail">
+                        <a href="">
+                            <img class="promos" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png" alt="blog-img">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                    <div class="single-blog-item">
+                        <div class="blog-thumnail">
+                            <a href="">
+                                <img class="promos" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png" alt="blog-img">
+                            </a>
+                        </div>
+    
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+
+
+</div>

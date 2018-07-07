@@ -1,0 +1,91 @@
+<div *ngIf="identity" class="navigation col-lg-1 col-xs-1">
+    <h1 class="head-title" [routerLinkActive]="['actived']">
+        <a [routerLink]="['/']" >
+            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+            {{title}}
+            {{subtitle}}
+        </a>
+    </h1>
+    <nav id="navigation">
+        
+        <a [routerLink]="['/buscar']" [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            Provincias
+        </a>
+  
+        <a [routerLink]="['/evento',1]"  [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            Eventos
+        </a>
+         <a [routerLink]="['/espacio',1]" [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            Espacios
+        </a>
+
+    </nav>
+    <nav id="user_logged">
+        <div class="user_image col-md-12">
+        <br>
+            <img id="user_image_logged" src="{{url+'get-image-user/'+identity.image}}" class="useravatarnav" />
+        </div>
+        <span id="identity_name">
+            {{identity.name}}
+        </span>
+
+        <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Mis Datos
+        </a>
+
+        <a (click)="logout()" class="btn-loguot">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            Salir
+        </a>
+    </nav>
+
+</div>
+<div [class.hidden]="!identity" class="central col-lg-11 col-xs-11"style="background:#d9d9d9; height: 100%;">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="row" style="width: 100% ;height:30%;"*ngIf="!identity">
+        <div id="over">
+                <img src="../assets/images/CAE.png" height="150px"/>
+             </div>
+
+</div>
+
+<div class="row justify-content-center align-items-center loginform"style="height: 70%;" *ngIf="!identity">
+    
+
+    <div class="col-lg-6">
+        <div class="justify-content-center align-items-center">
+                <h1> Identificate</h1>
+        </div>
+        
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            <strong>Ups!</strong>{{errorMessage}}
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
+            <p>
+                <label>Correo:</label>
+                <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control" required placeholder="Introduce tu e-mail"
+                />
+                <span *ngIf="!email.valid && email.touched">
+                    El campo email es obligatorio!
+                </span>
+
+            </p>
+            <p>
+                <label>Password:</label>
+                <input type="Password" #password="ngModel" name="password" [(ngModel)]="cliente.password" class="form-control" placeholder="Introduce tu password"
+                />
+
+            </p>
+            <input type="submit" value="Entrar" class="btn btn-primary">
+        </form>
+
+    </div>
+</div>
+
