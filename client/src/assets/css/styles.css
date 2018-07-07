@@ -2,12 +2,12 @@ html, body{
     background: #3f3f3f;
     margin: 0px;
 	height: 100%;
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	overflow: hidden;
 	
 }
 div{
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 
 }
 #over{
@@ -37,7 +37,7 @@ div{
 	color: white;
 	background: #1976D2;
 	height: 100%;	
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .navigation a{
