@@ -18,7 +18,7 @@
             <input type="text" #address="ngModel" name= "address" [(ngModel)]="espacio.address" required class="form-control"/>
             <span *ngIf="!address.valid && address.touched"> La dirección es obligatoria</span>
         </p>
-        <!-- <p>
+        <p>
             <label>country</label>
             <input type="text" #country="ngModel" name= "country" [(ngModel)]="espacio.country" required class="form-control"/>
             <span *ngIf="!country.valid && country.touched">La ciudad es obligatoria</span>
@@ -47,7 +47,7 @@
             <input type="text" #fax="ngModel" name= "fax" [(ngModel)]="espacio.fax" required class="form-control"/>
             <span *ngIf="!fax.valid && fax.touched">El fax es obligatorio</span>
                 
-        </p>     -->
+        </p>    
         <div *ngIf = "is_edit">
             <div class="espacio_image-for-edit" *ngIf = "espacio.image && espacio.image != 'null'">
                 <img src = "{{url +'get-image-space/'+ espacio.image}}"/>
