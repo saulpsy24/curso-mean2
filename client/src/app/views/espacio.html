@@ -32,7 +32,7 @@
                         <div class="card-action">
                             <a [routerLink]="['/detail-espacio',espacio._id] ">
                                 {{espacio.name}}
-                            </a>
+                            </a><hr>
                             <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
                                 <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">Editar</a>
                                 <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>

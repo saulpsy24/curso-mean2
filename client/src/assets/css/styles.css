@@ -217,7 +217,7 @@ div{
 }
 
 .card {
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   }
   
   .card {
@@ -267,10 +267,12 @@ div{
   .card .card-action {
 	border-top: 1px solid rgba(160, 160, 160, 0.2);
 	padding: 16px;
-	background: #1976D2
+	background: #ffffff;
+	box-shadow: 0px 0px 2px #333;
+    z-index: 1;
   }
   .card .card-action a {
-	color: #ffffff;
+	color: black;
 	margin-right: 16px;
 	transition: color 0.3s ease;
 	text-transform: uppercase;
