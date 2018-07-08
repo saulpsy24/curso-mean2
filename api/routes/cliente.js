@@ -12,6 +12,7 @@ api.post('/login', UserController.logincliente);
 api.put('/update-user/:id', md_auth.ensureAuth, UserController.updatecliente);
 api.post('/upload-image-user/:id',[md_auth.ensureAuth,md_upload], UserController.uploadImageCliente);
 api.get('/get-image-user/:imageFile',UserController.getImageFile);
+api.get('/getreporte',UserController.sacarcsv);
 
 api.put('/update-user-admin/:id', md_auth.ensureAuth, UserController.updateclienteAdmin);
 //api.get('/req',UserController.getRequests);

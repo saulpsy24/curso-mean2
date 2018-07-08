@@ -22,4 +22,6 @@ var ClienteSchema = Schema({
     role:String
 });
 
+
+
 module.exports = mongoose.model('Cliente', ClienteSchema);

@@ -4,6 +4,16 @@ var fs = require('fs');
 var Cliente = require('../models/cliente');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
+var express = require('express');
+var router = express.Router;
+
+var moment = require('moment');
+
+const json2csv = require('json2csv').parse;
+
 
 //METODO PARAregistro/login USUARIOS
 function savecliente(req, res) {
@@ -364,11 +374,65 @@ function updateclienteAdmin(req, res) {
     }
 
 }
+function sacarcsv(req,res){
+    const Json2csvParser = require('json2csv').Parser;
+    const fields = [{label:'Nombre',value:'name'
+},{
+    label:'Apellidos',
+    value:'surname'
+},{
+    label:'Nombre del Establecimiento',
+    value: 'nameEstablishment'
+} , 'email', 'code', 'phone', 'zip', 'nifCif', 'street', 'brandV', 'brandLR', 'brandRG', 'brandSK', 'role'];
+    const json2csvParser = new Json2csvParser({ fields });
+    
+    
+    var turnoId = req.params.id;
+    if (!turnoId) {
+        //sacar todos los albums de la DB
+        var find = Cliente.find({}).sort('name');
+    } else {
+        //mostrar solamente los albums de ese artista
+        var find = cliente.find({
+            turno: turnoId
+        }).sort('name');
+    }
+    find.exec((err, clientes) => {
+        if (err) {
+            res.status(500).send({
+                message: 'error'
+            });
+        } else {
+            if (!clientes) {
+                res.status(404).send({
+                    message: 'no hay asistencias  asociadas'
+                });
+            } else {
+                
+                 const csv = json2csvParser.parse(clientes);
+                 var path ='./exports/csv'+Date.now()+'.csv';
+                 fs.writeFile(path, csv, function(err,data) {
+                    if (err) {throw err;}
+                    else{ console.log('file Created');
+                    res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+                    res.set('Content-Type', 'text/csv');            
+                    res.download(path)
+                    }});
+                
+            }
+        }
+    })
+    
+     
+}
+
+
 module.exports = {
     savecliente,
     updatecliente,
     logincliente,
     uploadImageCliente,
     getImageFile,
-    updateclienteAdmin
+    updateclienteAdmin,
+    sacarcsv
 }
