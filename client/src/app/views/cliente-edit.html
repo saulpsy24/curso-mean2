@@ -12,7 +12,7 @@
             </div>
             <form #ClienteupdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-11">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4"><br><br><br><br>
                         <p>
                             <label>Nombre:</label>
                             <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
@@ -23,7 +23,7 @@
 
                         </p>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4"><br><br><br><br>
 
                         <p>
                             <label>Apellido:</label>
@@ -38,7 +38,8 @@
                         </div>
                         <p>
                             <label>Sube tu Avatar</label>
-                            <input type="file" placeholder="Subir Imagen.." (change)="fileChangeEvent($event)" />
+                            <input type="file" placeholder="Browse" (change)="fileChangeEvent($event)" />
+                            
 
                         </p>
 
@@ -141,42 +142,37 @@
                 <input type="submit" value="Actualizar" class="btn btn-primary">
 
             </form>
+            <a href="http://localhost:3977/api/getreporte/" class="btn-primary">Reporte de Users</a>
 
 
         </div>
         <div class="col-md-3 promos">
             <div class="col-md-12">
-                <div class="single-blog-item">
+                
                     <div class="blog-thumnail">
                         <a href="">
                             <img class="promos" src="http://formacionescae.com/public/common/img/VICHY.png" alt="blog-img">
                         </a>
                     </div>
 
-                </div>
-            </div>
+            </div><hr>
             <div class="col-md-12">
-                <div class="single-blog-item">
                     <div class="blog-thumnail">
                         <a href="">
                             <img class="promos" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png" alt="blog-img">
                         </a>
                     </div>
 
-                </div>
-            </div>
+            </div><hr>
             <div class="col-md-12">
-                <div class="single-blog-item">
                     <div class="blog-thumnail">
                         <a href="">
                             <img class="promos" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png" alt="blog-img">
                         </a>
                     </div>
 
-                </div>
-            </div>
+            </div><hr>
             <div class="col-md-12">
-                    <div class="single-blog-item">
                         <div class="blog-thumnail">
                             <a href="">
                                 <img class="promos" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png" alt="blog-img">
@@ -184,7 +180,7 @@
                         </div>
     
                     </div>
-                </div>
+               
 
 
         </div>
