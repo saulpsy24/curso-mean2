@@ -1,68 +1,82 @@
-<div *ngIf="identity" class="navigation col-lg-1 col-xs-1">
-    <h1 class="head-title" [routerLinkActive]="['actived']">
-        <a [routerLink]="['/']" >
-            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-            {{title}}
-            {{subtitle}}
-        </a>
-    </h1>
-    <nav id="navigation">
-        
-        <a [routerLink]="['/buscar']" [routerLinkActive]="['actived']">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            Provincias
-        </a>
-  
-        <a [routerLink]="['/evento',1]"  [routerLinkActive]="['actived']">
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            Eventos
-        </a>
-         <a [routerLink]="['/espacio',1]" [routerLinkActive]="['actived']">
-            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-            Espacios
-        </a>
-
-    </nav>
-    <nav id="user_logged">
-        <div class="user_image col-md-12">
-        <br>
-            <img id="user_image_logged" src="{{url+'get-image-user/'+identity.image}}" class="useravatarnav" />
-        </div>
-        <span id="identity_name">
-            {{identity.name}}
-        </span>
-
-        <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            Mis Datos
-        </a>
-
-        <a (click)="logout()" class="btn-loguot">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-            Salir
-        </a>
-    </nav>
-
-</div>
-<div [class.hidden]="!identity" class="central col-lg-11 col-xs-11"style="background: #ffffff;; height: 100%;">
+<div *ngIf="identity" class="navigation col-lg-12 col-xs-12">
+        <nav id="navigation" style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
+               
+                <a class="navbar-brand" [routerLink]="['/']">
+                    <img src="https://www.loreal-paris.com.mx/img/header/logo.png"/>
+                    
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    
+                  </ul>
+                  <span class="navbar-text">
+                    <ul class="navbar-nav mr-auto">
+                            <ul class="navbar-nav my-2 my-lg-0">
+                                    <li class="nav-item">
+                                        <a [routerLink]="['/buscar']" [routerLinkActive]="['actived']" class="nav-link">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            Provincias
+                                        </a>
+                    
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" [routerLink]="['/evento',1]" [routerLinkActive]="['actived']">
+                                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                            Eventos
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" [routerLink]="['/espacio',1]" [routerLinkActive]="['actived']">
+                                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                            Espacios
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
+                                            <img id="user_image_logged" src="{{url+'get-image-user/'+identity.image}}" class="useravatarnav" />
+                                            <br>
+                                            <span id="identity_name">
+                                                Perfil de {{identity.name}}
+                                            </span> 
+                                        </a>                                     
+                                        
+                                    </li>
+                                    <li class="nav-item">                     
+                                             <a class="nav-link btn-logout" (click)="logout()" >
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                            Salir
+                                        </a>
+                                       
+                                    </li>
+                                </ul>
+                    </ul>
+                  </span>
+                </div>
+              </nav>
+            </div>
+<div  *ngIf="identity" [class.hidden]="!identity" class="central col-lg-12 col-xs-12 h-100" style="background: #ffffff;; height: 100%;">
     <router-outlet></router-outlet>
 </div>
 
-<div class="row" style="width: 100% ;height:30%;"*ngIf="!identity">
-        <div id="over">
-                <img src="../assets/images/CAE.png" height="150px"/>
-             </div>
+
+<div class="row" style="width: 100% ;height:30%;" *ngIf="!identity">
+    <div id="over">
+        <img src="../assets/images/CAE.png" height="150px" />
+    </div>
 
 </div>
 
-<div class="row justify-content-center align-items-center loginform"style="height: 70%;" *ngIf="!identity">
-    
+<div class="row justify-content-center align-items-center loginform" style="height: 70%;" *ngIf="!identity">
+
 
     <div class="col-lg-6">
         <div class="justify-content-center align-items-center">
-                <h1> Identificate</h1>
+            <h1> Identificate</h1>
         </div>
-        
+
 
         <div *ngIf="errorMessage" class="alert alert-danger">
             <strong>Ups!</strong>{{errorMessage}}
@@ -88,4 +102,3 @@
 
     </div>
 </div>
-

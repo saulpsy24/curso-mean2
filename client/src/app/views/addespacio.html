@@ -10,7 +10,7 @@
     <form #formEspacio="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-4 col-xs-6 ">
-                <p>
+                <p><br>
                     <label>Nombre</label>
                     <input type="text" #name="ngModel" name="name" [(ngModel)]="espacio.name" required class="form-control" />
                     <span *ngIf="!name.valid && name.touched"> El nombre es obligatorio</span>

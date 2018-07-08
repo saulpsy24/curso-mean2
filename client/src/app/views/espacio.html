@@ -1,57 +1,116 @@
-<div class="head-page">
-    <h1>{{'Espacio'}}</h1>
-    <a [routerLink]="['/add-espacio']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-default">
-        Añadir Espacio
-    </a>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Eventos</h1>
+            <a [routerLink]="['/add-espacio']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
+                Añadir Evento
+                <i class="fa fa-plus-circle"></i>
+            </a>
 
+        </div>
+    </div>
+    
+    <hr>
+    <div class="row">
 
-<ul class="pagination pull rigth">
-    <li>
-        <a [routerLink]="['/espacio',prev_page]">&laquo;</a>
-    </li>
-    <li>
-        <a [routerLink]="['/espacio',next_page]">&raquo;</a>
-    </li>
-</ul>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/VICHY.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png">
+        </div>
 
-<div class="clearfix"></div>
-<ul class="espacios-list col-lg-12" *ngIf="identity">
-    <li *ngFor="let espacio of espacios" class="col-lg-3 ">
-        <div class="container">
-            <div class="row">
-                <!-- Card Projects -->
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-image">
-                            <img class="img-responsive" src="{{ url +'/get-image-space/' + espacio.image}}" />
-
-                        </div>
-
-
-                        <div class="card-action">
-                            <div class="alinear">
-                                <a class="card-title" [routerLink]="['/detail-espacio',espacio._id] ">
-                                    {{espacio.name}}
-                                </a>
-                                <hr>
-
-
-                            </div>
-                            <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
-                                <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">Editar</a>
-                                <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
-                            </div>
-                            <div class="seguro" *ngIf="confirmado==espacio._id">
-                                <a (click)="onDeleteEspacio(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
-                                <a (click)="onCancelEspacio()" class="btn btn-sm btn-warning">Cancelar</a>
-                            </div>
-                        </div>
+    </div>
+    <hr>
+    <div class="row">
+            <div class="col-md-3">
+                <h2>Filtrar</h2>
+    
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search">
+    
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <h2>Por marca</h2>
+                <div class="dropdown">
+    
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Seleccionar marca
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">VICHY</a>
+                        <a class="dropdown-item" href="#">ROGER & GALLET</a>
+                        <a class="dropdown-item" href="#">SKINCEUTICALS</a>
+                        <a class="dropdown-item" href="#">LA ROCHE</a>
                     </div>
                 </div>
             </div>
+        </div><hr>
+
+    <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+            <ul class="pagination">
+                <li class="page-link">
+                    <a [routerLink]="['/espacio',prev_page]">&laquo;Anterior</a>
+                </li>
+                <li class="page-link">
+                    ...
+                </li>
+                <li class="page-link">
+                    <a [routerLink]="['/espacio',next_page]"> Siguiente &raquo;</a>
+                </li>
+
+            </ul>
+
         </div>
 
+    </div>
+    <div class="row">
 
-    </li>
-</ul>
+        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let espacio of espacios">
+            <!-- Card Projects -->
+
+            <div class="card">
+                <div class="card-image">
+                    <img class="img-responsive" src="{{ url +'/get-image-space/' + espacio.image}}" />
+
+                </div>
+
+
+                <div class="card-action">
+                    <div class="alinear">
+                        <a class="card-title" [routerLink]="['/detail-espacio',espacio._id] ">
+                            {{espacio.name}}
+                        </a>
+                        <hr>
+
+
+                    </div>
+                    <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
+                        <button type="button" class="btn btn-dark">
+                            <span class="glyphicon glyphicon-pencil"></span>Inscribir</button>
+                        <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">Editar</a>
+                        <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
+
+                    </div>
+                    <div class="seguro" *ngIf="confirmado==espacio._id">
+                        <a (click)="onDeleteEspacio(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
+                        <a (click)="onCancelEspacio()" class="btn btn-sm btn-warning">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
