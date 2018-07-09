@@ -1,9 +1,12 @@
-<div class="col-lg-12" *ngIf="identity">
+<div class="col-lg-12" style="margin: 15px;" *ngIf="identity">
     <hr/>
 
     <!--Formulario-->
-    <div class="row">
-        <div class="col-md-8">
+
+    <div class="row ">
+        <div class="col-md-8 card2">
+            <br>
+            <br>
             <h2>{{titulo}}</h2>
             <hr class="lineatitle" />
 
@@ -12,7 +15,12 @@
             </div>
             <form #ClienteupdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-11">
                 <div class="row">
-                    <div class="col-sm-4"><br><br><br><br>
+
+                    <div class="col-sm-4">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <p>
                             <label>Nombre:</label>
                             <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
@@ -23,7 +31,11 @@
 
                         </p>
                     </div>
-                    <div class="col-sm-4"><br><br><br><br>
+                    <div class="col-sm-4">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
 
                         <p>
                             <label>Apellido:</label>
@@ -33,15 +45,21 @@
                         </p>
                     </div>
                     <div class="col-sm-4">
-                        <div class="image_for_edit" *ngIf="cliente.image && cliente.image !=null">
-                            <img src="{{url+'get-image-user/'+cliente.image}}" class="useravatar" />
-                        </div>
-                        <p>
-                            <label>Sube tu Avatar</label>
-                            <input type="file" placeholder="Browse" (change)="fileChangeEvent($event)" />
-                            
+                        <div class="col-lg-12">
+                            <div class="image_for_edit" *ngIf="cliente.image && cliente.image !=null">
+                                <img src="{{url+'get-image-user/'+cliente.image}}" class="useravatar" />
+                            </div>
+                            <br>
 
-                        </p>
+                        </div>
+                        <div class="col-lg-12">
+
+                            <div class="upload-btn-wrapper">
+                                <button class="btno">Seleccionar Foto</button>
+                                <input type="file" placeholder="Browse" (change)="fileChangeEvent($event)" />
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -88,103 +106,56 @@
                         </p>
                     </div>
                 </div>
-
-
-
-
-
-
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <p>
-                            <label>Vichy</label>
-                            <input type="text" *ngIf="cliente.brandV==1" value="Si" class="form-control" disabled/>
-                            <input type="text" *ngIf="cliente.brandV==0" value="No" class="form-control" disabled/>
-                        </p>
-
-                    </div>
-                    <div class="col-md-3">
-                        <p>
-                            <label>La Roche</label>
-                            <input type="text" *ngIf="cliente.brandLR==1" value="Si" class="form-control" disabled/>
-                            <input type="text" *ngIf="cliente.brandLR==0" value="No" class="form-control" disabled/>
-                        </p>
-
-                    </div>
-                    <div class="col-md-3">
-                        <p>
-                            <label>Roger and Gallet</label>
-                            <input type="text" *ngIf="cliente.brandRG==1" value="Si" class="form-control" disabled/>
-                            <input type="text" *ngIf="cliente.brandRG==0" value="No" class="form-control" disabled/>
-                        </p>
-
-                    </div>
-                    <div class="col-md-3">
-
-                        <p>
-                            <label>Skinceuticals</label>
-                            <input type="text" *ngIf="cliente.brandSK==1" value="Si" class="form-control" disabled/>
-                            <input type="text" *ngIf="cliente.brandSK==0" value="No" class="form-control" disabled/>
-
-
-                        </p>
-
-
-                    </div>
-
-
-
-
-                </div>
-
-
                 <input type="submit" value="Actualizar" class="btn btn-primary">
 
             </form>
             <a href="http://localhost:3977/api/getreporte/" class="btn-primary">Reporte de Users</a>
+            <br>
+            <br>
 
 
         </div>
+
         <div class="col-md-3 promos">
             <div class="col-md-12">
-                
-                    <div class="blog-thumnail">
-                        <a href="">
-                            <img class="promos" src="http://formacionescae.com/public/common/img/VICHY.png" alt="blog-img">
-                        </a>
-                    </div>
 
-            </div><hr>
-            <div class="col-md-12">
-                    <div class="blog-thumnail">
-                        <a href="">
-                            <img class="promos" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png" alt="blog-img">
-                        </a>
-                    </div>
+                <div class="blog-thumnail">
+                    <a href="">
+                        <img class="promos" src="http://formacionescae.com/public/common/img/VICHY.png" alt="blog-img">
+                    </a>
+                </div>
 
-            </div><hr>
+            </div>
+            <hr>
             <div class="col-md-12">
-                    <div class="blog-thumnail">
-                        <a href="">
-                            <img class="promos" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png" alt="blog-img">
-                        </a>
-                    </div>
+                <div class="blog-thumnail">
+                    <a href="">
+                        <img class="promos" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png" alt="blog-img">
+                    </a>
+                </div>
 
-            </div><hr>
+            </div>
+            <hr>
             <div class="col-md-12">
-                        <div class="blog-thumnail">
-                            <a href="">
-                                <img class="promos" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png" alt="blog-img">
-                            </a>
-                        </div>
-    
-                    </div>
-               
+                <div class="blog-thumnail">
+                    <a href="">
+                        <img class="promos" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png" alt="blog-img">
+                    </a>
+                </div>
+
+            </div>
+            <hr>
+            <div class="col-md-12">
+                <div class="blog-thumnail">
+                    <a href="">
+                        <img class="promos" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png" alt="blog-img">
+                    </a>
+                </div>
+
+            </div>
+
 
 
         </div>
     </div>
-
-
 </div>

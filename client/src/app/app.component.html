@@ -1,4 +1,5 @@
-<div *ngIf="identity" class="navigation col-lg-12 col-xs-12">
+<div [ngStyle]="{'min-height': clientHeight + 'px', 'margin-bottom': '-200px'}" >
+<div *ngIf="identity" class="navigation col-lg-12 col-xs-12" style="padding: 0px;">
         <nav id="navigation" style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
                
                 <a class="navbar-brand" [routerLink]="['/']">
@@ -57,9 +58,15 @@
                 </div>
               </nav>
             </div>
-<div  *ngIf="identity" [class.hidden]="!identity" class="central col-lg-12 col-xs-12 h-100" style="background: #ffffff;; height: 100%;">
+<div  *ngIf="identity" [class.hidden]="!identity" class="central col-lg-12" style="background: #f2f2f2; height: 100%; padding: 0px;">
     <router-outlet></router-outlet>
+    
+  
+   
 </div>
+</div>
+
+
 
 
 <div class="row" style="width: 100% ;height:30%;" *ngIf="!identity">

@@ -319,7 +319,8 @@ function updateclienteAdmin(req, res) {
         email: req.body.email,
         image: req.body.image,
         surname: req.body.surname,
-        phone: req.body.phone
+        phone: req.body.phone,
+        role:req.body.role
       };
       
     if (update.password) {

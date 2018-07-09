@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     public token;
     public errorMessage;
     public url:String;
+   public clientHeight: number;
     
 
     constructor(
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
     ) {
         this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER');
          this.url=GLOBAL.url;
+         this.clientHeight = window.innerHeight; 
     }
     ngOnInit() {
         this.token = this._clienteService.getToken();
