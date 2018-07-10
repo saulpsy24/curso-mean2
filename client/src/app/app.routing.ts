@@ -20,9 +20,12 @@ import { EventAddComponent } from './components/event-add.component';
 const appRoutes: Routes = [
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     {path:'',component: ClienteEditComponent},
     // {path:'espacio/:page',component:EspacioComponent},
     {path:'evento/:page',component:EspacioComponent},
+=======
+>>>>>>> 2738e4ea0d7d081ee9f6fbd279de385f6efc1e70
 =======
 >>>>>>> 2738e4ea0d7d081ee9f6fbd279de385f6efc1e70
     {path:'',component: HomeComponent},
