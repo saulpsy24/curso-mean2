@@ -28,7 +28,7 @@ export class AddespComponent implements OnInit{
 		private _espacioService: EventoService
 
 	){
-		this.titulo= 'Crear Evento';
+		this.titulo = 'Crear Evento';
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
         this.url= GLOBAL.url;

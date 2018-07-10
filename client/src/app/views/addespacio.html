@@ -12,16 +12,16 @@
             <div class="col-md-4 col-xs-6 ">
                 <p><br>
                     <label>Titulo</label>
-                    <input type="text" #titulo="ngModel" name="titulo" [(ngModel)]="evento.titulo" required class="form-control" />
-                    <span *ngIf="!titulo.valid && titulo.touched"> El titulo es obligatorio</span>
+                    <input type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                    <span *ngIf="!title.valid && title.touched"> El titulo es obligatorio</span>
                 </p>
 
             </div>
             <div class="col-md-4 col-xs-6 ">
                 <p>
                     <label>Descripción</label>
-                    <input type="text" #descripcion="ngModel" name="descripcion" [(ngModel)]="evento.descripcion" required class="form-control" />
-                    <span *ngIf="!descripcion.valid && descripcion.touched">La descripcion es obligatoria</span>
+                    <input type="text" #description="ngModel" name="description" [(ngModel)]="evento.description" required class="form-control" />
+                    <span *ngIf="!description.valid && description.touched">La descripcion es obligatoria</span>
 
                 </p>
 
@@ -109,12 +109,12 @@
     <div class="row">
         <div class="col-md-7"></div>
         <div class="col-md-5" *ngIf="is_edit">
-            <div class="espacio_image-for-edit" *ngIf="espacio.image && espacio.image != 'null'">
-                <img src="{{url +'get-image-space/'+ espacio.image}}" />
+            <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
+                <img src="{{url +'get-image-event/'+ event.image}}" />
             </div>
 
             <p>
-                <label>Sube la imagen del Espacio</label>
+                <label>Sube la imagen del Evento</label>
                 <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
             </p>
         </div>

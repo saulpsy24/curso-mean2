@@ -51,7 +51,7 @@ export class EditespComponent implements OnInit{
 
             this._espacioService.getEspacio(this.token,id).subscribe(
                 response=>{
-                    if(!response.espacio){
+                    if(!response.evento){
                         this._router.navigate(['/']);
                     }else{
                         this.evento = response.evento;
