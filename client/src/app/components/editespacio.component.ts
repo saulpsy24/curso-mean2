@@ -4,18 +4,19 @@ import{ Router, ActivatedRoute,Params} from '@angular/router';
 import{ GLOBAL } from '../services/global';
 import{ ClienteService } from '../services/cliente.service';
 import{ Espacio } from '../models/espacio';
-import{ EspacioService } from '../services/espacio.service';
+import{ EventoService } from '../services/espacio.service';
 import{ UploadService } from '../services/upload.service';
+import { Evento } from '../models/evento';
 
 @Component({
 	selector: 'edit-espacio',
 	 templateUrl: '../views/addespacio.html',
-	providers: [ClienteService, EspacioService,UploadService]
+	providers: [ClienteService, EventoService,UploadService]
 })
 
 export class EditespComponent implements OnInit{
 	public titulo: String;
-	public espacio: Espacio;
+	public evento: Evento;
 	public identity;
 	public token;
 	public url: String;
@@ -27,14 +28,14 @@ export class EditespComponent implements OnInit{
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _clienteService: ClienteService,
-		private _espacioService: EspacioService,
+		private _espacioService: EventoService,
 		private _uploadService: UploadService
 	){
 		this.titulo= 'Editar Espacio';
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
         this.url= GLOBAL.url;
-        this.espacio = new Espacio('','','','','','','','',);
+        this.evento = new Evento('','','','','');
         this.is_edit = true;
 	}
 
@@ -53,7 +54,7 @@ export class EditespComponent implements OnInit{
                     if(!response.espacio){
                         this._router.navigate(['/']);
                     }else{
-                        this.espacio = response.espacio;
+                        this.evento = response.evento;
                     }
 
                 },
@@ -71,21 +72,21 @@ export class EditespComponent implements OnInit{
 }
 
 	onSubmit(){
-        console.log(this.espacio);
+        console.log(this.evento);
         this._route.params.forEach(( params : Params) =>{
             let id = params ['id'];
 
-		this._espacioService.editEspacio(this.token,id,this.espacio).subscribe(
+		this._espacioService.editEspacio(this.token,id,this.evento).subscribe(
 			response=>{
-				if(!response.espacio){
+				if(!response.evento){
 					this.alertMessage= 'Error en el servidor';
 				}else{
-                    this.alertMessage= 'El espacio se ha actualizado correctamente';
+                    this.alertMessage= 'El Evento se ha actualizado correctamente';
                     
-                    this._uploadService.makeFileRequest(this.url+'/upload-image-space/'+id,[],this.filesToUpload,this.token,'image')
+                    this._uploadService.makeFileRequest(this.url+'/upload-image-event/'+id,[],this.filesToUpload,this.token,'image')
                         .then(
                             (result)=>{
-                                this._router.navigate(['/espacio',1]);
+                                this._router.navigate(['/evento',1]);
                             },(error)=>{
                                 console.log(error);
                             }
