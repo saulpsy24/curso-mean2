@@ -71,7 +71,7 @@ function getEspacios(req, res) {
         var page = 1;
     }
 
-    var itemsperpage = 4;
+    var itemsperpage = 3;
 
     Espacio.find().sort('name').paginate(page, itemsperpage, function (err, espacios, total) {
         if (err) {

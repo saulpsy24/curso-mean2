@@ -40,6 +40,9 @@ export class EspacioComponent implements OnInit{
 	ngOnInit(){
 		console.log('espacio.components.ts cargado');
 		this.getEspacios();
+		
+		this.identity = this._clienteService.getidentity();
+		console.log(this.identity);
 		//Conseguir listado de artistas
 	}
 
