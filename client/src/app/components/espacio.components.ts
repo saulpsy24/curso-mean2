@@ -58,17 +58,14 @@ export class EspacioComponent implements OnInit{
 				if(this.prev_page==0){
 					this.prev_page=1;
 				}
-				// if(this.next_page==page+1){
-				// 	this.next_page=page;
-				// }
 
 			}
 			this._espacioService.getEspacios(this.token,page).subscribe(
 				response=>{
-					if(!response.espacios){
+					if(!response.event){
 						this._router.navigate(['/']);
 					}else{
-						this.evento = response.espacios;
+						this.evento = response.event;
 					}
 
 				},
@@ -93,7 +90,7 @@ export class EspacioComponent implements OnInit{
 	onDeleteEspacio(id){
 		this._espacioService.borrarEspacio(this.token,id).subscribe(
 			response=>{
-				if(!response.espacios){
+				if(!response.event){
 					this._router.navigate(['/evento',1]);
 				}
 					this.getEspacios();

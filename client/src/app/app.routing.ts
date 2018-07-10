@@ -19,16 +19,23 @@ import { EventAddComponent } from './components/event-add.component';
 
 const appRoutes: Routes = [
     
+<<<<<<< HEAD
     {path:'',component: ClienteEditComponent},
+    // {path:'espacio/:page',component:EspacioComponent},
+    {path:'evento/:page',component:EspacioComponent},
+=======
+>>>>>>> 2738e4ea0d7d081ee9f6fbd279de385f6efc1e70
+    {path:'',component: HomeComponent},
     {path:'espacio/:page',component:EspacioComponent},
     {path:'add-espacio',component:AddespComponent},
     {path:'edit-espacio/:id',component:EditespComponent},
     {path:'detail-espacio/:id',component:DetailespacioComponent},
     {path:'mis-datos', component:ClienteEditComponent},
-    {path:'evento/:page',component: EventListComponent},   
+    // {path:'evento/:page',component: EventListComponent},   
     {path:'cliente-edit', component:ClienteEditComponent},
     {path:'event-add',component:EventAddComponent},
     {path:'**',component:HomeComponent},
+
 ];
 
 export const appRoutingProviders: any[] = [];

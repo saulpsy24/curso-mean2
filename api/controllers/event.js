@@ -44,7 +44,7 @@ function saveEvent(req, res) {
     event.title=params.title;
     event.description= params.description;
     event.brand=params.brand;
-    event.space=params.space;
+    event.province=params.province;
    
 
     event.save((err, eventStored) => {
@@ -79,7 +79,7 @@ function getEvents(req, res) {
         }).sort('name');
     }
     find.populate({
-        path: 'space',       
+        path: 'event',       
         
     }).exec((err, eventos) => {
         if (err) {

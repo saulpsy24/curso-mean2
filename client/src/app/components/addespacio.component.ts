@@ -18,7 +18,7 @@ export class AddespComponent implements OnInit{
 	public identity;
 	public token;
 	public url: String;
-	public alertMessage;
+	public alertMessage: String;
 
 	constructor(
 
@@ -40,18 +40,21 @@ export class AddespComponent implements OnInit{
 	}
 
 	onSubmit(){
-		console.log(this.evento);
+		console.log(this.evento );
 		this._espacioService.addEspacio(this.token,this.evento).subscribe(
 			response=>{
-				this.evento =response.evento;
+				this.evento =response.event;
 
-				if(!response.evento){
-					this.alertMessage= 'Error en el servidor';
+				if(!response.event){
+					// this.alertMessage= 'Error en el servidor';
+		console.log('prueba' );
+		
+		console.log(response.event );
 				}else{
-					console.log('daniel');
+					console.log('else');
 					this.alertMessage= 'El evento se ha creado correctamente';
-					this.evento = response.evento;
-					this._router.navigate(['event',response.evento._id]);
+					this.evento = response.event;
+					// this._router.navigate(['evento/1']);
 
 				}
 
@@ -61,7 +64,7 @@ export class AddespComponent implements OnInit{
                             if (errorMessage != null) {
                                 var body = JSON.parse(error._body);
                                 //this.alertRegister = body.message;
-                                console.log(error);
+                                console.log(error );
                             }
 				}
 		)
