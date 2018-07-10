@@ -4,7 +4,7 @@ export class Evento{
     public title: string,
     public description: String,
     public brand: String,
-    province:String,
+    public province:String,
     public image: String
 ){}
 }
