@@ -8,12 +8,11 @@ html, body{
     background: #f2f2f2;
     margin: 0px;
 		height: 100%;
-		font-family: 'Montserrat', sans-serif;
+		font-family: 'Roboto', sans-serif;
 
 	
 }
-div{
-	font-family: 'Montserrat', sans-serif;
+div{font-family: 'Roboto', sans-serif;
 
 }
 #over{
@@ -341,9 +340,9 @@ div{
 	}
 	
 	.btno {
-		border: 2px solid  #1976D2;
+		border: 2px solid  #015F86;
 		color:  #ffffff;
-		background-color:  #1976D2;
+		background-color:  #015F86;
 		padding: 8px 20px;
 		border-radius: 5px;
 		font-size: 10px;
@@ -351,9 +350,9 @@ div{
 		transition: background-color .5s ease;
 	}
 	.btno:hover {
-		border: 2px solid gray;
+		border: 2px solid #015F86;
 		color: gray;
-		background-color: #0C9CAF;
+		background-color: #015F86;
 		padding: 8px 20px;
 		border-radius: 8px;
 		font-size: 20px;

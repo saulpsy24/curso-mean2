@@ -1,9 +1,85 @@
-<div class="col-lg-12" style="margin: 15px;" *ngIf="identity">
+<div class="col-lg-12 " style="margin: 15px;" *ngIf="identity">
     <hr/>
 
     <!--Formulario-->
+    <div class="row" *ngIf="identity && identity.role == 'ROLE_ADMIN'" >
+        
+        <div class="col-md-3  card2">
+                <hr>
+            <div class="row">
+               
+            <div class="col-md-6">
+                   
+            <h3>Admin Tools.</h3>
 
-    <div class="row ">
+            </div>
+            <div class="col-md-6">
+                   
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal"data-target="#exampleModalCenter">
+                Reporte de Usuarios.
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Descargando Reporte de Usuarios.</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Los campos que incluye el reporte, son los siguientes:
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    "Nombre"
+                                 </li>
+                                <li class="list-group-item">
+                                        "Apellidos
+
+                                </li>
+                                <li class="list-group-item">
+                                        "Nombre del Establecimiento"
+
+                                </li>
+                                <li class="list-group-item">
+                                        "email"
+                                </li>
+                                <li class="list-group-item">
+                                    "Codigo Postal"
+                                </li>
+                                <li class="list-group-item">
+                                    "Zip"
+                                </li>
+                                <li class="list-group-item">
+                                        "nifCif"
+
+                                </li>
+                                <li class="list-group-item">
+                                    "Dirección"
+                                </li>
+                                <li class="list-group-item">
+                                    "Marcas asociadas."
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar <i class="fa fa-times"></i></button>
+                            <a type="button"  href="http://localhost:3977/api/getreporte"  class="btn btn-success"> Descargar <i class="fa fa-arrow-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <hr>
+    </div>
+   
+    </div>
+
+    <div class="row  animated fadeInRight">
         <div class="col-md-8 card2">
             <br>
             <br>
@@ -21,15 +97,20 @@
                         <br>
                         <br>
                         <br>
-                        <p>
-                            <label>Nombre:</label>
-                            <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
-                            />
-                            <span *ngIf="name.touched">
-                                El campo Nombre es obligatorio!
-                            </span>
 
-                        </p>
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Nombre:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user fa" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-sm-4">
                         <br>
@@ -37,12 +118,18 @@
                         <br>
                         <br>
 
-                        <p>
-                            <label>Apellido:</label>
-                            <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control" placeholder="Introduce tu Apellido"
-                                required />
-
-                        </p>
+                        <div class="form-group">
+                            <label for="surname" class="cols-sm-2 control-label">Apellidos:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user fa" aria-hidden="true"> </i>
+                                    </span>
+                                    <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control" required placeholder="Introduce tus Apellidos"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="col-lg-12">
@@ -65,33 +152,63 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <p>
-                            <label>Telefono:</label>
-                            <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control" placeholder="Introduce tu Telefono"
-                            />
+                        <div class="form-group">
+                            <label for="phone" class="cols-sm-2 control-label">Telefono:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-mobile fa"></i>
+                                    </span>
+                                    <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control" placeholder="Introduce tu Telefono"
+                                    />
+                                </div>
+                            </div>
+                        </div>
 
-                        </p>
                     </div>
                     <div class="col-sm-6">
-                        <p>
-                            <label>Establecimiento:</label>
-                            <input type="text" value="{{identity.nameEstablishment}}" class="form-control" disabled/>
-                        </p>
+
+                        <div class="form-group">
+                            <label for="nameEstablishment" class="cols-sm-2 control-label">Establecimiento:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-map fa"></i>
+                                    </span>
+                                    <input type="text" value="{{identity.nameEstablishment}}" class="form-control" disabled/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <p>
-                            <label>e-Mail:</label>
-                            <input type="text" value="{{identity.email}}" class="form-control" disabled/>
-                        </p>
+
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">e-Mail:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-at fa"></i>
+                                    </span>
+                                    <input type="text" value="{{identity.email}}" class="form-control" disabled/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-4">
-                        <p>
-                            <label>Dirección:</label>
-                            <input type="text" value="{{identity.street}}" class="form-control" disabled/>
-                        </p>
+
+                        <div class="form-group">
+                            <label for="nameEstablishment" class="cols-sm-2 control-label">Dirección:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-road fa"></i>
+                                    </span>
+                                    <input type="text" value="{{identity.street}}" class="form-control" disabled/> </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-2">
                         <p>
@@ -100,16 +217,27 @@
                         </p>
                     </div>
                     <div class="col-sm-2">
-                        <p>
-                            <label>Rol:</label>
-                            <input type="text" value="{{identity.role}}" class="form-control" disabled/>
-                        </p>
+                        <div class="form-group">
+                            <label for="role" class="cols-sm-2 control-label">Rol:</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fas fa-connectdevelop fa"></i>
+                                    </span>
+                                    <input type="text" value="{{identity.role}}" class="form-control" disabled/> </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <input type="submit" value="Actualizar" class="btn btn-primary">
+                <div class="row">
+                    <div class="col-lg-11"></div>
+                    <input type="submit" value="Actualizar" class="btn btn-primary">
+                </div>
+
 
             </form>
-            <a href="http://localhost:3977/api/getreporte/" class="btn-primary">Reporte de Users</a>
+            
             <br>
             <br>
 
