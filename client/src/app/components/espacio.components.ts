@@ -3,18 +3,18 @@ import{ Router, ActivatedRoute,Params} from '@angular/router';
 
 import{ GLOBAL } from '../services/global';
 import{ ClienteService } from '../services/cliente.service';
-import{ EspacioService } from '../services/espacio.service';
-import{ Espacio } from '../models/espacio';
+import{ EventoService } from '../services/espacio.service';
+import{ Evento } from '../models/evento';
 
 @Component({
-	selector: 'espacio',
+	selector: 'evento',
 	templateUrl: '../views/espacio.html',
-	providers: [ClienteService,EspacioService]
+	providers: [ClienteService,EventoService]
 })
 
 export class EspacioComponent implements OnInit{
 	public titulo: String;
-	public espacios: Espacio[];
+	public evento: Evento[];
 	public identity;
 	public token;
 	public url: String;
@@ -26,9 +26,9 @@ export class EspacioComponent implements OnInit{
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _clienteService: ClienteService,
-		private _espacioService: EspacioService
+		private _espacioService: EventoService
 	){
-		this.titulo= 'Espacio';
+		this.titulo= 'Nuevo Evento';
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
 		this.url= GLOBAL.url;
@@ -68,7 +68,7 @@ export class EspacioComponent implements OnInit{
 					if(!response.espacios){
 						this._router.navigate(['/']);
 					}else{
-						this.espacios = response.espacios;
+						this.evento = response.espacios;
 					}
 
 				},
@@ -94,7 +94,7 @@ export class EspacioComponent implements OnInit{
 		this._espacioService.borrarEspacio(this.token,id).subscribe(
 			response=>{
 				if(!response.espacios){
-					this._router.navigate(['/espacio',1]);
+					this._router.navigate(['/evento',1]);
 				}
 					this.getEspacios();
 			},

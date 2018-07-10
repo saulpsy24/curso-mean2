@@ -3,10 +3,10 @@ import{Http,Response,Headers,RequestOptions}from'@angular/http';
 import 'rxjs/add/operator/map';
 import{Observable} from 'rxjs/Observable';
 import{GLOBAL}from './global';
-import {Espacio} from '../models/espacio';
+import {Evento} from '../models/evento';
 
 @Injectable()
-export class EspacioService{
+export class EventoService{
     public url: string;
     
    constructor(
@@ -21,7 +21,7 @@ export class EspacioService{
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.get(this.url+'spaces/'+page,options)
+        return this._http.get(this.url+'event/'+page,options)
                         .map(res=>res.json());
     }
 
@@ -31,28 +31,28 @@ export class EspacioService{
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.get(this.url+'space/'+id,options)
+        return this._http.get(this.url+'event/'+id,options)
                         .map(res=>res.json());
     }
 
-    addEspacio(token,espacio:Espacio){
+    addEspacio(token,evento:Evento){
 
-        let params = JSON.stringify(espacio);
+        let params = JSON.stringify(evento);
         let headers = new Headers({
             'Content-type' : 'application/json',
             'authorization' : token
         });
-        return this._http.post(this.url+'space',params,{headers:headers})
+        return this._http.post(this.url+'event',params,{headers:headers})
                             .map(res => res.json());
     }
-    editEspacio(token,id:string, espacio:Espacio){
+    editEspacio(token,id:string, evento:Evento){
 
-        let params = JSON.stringify(espacio);
+        let params = JSON.stringify(evento);
         let headers = new Headers({
             'Content-type' : 'application/json',
             'authorization' : token
         });
-        return this._http.put(this.url+'space/'+id,params,{headers:headers})
+        return this._http.put(this.url+'event/'+id,params,{headers:headers})
                             .map(res => res.json());
     }
     borrarEspacio(token,id:string){
@@ -61,7 +61,7 @@ export class EspacioService{
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.delete(this.url+'space/'+id,options)
+        return this._http.delete(this.url+'event/'+id,options)
                         .map(res=>res.json());
     }
 }//llave final de todo

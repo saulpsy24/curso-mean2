@@ -11,102 +11,118 @@
         <div class="row">
             <div class="col-md-4 col-xs-6 ">
                 <p><br>
-                    <label>Nombre</label>
-                    <input type="text" #name="ngModel" name="name" [(ngModel)]="espacio.name" required class="form-control" />
-                    <span *ngIf="!name.valid && name.touched"> El nombre es obligatorio</span>
+                    <label>Titulo</label>
+                    <input type="text" #titulo="ngModel" name="titulo" [(ngModel)]="evento.titulo" required class="form-control" />
+                    <span *ngIf="!titulo.valid && titulo.touched"> El titulo es obligatorio</span>
                 </p>
 
             </div>
             <div class="col-md-4 col-xs-6 ">
                 <p>
-                    <label>Provincia</label>
-                    <input type="text" #province="ngModel" name="province" [(ngModel)]="espacio.province" required class="form-control" />
-                    <span *ngIf="!province.valid && province.touched">La provincia es obligatoria</span>
+                    <label>Descripción</label>
+                    <input type="text" #descripcion="ngModel" name="descripcion" [(ngModel)]="evento.descripcion" required class="form-control" />
+                    <span *ngIf="!descripcion.valid && descripcion.touched">La descripcion es obligatoria</span>
 
                 </p>
 
 
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-4 col-xs-6">
+                <p>
+                    <label  for="province">Brand:</label>
+                    <select class="form-control" id="province">
+                        <option selected>Selecciona...</option>
+                        <option value="Vicky">Vicky</option>
+                        <option value="La Roche">La Roche</option>
+                        <option value="Skinceuticals">Skinceuticals</option>
+                        <option value="Roger&Gallet"> Roger & Gallet</option>
+                    </select>
+                </p>
+            </div>
+
+            <div class="col-md-4 col-xs-6">
 
                 <p>
-                    <label>Pais</label>
-                    <input type="text" #country="ngModel" name="country" [(ngModel)]="espacio.country" required class="form-control" />
-                    <span *ngIf="!country.valid && country.touched">La ciudad es obligatoria</span>
-
+                    <label  for="province">Provincia:</label>
+                    <select class="form-control" id="province">
+                        <option selected>Selecciona...</option>
+                        <option value="Albacete">Albacete</option>
+                        <option value="Alicante/Alacant">Alicante/Alacant</option>
+                        <option value="Almería">Almería</option>
+                        <option value="Araba/Álava"> Araba/Álava</option>
+                        <option value="Araba/Álava"> Araba/Álava</option>
+                        <option value="Asturias"> Asturias</option>
+                        <option value="Ávila"> Ávila</option>
+                        <option value="Badajoz"> Badajoz</option>
+                        <option value="Balears, Illes"> Balears, Illes</option>
+                        <option value="Barcelona"> Barcelona</option>
+                        <option value="Bizkaia"> Bizkaia</option>
+                        <option value="Burgos"> Burgos</option>
+                        <option value="Cáceres"> Cáceres</option>
+                        <option value="Cádiz"> Cádiz</option>
+                        <option value="Cantabria"> Cantabria</option>
+                        <option value="Castellón/Castelló"> Castellón/Castelló</option>
+                        <option value="Ceuta"> Ceuta</option>
+                        <option value="Ciudad Real"> Ciudad Real</option>
+                        <option value="Córdoba"> Córdoba</option>
+                        <option value="Coruña,A"> Coruña,A</option>
+                        <option value="Cuenca"> Cuenca</option>
+                        <option value="Gipuzkoa"> Gipuzkoa</option>
+                        <option value="Girona"> Girona</option>
+                        <option value="Granada"> Granada</option>
+                        <option value="Guadalajara"> Guadalajara</option>
+                        <option value="Huelva"> Huelva</option>
+                        <option value="Huesca"> Huesca</option>
+                        <option value="Jaén"> Jaén</option>
+                        <option value="León"> León</option>
+                        <option value="Lleidra"> Lleidra</option>
+                        <option value="Lugo"> Lugo</option>
+                        <option value="Madrid"> Madrid</option>
+                        <option value="Málaga"> Málaga</option>
+                        <option value="Melilla"> Melilla</option>
+                        <option value="Murcia"> Murcia</option>
+                        <option value="Navarra"> Navarra</option>
+                        <option value="Ourense"> Ourense</option>
+                        <option value="Palencia"> Palencia</option>
+                        <option value="Palmas, Las"> Palmas, Las</option>
+                        <option value="Pontevedra"> Pontevedra</option>
+                        <option value="Rioja, La"> Rioja, La</option>
+                        <option value="Salamanca"> Salamanca</option>
+                        <option value="Santa Cruz de Tenerife"> Santa Cruz de Tenerife</option>
+                        <option value="Segovia"> Segovia</option>
+                        <option value="Sevilla"> Sevilla</option>
+                        <option value="Soria"> Soria</option>
+                        <option value="Tarragona"> Tarragona</option>
+                        <option value="Teruel"> Teruel</option>
+                        <option value="Toledo"> Toledo</option>
+                        <option value="Valencia/Valéncia"> Valencia/Válencia</option>
+                        <option value="Valladolid"> Valladolid</option>
+                        <option value="Zamora"> Zamora</option>
+                        <option value="Zaragoza"> Zaragoza</option>
+                    </select>
                 </p>
 
             </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-5" *ngIf="is_edit">
+            <div class="espacio_image-for-edit" *ngIf="espacio.image && espacio.image != 'null'">
+                <img src="{{url +'get-image-space/'+ espacio.image}}" />
+            </div>
+
+            <p>
+                <label>Sube la imagen del Espacio</label>
+                <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
+            </p>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>
-                    <label>Direccion</label>
-                    <input type="text" #address="ngModel" name="address" [(ngModel)]="espacio.address" required class="form-control" />
-                    <span *ngIf="!address.valid && address.touched"> La dirección es obligatoria</span>
-                </p>
+        <div class="col-md-4">
 
-            </div>
-
+            <input type="submit" value="{{titulo}}" class="btn btn-success" />
         </div>
-        <div class="row">
-                <div class="col-sm-4"><p>
-                        <label>Localidad</label>
-                        <input type="text" #local="ngModel" name="local" [(ngModel)]="espacio.local" required class="form-control" />
-                        <span *ngIf="!local.valid && local.touched">La localidad es obligatoria</span>
-            
-                    </p></div>
-                <div class="col-sm-4"> <p>
-                        <label>Telefono</label>
-                        <input type="text" #phone="ngModel" name="phone" [(ngModel)]="espacio.phone" required class="form-control" />
-                        <span *ngIf="!phone.valid && phone.touched">El numero telefonico es obligatorio</span>
-            
-                    </p></div>
-                <div class="col-sm-4">
-                        <p>
-                                <label>Fax</label>
-                                <input type="text" #fax="ngModel" name="fax" [(ngModel)]="espacio.fax" required class="form-control" />
-                                <span *ngIf="!fax.valid && fax.touched">El fax es obligatorio</span>
-                    
-                            </p>
-                </div>
-            </div>
-
-
-
-
-        
-       
-     
-        <div class="row">
-            <div class="col-md-7"></div>
-            <div class="col-md-5" *ngIf="is_edit">
-                <div class="espacio_image-for-edit" *ngIf="espacio.image && espacio.image != 'null'">
-                    <img src="{{url +'get-image-space/'+ espacio.image}}" />
-                </div>
-
-                <p>
-                    <label>Sube la imagen del Espacio</label>
-                    <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
-                </p>
-            </div>
-            <div class="col-md-4">
-
-                <input type="submit" value="{{titulo}}" class="btn btn-success" />
-            </div>
-
-
-
-        </div>
-
-        <!-- <p>
-                <label>image</label>
-                <input type="text" #image="ngModel" name= "image" [(ngModel)]="espacio.image" required class="form-control"/>
-                <span *ngIf="!image.valid && image.touched">La image es obligatoria</span>
-                    
-            </p>  -->
-
+    </div>
     </form>
 </div>
 

@@ -6,10 +6,7 @@ var eventSchema = Schema({
     title: String,
     description: String,
     brand: String,
-   
-    space:{
-        type: Schema.ObjectId,ref:'Space'
-    },
+    province:String,
     image:String
         
 });

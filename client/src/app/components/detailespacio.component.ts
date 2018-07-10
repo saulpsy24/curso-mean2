@@ -3,18 +3,18 @@ import{ Router, ActivatedRoute,Params} from '@angular/router';
 
 import{ GLOBAL } from '../services/global';
 import{ ClienteService } from '../services/cliente.service';
-import{ EspacioService } from '../services/espacio.service';
-import{ Espacio } from '../models/espacio';
+import{ EventoService } from '../services/espacio.service';
+import{ Evento } from '../models/evento';
 
 @Component({
 	selector: 'detail-espacio',
 	templateUrl: '../views/detailespacio.html',
-	providers: [ClienteService,EspacioService]
+	providers: [ClienteService,EventoService]
 })
 
 export class DetailespacioComponent implements OnInit{
 	public titulo: String;
-	public espacios: Espacio[];
+	public evento: Evento[];
 	public identity;
 	public token;
     public url: String;
@@ -25,7 +25,7 @@ export class DetailespacioComponent implements OnInit{
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _clienteService: ClienteService,
-		private _espacioService: EspacioService
+		private _espacioService: EventoService
 	){
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
@@ -45,10 +45,10 @@ export class DetailespacioComponent implements OnInit{
 			
 			this._espacioService.getEspacios(this.token,id).subscribe(
 				response=>{
-					if(!response.espacios){
+					if(!response.evento){
 						this._router.navigate(['/'])
 					}else{
-						this.espacios = response.espacios;
+						this.evento = response.evento;
 					}
 				},
 				error=>{
