@@ -9,65 +9,70 @@
 
         </div>
     </div>
-    
-    <hr> 
+
+    <hr>
     <hr>
     <div class="row">
-            <div class="col-md-3">
-                <h2>Filtrar</h2>
-    
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search">
-    
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
-            </div>
-            <div class="col-md-3">
-                <h2>Por marca</h2>
-                <div class="dropdown">
-    
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Seleccionar marca
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">VICHY</a>
-                        <a class="dropdown-item" href="#">ROGER & GALLET</a>
-                        <a class="dropdown-item" href="#">SKINCEUTICALS</a>
-                        <a class="dropdown-item" href="#">LA ROCHE</a>
-                    </div>
+        <div class="col-md-3">
+            <h2>Filtrar</h2>
+
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search">
+
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <h2>Por marca</h2>
+            <div class="dropdown">
+
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Seleccionar marca
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">VICHY</a>
+                    <a class="dropdown-item" href="#">ROGER & GALLET</a>
+                    <a class="dropdown-item" href="#">SKINCEUTICALS</a>
+                    <a class="dropdown-item" href="#">LA ROCHE</a>
                 </div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3">
-                    <br>
-                    <ul class="pagination">
-                        <li class="page-link">
-                            <a [routerLink]="['/espacio',prev_page]">&laquo;Anterior</a>
-                        </li>
-                        <li class="page-link">
-                            ...
-                        </li>
-                        <li class="page-link">
-                            <a [routerLink]="['/espacio',next_page]"> Siguiente &raquo;</a>
-                        </li>
-        
-                    </ul>
-        
-        </div><hr>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <br>
+            <ul class="pagination">
+                <li class="page-link">
+                    <a [routerLink]="['/espacio',prev_page]">&laquo;Anterior</a>
+                </li>
+                <li class="page-link">
+                    ...
+                </li>
+                <li class="page-link">
+                    <a [routerLink]="['/espacio',next_page]"> Siguiente &raquo;</a>
+                </li>
+
+            </ul>
+
+        </div>
+        <hr>
 
 
-    </div> 
+    </div>
     <div class="row card2">
-       
+
 
         <div class="page-item col-md-3 animated fadeInRight" *ngFor="let espacio of espacios">
             <!-- Card Projects -->
 
             <div class="card">
                 <div class="card-image">
-                    <img class="img-responsive" src="{{ url +'/get-image-space/' + espacio.image}}" />
-
+                    <div class="coantainer">
+                        <img src="{{ url +'/get-image-space/' + espacio.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
+                        <div class="middles">
+                            <div class="texto">{{espacio.address}}</div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -76,15 +81,19 @@
                         <a class="card-title" [routerLink]="['/detail-espacio',espacio._id] ">
                             {{espacio.name}}
                         </a>
+
                         <hr>
 
 
                     </div>
+
                     <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
-                        <button type="button" class="btn btn-dark">
-                            <span class="glyphicon glyphicon-pencil"></span>Inscribir</button>
-                        <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">Editar</a>
-                        <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
+
+                        <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">
+                            <i class="fas fa-edit"></i>Editar</a>
+                        <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-window-close"></i>
+                            Borrar</a>
 
                     </div>
                     <div class="seguro" *ngIf="confirmado==espacio._id">
@@ -92,30 +101,33 @@
                         <a (click)="onCancelEspacio()" class="btn btn-sm btn-warning">Cancelar</a>
                     </div>
                 </div>
-                
+
             </div>
-            
+
 
         </div>
     </div>
-<hr>
-<br><br><br><br>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="row">
 
-            <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-                <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/VICHY.png">
-            </div>
-            <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-                <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png">
-            </div>
-            <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-                <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png">
-            </div>
-            <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-                <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png">
-            </div>
-    
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/VICHY.png">
         </div>
-        
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="z-image" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png">
+        </div>
+
+    </div>
+
 
 </div>
