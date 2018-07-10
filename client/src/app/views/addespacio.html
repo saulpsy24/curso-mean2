@@ -31,7 +31,7 @@
             <div class="col-md-4 col-xs-6">
                 <p>
                     <label  for="province">Brand:</label>
-                    <select class="form-control" id="province">
+                    <select class="form-control" id="province" #brand="ngModel" name="brand" [(ngModel)]="evento.brand" required>
                         <option selected>Selecciona...</option>
                         <option value="Vicky">Vicky</option>
                         <option value="La Roche">La Roche</option>
