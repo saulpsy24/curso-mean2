@@ -11,24 +11,19 @@ import { AddespComponent } from './components/addespacio.component';
 import { EditespComponent } from './components/editespacio.component';
 import { DetailespacioComponent } from './components/detailespacio.component';
 //import EVENTO
-import { EventListComponent } from './components/event-list.component';
 
+import {EventlistComponent} from  './components/eventlist.component'
+
+import {EventaddComponent} from './components/eventadd.componenet';
 //Import Home
 import { HomeComponent } from './components/home.component';
-import { EventAddComponent } from './components/event-add.component';
+//import { EventAddComponent } from './components/event-add.component';
 
 const appRoutes: Routes = [
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     { path: '', component: ClienteEditComponent },
     // {path:'espacio/:page',component:EspacioComponent},
-    { path: 'evento/:page', component: EspacioComponent },
-=======
->>>>>>> 2738e4ea0d7d081ee9f6fbd279de385f6efc1e70
-=======
->>>>>>> 2738e4ea0d7d081ee9f6fbd279de385f6efc1e70
-    { path: '', component: HomeComponent },
+    { path: 'evento/:page', component: EventlistComponent },
     { path: 'espacio/:page', component: EspacioComponent },
     { path: 'add-espacio', component: AddespComponent },
     { path: 'edit-espacio/:id', component: EditespComponent },
@@ -36,7 +31,7 @@ const appRoutes: Routes = [
     { path: 'mis-datos', component: ClienteEditComponent },
     // {path:'evento/:page',component: EventListComponent},   
     { path: 'cliente-edit', component: ClienteEditComponent },
-    { path: 'event-add', component: EventAddComponent },
+    { path: 'event-add', component: EventaddComponent },
     { path: '**', component: HomeComponent },
 
 ];

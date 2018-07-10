@@ -1,7 +1,7 @@
 export class Evento{
     constructor(
 
-    public title: string,
+    public title: String,
     public description: String,
     public brand: String,
     public province:String,

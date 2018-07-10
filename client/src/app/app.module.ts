@@ -10,12 +10,13 @@ import {ClienteEditComponent} from './components/cliente_edit.component';
 import {EspacioComponent} from './components/espacio.components';
 import {AddespComponent} from './components/addespacio.component';
 import {HomeComponent} from './components/home.component';
-import {EventListComponent} from './components/event-list.component';
-import {EventAddComponent} from './components/event-add.component';
+//import {EventListComponent} from './components/event-list.component';
+//import {EventAddComponent} from './components/event-add.component';
 import {EditespComponent} from './components/editespacio.component';
 import {DetailespacioComponent} from './components/detailespacio.component';
 import { FilterPipe } from './filter.pipe';
-
+import {EventlistComponent} from  './components/eventlist.component';
+import {EventaddComponent} from './components/eventadd.componenet';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,13 @@ import { FilterPipe } from './filter.pipe';
       EspacioComponent,
       AddespComponent,
       HomeComponent,
-      EventListComponent,
-      EventAddComponent,
+  //    EventListComponent,
+      EventaddComponent,
 	  EditespComponent,
     DetailespacioComponent,
     
-    FilterPipe
+    FilterPipe,
+    EventlistComponent
 
   ],
   imports: [
