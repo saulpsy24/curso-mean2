@@ -375,3 +375,7 @@ div{font-family: 'Roboto', sans-serif;
 	padding: 16px 32px;
 	border-radius: 5px;
 }
+
+[hidden] {
+  display: none;
+}

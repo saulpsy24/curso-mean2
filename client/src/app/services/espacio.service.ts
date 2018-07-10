@@ -21,7 +21,7 @@ export class EventoService{
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.get(this.url+'event/'+page,options)
+        return this._http.get(this.url+'events/'+page,options)
                         .map(res=>res.json());
     }
 
