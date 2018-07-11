@@ -1,62 +1,13 @@
 <div class="container">
     <hr>
-    <div class="row card2">
+    <h1>{{titulo}}</h1>
+           
 
-        <div class="col-lg-3">
-            <h1>Eventos</h1>
-            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
-                Añadir Evento
-                <i class="fa fa-plus-circle"></i>
-            </a>
-
-        </div>
-        <div class="col-lg-9">
-            <div class="row">
-                Filtrar:
-            </div>
-            <div class="row">
-
-
-                <div class="col-md-6">
-                    <h2>Por provincia</h2>
-                    <form id="filter">
-                        <input #name="ngModel" name="term" type="text" [(ngModel)]="term" class="form-control" />
-
-
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <h2>Por marca</h2>
-                    <div class="dropdown">
-                        <select class="form-control" [(ngModel)]="brand">
-
-                            <option ng-selected="selected">Selecciona...</option>
-                            <option value="Vichy">Vichy</option>
-                            <option value="La Roche">La Roche</option>
-                            <option value="Skinceuticals">Skinceuticals</option>
-                            <option value="RogerGallet"> Roger Gallet</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-9">
-
-        </div>
-        <div class="col-md-3">
-
-        </div>
-    </div>
-    <div class="row">
-
-    </div>
+        
     <div class="row card2">
 
 
-        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let asist of asistencias | filter:term:brand">
+        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let asist of asistencias">
             <!-- Card Projects -->
 
             <div class="card">
