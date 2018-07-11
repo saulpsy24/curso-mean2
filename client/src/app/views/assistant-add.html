@@ -1,5 +1,6 @@
 <div class="col-lg-8" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
     <h1>{{titulo}}</h1>
+    {{alertMessage}}
 </div>
 <form #formAssistant = "ngForm"  (ngSubmit)="onSubmit()">
     <div class="row">

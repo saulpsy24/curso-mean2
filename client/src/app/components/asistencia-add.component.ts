@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ClienteService } from '../services/cliente.service';
+import { AssistantService } from '../services/assistant.service';
 import { GLOBAL } from '../services/global';
 import { Assistant } from '../models/assistant';
 
 @Component({
     selector: 'assistant-add',
     templateUrl: '../views/assistant-add.html',
-    providers: [ClienteService]
+    providers: [ClienteService,AssistantService]
 })
 export class AssistantaddComponent implements OnInit {
     public titulo: String;
@@ -22,6 +23,7 @@ export class AssistantaddComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _clienteService: ClienteService,
+        private _assistantService:AssistantService
     ) {
         this.titulo = 'Crear Asistencia';
         this.url = GLOBAL.url;
@@ -34,15 +36,44 @@ export class AssistantaddComponent implements OnInit {
    
     ngOnInit() {
         console.log('Assistantadd.component.cargado');
+        
+        console.log(this.assistant);
     }
 
-    onSumit(){
-        console.log(this.assistant);
+    onSubmit(){
+        // console.log(this.assistant);
 
         this._route.params.forEach((params:Params) =>{
             let turno_id =params['turno'];
             this.assistant.turno = turno_id;
+
+            this._router.navigate(['/crear-turno',turno_id]);
+
             console.log(this.assistant);
+
+            // this._assistantService.addAssistant(this.token,this.assistant).subscribe(
+            //     response=>{
+                    
+            //         if(!response.assistant){
+            //            this.alertMessage='Error en el Servidor';
+        
+            //         }else{
+            //             this.assistant =response.assistant;
+            //             this.alertMessage='Asistencia Creada Correctamente';
+            //             // this._router.navigate(['/crear-turno',response.turno._id]);
+                        
+            //         }
+        
+            //     },
+            //     error=>{
+            //         var errorMessage= <any> error;
+            //         if(errorMessage!=null){
+            //             var body = JSON.parse(error._body);
+            //             this.alertMessage=body.message
+            //             console.log(error);
+            //         }  
+            //   }
+            // )
         }
     )
     }
