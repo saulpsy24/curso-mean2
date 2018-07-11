@@ -1,75 +1,86 @@
 <div *ngIf="evento">
-    <div class="row card2">
-            <div class="card" style="width: 27rem;">
-                    <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}"  *ngIf="evento.image && evento.image!=='null'" alt="Card image cap">
-                    <div class="card-body">
-                      <h3 class="card-title">{{evento.title}}</h3>
-                      <p class="card-text"> <p>
-                            {{evento.description}}
-                        </p>
-                      <a [routerLink]="['/evento',1] " class="btn btn-secondary"><i class="fas fa-arrow-circle-left"></i> Volver</a>
-                      <a  [routerLink]="['/crear-turno',evento._id] " class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" href="#"><i class="fas fa-plus-circle"></i> Agregar Turnos</a>
-        
-                    </div>
-                  </div>
-        
+  <div class="row card2">
+    <div class="card" style="width: 27rem;">
+      <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}" *ngIf="evento.image && evento.image!=='null'"
+        alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title">{{evento.title}}</h3>
+        <p class="card-text">
+          <p>
+            {{evento.description}}
+          </p>
+          <a [routerLink]="['/evento',1] " class="btn btn-secondary">
+            <i class="fas fa-arrow-circle-left"></i> Volver</a>
+          <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" href="#">
+            <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
+
+      </div>
     </div>
 
-    <div class="row card2">
-    
-    
-        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let turno of turnos">
-            <!-- Card Projects -->
+  </div>
 
-            <div class="card">
-              <div class="card-action">
-                    <div class="alinear">
-                        <a class="card-title">
-                            {{turno.name}}
-                        </a>
-                        <hr>
-                        <p>
-                          <label><i class="fas fa-calendar-alt"></i>Fecha de inicio: </label> {{turno.date_start}}<br>
-                          <label><i class="fas fa-calendar"></i> Fecha de Finalizacion:</label> {{turno.date_end}}<br>
-                          <label><i class="fas fa-clock"></i> Hora de Inicio:</label> {{turno.start_h}}<br>
-                          <label> <i class="fas fa-users"></i> Lugares Disponibles:</label> {{turno.aforo}}<br>
-                         
-                        </p>
-
-                        <hr>
+  <div class="row card2">
 
 
-                    </div>
-                    <div >
+    <div class="page-item col-md-3 animated fadeInRight" *ngFor="let turno of turnos">
+      <!-- Card Projects -->
 
-                    <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+      <div class="card">
+        <div class="card-action" style="
+        border-radius: 15px;
+    ">
+          <div class="alinear">
 
-                        <button [routerLink]="['/editar-turno',turno._id] " class="btn btn-sm btn-warning colorblanco">
-                            <i class="fas fa-edit"></i>Editar</button>
-                        <button (click)="onDeleteConfirm(turno._id)" class="btn btn-sm btn-danger">
-                            <i class="fas fa-window-close"></i>
-                            Borrar</button>
 
-                    </div>
-                    <div >
-                        <button (click)="aquivaeleventoquetematricula()" class="btn btn-sm btn-primary colorblanco">
-                            <i class="fas fa-plus-circle"></i>
-                            Inscribirme!</button>
+            <ul class="list-group">
+              <li class="list-group-item active">
+                <a class="card-title colorblanco">
+                  {{turno.name}}
+                </a>
+              </li>
+              <li class="list-group-item">
+                <label>
+                  <i class="fas fa-calendar-alt"></i>Fecha de inicio: </label> {{turno.date_start}}
+                <br>
+              </li>
+              <li class="list-group-item"><label>
+                  <i class="fas fa-calendar"></i> Fecha de Finalizacion:</label> {{turno.date_end}}
+                <br></li>
+              <li class="list-group-item"><label>
+                  <i class="fas fa-clock"></i> Hora de Inicio:</label> {{turno.start_h}}
+                <br></li>
+              <li class="list-group-item"><label>
+                  <i class="fas fa-users"></i> Lugares Disponibles:</label> {{turno.aforo}}
+                <br></li>
+            </ul>           
 
-                    </div>
-                    <div class="seguro animated fadeIn" *ngIf="confirmado==turno._id">
-                        <a (click)="onDeleteTurno(turno._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                        <a (click)="onCancelTurno()" class="btn btn-sm btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
-                    </div>
+
+          </div>
+          <div><br>
+              <div class="btn-group animated fadeIn" role="group" >
+                  <button (click)="aquivaeleventoquetematricula()" *ngIf="showoptions==0" type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i>
+                    Inscribirme!</button>
+                  <button  [routerLink]="['/editar-turno',turno._id] " type="button" class="btn btn-secondary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0"><i class="fas fa-edit"></i>Editar</button>
+                  <button type="button" (click)="onDeleteConfirm(turno._id)" class="btn btn-danger" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0"><i class="fas fa-window-close"></i>
+                    Borrar</button>
                 </div>
-              </div>
+                <div class="btn-group animated fadeIn seguro" role="group" *ngIf="confirmado==turno._id">
+                  <button class="btn btn-md btn-danger" (click)="onDeleteTurno(turno._id)"><i class="fas fa-window-close"></i> Borrar</button>
+                  <button class="btn btn-md" (click)="onCancelTurno()"> <i class="fas fa-ban"></i> Cancelar </button>
 
-            </div>
 
+                </div>
 
+            
+          </div>
         </div>
+
+      </div>
+
+
     </div>
-    
+  </div>
+
 
 
 </div>
