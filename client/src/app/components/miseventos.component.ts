@@ -95,17 +95,17 @@ public showoptions=0;
         this.confirmado=id;
         this.showoptions=1;
     }
-    onCancelEvento(){
+    onCancelAsistencia(){
         this.confirmado=null;
         this.showoptions=0;
     }
 
-    onDeleteEvento(id){
+    onDeleteAsistencia(id){
         this.showoptions=0;
-        this._eventoService.deleteEvento(this.token,id).subscribe(
+        this._asistantService.deleteAsistencia(this.token,id).subscribe(
             response => {
 
-                if (!response.event) {
+                if (!response.asist) {
                     this.alertMessage ('Error en el Servidor') ;
                     
 
@@ -127,5 +127,7 @@ public showoptions=0;
         );
 
     }
+
+    
 
 }

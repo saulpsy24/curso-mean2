@@ -17,8 +17,7 @@
                         <div class="middles">
                             <div class="texto">
                                 <p>
-                                        {{asist.turno.event.description}}
-                                        
+                                        {{asist.turno.event.description}}                                        
                                     <button class="btn btn-danger">
                                         Ver más.
                                     </button>
@@ -42,15 +41,15 @@
 
                     <div class="buttons animated fadeIn" *ngIf="showoptions==0">
 
-                        <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-danger">
+                        <a (click)="onDeleteConfirm(asist._id)" class="btn btn-md btn-danger">
                             <i class="fas fa-window-close"></i>
                             Darme de Baja</a>
 
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==asist._id">
-                        <a (click)="onDeleteEvento(event._id)" class="btn btn-sm btn-danger">
-                            <i class="fas fa-window-close"></i> Borrar</a>
-                        <a (click)="onCancelEvento()" class="btn btn-sm btn-secondary">
+                        <a (click)="onDeleteAsistencia(asist._id)" class="btn btn-md btn-danger">
+                            <i class="fas fa-window-close"></i> confirmado</a>
+                        <a (click)="onCancelAsistencia()" class="btn btn-md btn-secondary">
                             <i class="fas fa-ban"></i> Cancelar</a>
                     </div>
                 </div>

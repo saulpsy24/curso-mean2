@@ -47,4 +47,14 @@ export class AssistantService{
         );
 
     }
+
+    deleteAsistencia(token,id:string){
+        let headers = new Headers({
+            'Content-type' : 'application/json',
+            'authorization' : token
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.delete(this.url+'asist/'+id,options)
+                        .map(res=>res.json());
+    }
 }
