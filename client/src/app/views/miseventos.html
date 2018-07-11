@@ -87,13 +87,11 @@
 
                     </div>
 
-                    <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+                    <div class="buttons animated fadeIn" *ngIf="showoptions==0">
 
-                        <a [routerLink]="['/eventedit',asist._id] " class="btn btn-sm btn-warning">
-                            <i class="fas fa-edit"></i>Editar</a>
-                        <a (click)="onDeleteConfirm(event._id)" class="btn btn-sm btn-danger">
+                        <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-danger">
                             <i class="fas fa-window-close"></i>
-                            Borrar</a>
+                            Darme de Baja</a>
 
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==asist._id">
