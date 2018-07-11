@@ -384,3 +384,9 @@ div{font-family: 'Roboto', sans-serif;
 	height: 100%;
 	overflow-y: scroll;
 }
+.card-img-top {
+	width: 100%;
+	border-top-left-radius: calc(.25rem - 1px);
+	border-top-right-radius: calc(.25rem - 1px);
+	border-radius: 10px;
+}

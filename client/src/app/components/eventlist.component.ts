@@ -95,6 +95,7 @@ public showoptions=0;
     }
 
     onDeleteEvento(id){
+        this.showoptions=0;
         this._eventoService.deleteEvento(this.token,id).subscribe(
             response => {
 
