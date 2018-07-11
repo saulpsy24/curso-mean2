@@ -2,7 +2,7 @@
     export class Assistant{
         constructor(
        
-         public cliente: string,
-         public turno: string
+         public cliente: Object,
+         public turno: Object
         ){}
     }

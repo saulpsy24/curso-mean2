@@ -4,11 +4,12 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClienteService } from '../services/cliente.service';
 import { GLOBAL } from '../services/global';
 import { Assistant } from '../models/assistant';
+import {AssistantService} from '../services/assistant.service'
 
 @Component({
     selector: 'assistant-add',
     templateUrl: '../views/assistant-add.html',
-    providers: [ClienteService]
+    providers: [ClienteService,AssistantService]
 })
 export class AssistantaddComponent implements OnInit {
     public titulo: String;
@@ -22,28 +23,56 @@ export class AssistantaddComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _clienteService: ClienteService,
+        private _assistantService : AssistantService,
     ) {
-        this.titulo = 'Crear Asistencia';
+        this.titulo = 'Verifica Tus Datos y Confirma tu Asistencia';
         this.url = GLOBAL.url;
-        this.assistant = new Assistant('','');
+        this.assistant = new Assistant('', '');
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
 
     }
-   
+
     ngOnInit() {
         console.log('Assistantadd.component.cargado');
+
     }
 
-    onSumit(){
+    onSubmit() {
         console.log(this.assistant);
 
-        this._route.params.forEach((params:Params) =>{
-            let turno_id =params['turno'];
+        this._route.params.forEach((params: Params) => {
+            let turno_id = params['turno'];
+            this.assistant.cliente = this.identity._id;
             this.assistant.turno = turno_id;
             console.log(this.assistant);
         }
-    )
+
+        )
+        console.log(this.assistant);
+        this._assistantService.addAssistant(this.token, this.assistant).subscribe(
+            response => {
+
+                if (!response.asistSaved) {
+                    this.alertMessage = 'Error en el Servidor';
+
+                } else {
+                    this.assistant = response.asistSaved;
+                    this.alertMessage = 'Evento Creado Correctamente';
+                    this._router.navigate(['/evento', 1]);
+
+                }
+
+            },
+            error => {
+                var errorMessage = <any>error;
+                if (errorMessage != null) {
+                    var body = JSON.parse(error._body);
+                    this.alertMessage = body.message
+                    console.log(error);
+                }
+            }
+        )
     }
 }

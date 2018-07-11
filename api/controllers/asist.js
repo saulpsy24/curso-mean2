@@ -19,7 +19,10 @@ function getAsist(req, res) {
 
     Asist.findById(idAsist).populate({
         path: 'turno'
-    }).exec((err, asistencia) => {
+    }
+).populate({
+    path:'cliente'
+}).exec((err, asistencia) => {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion'
@@ -140,6 +143,8 @@ function getAsistencias(req, res) {
         path: 'turno',
        
 
+    }).populate({
+        path:'cliente'
     }).exec((err, asistencias) => {
         if (err) {
             res.status(500).send({
