@@ -20,9 +20,9 @@ function getAsist(req, res) {
     Asist.findById(idAsist).populate({
         path: 'turno'
     }
-).populate({
-    path:'cliente'
-}).exec((err, asistencia) => {
+    ).populate({
+        path: 'cliente'
+    }).exec((err, asistencia) => {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion'
@@ -44,88 +44,105 @@ function getAsist(req, res) {
 function saveAsist(req, res) {
     var asist = new Asist();
     var params = req.body;
-    var aforo2=new Turno();
+    var aforo2 = new Turno();
     asist.cliente = params.cliente;
     asist.turno = params.turno;
-    
-    var turnoasistencia=  function(turno, callback) {
-    Turno.find().where( '_id', ObjectId(asist.turno)).
-          exec(function(err, turnosconeseid) {
-             // docs contains an array of MongooseJS Documents
-             // so you can return that...
-             // reverse does an in-place modification, so there's no reason
-             // to assign to something else ...
-             turnosconeseid.reverse();
-             callback(err, turnosconeseid);
-          });
-};
-   
-turnoasistencia(asist.turno, function(err,turnos){
-    if(err){
-        return;
-    }else{
-        var aforo= new Turno();        
-        aforo=turnos;
-        aforo2=aforo[0];
-        if(aforo2.aforo>0){
-            
-        var turno = asist.turno;
-        var update = {
-            $inc: {
-                aforo: -1
-            }
+
+    Asist.findOne({
+        'cliente': asist.cliente
+    }, function (err, elements) {
+
+        if (err) {
+            res.status(500).json({
+                error: false,
+                message: err.message
+            });
         }
-        Turno.findByIdAndUpdate(turno, update, (err, turnoUpdated) => {
-            if (err) {
-                res.status(500).send({
-                    message: 'No se logro actualizar turno'
-                });
-            } else {
-                if (!turnoUpdated) {
-                    res.status(404).send({
-                        message: 'No se encuentra el turno'
+        if (!elements) {
+            var turnoasistencia = function (turno, callback) {
+                Turno.find().where('_id', ObjectId(asist.turno)).
+                    exec(function (err, turnosconeseid) {
+                        // docs contains an array of MongooseJS Documents
+                        // so you can return that...
+                        // reverse does an in-place modification, so there's no reason
+                        // to assign to something else ...
+                        turnosconeseid.reverse();
+                        callback(err, turnosconeseid);
                     });
-                } else {                    
-                        asist.save((err, asistSaved) => {
+            };
+
+            turnoasistencia(asist.turno, function (err, turnos) {
+                if (err) {
+                    return;
+                } else {
+                    var aforo = new Turno();
+                    aforo = turnos;
+                    aforo2 = aforo[0];
+                    if (aforo2.aforo > 0) {
+
+                        var turno = asist.turno;
+                        var update = {
+                            $inc: {
+                                aforo: -1
+                            }
+                        }
+                        Turno.findByIdAndUpdate(turno, update, (err, turnoUpdated) => {
                             if (err) {
                                 res.status(500).send({
-                                    message: 'Error en el Servidor'
+                                    message: 'No se logro actualizar turno'
                                 });
-
                             } else {
-                                if (!asistSaved) {
+                                if (!turnoUpdated) {
                                     res.status(404).send({
-                                        message: 'Error guardando asistencia'
+                                        message: 'No se encuentra el turno'
                                     });
                                 } else {
-                                    res.status(200).send({
-                                        asistSaved,
-                                        turnoUpdated
+                                    asist.save((err, asistSaved) => {
+                                        if (err) {
+                                            res.status(500).send({
+                                                message: 'Error en el Servidor'
+                                            });
+
+                                        } else {
+                                            if (!asistSaved) {
+                                                res.status(404).send({
+                                                    message: 'Error guardando asistencia'
+                                                });
+                                            } else {
+                                                res.status(200).send({
+                                                    asistSaved,
+                                                    turnoUpdated
 
 
 
+                                                });
+                                            }
+                                        }
                                     });
+
+
                                 }
                             }
+
                         });
 
-                    
+
+                    }
+
+                    else {
+                        res.status(404).send({ message: 'Ya no hay mas cupos' });
+                    }
+
                 }
-            }
+            });
+        } else {
+            res.status(200).send({message:'Ya te has inscrito al evento anteriormente'});
 
-        });
-
-    
-    }
-            
-        else{
-            res.status(404).send({message:'Ya no hay mas cupos'});
         }
-        
-    }
-});
-}
+    });
     
+}
+
 
 
 function getAsistencias(req, res) {
@@ -141,10 +158,10 @@ function getAsistencias(req, res) {
     }
     find.populate({
         path: 'turno',
-       
+
 
     }).populate({
-        path:'cliente'
+        path: 'cliente'
     }).exec((err, asistencias) => {
         if (err) {
             res.status(500).send({
@@ -166,89 +183,89 @@ function getAsistencias(req, res) {
 
 
 //Metodo para borrar canciones.
-function deleteAsist(req, res){
+function deleteAsist(req, res) {
     var asist = new Asist();
     var params = req.body;
-    var aforo2=new Turno();
+    var aforo2 = new Turno();
     asist.cliente = params.cliente;
     asist.turno = params.turno;
-    
-    var turnoasistencia=  function(turno, callback) {
-    Turno.find().where( '_id', ObjectId(asist.turno)).
-          exec(function(err, turnosconeseid) {
-             // docs contains an array of MongooseJS Documents
-             // so you can return that...
-             // reverse does an in-place modification, so there's no reason
-             // to assign to something else ...
-             turnosconeseid.reverse();
-             callback(err, turnosconeseid);
-          });
-};
-   
-turnoasistencia(asist.turno, function(err,turnos){
-    if(err){
-        return;
-    }else{
-        var aforo= new Turno();        
-        aforo=turnos;
-        aforo2=aforo[0];
-        if(aforo2.aforo >=0){
-            
-        var turno = asist.turno;
-        var update = {
-            $inc: {
-                aforo: 1
-            }
-        }
-        Turno.findByIdAndUpdate(turno, update, (err, turnoUpdated) => {
-            if (err) {
-                res.status(500).send({
-                    message: 'No se logro actualizar turno'
-                });
-            } else {
-                if (!turnoUpdated) {
-                    res.status(404).send({
-                        message: 'No se encuentra el turno'
-                    });
-                } else {                    
-                        asist.save((err, asistSaved) => {
-                            if (err) {
-                                res.status(500).send({
-                                    message: 'Error en el Servidor'
-                                });
 
-                            } else {
-                                if (!asistSaved) {
-                                    res.status(404).send({
-                                        message: 'Error guardando asistencia'
-                                    });
-                                } else {
-                                    res.status(200).send({
-                                        asistSaved,
-                                        turnoUpdated
+    var turnoasistencia = function (turno, callback) {
+        Turno.find().where('_id', ObjectId(asist.turno)).
+            exec(function (err, turnosconeseid) {
+                // docs contains an array of MongooseJS Documents
+                // so you can return that...
+                // reverse does an in-place modification, so there's no reason
+                // to assign to something else ...
+                turnosconeseid.reverse();
+                callback(err, turnosconeseid);
+            });
+    };
 
+    turnoasistencia(asist.turno, function (err, turnos) {
+        if (err) {
+            return;
+        } else {
+            var aforo = new Turno();
+            aforo = turnos;
+            aforo2 = aforo[0];
+            if (aforo2.aforo >= 0) {
 
-
-                                    });
-                                }
-                            }
-                        });
-
-                    
+                var turno = asist.turno;
+                var update = {
+                    $inc: {
+                        aforo: 1
+                    }
                 }
+                Turno.findByIdAndUpdate(turno, update, (err, turnoUpdated) => {
+                    if (err) {
+                        res.status(500).send({
+                            message: 'No se logro actualizar turno'
+                        });
+                    } else {
+                        if (!turnoUpdated) {
+                            res.status(404).send({
+                                message: 'No se encuentra el turno'
+                            });
+                        } else {
+                            asist.save((err, asistSaved) => {
+                                if (err) {
+                                    res.status(500).send({
+                                        message: 'Error en el Servidor'
+                                    });
+
+                                } else {
+                                    if (!asistSaved) {
+                                        res.status(404).send({
+                                            message: 'Error guardando asistencia'
+                                        });
+                                    } else {
+                                        res.status(200).send({
+                                            asistSaved,
+                                            turnoUpdated
+
+
+
+                                        });
+                                    }
+                                }
+                            });
+
+
+                        }
+                    }
+
+                });
+
+
             }
 
-        });
+            else {
+                res.status(404).send({ message: 'Ya no hay mas cupos' });
+            }
 
-    
-    }
-            
-        else{
-            res.status(404).send({message:'Ya no hay mas cupos'});
         }
-        
-    }
-});
+    });
 }
 
 
