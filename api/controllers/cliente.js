@@ -73,9 +73,49 @@ function savecliente(req, res) {
                                         message: 'No se registro a nadie'
                                     });
                                 } else {
-                                    res.status(200).send({
-                                        cliente: clienteStored,
-
+                                    //si ya esta registrado loguear
+                                    cliente.password='FormacionesCAE';
+                                    params.gethash = true;
+                                    Cliente.findOne({
+                                        email: email.toLowerCase()
+                                    }, (err, cliente) => {
+                                        if (err) {
+                                            res.status(500).send({
+                                                message: 'Error en la peticion'
+                                            });
+                                        } else {
+                                            if (!cliente) {
+                                                res.status(404).send({
+                                                    message: 'Usuario no existe'
+                                                });
+                                            } else {
+                                                //checar password
+                                                bcrypt.compare(password, cliente.password, function (err, check) {
+                                                    if (check) {
+                                                        //devolver datos de ususario logueado
+                                                        if (params.gethash) {
+                                                            //devolver un token jwt
+                                                            
+                                                            res.status(200).send({
+                                                                token: jwt.createToken(cliente),
+                                                                cliente:clienteStored
+                                                                
+                                                            });
+                        
+                                                        } else {
+                                                            res.status(200).send({
+                                                                cliente
+                                                            });
+                                                        }
+                                                    } else {
+                                                        res.status(404).send({
+                                                            message: 'Usuario no pudo loggear'
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        }
+                        
                                     });
                                 }
 
@@ -121,6 +161,7 @@ function savecliente(req, res) {
                                 //devolver datos de ususario logueado
                                 if (params.gethash) {
                                     //devolver un token jwt
+                                    
                                     res.status(200).send({
                                         token: jwt.createToken(cliente),
                                         
