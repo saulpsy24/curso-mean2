@@ -1,34 +1,32 @@
 <div class="col-lg-8" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
     <h1>{{titulo}}</h1>
+</div>
+<form #formAssistant = "ngForm"  (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-4 col-xs-6 ">
+            <p>
+                <br>
+                <label>Cliente:</label>
+                <input type="text" #cliente="ngModel" name="cliente" [(ngModel)]="assistant.cliente" required class="form-control" />
+                <span *ngIf="!cliente.valid && cliente.touched"> El cliente es obligatorio</span>
+            </p>
 
-    <form #formAssistant = "ngForm"  (ngSubmit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-4 col-xs-6 ">
-                <p>
-                    <br>
-                    <label>Cliente:</label>
-                    <input type="text" #cliente="ngModel" name="cliente" [(ngModel)]="assistant.cliente" required class="form-control" />
-                    <span *ngIf="!cliente.valid && cliente.touched"> El cliente es obligatorio</span>
-                </p>
-
-            </div>
-            <div class="col-md-4 col-xs-6 ">
-                <p>
-                    <br>
-                    <label>Turno:</label>
-                    <input type="text" #turno="ngModel" name="turno" [(ngModel)]="assistant.turno" 
-                    required class="form-control" />
-                    <span *ngIf="!turno.valid && turno.touched"> El turno es obligatorio</span>
-                </p>
-
-            </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <input type="submit" [disabled]="!formAssistant.form.valid" value="{{titulo}}"
-                 class="btn btn-success" />
-            </div>
-        </div>
-    </form>
+        <div class="col-md-4 col-xs-6 ">
+            <p>
+                <br>
+                <label>Turno:</label>
+                <input type="text" #turno="ngModel" name="turno" [(ngModel)]="assistant.turno" 
+                required class="form-control" />
+                <span *ngIf="!turno.valid && turno.touched"> El turno es obligatorio</span>
+            </p>
 
-<div/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="submit" [disabled]="!formAssistant.form.valid" value="{{titulo}}"
+                class="btn btn-success" />
+        </div>
+    </div>
+</form>

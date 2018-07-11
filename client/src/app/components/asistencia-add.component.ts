@@ -30,7 +30,6 @@ export class AssistantaddComponent implements OnInit {
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
 
-
     }
    
     ngOnInit() {
@@ -43,6 +42,7 @@ export class AssistantaddComponent implements OnInit {
         this._route.params.forEach((params:Params) =>{
             let turno_id =params['turno'];
             this.assistant.turno = turno_id;
+            console.log(this.assistant);
         }
     )
     }
