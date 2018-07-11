@@ -21,6 +21,8 @@ import {EventDetailComponente} from './components/eventdetail.component'
 import { HomeComponent } from './components/home.component';
 //import { EventAddComponent } from './components/event-add.component';
 
+import {TurnoAddComponent} from './components/turnoadd.component';
+
 const appRoutes: Routes = [
 
     { path: '', component: ClienteEditComponent },
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     // {path:'evento/:page',component: EventListComponent},   
     { path: 'cliente-edit', component: ClienteEditComponent },
     { path: 'event-add', component: EventaddComponent },
+    {path:'crear-turno/:evento',component:TurnoAddComponent},
     { path: '**', component: HomeComponent },
 
 ];

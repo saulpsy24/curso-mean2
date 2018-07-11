@@ -20,6 +20,8 @@ import {EventaddComponent} from './components/eventadd.componenet';
 import {EventeditComponent} from './components/eventedit.component';
 import {EventDetailComponente} from './components/eventdetail.component';
 
+import {TurnoAddComponent} from './components/turnoadd.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import {EventDetailComponente} from './components/eventdetail.component';
     
     FilterPipe,
     EventlistComponent,
-    EventeditComponent
+    EventeditComponent,
+    TurnoAddComponent
 
   ],
   imports: [

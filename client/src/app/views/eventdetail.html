@@ -7,8 +7,8 @@
                       <p class="card-text"> <p>
                             {{evento.description}}
                         </p>
-                      <a [routerLink]="['/evento',1] " class="btn btn-primary">Volver</a>
-                      <a class="btn btn-danger" *ngIf="identity.role=='ROLE_ADMIN'" href="#">Agregar Turnos</a>
+                      <a [routerLink]="['/evento',1] " class="btn btn-secondary"><i class="fas fa-arrow-circle-left"></i> Volver</a>
+                      <a  [routerLink]="['/crear-turno',evento._id] " class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" href="#"><i class="fas fa-plus-circle"></i> Agregar Turnos</a>
         
                     </div>
                   </div>

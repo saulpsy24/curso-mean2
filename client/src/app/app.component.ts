@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
 
                                 localStorage.setItem('token', token);
                                  //Dirigir a home al loguearse
-                                this._router.navigate(['/']);
+                                this._router.navigate(['/evento',1]);
 
                             }
 
