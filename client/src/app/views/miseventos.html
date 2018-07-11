@@ -1,0 +1,135 @@
+<div class="container">
+    <hr>
+    <div class="row card2">
+
+        <div class="col-lg-3">
+            <h1>Eventos</h1>
+            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
+                Añadir Evento
+                <i class="fa fa-plus-circle"></i>
+            </a>
+
+        </div>
+        <div class="col-lg-9">
+            <div class="row">
+                Filtrar:
+            </div>
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <h2>Por provincia</h2>
+                    <form id="filter">
+                        <input #name="ngModel" name="term" type="text" [(ngModel)]="term" class="form-control" />
+
+
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h2>Por marca</h2>
+                    <div class="dropdown">
+                        <select class="form-control" [(ngModel)]="brand">
+
+                            <option ng-selected="selected">Selecciona...</option>
+                            <option value="Vichy">Vichy</option>
+                            <option value="La Roche">La Roche</option>
+                            <option value="Skinceuticals">Skinceuticals</option>
+                            <option value="RogerGallet"> Roger Gallet</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+    <div class="row card2">
+
+
+        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let asist of asistencias | filter:term:brand">
+            <!-- Card Projects -->
+
+            <div class="card">
+                <div class="card-image" [routerLink]="['/detalle-evento',asist.turno.event._id] ">
+                    <div class="coantainer">
+                        <img src="{{ url +'/get-image-event/' + asist.turno.event.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
+                        <div class="middles">
+                            <div class="texto">{{asist.turno.event.description}}
+                                <p>
+                                    <button class="btn btn-danger">
+                                        Ver más.
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-action">
+                    <div class="alinear">
+                        <a class="card-title" [routerLink]="['/detalle-evento',asist._id] ">
+                            {{asist.turno.event.title}}
+                        </a>
+
+                        <hr>
+
+
+                    </div>
+
+                    <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+
+                        <a [routerLink]="['/eventedit',asist._id] " class="btn btn-sm btn-warning">
+                            <i class="fas fa-edit"></i>Editar</a>
+                        <a (click)="onDeleteConfirm(event._id)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-window-close"></i>
+                            Borrar</a>
+
+                    </div>
+                    <div class="seguro animated fadeIn" *ngIf="confirmado==asist._id">
+                        <a (click)="onDeleteEvento(event._id)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-window-close"></i> Borrar</a>
+                        <a (click)="onCancelEvento()" class="btn btn-sm btn-secondary">
+                            <i class="fas fa-ban"></i> Cancelar</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="img-responsive" src="http://formacionescae.com/public/common/img/VICHY.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="img-responsive" src="http://formacionescae.com/public/common/img/LA_ROCHE-POSAY.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="img-responsive" src="http://formacionescae.com/public/common/img/SKINCEUTICALS.png">
+        </div>
+        <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+            <img id="kDMY_0" style="width:80%;" class="img-responsive" src="http://formacionescae.com/public/common/img/ROGER_GALLET.png">
+        </div>
+
+    </div>
+    <hr>
+
+</div>

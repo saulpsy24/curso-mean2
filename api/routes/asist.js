@@ -10,5 +10,7 @@ api.post('/asist',md_auth.ensureAuth,AsistController.saveAsist);
 api.get('/asistencias/:turno?',md_auth.ensureAuth,AsistController.getAsistencias);
 api.delete('/asist/:id', md_auth.ensureAuth, AsistController.deleteAsist);
 
+api.get('/asistenciasc/:cliente?',md_auth.ensureAuth,AsistController.getAsistenciasCliente);
+
 
 module.exports = api;

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ClienteService } from '../services/cliente.service';
+import { AssistantService } from '../services/assistant.service';
 import { GLOBAL } from '../services/global';
 import { Assistant } from '../models/assistant';
-import {AssistantService} from '../services/assistant.service'
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
@@ -50,6 +50,7 @@ export class AssistantaddComponent implements OnInit {
             this.assistant.cliente = this.identity._id;
             this.assistant.turno = turno_id;
 
+<<<<<<< HEAD
             // this._router.navigate(['/crear-turno',turno_id]);
 
             console.log(this.assistant);
@@ -77,6 +78,10 @@ export class AssistantaddComponent implements OnInit {
             //         }  
             //    }
             //  )
+=======
+
+            console.log(this.assistant);
+>>>>>>> 22ca4f0f4b54abbc4ad63111e9fcb6a607137cab
         }
 
         )
@@ -95,7 +100,7 @@ export class AssistantaddComponent implements OnInit {
                     this.assistant = response.asistSaved;
                     this.alertMessage = 'Asistencia creada Correctamente';
                     
-                    this._router.navigate(['/evento', 1]);
+                    this._router.navigate(['/mis-eventos']);
 
                 }
 

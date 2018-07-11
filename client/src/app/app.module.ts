@@ -24,6 +24,7 @@ import {TurnoAddComponent} from './components/turnoadd.component';
 
 import {TurnoEditComponent} from './components/turnoedit.component';
 import {AssistantaddComponent} from './components/asistencia-add.component';
+import {misEventosComponent} from './components/miseventos.component';
 
 
 
@@ -40,6 +41,7 @@ import {AssistantaddComponent} from './components/asistencia-add.component';
     DetailespacioComponent,
     EventDetailComponente,
     TurnoEditComponent,
+    misEventosComponent,
     
     FilterPipe,
     EventlistComponent,
