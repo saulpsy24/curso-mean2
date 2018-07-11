@@ -83,4 +83,42 @@ export class EventlistComponent implements OnInit {
         });
 
 }
+public confirmado;
+public showoptions=0;
+    onDeleteConfirm(id){
+        this.confirmado=id;
+        this.showoptions=1;
+    }
+    onCancelEvento(){
+        this.confirmado=null;
+        this.showoptions=0;
+    }
+
+    onDeleteEvento(id){
+        this._eventoService.deleteEvento(this.token,id).subscribe(
+            response => {
+
+                if (!response.event) {
+                    this.alertMessage ('Error en el Servidor') ;
+                    
+
+                } else {
+                    this.getEventos();
+                   
+                }
+
+            },
+            error => {
+                var errorMessage = <any>error;
+                if (errorMessage != null) {
+                    var body = JSON.parse(error._body);
+                    this.alertMessage = body.message;
+                    console.log(error);
+                }
+            }
+
+        );
+
+    }
+
 }

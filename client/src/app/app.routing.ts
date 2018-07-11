@@ -16,6 +16,7 @@ import {EventlistComponent} from  './components/eventlist.component';
 import {EventeditComponent} from './components/eventedit.component';
 
 import {EventaddComponent} from './components/eventadd.componenet';
+import {EventDetailComponente} from './components/eventdetail.component'
 //Import Home
 import { HomeComponent } from './components/home.component';
 //import { EventAddComponent } from './components/event-add.component';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     
     {path:'eventedit/:id',component: EventeditComponent},
     // {path:'espacio/:page',component:EspacioComponent},
+    {path:'detalle-evento/:id',component:EventDetailComponente},
     { path: 'evento/:page', component: EventlistComponent },
     { path: 'espacio/:page', component: EspacioComponent },
     { path: 'add-espacio', component: AddespComponent },

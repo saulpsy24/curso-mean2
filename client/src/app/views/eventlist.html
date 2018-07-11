@@ -82,7 +82,7 @@
                 <!-- Card Projects -->
     
                 <div class="card">
-                    <div class="card-image">
+                    <div class="card-image" [routerLink]="['/detalle-evento',event._id] ">
                         <div class="coantainer">
                             <img src="{{ url +'/get-image-event/' + event.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
                             <div class="middles">
@@ -94,7 +94,7 @@
     
                     <div class="card-action">
                         <div class="alinear">
-                            <a class="card-title" [routerLink]="['/detail-espacio',event._id] ">
+                            <a class="card-title" [routerLink]="['/detalle-evento',event._id] ">
                                 {{event.title}}
                             </a>
     
@@ -103,18 +103,18 @@
     
                         </div>
     
-                        <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
+                        <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
     
-                            <a [routerLink]="['/edit-espacio',event._id] " class="btn btn-sm btn-warning">
+                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>Editar</a>
                             <a (click)="onDeleteConfirm(event._id)" class="btn btn-sm btn-danger">
                                 <i class="fas fa-window-close"></i>
                                 Borrar</a>
     
                         </div>
-                        <div class="seguro" *ngIf="confirmado==event._id">
-                            <a (click)="onDeleteEspacio(event._id)" class="btn btn-sm btn-danger">Borrar</a>
-                            <a (click)="onCancelEspacio()" class="btn btn-sm btn-warning">Cancelar</a>
+                        <div class="seguro animated fadeIn" *ngIf="confirmado==event._id">
+                            <a (click)="onDeleteEvento(event._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
+                            <a (click)="onCancelEvento()" class="btn btn-sm btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
                         </div>
                     </div>
     

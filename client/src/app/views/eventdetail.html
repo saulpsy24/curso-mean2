@@ -1,0 +1,20 @@
+<div *ngIf="evento">
+    <div class="row card2">
+            <div class="card" style="width: 27rem;">
+                    <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}"  *ngIf="evento.image && evento.image!=='null'" alt="Card image cap">
+                    <div class="card-body">
+                      <h3 class="card-title">{{evento.title}}</h3>
+                      <p class="card-text"> <p>
+                            {{evento.description}}
+                        </p>
+                      <a [routerLink]="['/evento',1] " class="btn btn-primary">Volver</a>
+                      <a class="btn btn-danger" *ngIf="identity.role=='ROLE_ADMIN'" href="#">Agregar Turnos</a>
+        
+                    </div>
+                  </div>
+        
+    </div>
+    
+
+
+</div>
