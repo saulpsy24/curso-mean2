@@ -15,11 +15,13 @@
                     Herramientas
                 </div>
                 <div class="row">
+                    
     
                     <div class="col-md-6">
                         <h2>Por provincia</h2>
                         <form id="filter">
-                            <input #name="ngModel" name="term" type="text" [(ngModel)]="term" class="form-control" />
+                                <input #name="ngModel" name="term" type="text" [(ngModel)]="term" class="form-control" />
+                            
     
                         </form>
                     </div>
@@ -76,15 +78,15 @@
         <div class="row card2">
     
     
-            <div class="page-item col-md-3 animated fadeInRight" *ngFor="let espacio of espacios | filter:term">
+            <div class="page-item col-md-3 animated fadeInRight" *ngFor="let event of eventos | filter:term">
                 <!-- Card Projects -->
     
                 <div class="card">
                     <div class="card-image">
                         <div class="coantainer">
-                            <img src="{{ url +'/get-image-space/' + espacio.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
+                            <img src="{{ url +'/get-image-event/' + event.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
                             <div class="middles">
-                                <div class="texto">{{espacio.address}}</div>
+                                <div class="texto">{{event.description}}</div>
                             </div>
                         </div>
                     </div>
@@ -92,8 +94,8 @@
     
                     <div class="card-action">
                         <div class="alinear">
-                            <a class="card-title" [routerLink]="['/detail-espacio',espacio._id] ">
-                                {{espacio.name}}
+                            <a class="card-title" [routerLink]="['/detail-espacio',event._id] ">
+                                {{event.title}}
                             </a>
     
                             <hr>
@@ -103,15 +105,15 @@
     
                         <div class="buttons" *ngIf="identity.role=='ROLE_ADMIN'">
     
-                            <a [routerLink]="['/edit-espacio',espacio._id] " class="btn btn-sm btn-warning">
+                            <a [routerLink]="['/edit-espacio',event._id] " class="btn btn-sm btn-warning">
                                 <i class="fas fa-edit"></i>Editar</a>
-                            <a (click)="onDeleteConfirm(espacio._id)" class="btn btn-sm btn-danger">
+                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-sm btn-danger">
                                 <i class="fas fa-window-close"></i>
                                 Borrar</a>
     
                         </div>
-                        <div class="seguro" *ngIf="confirmado==espacio._id">
-                            <a (click)="onDeleteEspacio(espacio._id)" class="btn btn-sm btn-danger">Borrar</a>
+                        <div class="seguro" *ngIf="confirmado==event._id">
+                            <a (click)="onDeleteEspacio(event._id)" class="btn btn-sm btn-danger">Borrar</a>
                             <a (click)="onCancelEspacio()" class="btn btn-sm btn-warning">Cancelar</a>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ import {DetailespacioComponent} from './components/detailespacio.component';
 import { FilterPipe } from './filter.pipe';
 import {EventlistComponent} from  './components/eventlist.component';
 import {EventaddComponent} from './components/eventadd.componenet';
+import {EventeditComponent} from './components/eventedit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {EventaddComponent} from './components/eventadd.componenet';
     DetailespacioComponent,
     
     FilterPipe,
-    EventlistComponent
+    EventlistComponent,
+    EventeditComponent
 
   ],
   imports: [

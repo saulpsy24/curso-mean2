@@ -3,7 +3,7 @@ import{Http,Response,Headers,RequestOptions}from'@angular/http';
 import 'rxjs/add/operator/map';
 import{Observable} from 'rxjs/Observable';
 import{GLOBAL}from './global';
-import {Espacio} from '../models/espacio';
+import {Evento} from '../models/evento';
 
 @Injectable()
 export class UploadService{
@@ -17,7 +17,7 @@ export class UploadService{
         this.url = GLOBAL.url;
     }
 
-    makeFileRequest(url:string,params:Array<string>,files:Array<File>,token,name){
+    makeFileRequest(url:string,params:Array<string>,files:Array<File>,token:string,name:string){
         return new Promise(function(resolve,reject){
             var formData:any=new FormData();
             var xhr = new XMLHttpRequest();

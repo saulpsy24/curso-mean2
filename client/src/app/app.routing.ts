@@ -12,7 +12,8 @@ import { EditespComponent } from './components/editespacio.component';
 import { DetailespacioComponent } from './components/detailespacio.component';
 //import EVENTO
 
-import {EventlistComponent} from  './components/eventlist.component'
+import {EventlistComponent} from  './components/eventlist.component';
+import {EventeditComponent} from './components/eventedit.component';
 
 import {EventaddComponent} from './components/eventadd.componenet';
 //Import Home
@@ -22,6 +23,8 @@ import { HomeComponent } from './components/home.component';
 const appRoutes: Routes = [
 
     { path: '', component: ClienteEditComponent },
+    
+    {path:'eventedit/:id',component: EventeditComponent},
     // {path:'espacio/:page',component:EspacioComponent},
     { path: 'evento/:page', component: EventlistComponent },
     { path: 'espacio/:page', component: EspacioComponent },

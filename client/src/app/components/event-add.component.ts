@@ -51,7 +51,7 @@ export class EventAddComponent implements OnInit{
                 }else{
                    
                     this.AlertMessage ='El usuario se ha actualizado';
-                    document.getElementById("identity_name").innerHTML =this.evento.title;
+                    //document.getElementById("identity_name").innerHTML =this.evento.title;
                     //document.getElementById("identity_name").innerHTML =this.cliente.surname;
                     localStorage.setItem('identity',JSON.stringify(this.evento));
                     if(!this.filesToUpload){
