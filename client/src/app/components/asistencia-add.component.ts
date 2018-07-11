@@ -36,17 +36,47 @@ export class AssistantaddComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        
+        console.log(this.assistant);
     }
+
 
     onSubmit() {
         console.log(this.assistant);
+
 
         this._route.params.forEach((params: Params) => {
             let turno_id = params['turno'];
             this.assistant.cliente = this.identity._id;
             this.assistant.turno = turno_id;
+
+            this._router.navigate(['/crear-turno',turno_id]);
+
             console.log(this.assistant);
+
+            this._assistantService.addAssistant(this.token,this.assistant).subscribe(
+               response=>{
+                    
+                   if(!response.assistant){
+                     this.alertMessage='Error en el Servidor';
+        
+                }else{
+                     this.assistant =response.assistant;
+                         this.alertMessage='Asistencia Creada Correctamente';
+                        this._router.navigate(['/crear-turno',response.turno._id]);
+                        
+                     }
+        
+                },
+             error=>{
+                    var errorMessage= <any> error;
+                 if(errorMessage!=null){
+                     var body = JSON.parse(error._body);
+                     this.alertMessage=body.message
+                        console.log(error);
+                    }  
+               }
+             )
         }
 
         )
