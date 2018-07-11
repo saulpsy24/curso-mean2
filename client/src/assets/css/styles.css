@@ -396,3 +396,10 @@ div{font-family: 'Roboto', sans-serif;
 .colorblanco{
 	color:white;
 }
+
+.list-group-item.active {
+	z-index: 2;
+	color: #fff;
+	background-color: #015F86;
+	border-color: #015F86;
+}
