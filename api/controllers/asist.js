@@ -47,7 +47,7 @@ function saveAsist(req, res) {
     var aforo2 = new Turno();
     asist.cliente = params.cliente;
     asist.turno = params.turno;
-
+ 
     Asist.findOne({
         'cliente': asist.cliente
     }, function (err, elements) {
@@ -56,7 +56,7 @@ function saveAsist(req, res) {
             res.status(500).json({
                 error: false,
                 message: err.message
-            });
+            }); 
         }
         if (!elements) {
             var turnoasistencia = function (turno, callback) {
