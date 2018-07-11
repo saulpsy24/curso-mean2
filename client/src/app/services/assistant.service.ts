@@ -23,4 +23,28 @@ export class AssistantService{
                             .map(res=>res.json());
 
     }
+    getAsistencias(token,idturno){
+        let headers= new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.get(this.url+'asistencias/'+idturno,options).map(
+            res=>res.json()
+        );
+
+    }
+    getAsistenciasCliente(token,iduser){
+        let headers= new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.get(this.url+'asistenciasc/'+iduser,options).map(
+            res=>res.json()
+        );
+
+    }
 }

@@ -49,7 +49,8 @@ function saveAsist(req, res) {
     asist.turno = params.turno;
  
     Asist.findOne({
-        'cliente': asist.cliente
+        'cliente': asist.cliente,
+        'turno':asist.turno,
     }, function (err, elements) {
 
         if (err) {
@@ -158,6 +159,9 @@ function getAsistencias(req, res) {
     }
     find.populate({
         path: 'turno',
+        populate:{
+            path:'event'
+        }
 
 
     }).populate({
@@ -180,7 +184,46 @@ function getAsistencias(req, res) {
         }
     })
 }
+function getAsistenciasCliente(req, res) {
+    var clienteId = req.params.cliente;
+    if (!clienteId) {
+        console.log('nollegaid');
+        //sacar todos los albums de la DB
+        var find = Asist.find({}).sort('name');
+    } else {
+        console.log('entra aqui');
+        //mostrar solamente los albums de ese artista
+        var find = Asist.find({
+            cliente: clienteId
+        }).sort('name');
+    }
+    find.populate({
+        path: 'turno',
+        populate:{
+            path:'event'
+        }
 
+
+    }).populate({
+        path: 'cliente'
+    }).exec((err, asistencias) => {
+        if (err) {
+            res.status(500).send({
+                message: 'error'
+            });
+        } else {
+            if (!asistencias) {
+                res.status(404).send({
+                    message: 'no hay asistencias  asociadas'
+                });
+            } else {
+                res.status(200).send({
+                    asist: asistencias
+                });
+            }
+        }
+    })
+}
 
 //Metodo para borrar canciones.
 function deleteAsist(req, res) {
@@ -273,6 +316,7 @@ module.exports = {
     getAsist,
     saveAsist,
     getAsistencias,
-    deleteAsist
+    deleteAsist,
+    getAsistenciasCliente
 
 }

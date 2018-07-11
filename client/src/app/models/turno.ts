@@ -7,7 +7,7 @@
         public start_h:string,
         public end_h: string,
         public aforo:Number,
-        public event:string
+        public event:Object
     ){}
     }
     

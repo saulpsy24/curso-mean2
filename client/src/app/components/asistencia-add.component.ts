@@ -70,7 +70,7 @@ export class AssistantaddComponent implements OnInit {
                     this.assistant = response.asistSaved;
                     this.alertMessage = 'Asistencia creada Correctamente';
                     
-                    this._router.navigate(['/evento', 1]);
+                    this._router.navigate(['/mis-eventos']);
 
                 }
 
