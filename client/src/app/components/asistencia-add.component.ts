@@ -5,6 +5,7 @@ import { ClienteService } from '../services/cliente.service';
 import { GLOBAL } from '../services/global';
 import { Assistant } from '../models/assistant';
 import {AssistantService} from '../services/assistant.service'
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
     selector: 'assistant-add',
@@ -35,7 +36,6 @@ export class AssistantaddComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('Assistantadd.component.cargado');
 
     }
 
@@ -55,11 +55,16 @@ export class AssistantaddComponent implements OnInit {
             response => {
 
                 if (!response.asistSaved) {
-                    this.alertMessage = 'Error en el Servidor';
+                    var body =response._body;
+                    this.alertMessage =body;
+                    console.log(response);
+                    this.alertMessage = 'Ya te habias inscrito anteriormente';
+
 
                 } else {
                     this.assistant = response.asistSaved;
-                    this.alertMessage = 'Evento Creado Correctamente';
+                    this.alertMessage = 'Asistencia creada Correctamente';
+                    
                     this._router.navigate(['/evento', 1]);
 
                 }
