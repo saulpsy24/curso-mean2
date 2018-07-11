@@ -1,6 +1,5 @@
 <div class="col-lg-8" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
     <h1>{{titulo}}</h1>
-    {{alertMessage}}
 </div>
 <div *ngIf="alertMessage" class="alert alert-warning">
     <strong>Respuesta:</strong>{{alertMessage}}
