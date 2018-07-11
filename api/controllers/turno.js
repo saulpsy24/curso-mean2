@@ -76,7 +76,7 @@ function getTurnos(req, res) {
     } else {
         //mostrar solamente los albums de ese artista
         var find = Turno.find({
-            event: evenId
+            event: eventId
         }).sort('date_start');
     }
     find.populate({

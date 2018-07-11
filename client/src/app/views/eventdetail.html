@@ -14,6 +14,52 @@
                   </div>
         
     </div>
+
+    <div class="row card2">
+    
+    
+        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let turno of turnos">
+            <!-- Card Projects -->
+
+            <div class="card">
+              <div class="card-action">
+                    <div class="alinear">
+                        <a class="card-title">
+                            {{turno.name}}
+                        </a>
+                        <p>
+                          {{turno.date_start}}<br>
+                          {{turno.date_end}}<br>
+                          {{turno.start_h}}<br>
+                          {{turno.Aforo}}<br>
+                         
+                        </p>
+
+                        <hr>
+
+
+                    </div>
+
+                    <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+
+                        <a [routerLink]="['/editar-turno',turno._id] " class="btn btn-sm btn-warning">
+                            <i class="fas fa-edit"></i>Editar</a>
+                        <a (click)="onDeleteConfirm(turno._id)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-window-close"></i>
+                            Borrar</a>
+
+                    </div>
+                    <div class="seguro animated fadeIn" *ngIf="confirmado==turno._id">
+                        <a (click)="onDeleteTurno(turno._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
+                        <a (click)="onCancelTurno()" class="btn btn-sm btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
     
 
 

@@ -5,24 +5,30 @@ import { GLOBAL } from '../services/global';
 import { Evento } from '../models/evento';
 import { EventService } from '../services/event.service';
 
+import { TurnoService } from '../services/turno.service';
+import { TurnoAddComponent } from './turnoadd.component';
+import { Turno } from '../models/turno'
+
 @Component({
     selector: 'eventdetail',
     templateUrl: '../views/eventdetail.html',
-    providers: [ClienteService, EventService]
+    providers: [ClienteService, EventService, TurnoService]
 })
 export class EventDetailComponente implements OnInit {
-  
+
     public evento: Evento;
     public identity;
     public token;
     public url: string;
     public alertMessage;
     public is_edit;
+    public turnos: Turno[];
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
         private _clienteService: ClienteService,
         private _eventService: EventService,
+        private _turnoService: TurnoService
     ) {
         this.is_edit = true;
         this.url = GLOBAL.url;
@@ -52,6 +58,28 @@ export class EventDetailComponente implements OnInit {
 
                         this.evento = response.event;
                         //sacar los turnos del evento
+                        this._turnoService.getTurnos(this.token, id).subscribe(
+                            response => {
+
+                                if (!response.turnos) {
+                                    this.alertMessage = 'Este evento no tiene turnos';
+
+
+                                } else {
+                                    this.turnos = response.turnos;
+
+                                }
+
+                            },
+                            error => {
+                                var errorMessage = <any>error;
+                                if (errorMessage != null) {
+                                    var body = JSON.parse(error._body);
+                                    // this.alertMessage=body.message
+                                    console.log(error);
+                                }
+                            }
+                        );
 
                     }
                 },
@@ -67,6 +95,47 @@ export class EventDetailComponente implements OnInit {
             )
 
         });
+
+    }
+
+
+
+    public confirmado;
+    public showoptions = 0;
+    onDeleteConfirm(id) {
+        this.confirmado = id;
+        this.showoptions = 1;
+    }
+    onCancelTurno() {
+        this.confirmado = null;
+        this.showoptions = 0;
+    }
+
+    onDeleteTurno(id) {
+        this.showoptions = 0;
+        this._turnoService.deleteTurno(this.token, id).subscribe(
+            response => {
+
+                if (!response.turno) {
+                    this.alertMessage('Error en el Servidor');
+
+
+                } else {
+                    this.getEvento();
+
+                }
+
+            },
+            error => {
+                var errorMessage = <any>error;
+                if (errorMessage != null) {
+                    var body = JSON.parse(error._body);
+                    this.alertMessage = body.message;
+                    console.log(error);
+                }
+            }
+
+        );
 
     }
 

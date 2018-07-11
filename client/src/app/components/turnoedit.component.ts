@@ -2,23 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClienteService } from '../services/cliente.service';
 import { GLOBAL } from '../services/global';
-import { Evento } from '../models/evento';
 import { EventService } from '../services/event.service';
 import { Turno } from '../models/turno';
 
 import { TurnoService } from '../services/turno.service';
 @Component({
-    selector: 'turnoadd',
+    selector: 'turnoedit',
     templateUrl: '../views/turnoadd.html',
     providers: [ClienteService, EventService, TurnoService]
 })
-export class TurnoAddComponent implements OnInit {
+export class TurnoEditComponent implements OnInit {
     public titulo: String;
     public turno: Turno;
     public identity;
     public token;
     public url: string;
     public alertMessage;
+    public is_edit=true;
 
     constructor(
         private _route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class TurnoAddComponent implements OnInit {
         private _eventService: EventService,
         private _turnoservice: TurnoService
     ) {
-        this.titulo = 'Nuevo Turno';
+        this.titulo = 'Editar Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 50, '');
 
@@ -38,26 +38,53 @@ export class TurnoAddComponent implements OnInit {
     }
 
 
+
     ngOnInit() {
         console.log('turno.component.cargado');
+        this.getTurno();
 
-        //GetEventos
+
+        //conseguir el album
+    }
+    getTurno(){
+        this._route.params.forEach((params:Params)=>{
+            let id=params['id'];
+            this._turnoservice.getTurno(this.token,id).subscribe(
+                response=>{
+                    if(!response.turno){
+                        this._router.navigate(['/']);
+                    }else{
+                        this.turno=response.turno;
+                    }
+
+                },
+                error=>{
+                    var errorMessage =<any>error;
+                    if(errorMessage!=null){
+                        var body =JSON.parse(error.body);
+                        this.alertMessage =body.message;
+                        console.log(error);
+                    }
+
+                }
+
+            )            
+
+        });
     }
     onSubmit() {
         this._route.params.forEach((params: Params) => {
-            let event_id = params['evento'];
-            this.turno.event = event_id;
+            let id = params['id'];
+            
             console.log(this.turno);
-            this._turnoservice.addTurno(this.token, this.turno).subscribe(
+            this._turnoservice.editTurno(this.token,id, this.turno).subscribe(
                 response => {
                     if(!response.turno){
                         this.alertMessage='Error en el servidor';
 
                     }else{
-                        this.alertMessage='El turno se creo correctamente!';
-                        this.turno=response.turno;
+                        this.alertMessage='El turno se actualizo correctamente!';
                         this._router.navigate(['/detalle-evento',response.turno.event])
-                        
                         
                     }
 

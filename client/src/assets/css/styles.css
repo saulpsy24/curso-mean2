@@ -100,10 +100,12 @@ div{font-family: 'Roboto', sans-serif;
 
 .useravatar{
 	width:80px;
+	height: 80px;
 	border-radius:50%;
 }
 .useravatarnav{
 	width:30px;
+	height: 30px;
 	border-radius:50%;
 }
 .loginform{

@@ -23,50 +23,59 @@ export class TurnoService {
         return this._http.post(this.url + '/turno', params, { headers: headers }).map(res => res.json());
 
     }
-    getEventos(token, eventId) {
+    getTurnos(token, eventId=null) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
 
         });
         let options = new RequestOptions({ headers: headers });
-        return this._http.get(this.url + 'events/' + eventId, options).map(
-            res => res.json()
-        );
+        if(eventId==null){
+            return this._http.get(this.url + 'turnos/', options).map(
+                res => res.json()
+            );
+
+        }else{
+            return this._http.get(this.url + 'turnos/' + eventId, options).map(
+                res => res.json()
+            );
+
+        }
+        
 
     }
 
-    getEvento(token, id: string) {
+    getTurno(token, id: string) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
 
         });
         let options = new RequestOptions({ headers: headers });
-        return this._http.get(this.url + '/event/' + id, options).map(
+        return this._http.get(this.url + 'turno/' + id, options).map(
             res => res.json()
         );
 
     }
 
-    editEvento(token, id: string, turno: Turno) {
+    editTurno(token, id: string, turno: Turno) {
         let params = JSON.stringify(turno);
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
 
         });
-        return this._http.put(this.url + '/event/' + id, params, { headers: headers }).map(res => res.json());
+        return this._http.put(this.url + 'turno/' + id, params, { headers: headers }).map(res => res.json());
 
     }
-    deleteEvento(token, id: string) {
+    deleteTurno(token, id: string) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
 
         });
         let options = new RequestOptions({ headers: headers });
-        return this._http.delete(this.url + '/event/' + id, options).map(
+        return this._http.delete(this.url + '/turno/' + id, options).map(
             res => res.json()
         );
 

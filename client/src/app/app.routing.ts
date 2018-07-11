@@ -23,9 +23,12 @@ import { HomeComponent } from './components/home.component';
 
 import {TurnoAddComponent} from './components/turnoadd.component';
 
+import {TurnoEditComponent} from './components/turnoedit.component';
+
 const appRoutes: Routes = [
 
     { path: '', component: ClienteEditComponent },
+    {path:'editar-turno/:id',component:TurnoEditComponent},
     
     {path:'eventedit/:id',component: EventeditComponent},
     // {path:'espacio/:page',component:EspacioComponent},
