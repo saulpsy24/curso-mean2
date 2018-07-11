@@ -4,14 +4,24 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-
-  transform(variables: any, term: any): any {
-   //check if search term is undefined
-   if(term ===undefined) return variables;
-   //return updated array
-   return variables.filter(function(variable){
-     return variable.province.toLowerCase().includes(term.toLowerCase());
-   })
+  transform(items: Array<any>, term: string, brand: string, date: string){
+      if (items && items.length){
+          return items.filter(item =>{
+              if (term && item.province.toLowerCase().indexOf(term.toLowerCase()) === -1){
+                  return false;
+              }
+              if (brand && item.brand.toLowerCase().indexOf(brand.toLowerCase()) === -1){
+                  return false;
+              }
+              if (date && item.date.toLowerCase().indexOf(date.toLowerCase()) === -1){
+                  return false;
+              }
+              return true;
+         })
+      }
+      else{
+          return items;
+      }
   }
 
 }
