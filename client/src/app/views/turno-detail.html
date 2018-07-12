@@ -3,13 +3,13 @@
     <div class="clearfix"></div>
     <div id="turno-detail" *ngIf="assistant" >
         <div class="container card2">
-            <h3>Listado de Asistentes</h3>
-                <a [routerLink]="['/assistant-add',turno._id]" class="btn btn-info">Añadir Asistencia</a><hr>
+            <h1>Listado de Asistentes</h1>
+                <!-- <a [routerLink]="['/assistant-add',turno._id]" class="btn btn-info">Añadir Asistencia</a><hr> -->
                 
-            <table class="table table-dark">
+            <table class="table table-black">
                     <thead>
                       <tr>
-                        <th scope="col">_id</th>
+                        <!-- <th scope="col">_id</th> -->
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellidos</th>
                         <th scope="col">Nombre del Turno</th>
@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let asistencias of assistant">
-                        <th scope="row">{{asistencias.cliente._id}}</th>
+                        <!-- <th scope="row">{{asistencias.cliente._id}}</th> -->
                         <td>{{asistencias.cliente.name}}</td>
                         <td>{{asistencias.cliente.surname}}</td>
                         <td>{{asistencias.turno.name}}</td>
@@ -26,8 +26,9 @@
                       </tr>
                       
                     </tbody>
-                  </table>
+            </table>
+            <hr><a [routerLink]="['/evento',1]" class="btn btn-info">Regresar</a>    
+        </div>
     </div>
-</div>
 
 </div>
