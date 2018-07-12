@@ -77,6 +77,7 @@
     
                     <div class="card-action">
                         <div class="alinear">
+                                <label><i class="fas fa-user-tie"></i> Nombre del Evento: </label><br>
                             <a class="card-title" [routerLink]="['/detalle-evento',event._id] ">
                                 {{event.title}}
                             </a>
@@ -85,6 +86,9 @@
     
     
                         </div>
+                        <p>
+                           <label><i class="fas fa-location-arrow"></i> Provincia: </label> {{event.province}}
+                        </p>
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
     
