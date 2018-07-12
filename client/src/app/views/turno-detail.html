@@ -11,20 +11,19 @@
     <div class="clearfix"></div>
     <div id="turno-detail" *ngIf="assistant" >
         <ul id="asist-list">
-            {{assistant.cliente}} daniel
+            
 
-            el cliente viene vacio  pero el api en postman si carga todos
-            en el component mande un console y manda el turno y la asistencia vacia
             <!-- Pruebas -->
-            <!-- <li *ngFor="let assistant of Asistencias" class="assist-item"> -->
-                <!-- <table>
+            <li *ngFor="let asistencias of assistant" class="assist-item">
+                {{asistencias.cliente}}
+                <!-- <table>{{}}
                     <ng-container *ngFor="let assistant of asistencias">
                         daniel -->
                         <!-- <tr><td><h2>{{asist.cliente.name}}<h2></td></tr> -->
                         <!-- <tr *ngFor="let item of group.asists"><td>{{asist.cliente}}</td></tr> -->
                     <!-- </ng-container>
                 </table> -->
-            <!-- </li> -->
+            </li>
         </ul>
     </div>
 
