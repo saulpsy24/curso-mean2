@@ -4,32 +4,39 @@
 <div *ngIf="alertMessage" class="alert alert-warning">
     <strong>Respuesta:</strong>{{alertMessage}}
 </div>
-<form #formAssistant = "ngForm"  (ngSubmit)="onSubmit()">
-    <div class="row">
-        <div class="col-md-4 col-xs-6 ">
-            <p>
-                <br>
-                <label>Cliente:</label>
-                <input type="text" #cliente="ngModel" name="cliente" [(ngModel)]="identity.name +' '+ identity.surname" required class="form-control" disabled />
-             
-            </p>
+<div class="container">
+    <div class="row card2">
 
-        </div>
-        <div class="col-md-4 col-xs-6 ">
-            <p>
-                <br>
-                <label>Establecimiento:</label>
-                <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="identity.nameEstablishment" 
-                required class="form-control" disabled />
-                
-            </p>
+        <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-6 col-xs-6 ">
+                    <p>
+                        <br>
+                        <label>Cliente:</label>
+                        <input type="text" #cliente="ngModel" name="cliente" [(ngModel)]="identity.name +' '+ identity.surname" required class="form-control form-control-lg"
+                            disabled />
 
-        </div>
+                    </p>
+
+                </div>
+                <div class="col-md-6 col-xs-6 ">
+                    <p>
+                        <br>
+                        <label>Establecimiento:</label>
+                        <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="identity.nameEstablishment" required
+                            class="form-control form-control-lg" disabled />
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="submit" value="{{'Inscribir'}}" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <input type="submit"  value="{{'Inscribir'}}"
-                class="btn btn-success" />
-        </div>
-    </div>
-</form>
+
+</div>
