@@ -25,6 +25,7 @@ import {TurnoAddComponent} from './components/turnoadd.component';
 
 import {TurnoEditComponent} from './components/turnoedit.component';
 import {AssistantaddComponent} from './components/asistencia-add.component';
+import {TurnodetailComponent} from './components/turno-detail.component';
 
 
 import {misEventosComponent} from './components/miseventos.component';
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     { path: '', component: ClienteEditComponent },
     {path:'editar-turno/:id',component:TurnoEditComponent},
     {path:'mis-eventos',component:misEventosComponent},
+    {path:'turno-detail/:id',component:TurnodetailComponent},
     
     {path:'eventedit/:id',component: EventeditComponent},
     // {path:'espacio/:page',component:EspacioComponent},

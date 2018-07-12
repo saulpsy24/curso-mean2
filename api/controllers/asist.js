@@ -147,25 +147,26 @@ function saveAsist(req, res) {
 
 
 function getAsistencias(req, res) {
-    var turnoId = req.params.id;
+    var turnoId = req.params._id;
     if (!turnoId) {
         //sacar todos los albums de la DB
-        var find = Asist.find({}).sort('name');
+        var find = Asist.find({});
     } else {
         //mostrar solamente los albums de ese artista
         var find = Asist.find({
             turno: turnoId
-        }).sort('name');
+        });
     }
     find.populate({
         path: 'turno',
         populate: {
-            path: 'event'
+            path: 'event',
+            model: 'Event'
         }
 
+    // }).populate({
+    //     path: 'cliente'
 
-    }).populate({
-        path: 'cliente'
     }).exec((err, asistencias) => {
         if (err) {
             res.status(500).send({
@@ -178,7 +179,7 @@ function getAsistencias(req, res) {
                 });
             } else {
                 res.status(200).send({
-                    asist: asistencias
+                    asistencias
                 });
             }
         }
