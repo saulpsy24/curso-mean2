@@ -32,7 +32,7 @@ export class TurnodetailComponent implements OnInit {
         this.titulo = 'Detalle del Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 50, '');
-        // this.assistant = new Assistant('','');
+        //this.assistant = Assistant;
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
@@ -68,7 +68,7 @@ export class TurnodetailComponent implements OnInit {
                                     console.log('if');
                                 }else{
                                     this.assistant = response.asistencias;
-                                    console.log('else');
+                                    console.log(this.assistant);
                                 }  
                             },
                             error => {

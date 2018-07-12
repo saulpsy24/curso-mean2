@@ -147,7 +147,7 @@ function saveAsist(req, res) {
 
 
 function getAsistencias(req, res) {
-    var turnoId = req.params._id;
+    var turnoId = req.params.turno;
     if (!turnoId) {
         //sacar todos los albums de la DB
         var find = Asist.find({});
