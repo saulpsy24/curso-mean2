@@ -164,8 +164,8 @@ function getAsistencias(req, res) {
             model: 'Event'
         }
 
-    // }).populate({
-    //     path: 'cliente'
+    }).populate({
+        path: 'cliente'
 
     }).exec((err, asistencias) => {
         if (err) {

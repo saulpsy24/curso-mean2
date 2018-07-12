@@ -15,7 +15,8 @@
 
             <!-- Pruebas -->
             <li *ngFor="let asistencias of assistant" class="assist-item">
-                {{asistencias.cliente}}
+                {{asistencias.cliente.name}} | {{asistencias.cliente.surname}} |
+                 {{asistencias.turno.name}} |
                 <!-- <table>{{}}
                     <ng-container *ngFor="let assistant of asistencias">
                         daniel -->
