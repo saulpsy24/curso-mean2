@@ -129,43 +129,40 @@ function updateTurno(req, res) {
 //METODO PARA BORRAR albums
 function deleteTurno(req, res) {
     var turnoId = req.params.id;
-    Turno.findByIdAndRemove(turnoId, (err, turnoRemoved) => {
-       
-                    if (err) {
-                        res.status(500).send({
-                            message: 'Error al borrar Turno'
-                        });
-                    } else {
-                        if (!turnoRemoved) {
-                            res.status(404).send({
-                                message: 'Turno no se pudo remover'
-                            });
-                        } else {
-                            Asist.find({
-                                turno: turnoRemoved._id
-                            }).remove((err, asistRemoved) => {
-                                if (err) {
-                                    res.status(500).send({
-                                        message: 'Error al borrar asistencia'
-                                    });
-                                } else {
-                                    if (!asistRemoved) {
-                                        res.status(404).send({
-                                            message: 'Asistencia no  se pudo eliminar'
-                                        });
-                                    } else {
-                                        res.status(200).send({
-                                            turno: turnoRemoved
-                                        });
+    Turno.findByIdAndRemove(turnoId, (err, TurnoRemoved) => {
+        if (err) {
+            res.status(500).send({
+                message: 'Error al borrar Turno'
+            });
+        } else {
+            if (!TurnoRemoved) {
+                res.status(404).send({
+                    message: 'Turno no  se pudo eliminar'
+                });
+            } else {
+                Asist.findOneAndRemove({turno:TurnoRemoved},function(err,asistenciaremovida){
+                    if(err){
 
-                                    }
-                                }
-                            });
+                    }else{
+                        if(!asistenciaremovida){
 
+                        }else{
+                            res.status(200).send({message:'Turno Borrado Exitosamente',
+                            asist:asistenciaremovida,
+                            turno:TurnoRemoved,
+                            
+                        
+                            })
                         }
                     }
+
                 });
+
             }
+        }
+
+    });
+}
 
 
 

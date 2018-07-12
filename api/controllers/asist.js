@@ -225,7 +225,18 @@ function getAsistenciasCliente(req, res) {
         }
     })
 }
+function deleteAsistencia(req,res){
+    var idAsist= req.params.id;
+    Asist.findByIdAndRemove(idAsist, (err, asistRemoved)=>{
+        if(err){
+            res.send({message:'nosepudo'});
 
+        }else{
+            res.send({asist:asistRemoved});
+        }
+
+    });
+}
 //Metodo para borrar canciones.
 function deleteAsist(req, res) {
 
@@ -319,6 +330,7 @@ module.exports = {
     saveAsist,
     getAsistencias,
     deleteAsist,
-    getAsistenciasCliente
+    getAsistenciasCliente,
+    deleteAsistencia
 
 }

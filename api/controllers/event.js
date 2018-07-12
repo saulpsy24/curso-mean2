@@ -9,9 +9,10 @@ var Eventos = require('../models/event');
 var Espacio = require('../models/espacio');
 var Asist = require('../models/assistant');
 var Turno = require('../models/turno');
+var ObjectId = require('mongodb').ObjectId;
 
 function getEvent(req, res) {
-      var idEvent = req.params.id;
+    var idEvent = req.params.id;
 
     Evento.findById(idEvent).populate({
         path: 'space'
@@ -35,17 +36,17 @@ function getEvent(req, res) {
 }
 
 
-  
+
 //metodo para guardar artista sin imagen
 function saveEvent(req, res) {
     var event = new Evento();
     var params = req.body;
-    
-    event.title=params.title;
-    event.description= params.description;
-    event.brand=params.brand;
-    event.province=params.province;
-   
+
+    event.title = params.title;
+    event.description = params.description;
+    event.brand = params.brand;
+    event.province = params.province;
+
 
     event.save((err, eventStored) => {
         if (err) {
@@ -79,8 +80,8 @@ function getEvents(req, res) {
         }).sort('name');
     }
     find.populate({
-        path: 'event',       
-        
+        path: 'event',
+
     }).exec((err, eventos) => {
         if (err) {
             res.status(500).send({
@@ -138,57 +139,53 @@ function deleteEvent(req, res) {
                     message: 'Evento no  se pudo eliminar'
                 });
             } else {
-
-
-                Turno.find({
-                    event: eventRemoved._id
-                }).remove((err, turnoRemoved) => {
-                    if (err) {
+                Turno.findOneAndRemove({event: eventRemoved}, function(err,turnoremoved){
+                    if(err){
                         res.status(500).send({
-                            message: 'Error al borrar Album'
-                        });
-                    } else {
-                        if (!turnoRemoved) {
-                            res.status(404).send({
-                                message: 'Turno no  se pudo eliminar'
-                            });
-                        } else {
-                            Asist.find({
-                                turno: turnoRemoved._id
-                            }).remove((err, asistRemoved) => {
-                                if (err) {
-                                    res.status(500).send({
-                                        message: 'Error al borrar Asistencia'
-                                    });
-                                } else {
-                                    if (!asistRemoved) {
-                                        res.status(404).send({
-                                            message: 'asistencia no  se pudo eliminar'
-                                        });
-                                    } else {
-                                        res.status(200).send({
-                                            event: eventRemoved
-                                        });
+                            message:'Error en el servidor de borrar Turno'
+                        })
+                    }else{
+                        if(!turnoremoved){
+                            res.status(404).send({message:'not found'});
 
+                        }else{
+                            Asist.findOneAndRemove({turno:turnoremoved},function(err,asistenciaremovida){
+                                if(err){
+
+                                }else{
+                                    if(!asistenciaremovida){
+
+                                    }else{
+                                        res.status(200).send({message:'Evento Borrado Exitosamente',
+                                        asist:asistenciaremovida,
+                                        turno:turnoremoved,
+                                        event:eventRemoved
+                                    
+                                        })
                                     }
                                 }
+
                             });
 
                         }
                     }
+                    
                 });
-            }
 
+            }
         }
+
     });
 }
+
+
 //FUNCIONES NUEVAS
-function getByZone(req,res){
+function getByZone(req, res) {
     var locali = req.params.local;
 
     Evento.find().populate({
         path: 'space',
-        match:{
+        match: {
             local: locali
         }
     }).exec((err, event) => {
@@ -211,12 +208,12 @@ function getByZone(req,res){
 
 
 }
-function getBySpace(req,res){
+function getBySpace(req, res) {
     var name = req.params.name;
 
     Evento.find().populate({
         path: 'space',
-        match:{
+        match: {
             name: name
         }
     }).exec((err, event) => {
@@ -236,7 +233,7 @@ function getBySpace(req,res){
             }
         }
     });
-   
+
 
 }
 function uploadImageEvent(req, res) {
@@ -262,7 +259,7 @@ function uploadImageEvent(req, res) {
                 } else {
                     res.status(200).send({
                         event: eventUpdated,
-                        image:file_name
+                        image: file_name
                     });
 
                 }
@@ -310,7 +307,7 @@ module.exports = {
     getImageFile,
     uploadImageEvent
 
-    
+
 };
 
 
