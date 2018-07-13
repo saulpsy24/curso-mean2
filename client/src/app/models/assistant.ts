@@ -4,6 +4,6 @@
        
          public cliente: Object,
          public turno: Object,
-         public check: string
+         public check: boolean
         ){}
     }

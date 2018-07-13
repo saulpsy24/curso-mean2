@@ -22,33 +22,41 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let asistencias of assistant">
+               <tr *ngFor="let asistencias of assistant">
                     
                     <td scope="row">{{asistencias.cliente.name}}</td>
                     <td>{{asistencias.cliente.surname}}</td>
                     <td>{{asistencias.turno.name}}</td>
                     <td>{{asistencias.cliente.nameEstablishment}}</td>
                     <th >{{asistencias.cliente.code}}</th>
-                    <th><label><i *ngIf="asistencias.check=='true'" 
-                      class="fas fa-check-circle"></i></label><input type="checkbox"  
-                      #check="ngModel"  name="check" [disabled]="false" [ngModel]="asistencias.check" 
-                      class="form-control form-control-sm"  ></th>
+                    <th><label><i *ngIf="asistencias.check" 
+                      class="fas fa-check-circle"></i></label>
+                      <input  type="checkbox" [checked]="asistencias.check" (change)="asistencias.check = !asistencias.check" />
+                    
+                    </th>
                   </tr>
       
                 </tbody>
               </table>
               <div class="row">
-                  <div class="col-md-4">
-                      <input type="submit" value="Actualizar" class="btn btn-success" />
-                  </div>
-              </div>
-          
-        </form>
+                <div class="col-md-10">
+
+                </div>
+                  <br>
+                    <div class="col-md-2">
+                        <input  type="submit" value="Pasar Asistencia" class="btn btn-secondary" />
+                    </div>
+                </div>
+              
+            </form>
+        
 
         
 
       </div>
+      <br><br>
       <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
+    
 
       <hr>
       <a [routerLink]="['/evento',1]" class="btn btn-info">Regresar</a>

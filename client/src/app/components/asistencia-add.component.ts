@@ -28,7 +28,7 @@ export class AssistantaddComponent implements OnInit {
     ) {
         this.titulo = 'Verifica Tus Datos y Confirma tu Asistencia';
         this.url = GLOBAL.url;
-        this.assistant = new Assistant('', '','');
+        this.assistant = new Assistant('', '',false);
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();

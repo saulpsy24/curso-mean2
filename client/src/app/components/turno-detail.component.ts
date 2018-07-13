@@ -122,7 +122,13 @@ export class TurnodetailComponent implements OnInit {
                 integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
                 crossorigin="anonymous">
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
+                <style>
+                input{
+                    visibility:hidden;
+                    display:none;
+                    
+                }
+                </style>
                                 
             </head>
             <body onload="window.print();window.close()"><br><br>${printContents}</body>
@@ -181,10 +187,8 @@ export class TurnodetailComponent implements OnInit {
      // intente haciendo un this.assistant._id y puro nepe
 
         });
-        
-        this.assistant = new Assistant('','','');
+        this.getTurno();
 
-        this.getTurno()
 
 
     }
