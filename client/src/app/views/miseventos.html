@@ -17,6 +17,7 @@
                         <div class="middles">
                             <div class="texto">
                                 <p>
+                                    
                                         {{asist.turno.event.description}}                                        
                                     <button class="btn btn-danger">
                                         Ver más.
@@ -31,7 +32,8 @@
                 <div class="card-action">
                     <div class="alinear">
                         <a class="card-title" [routerLink]="['/detalle-evento',asist._id] ">
-                            {{asist.turno.event.title}}
+                            <i class="fas fa-user-tie"> </i> 
+                             {{asist.turno.event.title}}
                         </a>
 
                         <hr>
