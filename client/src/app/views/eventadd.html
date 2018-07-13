@@ -127,7 +127,7 @@
                             <label for="visible">Visible:</label>
         
         
-                            <select class="form-control" id="visible" #visible="ngModel" name="visible" [(ngModel)]="evento.visible" required>
+                            <select class="form-control" id="visible" #visible="ngModel" name="visible" [(ngModel)]="evento.visible" >
         
                                 <option ng-selected="selected">Selecciona...</option>
                                 <option value="visible">Visible</option>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col-md-4">
     
-                        <input type="submit" [disabled]="!formEvento.form.valid" value="{{titulo}}" class="btn btn-success" />
+                        <input type="submit"  value="{{titulo}}" class="btn btn-success" />
                     </div>
                 </div>
             </form>
