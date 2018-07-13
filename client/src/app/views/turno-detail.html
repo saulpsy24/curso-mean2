@@ -29,8 +29,8 @@
                     <td>{{asistencias.turno.name}}</td>
                     <td>{{asistencias.cliente.nameEstablishment}}</td>
                     <th >{{asistencias.cliente.code}}</th>
-                    <th>{{asistencias.check}}<input type="checkbox"  #check="ngModel" name="check" [(ngModel)]="asistencias.check" 
-                      class="form-control form-control-lg" ></th>
+                    <th><label><i *ngIf="asistencias.check" class="fas fa-check-circle"></i></label><input type="checkbox"  #check="ngModel" name="check" [(ngModel)]="asistencias.check" 
+                      class="form-control form-control-sm" ></th>
                   </tr>
       
                 </tbody>
