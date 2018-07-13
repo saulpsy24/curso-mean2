@@ -29,7 +29,9 @@
                     <td>{{asistencias.turno.name}}</td>
                     <td>{{asistencias.cliente.nameEstablishment}}</td>
                     <th >{{asistencias.cliente.code}}</th>
-                    <th><label><i *ngIf="asistencias.check" class="fas fa-check-circle"></i></label><input type="checkbox"  #check="ngModel" name="check" [(ngModel)]="asistencias.check" 
+                    <th><label><i *ngIf="asistencias.check" 
+                      class="fas fa-check-circle"></i></label><input type="checkbox"  
+                      #check="ngModel" name="check" [(ngModel)]="asistencias.check" 
                       class="form-control form-control-sm" ></th>
                   </tr>
       
@@ -37,7 +39,7 @@
               </table>
               <div class="row">
                   <div class="col-md-4">
-                      <input type="submit" value="{{'Listar Asistencias'}}" class="btn btn-success" />
+                      <input type="submit" value="Actualizar" class="btn btn-success" />
                   </div>
               </div>
           

@@ -32,7 +32,7 @@ export class TurnodetailComponent implements OnInit {
         this.titulo = 'Detalle del Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 50, '');
-        //this.assistant = Assistant;
+        // this.assistant = new Assistant('','','');
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
@@ -59,6 +59,7 @@ export class TurnodetailComponent implements OnInit {
                         this._router.navigate(['/mis-eventos']);
                     } else {
                         this.turno = response.turno;
+                        console.log('else turno');
 
                         //Sacar asistencias
                         this._assistanService.getAsistencias(this.token, response.turno._id).subscribe(
@@ -69,6 +70,9 @@ export class TurnodetailComponent implements OnInit {
                                 } else {
                                     this.assistant = response.asistencias;
                                     console.log(this.assistant);
+                                    console.log('else asistencia');
+                                    
+
                                 }
                             },
                             error => {
@@ -127,5 +131,47 @@ export class TurnodetailComponent implements OnInit {
 
     onSubmit(){
         console.log(this.assistant);
+        // console.log('eventlist.component.cargado');
+        this.ActualizaAsistencia();
+
+
+        //GetEventos
+    }
+    ActualizaAsistencia() {
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+     //perro aqui obtienes el id pero del turno y es el que se manda por eso da el error 
+     //y ya cheqeu el modelo y pues no hay forma de sacar el id del turno 
+     //seria agregar el campo pero tendrias que actualizar el turno por cada asistencia no?
+     //entonces estoy chatito por que no se como sacar el id de la asistencia para actualizar
+     // creo es lo unico que falta para que funcione
+     // intente haciendo un this.assistant._id y puro nepe
+            this._assistanService.ActulizaAsist(this.token,id ,this.assistant).subscribe(
+                response => {
+
+                    if (!response.asist) {
+                        this.alertMessage = 'Error en el Servidor';
+                        console.log('entro aqui')
+
+                    } else {
+                        // this.assistant = response.asist;
+                        console.log(this.assistant);
+                    }
+
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        this.alertMessage = body.message;
+                        console.log(error);
+                    }
+                }
+
+
+            );
+        });
+
+
     }
 }
