@@ -48,24 +48,24 @@ export class AssistantService{
 
     }
 
-    deleteAsistencia(token,id:string){
+    deleteAsistencia(token,asistencia:string){
         let headers = new Headers({
             'Content-type' : 'application/json',
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.delete(this.url+'asist/'+id,options)
+        return this._http.delete(this.url+'asist/'+asistencia,options)
                         .map(res=>res.json());
     }
  
-    ActulizaAsist(token, id:string,asist: Assistant){
+    ActulizaAsist(token,idasistencia:string,asist: Assistant){
         let params = JSON.stringify(asist);
         let headers= new Headers({
             'Content-Type':'application/json',
             'authorization':token
 
         });
-        return this._http.put(this.url+'asist/'+id,params,{headers:headers}).map(res=>res.json());
+        return this._http.put(this.url+'asist/'+idasistencia,params,{headers:headers}).map(res=>res.json());
 
     }
 }

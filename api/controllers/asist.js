@@ -325,24 +325,25 @@ function deleteAsist(req, res) {
         }
     });
 }
+
 function ActulizaAsist(req, res) {
-    var AsistId = req.params.id;
+    var asistid = req.params.id;
     var update = req.body;
 
-    Evento.findByIdAndUpdate(AsistId, update, (err, asistUpdated) => {
+    Asist.findByIdAndUpdate(asistid, update, (err, asistenciaUpdated) => {
         if (err) {
             res.status(500).send({
-                message: 'Error al actualizar la Asistencia'
+                message: 'Error al actualizar Asistencia'
             });
         } else {
-            if (!asistUpdated) {
+            if (!asistenciaUpdated) {
                 res.status(404).send({
-                    message: 'No se pudo actualizar la asistencia'
+                    message: 'No se pudo actualizar Asistencia'
                 });
 
             } else {
                 res.status(200).send({
-                    asist: asistUpdated
+                    asist: asistenciaUpdated
                 });
 
             }

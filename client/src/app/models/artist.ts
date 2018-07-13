@@ -3,7 +3,7 @@ export class Artist{
      public name: string,
      public description: string,     
      public image: string,
-     public check: string,
+     public check: Boolean,
      
     ){}
 }

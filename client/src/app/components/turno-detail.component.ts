@@ -32,7 +32,7 @@ export class TurnodetailComponent implements OnInit {
         this.titulo = 'Detalle del Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 50, '');
-        // this.assistant = new Assistant('','','');
+    
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
@@ -49,6 +49,8 @@ export class TurnodetailComponent implements OnInit {
 
     getTurno() {
         console.log('funciona el metodo');
+        
+        
 
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
@@ -130,7 +132,7 @@ export class TurnodetailComponent implements OnInit {
     }
 
     onSubmit(){
-        console.log(this.assistant);
+       // console.log(this.assistant);
         // console.log('eventlist.component.cargado');
         this.ActualizaAsistencia();
 
@@ -140,37 +142,49 @@ export class TurnodetailComponent implements OnInit {
     ActualizaAsistencia() {
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
+            for (var i in this.assistant){
+                console.log(this.assistant[i]._id)
+
+                this._assistanService.ActulizaAsist(this.token,this.assistant[i]._id, this.assistant[i]).subscribe(
+                    response => {
+    
+                        if (!response.asist) {
+                            this.alertMessage = 'Error en el Servidor';
+    
+                        } else {
+                           // this.evento = response.event;
+                            //this._router.navigate(['/editar-evento'],response.evento._id);
+                            this.alertMessage = 'Evento Actualizado Correctamente';
+                            console.log(this.assistant[i]+'enviada')
+                            //subir foto
+                           
+                        }
+    
+                    },
+                    error => {
+                        var errorMessage = <any>error;
+                        if (errorMessage != null) {
+                            var body = JSON.parse(error._body);
+                            this.alertMessage = body.message
+                            console.log(error);
+                        }
+                    }
+                )
+
+
+            }
      //perro aqui obtienes el id pero del turno y es el que se manda por eso da el error 
      //y ya cheqeu el modelo y pues no hay forma de sacar el id del turno 
      //seria agregar el campo pero tendrias que actualizar el turno por cada asistencia no?
      //entonces estoy chatito por que no se como sacar el id de la asistencia para actualizar
      // creo es lo unico que falta para que funcione
      // intente haciendo un this.assistant._id y puro nepe
-            this._assistanService.ActulizaAsist(this.token,id ,this.assistant).subscribe(
-                response => {
 
-                    if (!response.asist) {
-                        this.alertMessage = 'Error en el Servidor';
-                        console.log('entro aqui')
-
-                    } else {
-                        // this.assistant = response.asist;
-                        console.log(this.assistant);
-                    }
-
-                },
-                error => {
-                    var errorMessage = <any>error;
-                    if (errorMessage != null) {
-                        var body = JSON.parse(error._body);
-                        this.alertMessage = body.message;
-                        console.log(error);
-                    }
-                }
-
-
-            );
         });
+        
+        this.assistant = new Assistant('','','');
+
+        this.getTurno()
 
 
     }
