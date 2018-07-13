@@ -121,6 +121,19 @@
                         </p>
     
     
+                    </div><div class="col-md-3 col-xs-3">
+                            <br>
+    
+                            <label for="visible">Visible:</label>
+        
+        
+                            <select class="form-control" id="visible" #visible="ngModel" name="visible" [(ngModel)]="evento.visible" required>
+        
+                                <option ng-selected="selected">Selecciona...</option>
+                                <option value="visible">Visible</option>
+                                <option value="oculto">Oculto</option>
+                            </select>
+
                     </div>
                 </div>
     

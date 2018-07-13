@@ -1,34 +1,44 @@
 <div class="turno-box" *ngIf="turno">
+
+  <div class="clearfix"></div>
+  <div id="turno-detail" *ngIf="assistant">
+    <div class="container card2">
+      <div id="print-section">
+        <h1>Listado de Asistentes</h1>
+        <h2>Evento: {{turno.event.title}}</h2>
         
-    <div class="clearfix"></div>
-    <div id="turno-detail" *ngIf="assistant" >
-        <div class="container card2">
-            <h1>Listado de Asistentes</h1>
-                <a [routerLink]="['/assistant-add',turno._id]" class="btn btn-info">Añadir Asistencia</a><hr> 
-                
-            <table class="table table-black">
-                    <thead>
-                      <tr>
-                        <th scope="col">_id</th> 
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Nombre del Turno</th>
-                        <th scope="col">Establecimiento</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let asistencias of assistant">
-                        <th scope="row">{{asistencias.cliente._id}}</th>
-                        <td>{{asistencias.cliente.name}}</td>
-                        <td>{{asistencias.cliente.surname}}</td>
-                        <td>{{asistencias.turno.name}}</td>
-                        <td>{{asistencias.cliente.nameEstablishment}}</td>
-                      </tr>
-                      
-                    </tbody>
-            </table>
-            <hr><a [routerLink]="['/evento',1]" class="btn btn-info">Regresar</a>    
-        </div>
+        <hr>
+
+        <table  class="table table-black">
+          <thead>
+            <tr>
+              
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Nombre del Turno</th>
+              <th scope="col">Establecimiento</th>
+              <th scope="col">Codigo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let asistencias of assistant">
+              
+              <td scope="row">{{asistencias.cliente.name}}</td>
+              <td>{{asistencias.cliente.surname}}</td>
+              <td>{{asistencias.turno.name}}</td>
+              <td>{{asistencias.cliente.nameEstablishment}}</td>
+              <th >{{asistencias.cliente.code}}</th>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+      <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
+
+      <hr>
+      <a [routerLink]="['/evento',1]" class="btn btn-info">Regresar</a>
     </div>
+  </div>
 
 </div>

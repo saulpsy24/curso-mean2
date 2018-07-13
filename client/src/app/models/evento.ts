@@ -5,7 +5,8 @@ export class Evento{
     public description: string,
     public brand: string,
     public province:string,
-    public image: string
+    public image: string,
+    public visible:string
 ){}
 }
 

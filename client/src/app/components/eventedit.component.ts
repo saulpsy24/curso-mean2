@@ -29,7 +29,7 @@ export class EventeditComponent implements OnInit {
         this.titulo = 'Actualizar Evento';
         this.is_edit = true;
         this.url = GLOBAL.url;
-        this.evento = new Evento('', '', '', '', '');
+        this.evento = new Evento('', '', '', '', '','');
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();

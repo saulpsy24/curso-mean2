@@ -26,7 +26,7 @@ constructor(
 ){
     this.titulo='Nuevo Evento';
     this.url=GLOBAL.url;
-    this.evento= new Evento('','','','','');
+    this.evento= new Evento('','','','','','');
     
     this.identity=this._clienteService.getidentity();
     this.token=this._clienteService.getToken();

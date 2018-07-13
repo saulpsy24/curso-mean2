@@ -46,6 +46,7 @@ function saveEvent(req, res) {
     event.description = params.description;
     event.brand = params.brand;
     event.province = params.province;
+    event.visible=params.visible;
 
 
     event.save((err, eventStored) => {

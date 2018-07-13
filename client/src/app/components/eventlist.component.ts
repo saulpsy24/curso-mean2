@@ -20,6 +20,7 @@ export class EventlistComponent implements OnInit {
     public next_page;
     public prev_page;
     public alertMessage;
+    public visible;
 
     constructor(
         private _route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class EventlistComponent implements OnInit {
         this.url = GLOBAL.url;
         this.next_page = 1;
         this.prev_page = 1;
+        this.visible='visible';
 
     }
 

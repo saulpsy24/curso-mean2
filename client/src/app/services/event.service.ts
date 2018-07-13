@@ -42,7 +42,7 @@ export class EventService{
 
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.get(this.url+'/event/'+id,options).map(
+        return this._http.get(this.url+'event/'+id,options).map(
             res=>res.json()
         );
 
@@ -55,7 +55,7 @@ export class EventService{
             'Authorization':token
 
         });
-        return this._http.put(this.url+'/event/'+id,params,{headers:headers}).map(res=>res.json());
+        return this._http.put(this.url+'event/'+id,params,{headers:headers}).map(res=>res.json());
 
     }
     deleteEvento(token,id:string){
@@ -65,7 +65,7 @@ export class EventService{
 
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.delete(this.url+'/event/'+id,options).map(
+        return this._http.delete(this.url+'event/'+id,options).map(
             res=>res.json()
         );
 

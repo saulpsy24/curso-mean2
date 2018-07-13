@@ -21,7 +21,7 @@ export class ClienteEditComponent implements OnInit {
     constructor(
         private _clienteService: ClienteService
     ) {
-        this.titulo = 'Usuario.';
+        this.titulo = 'Usuario';
         this.url=GLOBAL.url;
 
         

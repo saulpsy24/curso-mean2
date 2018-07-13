@@ -17,7 +17,7 @@
                 <div class="row">
                     
     
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <h2>Por provincia</h2>
                         <form id="filter">
                                 <input #name="ngModel" name="term" type="text" [(ngModel)]="term" class="form-control" />
@@ -25,7 +25,7 @@
     
                         </form>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <h2>Por marca</h2>
                         <div class="dropdown">
                             <select class="form-control"  [(ngModel)]="brand" >
@@ -38,6 +38,17 @@
                                 </select>                            
                         </div>
                     </div>
+                    <div class="col-md-4">
+                            <h2>Visibilidad</h2>
+                            <div class="dropdown">
+                                <select *ngIf="identity.role=='ROLE_ADMIN'" class="form-control"  [(ngModel)]="visible" >
+        
+                                        <option ng-selected="selected">Selecciona...</option>
+                                        <option value="oculto">Ocultos</option>
+                                        <option value="visible">Visibles</option>
+                                    </select>                            
+                            </div>
+                        </div>
     
                 </div>
             </div>
@@ -56,7 +67,7 @@
         <div class="row card2">
     
     
-            <div class="page-item col-md-3 animated fadeInRight" *ngFor="let event of eventos | filter:term:brand">
+            <div class="page-item col-md-3 animated fadeInRight" *ngFor="let event of eventos | filter:term:brand: visible">
                 <!-- Card Projects -->
     
                 <div class="card">
@@ -77,8 +88,8 @@
     
                     <div class="card-action">
                         <div class="alinear">
-                                <label><i class="fas fa-user-tie"></i> Nombre del Evento: </label><br>
                             <a class="card-title" [routerLink]="['/detalle-evento',event._id] ">
+                                <i class="fas fa-user-tie"> </i>
                                 {{event.title}}
                             </a>
     
