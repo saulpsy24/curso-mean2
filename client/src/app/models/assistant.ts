@@ -3,6 +3,7 @@
         constructor(
        
          public cliente: Object,
-         public turno: Object
+         public turno: Object,
+         public check: string
         ){}
     }

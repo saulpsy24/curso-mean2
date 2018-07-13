@@ -124,4 +124,8 @@ export class TurnodetailComponent implements OnInit {
         );
         popupWin.document.close();
     }
+
+    onSubmit(){
+        console.log(this.assistant);
+    }
 }

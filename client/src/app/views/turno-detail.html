@@ -8,30 +8,42 @@
         <h2>Evento: {{turno.event.title}}</h2>
         
         <hr>
+        <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
+            <table  class="table table-black">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Nombre del Turno</th>
+                    <th scope="col">Establecimiento</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col"> Asistencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let asistencias of assistant">
+                    
+                    <td scope="row">{{asistencias.cliente.name}}</td>
+                    <td>{{asistencias.cliente.surname}}</td>
+                    <td>{{asistencias.turno.name}}</td>
+                    <td>{{asistencias.cliente.nameEstablishment}}</td>
+                    <th >{{asistencias.cliente.code}}</th>
+                    <th>{{asistencias.check}}<input type="checkbox"  #check="ngModel" name="check" [(ngModel)]="asistencias.check" 
+                      class="form-control form-control-lg" ></th>
+                  </tr>
+      
+                </tbody>
+              </table>
+              <div class="row">
+                  <div class="col-md-4">
+                      <input type="submit" value="{{'Listar Asistencias'}}" class="btn btn-success" />
+                  </div>
+              </div>
+          
+        </form>
 
-        <table  class="table table-black">
-          <thead>
-            <tr>
-              
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellidos</th>
-              <th scope="col">Nombre del Turno</th>
-              <th scope="col">Establecimiento</th>
-              <th scope="col">Codigo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let asistencias of assistant">
-              
-              <td scope="row">{{asistencias.cliente.name}}</td>
-              <td>{{asistencias.cliente.surname}}</td>
-              <td>{{asistencias.turno.name}}</td>
-              <td>{{asistencias.cliente.nameEstablishment}}</td>
-              <th >{{asistencias.cliente.code}}</th>
-            </tr>
-
-          </tbody>
-        </table>
+        
 
       </div>
       <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>

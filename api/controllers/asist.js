@@ -47,6 +47,7 @@ function saveAsist(req, res) {
     var aforo2 = new Turno();
     asist.cliente = params.cliente;
     asist.turno = params.turno;
+    asist.check=params.check;
 
     Asist.findOne({
         'cliente': asist.cliente,
