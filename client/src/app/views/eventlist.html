@@ -93,10 +93,10 @@
                                 </select>                            
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" *ngIf="identity.role=='ROLE_ADMIN'">
                             <h2>Visibilidad</h2>
                             <div class="dropdown">
-                                <select *ngIf="identity.role=='ROLE_ADMIN'" class="form-control"  [(ngModel)]="visible" >
+                                <select  class="form-control"  [(ngModel)]="visible" >
         
                                         <option ng-selected="selected">Selecciona...</option>
                                         <option value="oculto">Ocultos</option>
