@@ -1,5 +1,5 @@
 import{Injectable}from '@angular/core';
-import{Http,Response,Headers}from'@angular/http';
+import{Http,Response,Headers,RequestOptions}from'@angular/http';
 import 'rxjs/add/operator/map';
 import{Observable}from 'rxjs/Observable';
 import{GLOBAL}from './global';
@@ -51,7 +51,18 @@ export class ClienteService{
         return this._http.put(this.url+'update-user/'+cliente_to_update._id,params,{headers:headers}).map(res => res.json());
         
     }
-    
+    getClientes(token){
+        let headers= new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.get(this.url+'get-clientes/',options).map(
+            res=>res.json()
+        );
+
+    }
     
     
     

@@ -26,6 +26,7 @@ import {TurnoEditComponent} from './components/turnoedit.component';
 import {AssistantaddComponent} from './components/asistencia-add.component';
 import {misEventosComponent} from './components/miseventos.component';
 import {TurnodetailComponent} from './components/turno-detail.component';
+import {adminPanelComponent} from './components/adminpanel.component';
 
 
 
@@ -49,7 +50,8 @@ import {TurnodetailComponent} from './components/turno-detail.component';
     EventeditComponent,
     TurnoAddComponent,
     AssistantaddComponent,
-    TurnodetailComponent
+    TurnodetailComponent,
+    adminPanelComponent
 
   ],
   imports: [

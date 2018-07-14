@@ -299,7 +299,7 @@ function uploadImageCliente(req, res) {
     var file_name = 'No Subido...';
     if (req.files) {
         var file_path = req.files.image.path;
-        var file_split = file_path.split('/');
+        var file_split = file_path.split('\\');
         var file_name = file_split[2];
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
@@ -469,6 +469,37 @@ function sacarcsv(req,res){
 }
 
 
+function getClientes(req, res) {
+    var clienteId = req.params.space;
+    if (!clienteId) {
+        //sacar todos los albums de la DB
+        var find = Cliente.find({}).sort('name');
+    } else {
+        //mostrar solamente los albums de ese artista
+        var find = Cliente.find({
+            _id: ObjectId(clienteId)
+        }).sort('name');
+    }
+    find.exec((err, clientes) => {
+        if (err) {
+            res.status(500).send({
+                message: 'error'
+            });
+        } else {
+            if (!clientes) {
+                res.status(404).send({
+                    message: 'no hay clientes asociadas'
+                });
+            } else {
+                res.status(200).send({
+                    cliente: clientes
+                });
+            }
+        }
+    });
+}
+
+
 module.exports = {
     savecliente,
     updatecliente,
@@ -476,5 +507,6 @@ module.exports = {
     uploadImageCliente,
     getImageFile,
     updateclienteAdmin,
-    sacarcsv
+    sacarcsv,
+    getClientes
 }
