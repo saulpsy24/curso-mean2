@@ -29,7 +29,8 @@ export class ClienteaddComponent implements OnInit {
         private _uploadService: UploadService
      
     ) {
-        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
+        this.title= 'Registar'
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
          this.url=GLOBAL.url;
         //  this.clientHeight = window.innerHeight; 
     }
@@ -38,6 +39,8 @@ export class ClienteaddComponent implements OnInit {
         // this.identity = this._clienteService.getidentity();
         // console.log(this.token);
         // console.log(this.identity);
+        
+        console.log('clienteadd.component.cargado');
 
 
     }
@@ -46,6 +49,14 @@ export class ClienteaddComponent implements OnInit {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
     // }
     public onSubmit() {
+<<<<<<< HEAD
+        console.log(this.cliente);
+    this._clienteService.register(this.cliente).subscribe(
+        response=>{
+            
+            if(!response.cliente){
+               this.errorMessage='Error en el Servidor';
+=======
         console.log(this.cliente);   
         this._route.params.forEach((params: Params) => {
             let id = params['id'];  
@@ -70,11 +81,30 @@ export class ClienteaddComponent implements OnInit {
                             console.log(error );
                         }
             }
+>>>>>>> e4f230750dcfbe88f988104b5616dabe515b7cf5
 
-        ) 
-    });
+            }else{
+                this.cliente =response.cliente;
+                this._router.navigate(['/cliente-edit',response.cliente._id]); 
+                
+                this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
+                this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+               
+                
+            }
 
-    }
+        },
+        error=>{
+            var errorMessage= <any> error;
+            if(errorMessage!=null){
+                var body = JSON.parse(error._body);
+                this.errorMessage=body.message
+                console.log(error);
+            }  
+      }
+    )
+}
+        
 }
 
 

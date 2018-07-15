@@ -144,6 +144,16 @@
                         <input type="file" placeholder="Subir Ficha.." (change)="fileChangeEvent($event)" />
                     </p>
                 </div> -->
+                <div class="col-md-5" *ngIf="is_edit">
+                        <div class="espacio_image-for-edit" *ngIf="cliente.image && cliente.image != 'null'">
+                            <img src="{{url +'get-image-user/'+ cliente.image}}" />
+                        </div>
+    
+                        <p>
+                            <label>Sube la imagen del Evento</label>
+                            <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($cliente)" />
+                        </p>
+                    </div>
                 <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form>

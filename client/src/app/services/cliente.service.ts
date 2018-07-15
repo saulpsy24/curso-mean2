@@ -3,6 +3,7 @@ import{Http,Response,Headers,RequestOptions}from'@angular/http';
 import 'rxjs/add/operator/map';
 import{Observable}from 'rxjs/Observable';
 import{GLOBAL}from './global';
+import { Cliente } from '../models/cliente';
 
 @Injectable()
 export class ClienteService{
@@ -51,6 +52,16 @@ export class ClienteService{
         return this._http.put(this.url+'update-user/'+cliente_to_update._id,params,{headers:headers}).map(res => res.json());
         
     }
+    editCliente(token, id:string,cliente: Cliente){
+        let params = JSON.stringify(cliente);
+        let headers= new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+
+        });
+        return this._http.put(this.url+'update-user/'+id,params,{headers:headers}).map(res=>res.json());
+
+    }
     getClientes(token){
         let headers= new Headers({
             'Content-Type':'application/json',
@@ -76,6 +87,15 @@ export class ClienteService{
         });
         let options = new RequestOptions({headers:headers});
         return this._http.delete(this.url+'cliente/'+id,options)
+                        .map(res=>res.json());
+    }
+    getCliente(token,id:string){
+        let headers = new Headers({
+            'Content-type' : 'application/json',
+            'Authorization' : token
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.get(this.url+'cliente/'+id,options)
                         .map(res=>res.json());
     }
 
