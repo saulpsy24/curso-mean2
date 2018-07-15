@@ -20,11 +20,30 @@
 
         </div>
         <div class="col-lg-8">
-            <div class="col-md-3">
-                <label>Nif/Cif: {{cliente.nifCif}}</label>
-            </div><div class="col-md-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Nif/Cif: {{cliente.nifCif}}</label>
+                </div>
+                <div class="col-md-3">
                     <label>email: {{cliente.email}}</label>
                 </div>
+                <div class="col-md-3">
+                    <label>Establecimiento: {{cliente.nameEstablishment}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Teléfono: {{cliente.phone}}</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Rol: {{cliente.role}}</label>
+                </div>
+                <div class="col-md-3">
+                    <div *ngIf="cliente.file && cliente.file !=null">
+                        <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+cliente.file}}">
+                            <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
