@@ -58,7 +58,7 @@ export class ClienteaddComponent implements OnInit {
 
             }else{
                 this.cliente =response.cliente;
-                this._router.navigate(['/clienteedit',response.cliente._id]); 
+                this._router.navigate(['/editarcliente',response.cliente._id]); 
                 
                 this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
                 this.cliente = new Cliente('', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');

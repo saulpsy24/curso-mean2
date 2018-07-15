@@ -28,7 +28,8 @@ import {misEventosComponent} from './components/miseventos.component';
 import {TurnodetailComponent} from './components/turno-detail.component';
 import {adminPanelComponent} from './components/adminpanel.component';
 import {ClienteaddComponent} from './components/cliente-add.component';
-import {ClienteDetailComponent} from './components/detallecliente.component'
+import {ClienteDetailComponent} from './components/detallecliente.component';
+import {ClienteEditarComponent} from './components/editarclienteadmin.component';
 
 
 
@@ -55,7 +56,8 @@ import {ClienteDetailComponent} from './components/detallecliente.component'
     AssistantaddComponent,
     TurnodetailComponent,
     adminPanelComponent,
-    ClienteaddComponent
+    ClienteaddComponent,
+    ClienteEditarComponent
 
   ],
   imports: [
