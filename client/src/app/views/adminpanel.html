@@ -114,62 +114,47 @@
 
     </div>
     <div class="row card2">
+            <table  class="table table-black">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">Foto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Establecimiento</th>
+                        <th scope="col">Provincia</th>
+                        <th scope="col">Detalle</th>
+                        <th scope="col"> Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                   <tr class="animated bounceInRight" *ngFor="let cliente of clientes | filter:term:brand:visible:name:email:establecimiento:phone">
+                        <td scope="row"><img src="{{url+'get-image-user/'+cliente.image}}" class="useravatarnav"></td>
+                        <td >{{cliente.name}}</td>
+                        <td>{{cliente.surname}}</td>
+                        <td>{{cliente.nameEstablishment}}</td>
+                        <td>{{cliente.province}}</td>
+                        <td ><a class="btn btn-primary btn-md" [routerLink]="['/detalle-cliente',cliente._id] "><i class="fas fa-info-circle"></i> Más..</a></td>
+                        <td> <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+
+                                <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-md btn-warning">
+                                    <i class="fas fa-edit"></i>Editar</a>
+                                <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-md btn-danger">
+                                    <i class="fas fa-window-close"></i>
+                                    Borrar</a>
+        
+                            </div> <div class="seguro animated fadeIn" *ngIf="confirmado==cliente._id">
+                                    <a (click)="onDeleteEvento(cliente._id)" class="btn btn-md btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
+                                    <a  (click)="onCancelEvento()" class="btn btn-md btn-secondary"><i class= "fas fa-ban"></i> Cancelar</a>
+                                </div></td>
+                        
+                      </tr>
+          
+                    </tbody>
+                  </table>
 
 
-        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let cliente of clientes | filter:term:brand:visible:name:email:establecimiento:phone">
-            <!-- Card Projects -->
-
-            <div class="card">
-                <div class="card-image" [routerLink]="['/detalle-evento',cliente._id] ">
-                    <div class="coantainer">
-                        <img src="{{ url +'/get-image-user/' + cliente.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
-                        <div class="middles">
-                            <div class="texto">
-                                
-                               <p>  <button class="btn btn-danger">
-                                Ver más.
-                            </button>
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="card-action">
-                    <div class="alinear">
-                        <a class="card-title" [routerLink]="['/detalle-evento',cliente._id] ">
-                            <!-- <i class="fas fa-user-tie"> </i> -->
-                            {{cliente.name}} {{cliente.surname}}
-                        </a>
-
-                        <hr>
-
-
-                    </div>
-                    <p>
-                       <label><i class="fas fa-location-arrow"></i> Provincia: </label> {{cliente.province}}
-                    </p>
-
-                    <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-
-                        <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-md btn-warning">
-                            <i class="fas fa-edit"></i>Editar</a>
-                        <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-md btn-danger">
-                            <i class="fas fa-window-close"></i>
-                            Borrar</a>
-
-                    </div>
-                    <div class="seguro animated fadeIn" *ngIf="confirmado==cliente._id">
-                        <a (click)="onDeleteEvento(cliente._id)" class="btn btn-md btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                        <a  (click)="onCancelEvento()" class="btn btn-md btn-secondary"><i class= "fas fa-ban"></i> Cancelar</a>
-                    </div>
-                </div>
-
-            </div>
-
-
-        </div>
+     
     </div>
     <hr>
     <br>

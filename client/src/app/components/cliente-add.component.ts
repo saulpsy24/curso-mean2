@@ -49,12 +49,39 @@ export class ClienteaddComponent implements OnInit {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
     // }
     public onSubmit() {
+<<<<<<< HEAD
         console.log(this.cliente);
     this._clienteService.register(this.cliente).subscribe(
         response=>{
             
             if(!response.cliente){
                this.errorMessage='Error en el Servidor';
+=======
+        console.log(this.cliente);   
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];  
+        this._clienteService.register(this.cliente).subscribe(
+            response=>{
+                let client = response.cliente;
+                this.cliente = client;
+                if(!client._id){
+                    this.errorMessage = 'Error al registrarse'
+                }else{
+                    this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
+                    alert('El registro se creo correctamente');
+                    this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+                    // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
+                }
+            },
+            error=>{
+                var errorMessage = <any>error;
+                        if (errorMessage != null) {
+                            var body = JSON.parse(error._body);
+                            this.errorMessage = body.message;
+                            console.log(error );
+                        }
+            }
+>>>>>>> e4f230750dcfbe88f988104b5616dabe515b7cf5
 
             }else{
                 this.cliente =response.cliente;

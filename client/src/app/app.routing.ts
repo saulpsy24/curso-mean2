@@ -31,11 +31,13 @@ import {TurnodetailComponent} from './components/turno-detail.component';
 
 import {misEventosComponent} from './components/miseventos.component';
 import { adminPanelComponent } from './components/adminpanel.component';
+import { ClienteDetailComponent } from './components/detallecliente.component';
 
 const appRoutes: Routes = [
 
     { path: '', component: ClienteEditComponent },
     {path:'editar-turno/:id',component:TurnoEditComponent},
+    {path:'detalle-cliente/:id',component:ClienteDetailComponent},
     
     {path:'panel-admin',component:adminPanelComponent},
    
