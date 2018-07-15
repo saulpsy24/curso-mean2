@@ -1,6 +1,6 @@
 
- <div class="row justify-content-center align-items-center loginform" style="height: 70%;" *ngIf="!identity"> 
-
+ <!-- <div class="row justify-content-center align-items-center loginform" style="height: 100%;" *ngIf="!identity">  -->
+        <div class="row justify-content-center" style="height: 100%;" *ngIf="!identity"> 
 
     <div class="col-lg-6">
         <div class="justify-content-center align-items-center">
@@ -20,7 +20,7 @@
                     El nombre es obligatorio!
                 </span>
             </p>
-            <!-- <p>
+            <p>
                 <label>Nombre del Establecimiento:</label>
                 <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
                 class="form-control" required placeholder="Introduce el nombre del establecimiento"
@@ -37,7 +37,7 @@
                 <span *ngIf="!surname.valid && surname.touched">
                     El Apellido es obligatorio!
                 </span>
-            </p> -->
+            </p>
             <p>
                 <label>Correo:</label>
                 <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
@@ -46,16 +46,16 @@
                     El email es obligatorio!
                 </span>
             </p>
-            <!-- <p>
+            <p>
                 <label>Codigo:</label>
                 <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.ecodemail" class="form-control"
                  required placeholder="Introduce el codigo"       />
                 <span *ngIf="!code.valid && code.touched">
                     El codigo es obligatorio!
                 </span>
-            </p> -->
+            </p>
            
-            <!-- <p>
+            <p>
                 <label>Teléfono:</label>
                 <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control"
                     required placeholder="Introduce el Teléfono"       />
@@ -132,8 +132,9 @@
                         <option value="0">No</option>
                     </select>
 
-                </div> -->
-                <div class="col-md-5" *ngIf="is_edit">
+                </div>
+                <br>
+                <div class="col-md-5">
                     <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
                         <img src="{{url +'get-image-cliente/'+ evento.image}}" />
                     </div>
@@ -143,6 +144,7 @@
                         <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
                     </p>
                 </div>
+                <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form>
 
