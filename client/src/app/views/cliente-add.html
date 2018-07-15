@@ -9,7 +9,7 @@
  
 
         <div *ngIf="errorMessage" class="alert alert-success">
-            <strong>Ups!</strong>{{errorMessage}}
+            <strong>{{errorMessage}}</strong>
         </div> 
         <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
             <p>
@@ -134,7 +134,7 @@
 
                 </div>
                 <br>
-                <div class="col-md-5">
+                <!-- <div class="col-md-5">
                     <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
                         <img src="{{url +'get-image-cliente/'+ evento.image}}" />
                     </div>
@@ -143,7 +143,7 @@
                         <label>Subir la ficha del Usuario</label>
                         <input type="file" placeholder="Subir Ficha.." (change)="fileChangeEvent($event)" />
                     </p>
-                </div>
+                </div> -->
                 <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form>
