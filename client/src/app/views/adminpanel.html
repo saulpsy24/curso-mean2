@@ -15,83 +15,89 @@
         </div>
         <div class="col-lg-9">
             <div class="row">
-                Filtrar:
+               <h3>Filtrar:</h3> 
             </div>
             <div class="row">
-                
-
-                <div class="col-md-4">
-                    <h2>Por provincia</h2>
-                    <form id="filter">
-                            <select class="form-control" name="term" [(ngModel)]="term">
-                                <option selected="selected">Selecciona...</option>
-                                <option value="Albacete">Albacete</option>
-                                <option value="Alicante/Alacant">Alicante/Alacant</option>
-                                <option value="Almería">Almería</option>
-                                <option value="Araba/Álava"> Araba/Álava</option>
-                                <option value="Araba/Álava"> Araba/Álava</option>
-                                <option value="Asturias"> Asturias</option>
-                                <option value="Ávila"> Ávila</option>
-                                <option value="Badajoz"> Badajoz</option>
-                                <option value="Balears, Illes"> Balears, Illes</option>
-                                <option value="Barcelona"> Barcelona</option>
-                                <option value="Bizkaia"> Bizkaia</option>
-                                <option value="Burgos"> Burgos</option>
-                                <option value="Cáceres"> Cáceres</option>
-                                <option value="Cádiz"> Cádiz</option>
-                                <option value="Cantabria"> Cantabria</option>
-                                <option value="Castellón/Castelló"> Castellón/Castelló</option>
-                                <option value="Ceuta"> Ceuta</option>
-                                <option value="Ciudad Real"> Ciudad Real</option>
-                                <option value="Córdoba"> Córdoba</option>
-                                <option value="Coruña,A"> Coruña,A</option>
-                                <option value="Cuenca"> Cuenca</option>
-                                <option value="Gipuzkoa"> Gipuzkoa</option>
-                                <option value="Girona"> Girona</option>
-                                <option value="Granada"> Granada</option>
-                                <option value="Guadalajara"> Guadalajara</option>
-                                <option value="Huelva"> Huelva</option>
-                                <option value="Huesca"> Huesca</option>
-                                <option value="Jaén"> Jaén</option>
-                                <option value="León"> León</option>
-                                <option value="Lleidra"> Lleidra</option>
-                                <option value="Lugo"> Lugo</option>
-                                <option value="Madrid"> Madrid</option>
-                                <option value="Málaga"> Málaga</option>
-                                <option value="Melilla"> Melilla</option>
-                                <option value="Murcia"> Murcia</option>
-                                <option value="Navarra"> Navarra</option>
-                                <option value="Ourense"> Ourense</option>
-                                <option value="Palencia"> Palencia</option>
-                                <option value="Palmas, Las"> Palmas, Las</option>
-                                <option value="Pontevedra"> Pontevedra</option>
-                                <option value="Rioja, La"> Rioja, La</option>
-                                <option value="Salamanca"> Salamanca</option>
-                                <option value="Santa Cruz de Tenerife"> Santa Cruz de Tenerife</option>
-                                <option value="Segovia"> Segovia</option>
-                                <option value="Sevilla"> Sevilla</option>
-                                <option value="Soria"> Soria</option>
-                                <option value="Tarragona"> Tarragona</option>
-                                <option value="Teruel"> Teruel</option>
-                                <option value="Toledo"> Toledo</option>
-                                <option value="Valencia/Valéncia"> Valencia/Válencia</option>
-                                <option value="Valladolid"> Valladolid</option>
-                                <option value="Zamora"> Zamora</option>
-                                <option value="Zaragoza"> Zaragoza</option>
-                            </select>
-                            
-                            <div class="col-md-12">
-                                    <h2>Por nombre</h2>
-                                        <input type="text" name="busca"  [(ngModel)]="busca" class="form-control">
-                                    
-                                </div>
-
-                    </form>
+                <div class="col-xs-12 col-sm-8 col-md-2"><label>Nombre:</label>
+                    <input [(ngModel)]="name" type="text" [placeholder]="'Por Nombre'" class="form-control">
                     
+
                 </div>
-              
-               
-                
+                <div class="col-xs-12 col-sm-8 col-md-2"><label>eMail</label>
+                        <input [(ngModel)]="email" type="text" [placeholder]="'Por e-Mail'" class="form-control">
+                        
+    
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-2"><label>Establecimiento</label>
+                            <input [(ngModel)]="establecimiento" [placeholder]="'Por Establecimiento'" type="text" class="form-control">
+                            
+        
+                        </div>
+                        <div class="col-md-2"><label>Provincia</label>
+                                <select class="form-control" name="term" [(ngModel)]="term">
+                                        <option selected="selected">Selecciona...</option>
+                                        <option value="Albacete">Albacete</option>
+                                        <option value="Alicante/Alacant">Alicante/Alacant</option>
+                                        <option value="Almería">Almería</option>
+                                        <option value="Araba/Álava"> Araba/Álava</option>
+                                        <option value="Araba/Álava"> Araba/Álava</option>
+                                        <option value="Asturias"> Asturias</option>
+                                        <option value="Ávila"> Ávila</option>
+                                        <option value="Badajoz"> Badajoz</option>
+                                        <option value="Balears, Illes"> Balears, Illes</option>
+                                        <option value="Barcelona"> Barcelona</option>
+                                        <option value="Bizkaia"> Bizkaia</option>
+                                        <option value="Burgos"> Burgos</option>
+                                        <option value="Cáceres"> Cáceres</option>
+                                        <option value="Cádiz"> Cádiz</option>
+                                        <option value="Cantabria"> Cantabria</option>
+                                        <option value="Castellón/Castelló"> Castellón/Castelló</option>
+                                        <option value="Ceuta"> Ceuta</option>
+                                        <option value="Ciudad Real"> Ciudad Real</option>
+                                        <option value="Córdoba"> Córdoba</option>
+                                        <option value="Coruña,A"> Coruña,A</option>
+                                        <option value="Cuenca"> Cuenca</option>
+                                        <option value="Gipuzkoa"> Gipuzkoa</option>
+                                        <option value="Girona"> Girona</option>
+                                        <option value="Granada"> Granada</option>
+                                        <option value="Guadalajara"> Guadalajara</option>
+                                        <option value="Huelva"> Huelva</option>
+                                        <option value="Huesca"> Huesca</option>
+                                        <option value="Jaén"> Jaén</option>
+                                        <option value="León"> León</option>
+                                        <option value="Lleidra"> Lleidra</option>
+                                        <option value="Lugo"> Lugo</option>
+                                        <option value="Madrid"> Madrid</option>
+                                        <option value="Málaga"> Málaga</option>
+                                        <option value="Melilla"> Melilla</option>
+                                        <option value="Murcia"> Murcia</option>
+                                        <option value="Navarra"> Navarra</option>
+                                        <option value="Ourense"> Ourense</option>
+                                        <option value="Palencia"> Palencia</option>
+                                        <option value="Palmas, Las"> Palmas, Las</option>
+                                        <option value="Pontevedra"> Pontevedra</option>
+                                        <option value="Rioja, La"> Rioja, La</option>
+                                        <option value="Salamanca"> Salamanca</option>
+                                        <option value="Santa Cruz de Tenerife"> Santa Cruz de Tenerife</option>
+                                        <option value="Segovia"> Segovia</option>
+                                        <option value="Sevilla"> Sevilla</option>
+                                        <option value="Soria"> Soria</option>
+                                        <option value="Tarragona"> Tarragona</option>
+                                        <option value="Teruel"> Teruel</option>
+                                        <option value="Toledo"> Toledo</option>
+                                        <option value="Valencia/Valéncia"> Valencia/Válencia</option>
+                                        <option value="Valladolid"> Valladolid</option>
+                                        <option value="Zamora"> Zamora</option>
+                                        <option value="Zaragoza"> Zaragoza</option>
+                                    </select>
+
+                        </div>
+                        <div class="col-md-2">
+                            <label>Teléfono</label>
+                            <input [(ngModel)]="phone" [placeholder]="'Por Telefono'" type="text" class="form-control">
+                            
+                        </div>
+
 
             </div>
         </div>
@@ -110,7 +116,7 @@
     <div class="row card2">
 
 
-        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let cliente of clientes | filter: term: busca">
+        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let cliente of clientes | filter:term:brand:visible:name:email:establecimiento:phone">
             <!-- Card Projects -->
 
             <div class="card">
@@ -147,16 +153,16 @@
 
                     <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
 
-                        <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-sm btn-warning">
+                        <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-md btn-warning">
                             <i class="fas fa-edit"></i>Editar</a>
-                        <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-sm btn-danger">
+                        <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-md btn-danger">
                             <i class="fas fa-window-close"></i>
                             Borrar</a>
 
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==cliente._id">
-                        <a (click)="onDeleteEvento(cliente._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                        <a  (click)="onCancelEvento()" class="btn btn-sm btn-secondary"><i class= "fas fa-ban"></i> Cancelar</a>
+                        <a (click)="onDeleteEvento(cliente._id)" class="btn btn-md btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
+                        <a  (click)="onCancelEvento()" class="btn btn-md btn-secondary"><i class= "fas fa-ban"></i> Cancelar</a>
                     </div>
                 </div>
 

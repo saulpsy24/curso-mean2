@@ -29,7 +29,7 @@ export class ClienteaddComponent implements OnInit {
         private _uploadService: UploadService
      
     ) {
-        this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER');
+        this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
          this.url=GLOBAL.url;
         //  this.clientHeight = window.innerHeight; 
     }
@@ -57,7 +57,7 @@ export class ClienteaddComponent implements OnInit {
                     this.errorMessage = 'Error al registrarse'
                 }else{
                     this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER');
+                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
                     // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
                 }
             },

@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(items: Array<any>, term: string, brand: string, visible: string,busca: string) {
+    transform(items: Array<any>, term: string, brand: string, visible: string,name:string,email:string,establecimiento:string,phone:string) {
         if (items && items.length) {
             return items.filter(item => {
                 if(item.province){
@@ -23,13 +23,24 @@ export class FilterPipe implements PipeTransform {
                     if (visible && item.visible.toLowerCase().indexOf(visible.toLowerCase()) === -1) {
                         return false;
                     }
+                }if (item.name) {
+                    if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1) {
+                        return false;
+                    }
                 }
-                if(item.name){
-                    console.log(busca)
-                if (busca && item.email.toLowerCase().indexOf(busca.toLowerCase()) === -1) {
-                    
-                    return false;
-                }}
+                if (item.email) {
+                    if (email && item.email.toLowerCase().indexOf(email.toLowerCase()) === -1) {
+                        return false;
+                    }
+                } if (item.nameEstablishment) {
+                    if (establecimiento && item.nameEstablishment.toLowerCase().indexOf(establecimiento.toLowerCase()) === -1) {
+                        return false;
+                    }
+                }if (item.phone) {
+                    if (phone && item.phone.indexOf(phone) === -1) {
+                        return false;
+                    }
+                }
                 return true;
             })
         }

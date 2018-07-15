@@ -27,6 +27,7 @@ export class adminPanelComponent implements OnInit {
     public alertMessage;
     public asistencias: Assistant[];
     public clientes:Cliente[];
+    public busca:String;
 
     constructor(
         private _route: ActivatedRoute,
@@ -41,6 +42,8 @@ export class adminPanelComponent implements OnInit {
         this.url = GLOBAL.url;
         this.next_page = 1;
         this.prev_page = 1;
+        this.busca="Cliente"
+        
 
     }
 
@@ -131,6 +134,39 @@ public showoptions=0;
             }
 
         );
+
+    }
+
+    onSearchName(searchText){
+        console.log(searchText);
+        this._clienteService.filterName(this.token,searchText).subscribe(
+            response => {
+
+                if (!response.cliente) {
+                    this.alertMessage ('Error en el Servidor') ;
+                    console.log('if delete');
+                    
+
+                } else {
+                    this.clientes=response.cliente;
+                    console.log('daniel'+response.cliente);
+                    console.log('else delete');
+                }
+
+                
+            },
+            error => {
+                var errorMessage = <any>error;
+                if (errorMessage != null) {
+                    var body = JSON.parse(error._body);
+                    this.alertMessage = body.message;
+                    console.log(error);
+                    console.log('error daniel');
+                }
+            }
+
+        );
+
 
     }
 

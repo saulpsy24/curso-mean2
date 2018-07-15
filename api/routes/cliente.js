@@ -5,6 +5,8 @@ var api = express.Router();
 var md_auth= require('../middleware/auth')
 var multipart = require('connect-multiparty');
 var md_upload = multipart({uploadDir:'./uploads/avatar'});
+var md_upload1 = multipart({uploadDir:'./uploads/fichas'});
+
 
 
 api.post('/register', UserController.savecliente);
@@ -16,6 +18,11 @@ api.get('/getreporte',UserController.sacarcsv);
 api.get('/get-clientes',md_auth.ensureAuth,UserController.getClientes)
 api.put('/update-user-admin/:id', md_auth.ensureAuth, UserController.updateclienteAdmin);
 api.delete('/cliente/:id', md_auth.ensureAuth, UserController.deleteCliente);
+api.get('/clientenombre/:name',md_auth.ensureAuth,UserController.getClienteName);
+
+
+api.post('/upload-ficha/:id',[md_auth.ensureAuth,md_upload1], UserController.uploadFile);
+api.get('/get-ficha/:file',UserController.getFile);
 
 //api.get('/req',UserController.getRequests);
 
