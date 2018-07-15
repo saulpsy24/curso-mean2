@@ -29,7 +29,8 @@ export class ClienteaddComponent implements OnInit {
         private _uploadService: UploadService
      
     ) {
-        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
+        this.title= 'Registar'
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
          this.url=GLOBAL.url;
         //  this.clientHeight = window.innerHeight; 
     }
@@ -38,6 +39,8 @@ export class ClienteaddComponent implements OnInit {
         // this.identity = this._clienteService.getidentity();
         // console.log(this.token);
         // console.log(this.identity);
+        
+        console.log('clienteadd.component.cargado');
 
 
     }
@@ -46,39 +49,35 @@ export class ClienteaddComponent implements OnInit {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
     // }
     public onSubmit() {
-        console.log(this.cliente);   
-        this._route.params.forEach((params: Params) => {
-            let id = params['id'];  
-        this._clienteService.register(this.cliente).subscribe(
-            response=>{
-                let client = response.cliente;
-                this.cliente = client;
-                if(!client._id){
-                    this.errorMessage = 'Error al registrarse'
-                }else{
-                    this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-<<<<<<< HEAD
-                    alert('El registro se creo correctamente');
-                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
-=======
-                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','','ROLE_USER','');
->>>>>>> 92e07133e8eab7efd1584ac87be079b49e422113
-                    // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
-                }
-            },
-            error=>{
-                var errorMessage = <any>error;
-                        if (errorMessage != null) {
-                            var body = JSON.parse(error._body);
-                            this.errorMessage = body.message;
-                            console.log(error );
-                        }
+        console.log(this.cliente);
+    this._clienteService.register(this.cliente).subscribe(
+        response=>{
+            
+            if(!response.cliente){
+               this.errorMessage='Error en el Servidor';
+
+            }else{
+                this.cliente =response.cliente;
+                this._router.navigate(['/cliente-edit',response.cliente._id]); 
+                
+                this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
+                this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+               
+                
             }
 
-        ) 
-    });
-
-    }
+        },
+        error=>{
+            var errorMessage= <any> error;
+            if(errorMessage!=null){
+                var body = JSON.parse(error._body);
+                this.errorMessage=body.message
+                console.log(error);
+            }  
+      }
+    )
+}
+        
 }
 
 

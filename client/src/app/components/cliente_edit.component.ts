@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClienteService } from '../services/cliente.service';
 import { Cliente } from '../models/cliente';
-import {GLOBAL} from '../services/global'
+import {GLOBAL} from '../services/global';
+
+import { UploadService } from '../services/upload.service';
 
 @Component({
 
     selector: 'cliente-edit',
-    templateUrl: '../views/cliente-edit.html',
-    providers: [ClienteService]
+    templateUrl: '../views/cliente-add.html',
+    providers: [ClienteService,UploadService]
 })
 
 export class ClienteEditComponent implements OnInit {
@@ -15,78 +18,109 @@ export class ClienteEditComponent implements OnInit {
     public cliente: Cliente;
     public identity;
     public token;
-    public AlertMessage;
+    public errorMessage;
     public url : string;
+    public is_edit;
 
     constructor(
-        private _clienteService: ClienteService
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private _clienteService: ClienteService,
+        private _uploadService: UploadService
     ) {
-        this.titulo = 'Usuario';
-        this.url=GLOBAL.url;
-
+        this.titulo = 'Actualiza Usuario';
         
-        this.cliente = this.identity;
+        this.is_edit = true;
+        this.url=GLOBAL.url;
+        // this.cliente = this.identity;
 
+    }
+    public filesToUpload:Array<File>;
+    fileChangeEvent(fileInput:any){
+        this.filesToUpload = <Array<File>>fileInput.target.files;
     }
 
     ngOnInit() {
-        this.token = this._clienteService.getToken();
-        this.identity = this._clienteService.getidentity();
-
-        this.cliente=this.identity;
-    }
-    onSubmit(){
         
-        this._clienteService.update_cliente(this.cliente).subscribe(
-            response =>{
-               // this.cliente = response.cliente;
-                if(!response.cliente){
-                    this.AlertMessage ='El usuario no se ha actualizado';
-                }else{
-                   
-                    this.AlertMessage ='El usuario se ha actualizado';
-                    document.getElementById("identity_name").innerHTML =this.cliente.name;
-                    //document.getElementById("identity_name").innerHTML =this.cliente.surname;
-                    localStorage.setItem('identity',JSON.stringify(this.cliente));
-                    if(!this.filesToUpload){
-                        //Redireccion
+        console.log('clienteedit.component.cargado');
+        //lamar usuario por id
+        this.getUsuario();
+    }
 
-                    }else{
-                        this.makeFileRequest(this.url+'upload-image-user/'+this.cliente._id,[],this.filesToUpload).then(
-                            (result:any)=>{
-                                this.cliente.image=result.image;
-                                localStorage.setItem('identity',JSON.stringify(this.cliente));
-                                let image_path = this.url+'get-image-user/'+this.cliente.image;
-                                document.getElementById("user_image_logged").setAttribute('src',image_path);
+    getUsuario(){
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this._clienteService.getCliente(this.token, id).subscribe(
+                response => {
+                    if (!response.cliente) {
+                        this._router.navigate(['/']);
 
+                    } else {
+
+                        this.cliente = response.cliente;
+
+                    }
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        // this.alertMessage=body.message
+                        console.log(error);
+                    }
+
+                }
+            )
+
+        });
+    }
+
+    onSubmit(){
+        this._route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this._clienteService.editCliente(this.token,id, this.cliente).subscribe(
+                response => {
+
+                    if (!response.event) {
+                        this.errorMessage = 'Error en el Servidor';
+
+                    } else {
+                       // this.evento = response.event;
+                        //this._router.navigate(['/editar-evento'],response.evento._id);
+                        this.errorMessage = 'Evento Actualizado Correctamente';
+                        //subir foto
+                        this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
+                        .then(
+                            (result)=>{
+                                this._router.navigate(['/adminpanel']);
+
+                                
+                            },
+                            (error)=>{
+                                console.log(error);
 
                             }
+
                         );
-                        
                     }
-                   
+
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        this.errorMessage = body.message
+                        console.log(error);
+                    }
                 }
+            )
 
 
-            },
-            error=>{
-                
-                var errorMessage = <any>error;
-                if (errorMessage != null) {
-                    var body = JSON.parse(error._body);
-                    this.AlertMessage = body.message;
-                    console.log(error);
-            }
-        }
-        );
+        });
+        console.log(this.cliente);
     }
-    public filesToUpload: Array<File>;
 
-    fileChangeEvent(fileInput:any){
-        
-        this.filesToUpload=<Array<File>>fileInput.target.files;
-        
-    }
+   
     makeFileRequest(url:string,params:Array<string>,files:Array<File>){
         var token = this.token;
         return new Promise(function(resolve,reject){

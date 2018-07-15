@@ -193,10 +193,23 @@ function updatecliente(req, res) {
     var clienteId = req.params.id;
 
     var update = {
-        email: req.body.email,
-        image: req.body.image,
+        name: req.body.name,
+        nameEstablishment: req.body.nameEstablishment,
         surname: req.body.surname,
-        phone: req.body.phone
+        email: req.body.email,
+        code: req.body.code,
+        phone: req.body.phone,
+        zip: req.body.zip,
+        province: req.body.province,
+        nifCif: req.body.nifCif,
+        street: req.body.street,
+        image: req.body.image,
+        brandV: req.body.brandV,
+        brandRG: req.body.brandRG,
+        brandLR: req.body.brandLR,
+        brandSK: req.body.brandSK,
+        file: req.body.file
+
     };
 
     if (update.password) {
