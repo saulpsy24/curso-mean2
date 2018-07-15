@@ -54,16 +54,7 @@
                     El codigo es obligatorio!
                 </span>
             </p> -->
-            <div class="col-md-5" *ngIf="is_edit">
-                <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
-                    <img src="{{url +'get-image-event/'+ evento.image}}" />
-                </div>
-
-                <p>
-                    <label>Sube la imagen del Evento</label>
-                    <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
-                </p>
-            </div>
+           
             <!-- <p>
                 <label>Teléfono:</label>
                 <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control"
@@ -142,6 +133,16 @@
                     </select>
 
                 </div> -->
+                <div class="col-md-5" *ngIf="is_edit">
+                    <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
+                        <img src="{{url +'get-image-cliente/'+ evento.image}}" />
+                    </div>
+    
+                    <p>
+                        <label>Subir la ficha del Usuario</label>
+                        <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
+                    </p>
+                </div>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form>
 
