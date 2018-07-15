@@ -97,25 +97,28 @@ public showoptions=0;
         this.confirmado=id;
         this.showoptions=1;
     }
-    onCancelAsistencia(){
+    onCancelEvento(){
         this.confirmado=null;
         this.showoptions=0;
     }
 
-    onDeleteAsistencia(id){
+    onDeleteEvento(id){
         this.showoptions=0;
-        this._asistantService.deleteAsistencia(this.token,id).subscribe(
+        this._clienteService.onDeleteEvento(this.token,id).subscribe(
             response => {
 
-                if (!response.asist) {
+                if (!response.cliente) {
                     this.alertMessage ('Error en el Servidor') ;
+                    console.log('if delete');
                     
 
                 } else {
                     this.getclientes();
-                   
+                    console.log('daniel'+response.cliente);
+                    console.log('else delete');
                 }
 
+                
             },
             error => {
                 var errorMessage = <any>error;
@@ -123,6 +126,7 @@ public showoptions=0;
                     var body = JSON.parse(error._body);
                     this.alertMessage = body.message;
                     console.log(error);
+                    console.log('error daniel');
                 }
             }
 

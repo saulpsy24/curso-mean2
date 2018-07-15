@@ -63,6 +63,21 @@ export class ClienteService{
         );
 
     }
+    register(cliente){
+        let json = JSON.stringify(cliente);
+        let params =json;
+        let headers= new Headers ({'Content-Type':'application/json'});
+        return this._http.post(this.url+'register',params,{headers:headers}).map(res =>res.json());
+    }
+    onDeleteEvento(token,id:string){
+        let headers = new Headers({
+            'Content-type' : 'application/json',
+            'Authorization' : token
+        });
+        let options = new RequestOptions({headers:headers});
+        return this._http.delete(this.url+'detele/'+id,options)
+                        .map(res=>res.json());
+    }
     
     
     

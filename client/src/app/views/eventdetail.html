@@ -1,7 +1,7 @@
 <div *ngIf="evento">
   <div class="row card2">
-    <div class="col-lg-3">
-      <div class="card" style="width: 27rem;">
+    <!-- <div class="col-lg-3"> -->
+      <div class="card" style="width: 40rem;">
         <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}" *ngIf="evento.image && evento.image!=='null'"
           alt="Card image cap">
         <div class="card-body">
@@ -16,11 +16,11 @@
               <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
 
         </div>
-      </div>
+      <!-- </div> -->
 
-    </div>
+    <!-- </div>
     <div class="col-lg-9">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -55,14 +55,12 @@
     <script>$('.carousel').carousel({
         interval: 2000
       })</script>
-
-
-
+     -->
   </div>
 
-  <div class="row card2">
+  <!-- <div class="row card2"> -->
 
-
+      <!-- <div class="col-lg-9"> -->
     <div class="page-item col-md-3 animated fadeInRight" *ngFor="let turno of turnos">
       <!-- Card Projects -->
 
@@ -94,8 +92,13 @@
                 <br>
               </li>
               <li class="list-group-item">
+                  <label>
+                    <i class="fas fa-clock"></i> Hora de Fin:</label> {{turno.end_h}}
+                  <br>
+                </li>
+              <li class="list-group-item">
                 <label>
-                  <i class="fas fa-users"></i> Lugares Disponibles:</label> {{turno.aforo}}
+                  <i class="fas fa-users"></i> Plazas Disponibles:</label> {{turno.aforo}}
                 <br>
               </li>
             </ul>
@@ -134,8 +137,31 @@
 
 
     </div>
-  </div>
+  <!-- </div> -->
+  
 
 
 
 </div>
+<!-- <hr>
+  <br>
+  <br>
+  <br> -->
+  <br>
+  <div class="row">
+
+      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
+      </div>
+      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
+      </div>
+      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
+      </div>
+      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
+          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+      </div>
+
+  </div>
+  <hr>

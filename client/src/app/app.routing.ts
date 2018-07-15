@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Cliente   
 import { ClienteEditComponent } from './components/cliente_edit.component';
+import {ClienteaddComponent} from './components/cliente-add.component';
 
 //Import Espacio
 import { EspacioComponent } from './components/espacio.components';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     { path: 'event-add', component: EventaddComponent },
     {path:'crear-turno/:evento',component:TurnoAddComponent},
     {path:'assistant-add/:turno',component:AssistantaddComponent},
+    { path: 'cliente-add', component: ClienteaddComponent },
     { path: '**', component: HomeComponent },
 
 ];

@@ -15,6 +15,8 @@ api.get('/get-image-user/:imageFile',UserController.getImageFile);
 api.get('/getreporte',UserController.sacarcsv);
 api.get('/get-clientes',md_auth.ensureAuth,UserController.getClientes)
 api.put('/update-user-admin/:id', md_auth.ensureAuth, UserController.updateclienteAdmin);
+api.delete('/cliente/:id', md_auth.ensureAuth, UserController.deleteCliente);
+
 //api.get('/req',UserController.getRequests);
 
 module.exports=api;

@@ -1,0 +1,149 @@
+
+ <div class="row justify-content-center align-items-center loginform" style="height: 70%;" *ngIf="!identity"> 
+
+
+    <div class="col-lg-6">
+        <div class="justify-content-center align-items-center">
+            <h1> Registrar</h1>
+        </div>
+ 
+
+        <div *ngIf="errorMessage" class="alert alert-success">
+            <strong>Ups!</strong>{{errorMessage}}
+        </div> 
+        <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
+            <p>
+                <label>Nombre:</label>
+                <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name"
+                 class="form-control" required placeholder="Introduce el nombre" />
+                <span *ngIf="!name.valid && name.touched">
+                    El nombre es obligatorio!
+                </span>
+            </p>
+            <!-- <p>
+                <label>Nombre del Establecimiento:</label>
+                <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
+                class="form-control" required placeholder="Introduce el nombre del establecimiento"
+                />
+                <span *ngIf="!nameEstablishment.valid && nameEstablishment.touched">
+                    El nombre del establecimiento es obligatorio!
+                </span>
+            </p>
+            <p>
+                <label>Apellido:</label>
+                <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
+                 required placeholder="Introduce el apellido"
+                />
+                <span *ngIf="!surname.valid && surname.touched">
+                    El Apellido es obligatorio!
+                </span>
+            </p> -->
+            <p>
+                <label>Correo:</label>
+                <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
+                 required placeholder="Introduce tu e-mail" />
+                <span *ngIf="!email.valid && email.touched">
+                    El email es obligatorio!
+                </span>
+            </p>
+            <!-- <p>
+                <label>Codigo:</label>
+                <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.ecodemail" class="form-control"
+                 required placeholder="Introduce el codigo"       />
+                <span *ngIf="!code.valid && code.touched">
+                    El codigo es obligatorio!
+                </span>
+            </p> -->
+            <div class="col-md-5" *ngIf="is_edit">
+                <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
+                    <img src="{{url +'get-image-event/'+ evento.image}}" />
+                </div>
+
+                <p>
+                    <label>Sube la imagen del Evento</label>
+                    <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
+                </p>
+            </div>
+            <!-- <p>
+                <label>Teléfono:</label>
+                <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control"
+                    required placeholder="Introduce el Teléfono"       />
+                <span *ngIf="!code.valid && code.touched">
+                    El Teléfono es obligatorio!
+                </span>
+            </p>
+            <p>
+                <label>Zip:</label>
+                <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
+                    required placeholder="Introduce el Zip"       />
+                <span *ngIf="!zip.valid && zip.touched">
+                    El Zip es obligatorio!
+                </span>
+            </p>
+            <p>
+                <label>Provincia:</label>
+                <input type="text" #province="ngModel" name="province" [(ngModel)]="cliente.province" class="form-control"
+                    required placeholder="Introduce la Provincia"       />
+                <span *ngIf="!province.valid && province.touched">
+                    La Provincia es obligatoria!
+                </span>
+            </p>
+            <p>
+                <label>nifCif:</label>
+                <input type="text" #nifCif="ngModel" name="nifCif" [(ngModel)]="cliente.nifCif" class="form-control"
+                    required placeholder="Introduce el nifCif"       />
+                <span *ngIf="!nifCif.valid && nifCif.touched">
+                    El nifCif es obligatorio!
+                </span>
+            </p>
+            <p>
+                <label>Street:</label>
+                <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
+                    required placeholder="Introduce la street"       />
+                <span *ngIf="!street.valid && street.touched">
+                    La street es obligatoria!
+                </span>
+            </p>
+            <div class="col-md-4 col-xs-6">
+                    <br>
+
+                    <label for="brand">Marca:</label>
+                    <br>
+                    <p>Vichy:</p>
+                    <select class="form-control" id="brandV" #brandV="ngModel" name="brandV"
+                     [(ngModel)]="cliente.brandV" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <p>La Roche:</p>
+                    <select class="form-control" id="brandLR" #brandLR="ngModel" name="brandLR"
+                     [(ngModel)]="cliente.brandLR" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <p>Roger&Gallet:</p>
+                    <select class="form-control" id="brandRG" #brandRG="ngModel" name="brandRG"
+                     [(ngModel)]="cliente.brandRG" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <p>SkinCeuticals:</p>
+                    <select class="form-control" id="brandSK" #brandSK="ngModel" name="brandSK"
+                     [(ngModel)]="cliente.brandSK" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+
+                </div> -->
+            <input type="submit" value="Registrar" class="btn btn-primary">
+        </form>
+
+    </div>
+</div>

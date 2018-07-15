@@ -498,6 +498,111 @@ function getClientes(req, res) {
         }
     });
 }
+function deleteCliente(req, res) {
+
+
+    var cliente = new Cliente();
+
+    var aforo2 = new Turno();
+
+
+    var id = req.params.id;
+    // var id2 = req.params.turno;
+
+    // Asist.findById(id).populate({
+    //     path: 'turno'
+    // }).exec((err, asist) => {
+    //     if (err) {
+    //         res.status(500).send({
+    //             message: 'error en la peticion'
+    //         });
+    //     } else {
+    //         if (!asist) {
+    //             res.status(404).send({
+    //                 message: 'No existe el turno. '
+    //             });
+    //         } else {
+    //             Turno.findById(id2).exec((err, turnoactualizado) => {
+    //                 if (err) {
+    //                     res.status(500).send({
+    //                         message: 'error en la peticion'
+    //                     });
+
+    //                 } else {
+    //                     if (!turnoactualizado) {
+    //                         res.status(404).send({ message: 'No existe el turno.. ' });
+    //                     } else {
+    //                         var aforo;
+    //                         aforo = turnoactualizado.aforo;
+    //                         aforo = aforo + 1;
+    //                         Turno.findByIdAndUpdate(asist.turno, { aforo: aforo }, (err, turnoUpdated) => {
+    //                             if (err) {
+    //                                 res.status(500).send({
+    //                                     message: 'Error al actualizar Turno'
+    //                                 });
+    //                             } else {
+    //                                 if (!turnoUpdated) {
+    //                                     res.status(404).send({
+    //                                         message: 'No se pudo actualizar Turno'
+    //                                     });
+
+    //                                 } else {
+    //                                     Asist.findByIdAndRemove(id, (err, asistenciaRemovida) => {
+
+    //                                         if (err) {
+    //                                             res.status(500).send({
+    //                                                 message: 'Error al borrar asistencia'
+    //                                             });
+    //                                         } else {
+    //                                             if (!asistenciaRemovida) {
+    //                                                 res.status(404).send({
+    //                                                     message: 'asistencia no  se pudo eliminar'
+    //                                                 });
+    //                                             } else {
+    //                                                 res.status(200).send({
+    //                                                     asist: asistenciaRemovida
+    //                                                 });
+
+    //                                             }
+    //                                         }
+    //                                     });
+
+
+
+    //                                 }
+    //                             }
+    //                         });
+
+
+
+
+    //                     }
+    //                 }
+    //             });
+
+    //         }
+    //     }
+    // });
+    Cliente.findByIdAndRemove(id, (err, clienteRemovido) => {
+
+        if (err) {
+            res.status(500).send({
+                message: 'Error al borrar cliente'
+            });
+        } else {
+            if (!clienteRemovido) {
+                res.status(404).send({
+                    message: 'El cliente no  se pudo eliminar'
+                });
+            } else {
+                res.status(200).send({
+                    cliente: clienteRemovido
+                });
+
+            }
+        }
+    });
+}
 
 
 module.exports = {
@@ -508,5 +613,6 @@ module.exports = {
     getImageFile,
     updateclienteAdmin,
     sacarcsv,
-    getClientes
+    getClientes,
+    deleteCliente
 }

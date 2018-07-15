@@ -201,6 +201,7 @@ div{font-family: 'Roboto', sans-serif;
 	box-sizing: border-box;
 	border-radius: 15px;
 	background-clip: padding-box;
+	/* width: 40rem; */
 	transition: transform .2s; /* Animation */
   }
   .card:hover {

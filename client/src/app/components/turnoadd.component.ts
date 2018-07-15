@@ -29,7 +29,7 @@ export class TurnoAddComponent implements OnInit {
     ) {
         this.titulo = 'Nuevo Turno';
         this.url = GLOBAL.url;
-        this.turno = new Turno('', '', '', '', '', 50, '');
+        this.turno = new Turno('', '', '', '', '', 0, '');
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();

@@ -1,3 +1,4 @@
+<br/><hr/>
 <h1>{{titulo}}</h1>
 
 <div class="container">
@@ -5,9 +6,9 @@
     <div class="row card2">
 
         <div class="col-lg-3">
-            <h1>Eventos</h1>
-            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
-                Añadir Evento
+            <h1>Usuarios</h1>
+            <a [routerLink]="['/cliente-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-primary">
+                Añadir Usuario
                 <i class="fa fa-plus-circle"></i>
             </a>
 
@@ -132,7 +133,7 @@
                 <div class="card-action">
                     <div class="alinear">
                         <a class="card-title" [routerLink]="['/detalle-evento',cliente._id] ">
-                            <i class="fas fa-user-tie"> </i>
+                            <!-- <i class="fas fa-user-tie"> </i> -->
                             {{cliente.name}} {{cliente.surname}}
                         </a>
 
@@ -146,7 +147,7 @@
 
                     <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
 
-                        <a [routerLink]="['/eventedit',cliente._id] " class="btn btn-sm btn-warning">
+                        <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-sm btn-warning">
                             <i class="fas fa-edit"></i>Editar</a>
                         <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-sm btn-danger">
                             <i class="fas fa-window-close"></i>
@@ -155,7 +156,7 @@
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==cliente._id">
                         <a (click)="onDeleteEvento(cliente._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                        <a (click)="onCancelEvento()" class="btn btn-sm btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
+                        <a  (click)="onCancelEvento()" class="btn btn-sm btn-secondary"><i class= "fas fa-ban"></i> Cancelar</a>
                     </div>
                 </div>
 
