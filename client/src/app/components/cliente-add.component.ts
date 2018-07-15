@@ -57,12 +57,8 @@ export class ClienteaddComponent implements OnInit {
                     this.errorMessage = 'Error al registrarse'
                 }else{
                     this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-<<<<<<< HEAD
                     alert('El registro se creo correctamente');
-                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
-=======
-                    this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','','ROLE_USER','');
->>>>>>> 92e07133e8eab7efd1584ac87be079b49e422113
+                    this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
                     // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
                 }
             },
