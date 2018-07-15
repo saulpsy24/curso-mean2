@@ -628,6 +628,29 @@ function getClienteName(req, res) {
         }
     });
 }
+function getCliente(req, res) {
+    var id = req.params.id;
+
+
+
+    Cliente.findById(id).exec((err, cliente) => {
+        if (err) {
+            res.status(500).send({
+                message: 'error en la peticion'
+            });
+        } else {
+            if (!cliente) {
+                res.status(404).send({
+                    message: 'No existe el evento'
+                });
+            } else {
+                res.status(200).send({
+                    cliente
+                });
+            }
+        }
+    });
+}
 function uploadFile(req, res) {
     var clienteId = req.params.id;
     var file_name = 'No Subido...';
@@ -698,5 +721,6 @@ module.exports = {
     deleteCliente,
     getClienteName,
     uploadFile,
-    getFile
+    getFile,
+    getCliente
 }
