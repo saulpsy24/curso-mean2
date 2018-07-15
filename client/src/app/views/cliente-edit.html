@@ -238,16 +238,46 @@
 
                     </div>
                 </div>
-                <div class="col-lg-12">
-                        <div  *ngIf="cliente.file && cliente.file !=null">
-                            <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+identity.file}}">Descargar Ficha</a>
+                <div class="row">
+                        <div class="col-sm-4">
+    
+                            <div class="form-group">
+                                <label for="email" class="cols-sm-2 control-label">Codigo:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                                <i class="fab fa-periscope"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.code}}" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <br>
-
+                        <div class="col-sm-4">
+    
+                            <div class="form-group">
+                                <label for="nameEstablishment" class="cols-sm-2 control-label">NIF/CIF:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-id-card"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.nifCif}}" class="form-control" disabled/> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"><br>
+                                <div  *ngIf="cliente.file && cliente.file !=null">
+                                    <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+identity.file}}"> <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
+                                </div>
+                                <br>
+        
+                            </div>
+                      
                     </div>
+                
                 <div class="row">
                     <div class="col-lg-11"></div>
-                    <input type="submit" value="Actualizar" class="btn btn-primary">
+                    <input type="submit" value="Actualizar Perfil" class="btn btn-primary">
                 </div>
 
 

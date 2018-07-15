@@ -23,7 +23,7 @@ api.get('/clientenombre/:name',md_auth.ensureAuth,UserController.getClienteName)
 
 api.post('/upload-ficha/:id',[md_auth.ensureAuth,md_upload1], UserController.uploadFile);
 api.get('/get-ficha/:file',UserController.getFile);
-
+api.get('/cliente/:id',md_auth.ensureAuth,UserController.getCliente);
 //api.get('/req',UserController.getRequests);
 
 module.exports=api;

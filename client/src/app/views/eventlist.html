@@ -87,7 +87,7 @@
     
                                     <option ng-selected="selected">Selecciona...</option>
                                     <option value="Vichy">Vichy</option>
-                                    <option value="La Roche">La Roche</option>
+                                    <option value="La Roche">La Roche-Posay</option>
                                     <option value="Skinceuticals">Skinceuticals</option>
                                     <option value="RogerGallet"> Roger Gallet</option>
                                 </select>                            
@@ -130,7 +130,7 @@
                         <div class="coantainer">
                             <img src="{{ url +'/get-image-event/' + event.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
                             <div class="middles">
-                                <div class="texto">{{event.description}}
+                                <div class="texto">
                                    <p>  <button class="btn btn-danger">
                                     Ver más.
                                 </button>
@@ -158,16 +158,16 @@
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
     
-                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-sm btn-warning">
+                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-md btn-warning">
                                 <i class="fas fa-edit"></i>Editar</a>
-                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-sm btn-danger">
+                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-danger">
                                 <i class="fas fa-window-close"></i>
                                 Borrar</a>
     
                         </div>
                         <div class="seguro animated fadeIn" *ngIf="confirmado==event._id">
-                            <a (click)="onDeleteEvento(event._id)" class="btn btn-sm btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                            <a (click)="onCancelEvento()" class="btn btn-sm btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
+                            <a (click)="onDeleteEvento(event._id)" class="btn btn-md btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
+                            <a (click)="onCancelEvento()" class="btn btn-md btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
                         </div>
                     </div>
     
