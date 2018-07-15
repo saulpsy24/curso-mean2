@@ -147,6 +147,13 @@
                 <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form>
-
+        <div *ngIf="errorMessage" class="alert alert-success">
+            <strong>{{errorMessage}}</strong>
+        </div> 
+        <div class="col-lg-4" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
+                <h1>Error</h1>
+                <p>No tienes acceso a esta parte del curso</p>
+        
+            </div>
     </div>
 </div>
