@@ -89,15 +89,7 @@ export class ClienteService{
         return this._http.delete(this.url+'cliente/'+id,options)
                         .map(res=>res.json());
     }
-    getCliente(token,id:string){
-        let headers = new Headers({
-            'Content-type' : 'application/json',
-            'Authorization' : token
-        });
-        let options = new RequestOptions({headers:headers});
-        return this._http.get(this.url+'cliente/'+id,options)
-                        .map(res=>res.json());
-    }
+  
 
     filterName(token,name:string){
         let headers= new Headers({

@@ -1,14 +1,14 @@
-import{ Router, ActivatedRoute,Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { GLOBAL} from '../services/global';
+import { GLOBAL } from '../services/global';
 import { Cliente } from '../models/cliente';
 import { ClienteService } from '../services/cliente.service'
 import { UploadService } from '../services/upload.service'
 @Component({
     selector: 'add-cliente',
     templateUrl: '../views/cliente-add.html',
-    providers: [ClienteService,UploadService]
+    providers: [ClienteService, UploadService]
 
 })
 
@@ -18,20 +18,20 @@ export class ClienteaddComponent implements OnInit {
     public identity;
     public token;
     public errorMessage;
-    public url:String;
-   public clientHeight: number;
-    
+    public url: String;
+    public clientHeight: number;
+
 
     constructor(
         private _route: ActivatedRoute,
-		private _router: Router,
+        private _router: Router,
         private _clienteService: ClienteService,
         private _uploadService: UploadService
-     
+
     ) {
-        this.title= 'Registar'
-        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
-         this.url=GLOBAL.url;
+        this.title = 'Registar'
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ROLE_USER', '');
+        this.url = GLOBAL.url;
         //  this.clientHeight = window.innerHeight; 
     }
     ngOnInit() {
@@ -39,7 +39,7 @@ export class ClienteaddComponent implements OnInit {
         // this.identity = this._clienteService.getidentity();
         // console.log(this.token);
         // console.log(this.identity);
-        
+
         console.log('clienteadd.component.cargado');
 
 
@@ -49,62 +49,40 @@ export class ClienteaddComponent implements OnInit {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
     // }
     public onSubmit() {
-<<<<<<< HEAD
+
         console.log(this.cliente);
-    this._clienteService.register(this.cliente).subscribe(
-        response=>{
-            
-            if(!response.cliente){
-               this.errorMessage='Error en el Servidor';
-=======
-        console.log(this.cliente);   
         this._route.params.forEach((params: Params) => {
-            let id = params['id'];  
-        this._clienteService.register(this.cliente).subscribe(
-            response=>{
-                let client = response.cliente;
-                this.cliente = client;
-                if(!client._id){
-                    this.errorMessage = 'Error al registrarse'
-                }else{
-                    this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-                    alert('El registro se creo correctamente');
-                    this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
-                    // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
+            let id = params['id'];
+            this._clienteService.register(this.cliente).subscribe(
+                response => {
+                    let client = response.cliente;
+                    this.cliente = client;
+                    if (!client._id) {
+                        this.errorMessage = 'Error al registrarse'
+                    } else {
+                        this.errorMessage = 'El registro de ' + this.cliente.email + ' se creo correctamente'
+                        alert('El registro se creo correctamente');
+                        this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ROLE_USER', '');
+                        // this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
+                    }
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        this.errorMessage = body.message;
+                        console.log(error);
+                    }
                 }
-            },
-            error=>{
-                var errorMessage = <any>error;
-                        if (errorMessage != null) {
-                            var body = JSON.parse(error._body);
-                            this.errorMessage = body.message;
-                            console.log(error );
-                        }
-            }
->>>>>>> e4f230750dcfbe88f988104b5616dabe515b7cf5
+            )
 
-            }else{
-                this.cliente =response.cliente;
-                this._router.navigate(['/cliente-edit',response.cliente._id]); 
-                
-                this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-                this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
-               
-                
-            }
 
-        },
-        error=>{
-            var errorMessage= <any> error;
-            if(errorMessage!=null){
-                var body = JSON.parse(error._body);
-                this.errorMessage=body.message
-                console.log(error);
-            }  
-      }
-    )
+
+
+
+
+        });
 }
-        
 }
 
 
