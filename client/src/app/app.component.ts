@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
         private _clienteService: ClienteService,
      
     ) {
-        this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
          this.url=GLOBAL.url;
          this.clientHeight = window.innerHeight; 
     }
@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
         localStorage.clear();
         this.identity = null;
         this.token = null;
-        this.cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
         this._router.navigate(['/']);
     }
 
