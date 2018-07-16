@@ -9,6 +9,7 @@ import {Cliente} from '../models/cliente'
 import { TurnoService } from '../services/turno.service';
 import {AssistantService} from '../services/assistant.service';
 import {Assistant} from '../models/assistant';
+import { Turno } from '../models/turno';
 @Component({
     selector: 'detalle-cliente',
     templateUrl: '../views/detalle-cliente.html',
@@ -27,7 +28,10 @@ export class ClienteDetailComponent implements OnInit {
     public is_edit;
     public oculto;
     public eventos:Evento[];
+    public turnos:Turno[];
     public asistencias: Assistant[];
+    public asistencia:Assistant;
+    public selected;
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
@@ -37,17 +41,58 @@ export class ClienteDetailComponent implements OnInit {
         private _eventoService:EventService,
     ) {
         this.is_edit = true;
-       
+       this.asistencia=new Assistant('','',null);
         this.url = GLOBAL.url;
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
 
 
     }
+    GeneraAsistencia(turno){
+        console.log(turno);
+        this.asistencia.cliente=this.cliente._id;
+        this.asistencia.turno=turno._id;
+        this._assistantService.addAssistant(this.token, this.asistencia).subscribe(
+            response => {
+
+                if (!response.asistSaved) {
+                    var body =response._body;
+                    this.alertMessage =body;
+                    console.log(response);
+                    this.alertMessage = 'Ya te habias inscrito anteriormente';
+
+
+                } else {
+                    this.asistencia = response.asistSaved;
+                    this.alertMessage = 'Asistencia creada Correctamente';
+                    this.oculto=null;
+                 this.getCliente();
+
+                }
+
+            },
+            error => {
+                var errorMessage = <any>error;
+                if (errorMessage != null) {
+                    var body = JSON.parse(error._body);
+                    this.alertMessage = body.message
+                    console.log(error);
+                }
+            }
+        )
+
+    }
     mostrarEventos(){
-        this.oculto=1;
+        this.oculto=true;
         this.getEventos();
     }
+    mostrarTurnos(event){
+        this.selected=true;
+        let id = event._id;
+        console.log(event);
+        this.obtenerTurnos(id);
+    }
+
 
 
 
@@ -123,12 +168,12 @@ export class ClienteDetailComponent implements OnInit {
         this.showoptions = 0;
     }
 
-    onDeleteTurno(id) {
+    onDeleteAsistencia(id) {
         this.showoptions = 0;
-        this._turnoService.deleteTurno(this.token, id).subscribe(
+        this._assistantService.deleteAsistencia(this.token, id).subscribe(
             response => {
 
-                if (!response.turno) {
+                if (!response.asist) {
                     this.alertMessage('Error en el Servidor');
 
 
@@ -153,6 +198,7 @@ export class ClienteDetailComponent implements OnInit {
 
 
     getEventos() {
+
         this._route.params.forEach((params: Params) => {
             let page = +params['page'];
             if (!page) {
@@ -191,7 +237,30 @@ export class ClienteDetailComponent implements OnInit {
         });
 
 }
+obtenerTurnos(id){
+    this._turnoService.getTurnos(this.token, id).subscribe(
+        response => {
 
+            if (!response.turnos) {
+                this.alertMessage = 'Este evento no tiene turnos';
+
+
+            } else {
+                this.turnos = response.turnos;
+
+            }
+
+        },
+        error => {
+            var errorMessage = <any>error;
+            if (errorMessage != null) {
+                var body = JSON.parse(error._body);
+                // this.alertMessage=body.message
+                console.log(error);
+            }
+        }
+    );
+}
 
 
 

@@ -1,6 +1,6 @@
 <div *ngIf="cliente">
     <div class="row">
-        <div class="row card2"style="width: 100%">
+        <div class="row card2" style="width: 100%">
             <!-- <div class="col-lg-3"> -->
             <div class="col-lg-3">
                 <div class="card">
@@ -12,8 +12,8 @@
 
                             <a [routerLink]="['/panel-admin'] " class="btn btn-secondary">
                                 <i class="fas fa-arrow-circle-left"></i> Volver</a>
-                            <a  (click)="mostrarEventos()" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" >
-                                <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
+                            <a (click)="mostrarEventos()" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'">
+                                <i class="fas fa-plus-circle"></i> Inscribir a Evento</a>
 
                     </div>
 
@@ -21,97 +21,149 @@
 
             </div>
             <div class="row " style="width: 30%">
-            <div class="col-lg-8" >
-                <table class="egt">
-                    <!-- <tr>
+                <div class="col-lg-8">
+                    <table class="egt">
+                        <!-- <tr>
 
                         <th scope="row">Detalle</th>
                     
                     </tr>
                     <hr> -->
-                    <tr>
+                        <tr>
 
-                        <th><strong><i class="fas fa-building"></i> Establecimiento:</strong></th>
-                    
-                        <td><label> {{cliente.nameEstablishment}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
+                            <th>
+                                <strong>
+                                    <i class="fas fa-building"></i> Establecimiento:</strong>
+                            </th>
 
-                        <th><strong><i class="fas fa-envelope"></i> Email:</strong></th>
-                    
-                        <td><label> {{cliente.email}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
+                            <td>
+                                <label> {{cliente.nameEstablishment}}</label>
+                            </td>
 
-                        <th><strong><i class="far fa-address-card"></i> Nif/Cif</strong></th>
-                    
-                        <td><label> {{cliente.nifCif}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
+                        </tr>
+                        <hr>
+                        <tr>
 
-                        <th><strong><i class="fas fa-phone"></i> Telefono:</strong></th>
-                    
-                        <td><label> {{cliente.phone}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
+                            <th>
+                                <strong>
+                                    <i class="fas fa-envelope"></i> Email:</strong>
+                            </th>
 
-                        <th><strong><i class="fas fa-key"></i> Rol:</strong></th>
-                    
-                        <td><label> {{cliente.role}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                </table>
-            </div>
+                            <td>
+                                <label> {{cliente.email}}</label>
+                            </td>
+
+                        </tr>
+                        <hr>
+                        <tr>
+
+                            <th>
+                                <strong>
+                                    <i class="far fa-address-card"></i> Nif/Cif</strong>
+                            </th>
+
+                            <td>
+                                <label> {{cliente.nifCif}}</label>
+                            </td>
+
+                        </tr>
+                        <hr>
+                        <tr>
+
+                            <th>
+                                <strong>
+                                    <i class="fas fa-phone"></i> Telefono:</strong>
+                            </th>
+
+                            <td>
+                                <label> {{cliente.phone}}</label>
+                            </td>
+
+                        </tr>
+                        <hr>
+                        <tr>
+
+                            <th>
+                                <strong>
+                                    <i class="fas fa-key"></i> Rol:</strong>
+                            </th>
+
+                            <td>
+                                <label> {{cliente.role}}</label>
+                            </td>
+
+                        </tr>
+                        <hr>
+                    </table>
+                </div>
             </div>
             <div class="col-lg-4">
                 <table class="egt">
                     <tr>
 
-                        <th><strong><i class="fas fa-file-archive"></i> Zip:</strong></th>
-                    
-                        <td><label> {{cliente.zip}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
+                        <th>
+                            <strong>
+                                <i class="fas fa-file-archive"></i> Zip:</strong>
+                        </th>
 
-                        <th><strong><i class="fas fa-location-arrow"></i> Provincia:</strong></th>
-                    
-                        <td><label> {{cliente.province}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
-
-                        <th><strong><i class="fas fa-map-marker-alt"></i> Street:</strong></th>
-                    
-                        <td><label> {{cliente.street}}</label></td>
-                    
-                    </tr>
-                    <hr>
-                    <tr>
-
-                        <th><strong><i class="far fa-registered"></i> Marcas:</strong></th>
-                    
                         <td>
-                                <label *ngIf="cliente.brandV=='1'" style="width: 100%"> <i class="fas fa-dot-circle"></i> Vichy. <br> </label>
-                                
-                                <label *ngIf="cliente.brandSK=='1'" style="width: 100%"><i class="fas fa-dot-circle"></i> SkinCeuticals.<br> </label>
-                            
-                                <label *ngIf="cliente.brandLR=='1'" style="width: 100%"><i class="fas fa-dot-circle"></i> La Roche-Posay. <br> </label>
-                            
-                                <label *ngIf="cliente.brandRG=='1'" style="width: 100%"><i class="fas fa-dot-circle"></i> Roger&Gallet. <br></label>
+                            <label> {{cliente.zip}}</label>
                         </td>
-                    
+
+                    </tr>
+                    <hr>
+                    <tr>
+
+                        <th>
+                            <strong>
+                                <i class="fas fa-location-arrow"></i> Provincia:</strong>
+                        </th>
+
+                        <td>
+                            <label> {{cliente.province}}</label>
+                        </td>
+
+                    </tr>
+                    <hr>
+                    <tr>
+
+                        <th>
+                            <strong>
+                                <i class="fas fa-map-marker-alt"></i> Street:</strong>
+                        </th>
+
+                        <td>
+                            <label> {{cliente.street}}</label>
+                        </td>
+
+                    </tr>
+                    <hr>
+                    <tr>
+
+                        <th>
+                            <strong>
+                                <i class="far fa-registered"></i> Marcas:</strong>
+                        </th>
+
+                        <td>
+                            <label *ngIf="cliente.brandV=='1'" style="width: 100%">
+                                <i class="fas fa-dot-circle"></i> Vichy.
+                                <br> </label>
+
+                            <label *ngIf="cliente.brandSK=='1'" style="width: 100%">
+                                <i class="fas fa-dot-circle"></i> SkinCeuticals.
+                                <br> </label>
+
+                            <label *ngIf="cliente.brandLR=='1'" style="width: 100%">
+                                <i class="fas fa-dot-circle"></i> La Roche-Posay.
+                                <br> </label>
+
+                            <label *ngIf="cliente.brandRG=='1'" style="width: 100%">
+                                <i class="fas fa-dot-circle"></i> Roger&Gallet.
+                                <br>
+                            </label>
+                        </td>
+
                     </tr>
                 </table>
                 <div class="row">
@@ -129,15 +181,66 @@
 
         </div>
     </div>
-    <div class="row card2">
-            <label for="visible">Seleccionar Evento:</label>
-        
-        
-            <select class="form-control" id="evento" #evento="ngModel" name="evento" [(ngModel)]="evento.name" >
+    <div class="row card2" *ngIf="oculto">
+        <div *ngIf="!selected">
+        <label for="Eventos">Seleccionar Evento:</label>
+        <table class="table table-black">
+            <thead>
+                <tr>
 
-                <option  *ngFor="let event of eventos" ng-selected="selected">{{event.name}}</option>
-              
-            </select>
+                    <th scope="col">Titulo del evento</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="animated bounceInRight" *ngFor="let event of eventos | filter:term:brand:visible:name:email:establecimiento:phone">
+
+                    <td scope="row">{{event.title}}</td>
+                    <td>{{event.province}}</td>
+                    <td><a (click)="mostrarTurnos(event)" class="btn btn-primary btn-md">
+                            <i class="fas fa-info-circle"></i> Seleccionar</a></td>
+                    
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="selected">
+        <label  for="turno">Seleccionar Turno:</label>
+        <table class="table table-black">
+            <thead>
+                <tr>
+
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Hora Inicio</th>
+                    <th scope="col">Hora Fin</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Fin</th>
+                    <th scope="col">Inscribir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="animated bounceInRight" *ngFor="let turno of turnos | filter:term:brand:visible:name:email:establecimiento:phone">
+
+                    <td scope="row">{{turno.name}}</td>
+                    <td>{{turno.start_h}}</td>
+                    <td>{{turno.end_h}}</td>
+                    <td>{{turno.date_start}}</td>
+                    <td>{{turno.date_end}}</td>
+                    <td>
+                        <a (click)="GeneraAsistencia(turno)" class="btn btn-primary btn-md">
+                                <i class="fas fa-plus-circle"></i> Inscribir</a>
+                    </td>
+                   
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
     </div>
 
     <div class="row card2" style="width: 100%">
@@ -157,8 +260,6 @@
                         <div class="middles">
                             <div class="texto">
                                 <p>
-
-                                    {{asist.turno.event.description}}
                                     <button class="btn btn-danger">
                                         Ver más.
                                     </button>
@@ -187,7 +288,7 @@
 
                         <a (click)="onDeleteConfirm(asist._id)" class="btn btn-md btn-danger">
                             <i class="fas fa-window-close"></i>
-                            Darme de Baja</a>
+                            Dar de Baja</a>
 
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==asist._id">
