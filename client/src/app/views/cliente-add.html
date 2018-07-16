@@ -62,6 +62,19 @@
                     El codigo es obligatorio!
                 </span>
             </p>
+            <div >
+                    <label for="province"><i class="fas fa-key"></i> Rol:</label>
+                    <select class="form-control" #role="ngModel" name="role" [(ngModel)]="cliente.role" required id="role">
+                        <option selected="selected">Selecciona...</option>
+                        <option value="ROLE_ADMIN">Administrador</option>
+                        <option value="ROLE_USER">Usuario</option>
+                        <option value="ROLE_AGENTE">Agente</option>
+                        <option value="ROLE_ENCARGADO"> Encargado</option>
+                    </select>
+    
+                    <br>
+    
+                </div>
             </form>
         </div>
         <div style="width: 30%" >
@@ -229,6 +242,7 @@
                 <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
         </form> 
+        <br>
     </div>
         <div *ngIf="errorMessage" class="alert alert-success">
             <strong>{{errorMessage}}</strong>
