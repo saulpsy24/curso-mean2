@@ -664,8 +664,14 @@ function storeUser(req, res) {
     cliente.brandRG = params.brandRG;
     cliente.brandSK = params.brandSK;
     cliente.brandLR = params.brandLR;
-    var email = cliente.email;
+   
     var password = "FormacionesCAE";
+    if (password) {
+        //ecnriptar pasword
+        bcrypt.hash(password, null, null, function (err, hash) {
+            cliente.password = hash;
+        });
+
 
 
     cliente.save((err, clienteStored) => {
@@ -686,7 +692,7 @@ function storeUser(req, res) {
             }
         }
     });
-}
+}}
 
 module.exports = {
     savecliente,

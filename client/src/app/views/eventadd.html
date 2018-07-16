@@ -1,4 +1,4 @@
-<div class="col-lg-8" *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.ROLE=='ROLE_ENCARGADO'">
+<div class="col-lg-8" *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'">
     <h1>{{titulo}}</h1>
 
     <div *ngIf="alertMessage">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-md-6 col-xs-6 ">
                         <p>
-                            <label>Descripción</label>
+                            <label>Información del Evento:</label>
                             <textarea class="form-control" #description="ngModel" name="description" [(ngModel)]="evento.description" rows="3"></textarea>
     
     
