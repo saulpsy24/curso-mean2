@@ -54,7 +54,7 @@ export class AssistantService{
             'authorization' : token
         });
         let options = new RequestOptions({headers:headers});
-        return this._http.delete(this.url+'asist/'+asistencia,options)
+        return this._http.delete(this.url+'asiste/'+asistencia,options)
                         .map(res=>res.json());
     }
  
