@@ -173,9 +173,9 @@
             </p>
             <p>
                 <i class="fas fa-map-marker-alt"></i>
-                <label>Direccion:</label>
+                <label>Street:</label>
                 <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
-                    required placeholder="Introduce la direccion"       />
+                    required placeholder="Introduce la street"       />
                 <span *ngIf="!street.valid && street.touched">
                     La street es obligatoria!
                 </span>
@@ -235,7 +235,7 @@
                 <div class="col-md-5" *ngIf="is_edit">
                        
                         <p>
-                            <label>Subir ficha</label>
+                            <label>Sube la imagen del Evento</label>
                             <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($event)" />
                         </p>
                     </div>
