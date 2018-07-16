@@ -89,7 +89,11 @@
                             </th>
 
                             <td>
-                                <label> {{cliente.role}}</label>
+                                    <!-- <label > {{cliente.role}} </label> -->
+                                <label *ngIf="cliente.role=='ROLE_ADMIN'" > Administrador </label>
+                                <label *ngIf="cliente.role=='ROLE_USER'"> Usuario </label>
+                                <label *ngIf="cliente.role=='ROLE_AGENTE'"> Agente </label>
+                                <label *ngIf="cliente.role=='ROLE_ENCARGADO'"> Encargado </label>
                             </td>
 
                         </tr>
