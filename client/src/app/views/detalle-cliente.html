@@ -10,9 +10,9 @@
                         <h3 class="card-title">{{cliente.name}} {{cliente.surname}}</h3>
                         <p class="card-text">
 
-                            <a [routerLink]="['/evento',1] " class="btn btn-secondary">
+                            <a [routerLink]="['/panel-admin'] " class="btn btn-secondary">
                                 <i class="fas fa-arrow-circle-left"></i> Volver</a>
-                            <a [routerLink]="['/crear-turno',cliente._id] " class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" href="#">
+                            <a  (click)="mostrarEventos()" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'" >
                                 <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
 
                     </div>
@@ -128,6 +128,16 @@
 
 
         </div>
+    </div>
+    <div class="row card2">
+            <label for="visible">Seleccionar Evento:</label>
+        
+        
+            <select class="form-control" id="evento" #evento="ngModel" name="evento" [(ngModel)]="evento.name" >
+
+                <option  *ngFor="let event of eventos" ng-selected="selected">{{event.name}}</option>
+              
+            </select>
     </div>
 
     <div class="row card2" style="width: 100%">

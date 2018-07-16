@@ -22,7 +22,11 @@ export class ClienteDetailComponent implements OnInit {
     public token;
     public url: string;
     public alertMessage;
+    public next_page;
+    public prev_page;
     public is_edit;
+    public oculto;
+    public eventos:Evento[];
     public asistencias: Assistant[];
     constructor(
         private _route: ActivatedRoute,
@@ -30,13 +34,19 @@ export class ClienteDetailComponent implements OnInit {
         private _clienteService: ClienteService,
         private _turnoService: TurnoService,
         private _assistantService:AssistantService,
+        private _eventoService:EventService,
     ) {
         this.is_edit = true;
+       
         this.url = GLOBAL.url;
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();
 
 
+    }
+    mostrarEventos(){
+        this.oculto=1;
+        this.getEventos();
     }
 
 
@@ -141,6 +151,46 @@ export class ClienteDetailComponent implements OnInit {
 
     }
 
+
+    getEventos() {
+        this._route.params.forEach((params: Params) => {
+            let page = +params['page'];
+            if (!page) {
+                page = 1;
+            } else {
+                this.next_page = page + 1;
+                this.prev_page = page - 1;
+                if (this.prev_page == 0) {
+                    this.prev_page = 1;
+                }
+            }
+            this._eventoService.getEventos(this.token, page).subscribe(
+                response => {
+
+                    if (!response.event) {
+                        this.alertMessage = 'Error en el Servidor';
+                        console.log('entro aqui')
+
+                    } else {
+                        this.eventos = response.event;
+                        console.log(this.eventos);
+                    }
+
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        this.alertMessage = body.message;
+                        console.log(error);
+                    }
+                }
+
+
+            );
+        });
+
+}
 
 
 
