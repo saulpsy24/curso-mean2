@@ -74,11 +74,11 @@ export class ClienteService{
         );
 
     }
-    register(cliente){
+    register(token,cliente:Cliente){
         let json = JSON.stringify(cliente);
         let params =json;
-        let headers= new Headers ({'Content-Type':'application/json'});
-        return this._http.post(this.url+'register',params,{headers:headers}).map(res =>res.json());
+        let headers= new Headers ({'Content-Type':'application/json','Authorization':token});
+        return this._http.post(this.url+'store',params,{headers:headers}).map(res =>res.json());
     }
     onDeleteEvento(token,id:string){
         let headers = new Headers({

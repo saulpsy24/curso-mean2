@@ -10,6 +10,7 @@ var md_upload1 = multipart({uploadDir:'./uploads/fichas'});
 
 
 api.post('/register', UserController.savecliente);
+api.post('/store',md_auth.ensureAuth, UserController.storeUser);
 api.post('/login', UserController.logincliente);
 api.put('/update-user/:id', md_auth.ensureAuth, UserController.updatecliente);
 api.post('/upload-image-user/:id',[md_auth.ensureAuth,md_upload], UserController.uploadImageCliente);

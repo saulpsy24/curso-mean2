@@ -32,36 +32,35 @@ export class ClienteaddComponent implements OnInit {
         this.title= 'Registar'
         this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
          this.url=GLOBAL.url;
+         this.token=_clienteService.getToken();
         //  this.clientHeight = window.innerHeight; 
     }
     ngOnInit() {
-        // this.token = this._clienteService.getToken();
-        // this.identity = this._clienteService.getidentity();
-        // console.log(this.token);
-        // console.log(this.identity);
         
         console.log('clienteadd.component.cargado');
 
 
     }
-    // public filesToUpload:Array<File>;
-    // fileChangeEvent(fileInput:any){
-    //     this.filesToUpload = <Array<File>>fileInput.target.files;
-    // }
+     
     public onSubmit() {
         console.log(this.cliente);
-    this._clienteService.register(this.cliente).subscribe(
+    this._clienteService.register(this.token,this.cliente).subscribe(
         response=>{
             
             if(!response.cliente){
                this.errorMessage='Error en el Servidor';
 
             }else{
+                this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente';
                 this.cliente =response.cliente;
-                this._router.navigate(['/editarcliente',response.cliente._id]); 
+                console.log(this.cliente);
+                console.log('esta es la respuesta'+response.cliente);
+                this._router.navigate(['/editarcliente',this.cliente._id]); 
                 
-                this.errorMessage = 'El registro de '+this.cliente.email+ ' se creo correctamente'
-                this.cliente = new Cliente('', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+               
+
+                
+                
                
                 
             }
