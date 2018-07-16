@@ -159,7 +159,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4"*ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.ROLE=='ROLE_ENCARGADO'">
+    <div class="col-lg-4"*ngIf="!identity && !identity.role=='ROLE_ADMIN' || !identity.role=='ROLE_AGENTE' || !identity.role=='ROLE_ENCARGADO'">
         <h1>Error</h1>
         <p>No tienes acceso a esta parte del curso</p>
 
