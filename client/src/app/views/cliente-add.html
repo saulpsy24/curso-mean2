@@ -24,6 +24,16 @@
                 </span>
             </p>
             <p>
+                    <i class="fas fa-address-card"></i>
+                    <label>Apellidos:</label>
+                    <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
+                     required placeholder="Introduce  apellidos"
+                    />
+                    <span *ngIf="!surname.valid && surname.touched">
+                        El Apellido es obligatorio!
+                    </span>
+                </p>
+            <p>
                 <i class="fas fa-building"></i>
                 <label>Nombre del Establecimiento:</label>
                 <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
@@ -33,16 +43,7 @@
                     El nombre del establecimiento es obligatorio!
                 </span>
             </p>
-            <p>
-                <i class="fas fa-address-card"></i>
-                <label>Apellido:</label>
-                <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
-                 required placeholder="Introduce el apellido"
-                />
-                <span *ngIf="!surname.valid && surname.touched">
-                    El Apellido es obligatorio!
-                </span>
-            </p>
+          
             <p>
                 <i class="fas fa-envelope"></i>
                 <label>Correo:</label>
@@ -85,15 +86,7 @@
                     El Zip es obligatorio!
                 </span>
             </p>
-            <!-- <p>
-                <i class="fas fa-location-arrow"></i>
-                <label>Provincia:</label>
-                <input type="text" #province="ngModel" name="province" [(ngModel)]="cliente.province" class="form-control"
-                    required placeholder="Introduce la Provincia"       />
-                <span *ngIf="!province.valid && province.touched">
-                    La Provincia es obligatoria!
-                </span>
-            </p> -->
+           
             <div >
                 <label for="province"><i class="fas fa-location-arrow"></i> Provincia:</label>
                 <select class="form-control" #province="ngModel" name="province" [(ngModel)]="cliente.province" required id="province">
