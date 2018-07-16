@@ -286,7 +286,7 @@
 
                     <div class="buttons animated fadeIn" *ngIf="showoptions==0">
 
-                        <a (click)="onDeleteConfirm(asist._id)" class="btn btn-md btn-danger">
+                        <a (click)="onDeleteConfirm(asist._id)" *ngIf="identity.role=='ROLE_ADMIN'" class="btn btn-md btn-danger">
                             <i class="fas fa-window-close"></i>
                             Dar de Baja</a>
 
