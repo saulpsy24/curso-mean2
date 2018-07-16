@@ -1,6 +1,6 @@
 
  <!-- <div class="row justify-content-center align-items-center loginform" style="height: 100%;" *ngIf="!identity">  -->
-        <div class="row justify-content-center" style="height: 100%;" *ngIf="!identity"> 
+        <div class="row justify-content-center" style="height: 100%;" *ngIf="identity.role=='ROLE_ADMIN'"> 
 
     <div class="col-lg-6">
         <div class="justify-content-center align-items-center">
@@ -48,7 +48,7 @@
             </p>
             <p>
                 <label>Codigo:</label>
-                <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.ecodemail" class="form-control"
+                <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.code" class="form-control"
                  required placeholder="Introduce el codigo"       />
                 <span *ngIf="!code.valid && code.touched">
                     El codigo es obligatorio!
@@ -145,18 +145,15 @@
                     </p>
                 </div> -->
                 <div class="col-md-5" *ngIf="is_edit">
-                        <div class="espacio_image-for-edit" *ngIf="cliente.image && cliente.image != 'null'">
-                            <img src="{{url +'get-image-user/'+ cliente.image}}" />
-                        </div>
-    
+                       
                         <p>
                             <label>Sube la imagen del Evento</label>
-                            <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($cliente)" />
+                            <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($event)" />
                         </p>
                     </div>
                 <br>
             <input type="submit" value="Registrar" class="btn btn-primary">
-        </form>
+        </form> 
         <div *ngIf="errorMessage" class="alert alert-success">
             <strong>{{errorMessage}}</strong>
         </div> 

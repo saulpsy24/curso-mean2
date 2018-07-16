@@ -32,15 +32,20 @@ export class ClienteEditarComponent implements OnInit {
         
         this.is_edit = true;
         this.url=GLOBAL.url;
-        // this.cliente = this.identity;
+        this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
+        
+        this.token=_clienteService.getToken();
+        this.identity=_clienteService.getidentity();
 
     }
     public filesToUpload:Array<File>;
-    fileChangeEvent(fileInput:any){
+    fileChangeCliente(fileInput:any){
         this.filesToUpload = <Array<File>>fileInput.target.files;
     }
 
     ngOnInit() {
+        this.token=this._clienteService.getToken();
+        this.identity=this._clienteService.getidentity();
         
         console.log('clienteedit.component.cargado');
         //lamar usuario por id
@@ -81,7 +86,7 @@ export class ClienteEditarComponent implements OnInit {
             this._clienteService.editCliente(this.token,id, this.cliente).subscribe(
                 response => {
 
-                    if (!response.event) {
+                    if (!response.cliente) {
                         this.errorMessage = 'Error en el Servidor';
 
                     } else {
@@ -89,10 +94,10 @@ export class ClienteEditarComponent implements OnInit {
                         //this._router.navigate(['/editar-evento'],response.evento._id);
                         this.errorMessage = 'Cliente Actualizado Correctamente';
                         //subir foto
-                        this._uploadService.makeFileRequest(this.url+'upload-image-user/'+id,[],this.filesToUpload,this.token,'image')
+                        this._uploadService.makeFileRequest(this.url+'upload-ficha/'+id,[],this.filesToUpload,this.token,'file')
                         .then(
                             (result)=>{
-                                this._router.navigate(['/adminpanel']);
+                                this._router.navigate(['/panel-admin']);
 
                                 
                             },

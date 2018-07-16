@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     { path: 'mis-datos', component: ClienteEditComponent },
     // {path:'evento/:page',component: EventListComponent},   
     { path: 'cliente-edit', component: ClienteEditComponent },
-    { path: 'editarcliente', component: ClienteEditarComponent },
+    { path: 'editarcliente/:id', component: ClienteEditarComponent },
     { path: 'event-add', component: EventaddComponent },
     {path:'crear-turno/:evento',component:TurnoAddComponent},
     {path:'assistant-add/:turno',component:AssistantaddComponent},

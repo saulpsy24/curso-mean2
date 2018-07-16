@@ -137,7 +137,7 @@
                         <td ><a class="btn btn-primary btn-md" [routerLink]="['/detalle-cliente',cliente._id] "><i class="fas fa-info-circle"></i> Más..</a></td>
                         <td> <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
 
-                                <a [routerLink]="['/cliente-edit',cliente] " class="btn btn-md btn-warning">
+                                <a [routerLink]="['/editarcliente',cliente._id] " class="btn btn-md btn-warning">
                                     <i class="fas fa-edit"></i>Editar</a>
                                 <a (click)="onDeleteConfirm(cliente._id)" class="btn btn-md btn-danger">
                                     <i class="fas fa-window-close"></i>
