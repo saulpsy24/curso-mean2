@@ -61,7 +61,15 @@
                     El nombre del establecimiento es obligatorio!
                 </span>
             </p>
-                      
+            <p>
+                <label><i class="fas fa-unlock-alt"></i> Contraseña:</label>
+                <input type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
+                class="form-control" required placeholder="Introduce la contraseña"
+                />
+                <span *ngIf="!password.valid && password.touched">
+                    La contraseña es obligatoria!
+                </span>
+            </p>        
             
             
             </form>
@@ -74,7 +82,7 @@
                 <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.code" class="form-control"
                  required placeholder="Introduce el codigo"       />
                 <span *ngIf="!code.valid && code.touched">
-                    El codigo es obligatorio!
+                    El codigo de la farmacia es obligatorio!
                 </span>
             </p>
             <div >
@@ -169,7 +177,7 @@
                 <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
                     required placeholder="Introduce la direccion"       />
                 <span *ngIf="!street.valid && street.touched">
-                    La street es obligatoria!
+                    La Dirección es obligatoria!
                 </span>
             </p>
             <p>
@@ -178,7 +186,7 @@
                 <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
                     required placeholder="Introduce el Zip"       />
                 <span *ngIf="!zip.valid && zip.touched">
-                    El Zip es obligatorio!
+                    El Codigo Postal es obligatorio!
                 </span>
             </p>
                 </form>
