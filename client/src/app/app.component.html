@@ -15,25 +15,26 @@
                   <span class="navbar-text">
                     <ul class="navbar-nav mr-auto">
                             <ul class="navbar-nav my-2 my-lg-0">
+                                    
                                     <li class="nav-item">
-                                        <br>
-                                        <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
-                                           
-                                            Mis Eventos
-                                        </a>
-                    
-                                    </li>
-                                    <li class="nav-item">
-                                        <br>
-                                        <a class="nav-link" [routerLink]="['/evento',1]" [routerLinkActive]="['actived']">
+                                        
+                                      <a class="nav-link" [routerLink]="['/evento',1]" [routerLinkActive]="['actived']">
                                           
                                             Eventos
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                          
+                                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
+                                               
+                                                Mis Eventos
+                                            </a>
+                        
+                                        </li>
                                     
                                    
                                     <li class="nav-item">     
-                                            <br>                
+                                                     
                                                  <a class="nav-link btn-logout" href="mailto:secretariacae@presstour.es" >
                                                
                                                 Contacto
@@ -42,17 +43,16 @@
                                         </li>
                                         <li class="nav-item">
                                             
-                                                <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
-                                                    <img id="user_image_logged" src="{{url+'get-image-user/'+identity.image}}" class="useravatarnav" /><br>
+                                                <a [routerLink]="['/mis-datos']"  [routerLinkActive]="['actived']">
+                                                   
                                                     
-                                                    <span id="identity_name">
                                                         Perfil de {{identity.name}}
-                                                    </span> 
+                                                 
                                                 </a>                                     
                                                 
                                             </li>
                                     <li class="nav-item">     
-                                        <br>                
+                                                       
                                              <a class="nav-link btn-logout" (click)="logout()" >
                                            
                                             Salir
