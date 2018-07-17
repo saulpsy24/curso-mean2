@@ -12,7 +12,7 @@
             <strong>{{errorMessage}}</strong>
         </div> 
         <div class="row" style="width: 100%">
-            <div style="width: 30%">
+            <div style="width: 27%">
         <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
             <p>
                 <i class="fas fa-address-card"></i>
@@ -24,26 +24,15 @@
                 </span>
             </p>
             <p>
-                    <i class="fas fa-address-card"></i>
-                    <label>Apellidos:</label>
-                    <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
-                     required placeholder="Introduce  apellidos"
-                    />
-                    <span *ngIf="!surname.valid && surname.touched">
-                        El Apellido es obligatorio!
-                    </span>
-                </p>
-            <p>
-                <i class="fas fa-building"></i>
-                <label>Nombre del Establecimiento:</label>
-                <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
-                class="form-control" required placeholder="Introduce el nombre del establecimiento"
+                <i class="fas fa-address-card"></i>
+                <label>Apellidos:</label>
+                <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
+                    required placeholder="Introduce  apellidos"
                 />
-                <span *ngIf="!nameEstablishment.valid && nameEstablishment.touched">
-                    El nombre del establecimiento es obligatorio!
+                <span *ngIf="!surname.valid && surname.touched">
+                    El Apellido es obligatorio!
                 </span>
             </p>
-          
             <p>
                 <i class="fas fa-envelope"></i>
                 <label>Correo:</label>
@@ -54,8 +43,34 @@
                 </span>
             </p>
             <p>
+                <i class="far fa-address-card"></i>
+                <label>nif/cif:</label>
+                <input type="text" #nifCif="ngModel" name="nifCif" [(ngModel)]="cliente.nifCif" class="form-control"
+                    required placeholder="Introduce el nifCif"       />
+                <span *ngIf="!nifCif.valid && nifCif.touched">
+                    El nif/cif es obligatorio!
+                </span>
+            </p>
+            <p>
+                
+                <label><i class="fas fa-building"></i> Nombre del Establecimiento:</label>
+                <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
+                class="form-control" required placeholder="Introduce el nombre del establecimiento"
+                />
+                <span *ngIf="!nameEstablishment.valid && nameEstablishment.touched">
+                    El nombre del establecimiento es obligatorio!
+                </span>
+            </p>
+                      
+            
+            
+            </form>
+        </div>
+        <div style="width: 27%" >
+        <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10"> 
+            <p>
                 <i class="fas fa-barcode"></i>
-                <label>Codigo:</label>
+                <label>Codigo de la farmcia:</label>
                 <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.code" class="form-control"
                  required placeholder="Introduce el codigo"       />
                 <span *ngIf="!code.valid && code.touched">
@@ -63,23 +78,18 @@
                 </span>
             </p>
             <div >
-                    <label for="province"><i class="fas fa-key"></i> Rol:</label>
-                    <select class="form-control" #role="ngModel" name="role" [(ngModel)]="cliente.role" required id="role">
-                        <option selected="selected">Selecciona...</option>
-                        <option value="ROLE_ADMIN">Administrador</option>
-                        <option value="ROLE_USER">Usuario</option>
-                        <option value="ROLE_AGENTE">Agente</option>
-                        <option value="ROLE_ENCARGADO"> Encargado</option>
-                    </select>
-    
-                    <br>
-    
-                </div>
-            </form>
-        </div>
-        <div style="width: 30%" >
-        <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10"> 
-            
+                <label for="province"><i class="fas fa-key"></i> Rol:</label>
+                <select class="form-control" #role="ngModel" name="role" [(ngModel)]="cliente.role" required id="role">
+                    <option selected="selected">Selecciona...</option>
+                    <option value="ROLE_ADMIN">Administrador</option>
+                    <option value="ROLE_USER">Usuario</option>
+                    <option value="ROLE_AGENTE">Agente</option>
+                    <option value="ROLE_ENCARGADO"> Encargado</option>
+                </select>
+
+                <br>
+
+            </div>
             <p>
                 <i class="fas fa-phone"></i>
                 <label>Teléfono:</label>
@@ -90,16 +100,7 @@
                 </span>
             </p>
             
-            <p>
-                <i class="fas fa-file-archive"></i>
-                <label>Zip:</label>
-                <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
-                    required placeholder="Introduce el Zip"       />
-                <span *ngIf="!zip.valid && zip.touched">
-                    El Zip es obligatorio!
-                </span>
-            </p>
-           
+                       
             <div >
                 <label for="province"><i class="fas fa-location-arrow"></i> Provincia:</label>
                 <select class="form-control" #province="ngModel" name="province" [(ngModel)]="cliente.province" required id="province">
@@ -107,7 +108,6 @@
                     <option value="Albacete">Albacete</option>
                     <option value="Alicante/Alacant">Alicante/Alacant</option>
                     <option value="Almería">Almería</option>
-                    <option value="Araba/Álava"> Araba/Álava</option>
                     <option value="Araba/Álava"> Araba/Álava</option>
                     <option value="Asturias"> Asturias</option>
                     <option value="Ávila"> Ávila</option>
@@ -162,27 +162,28 @@
                 <br>
 
             </div>
-            <p>
-                <i class="far fa-address-card"></i>
-                <label>nifCif:</label>
-                <input type="text" #nifCif="ngModel" name="nifCif" [(ngModel)]="cliente.nifCif" class="form-control"
-                    required placeholder="Introduce el nifCif"       />
-                <span *ngIf="!nifCif.valid && nifCif.touched">
-                    El nifCif es obligatorio!
-                </span>
-            </p>
+            
             <p>
                 <i class="fas fa-map-marker-alt"></i>
-                <label>Direccion:</label>
+                <label>Dirección:</label>
                 <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
                     required placeholder="Introduce la direccion"       />
                 <span *ngIf="!street.valid && street.touched">
                     La street es obligatoria!
                 </span>
             </p>
+            <p>
+                <i class="fas fa-road"></i>
+                <label>Codigo Postal:</label>
+                <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
+                    required placeholder="Introduce el Zip"       />
+                <span *ngIf="!zip.valid && zip.touched">
+                    El Zip es obligatorio!
+                </span>
+            </p>
                 </form>
             </div>
-            <div style="width: 40%" class="justify-content-center ">
+            <div style="width: 46%" class="justify-content-center ">
             <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10"> 
                     <div class="col-md-6 col-xs-6">
                     <i class="far fa-registered"></i>

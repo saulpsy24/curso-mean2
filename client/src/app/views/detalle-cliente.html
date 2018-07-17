@@ -20,7 +20,7 @@
                 </div>
 
             </div>
-            <div class="row " style="width: 30%">
+            <div class="row " style="width: 40%">
                 <div class="col-lg-8">
                     <table class="egt">
                         <!-- <tr>
@@ -46,6 +46,19 @@
 
                             <th>
                                 <strong>
+                                    <i class="fas fa-barcode"></i> Codigo de Establecimiento:</strong>
+                            </th>
+
+                            <td>
+                                <label> {{cliente.code}}</label>
+                            </td>
+
+                        </tr>
+                        <hr>
+                        <tr>
+
+                            <th>
+                                <strong>
                                     <i class="fas fa-envelope"></i> Email:</strong>
                             </th>
 
@@ -59,7 +72,7 @@
 
                             <th>
                                 <strong>
-                                    <i class="far fa-address-card"></i> Nif/Cif</strong>
+                                    <i class="far fa-address-card"></i> Nif/Cif:</strong>
                             </th>
 
                             <td>
@@ -103,19 +116,7 @@
             </div>
             <div class="col-lg-4">
                 <table class="egt">
-                    <tr>
-
-                        <th>
-                            <strong>
-                                <i class="fas fa-file-archive"></i> Zip:</strong>
-                        </th>
-
-                        <td>
-                            <label> {{cliente.zip}}</label>
-                        </td>
-
-                    </tr>
-                    <hr>
+                    
                     <tr>
 
                         <th>
@@ -133,11 +134,24 @@
 
                         <th>
                             <strong>
-                                <i class="fas fa-map-marker-alt"></i> Street:</strong>
+                                <i class="fas fa-map-marker-alt"></i> Dirección:</strong>
                         </th>
 
                         <td>
                             <label> {{cliente.street}}</label>
+                        </td>
+
+                    </tr>
+                    <hr>
+                    <tr>
+
+                        <th>
+                            <strong>
+                                <i class="fas fa-road"></i> Codigo Postal:</strong>
+                        </th>
+
+                        <td>
+                            <label> {{cliente.zip}}</label>
                         </td>
 
                     </tr>
