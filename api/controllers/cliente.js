@@ -666,13 +666,17 @@ function storeUser(req, res) {
     cliente.brandRG = params.brandRG;
     cliente.brandSK = params.brandSK;
     cliente.brandLR = params.brandLR;
-   
-    var password = "FormacionesCAE";
+    password=params.password;
+   if(!password){
+       password='FormacionesCAE';
+   }
+    
     if (password) {
         //ecnriptar pasword
         bcrypt.hash(password, null, null, function (err, hash) {
             cliente.password = hash;
         });
+
 
 
 
