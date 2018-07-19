@@ -10,6 +10,8 @@ var dossiere_routes = require('./routes/dossiere');
 var event_routes = require('./routes/event');
 var turno_routes = require('./routes/turno');
 var asist_routes = require('./routes/asist');
+var consulta_routes = require('./routes/consulta');
+var respuesta_routes = require ('./routes/respuesta');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json('application/json'));
@@ -32,5 +34,7 @@ app.use('/api', dossiere_routes);//dossiere
 app.use('/api',event_routes);//eventos
 app.use('/api',turno_routes);//turnos
 app.use('/api',asist_routes);//asistencia
+app.use('/api',consulta_routes);
+app.use('/api',respuesta_routes);
 
 module.exports = app;
