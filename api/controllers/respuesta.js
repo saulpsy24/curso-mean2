@@ -5,17 +5,19 @@ var mongoosePaginate = require('mongoose-pagination');
 
 var Cliente = require('../models/cliente');
 var Respuesta = require('../models/respuesta');
-var Consulta =require('../models/consulta');
+var Consulta = require('../models/consulta');
+
+var ObjectId = require('mongodb').ObjectId;
 
 function getRespuesta(req, res) {
     var idResp = req.params.id;
 
     Respuesta.findById(idResp).populate({
-        
+
         path: 'cliente'
     }
     ).populate({
-        path:'consulta'
+        path: 'consulta'
     }).exec((err, respuesta) => {
         if (err) {
             res.status(500).send({
@@ -38,10 +40,10 @@ function getRespuesta(req, res) {
 function saveRespuesta(req, res) {
     var respuesta = new Respuesta();
     var params = req.body;
-    respuesta.body=params.body;
-    respuesta.cliente=params.cliente;
-    respuesta.consulta=params.consulta;
-    respuesta.date=Date();
+    respuesta.body = params.body;
+    respuesta.cliente = params.cliente;
+    respuesta.consulta = params.consulta;
+    respuesta.date = Date();
 
     respuesta.save((err, respuestaStored) => {
         if (err) {
@@ -65,7 +67,7 @@ function saveRespuesta(req, res) {
 }
 
 //Metodo para ver artistas por pagina
-function getConsultas(req, res) {
+function getRespuestas(req, res) {
     if (req.params.page) {
         var page = req.params.page;
     } else {
@@ -74,21 +76,24 @@ function getConsultas(req, res) {
 
     var itemsperpage = 10;
 
-    Consulta.find().populate({path:'cliente',Model:'Cliente'
-    }).sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
+    Respuesta.find().populate({
+        path: 'cliente', Model: 'Cliente'
+    }).populate({
+        path: 'consulta'
+    }).sort('date').paginate(page, itemsperpage, function (err, respuestas, total) {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion al server'
             });
         } else {
-            if (!consultas) {
+            if (!respuestas) {
                 res.status(404).send({
-                    message: 'No hay consultas'
+                    message: 'No hay respuestas'
                 });
             } else {
                 return res.status(200).send({
                     pages: total,
-                    consultas: consultas
+                    respuestas: respuestas
                 });
             }
         }
@@ -98,24 +103,24 @@ function getConsultas(req, res) {
 
 
 //metodo para actualizar artistas
-function updateConsulta(req, res) {
-    var consultaId = req.params.id;
+function updateRespuesta(req, res) {
+    var respuestaId = req.params.id;
     var update = req.body;
 
-    Consulta.findByIdAndUpdate(consultaId, update, (err, consultaUpdated) => {
+    Respuesta.findByIdAndUpdate(respuestaId, update, (err, respuestaUpdated) => {
         if (err) {
             res.status(500).send({
                 message: 'Error al actualizar checar, servidor'
             });
         } else {
-            if (!consultaUpdated) {
+            if (!respuestaUpdated) {
                 res.status(404).send({
-                    message: 'No se pudo actualizar COnsulta'
+                    message: 'No se pudo actualizar respuesta'
                 });
 
             } else {
                 res.status(200).send({
-                    consulta: consultaUpdated
+                    respuesta: respuestaUpdated
                 });
 
             }
@@ -123,36 +128,73 @@ function updateConsulta(req, res) {
     });
 }
 //METODO PARA BORRAR albums
-function deleteConsulta(req, res) {
-    var consultaId = req.params.id;
-    Consulta.findByIdAndRemove(consultaId, (err, consultaRemoved) => {
+function deleteRespuesta(req, res) {
+    var respuestaId = req.params.id;
+    Respuesta.findByIdAndRemove(respuestaId, (err, respuestaRemoved) => {
         if (err) {
             res.status(500).send({
-                message: 'Error al borrar Consulta'
+                message: 'Error al borrar respuesta'
             });
         } else {
-            if (!consultaRemoved) {
+            if (!respuestaRemoved) {
                 res.status(404).send({
                     message: 'Consulta no  se pudo eliminar'
                 });
             } else {
-                Respuesta.findOneAndRemove({consulta:consultaRemoved},function(err,preguntaRemovida){
-                    if(err){
+                {
+                    res.status(200).send({
+                        message: 'Respuesta Borrado Exitosamente',
+                        respuesta: respuestaRemoved,
 
-                    }else{
-                        if(!preguntaRemovida){
 
-                        }else{
-                            res.status(200).send({message:'Turno Borrado Exitosamente',
-                            respuesta:preguntaRemovida,
-                            consulta:consultaRemoved,
-                            
-                        
-                            })
-                        }
-                    }
 
+                    })
+                }
+
+
+            }
+        }
+
+    });
+}
+
+//Metodo para ver artistas por pagina
+function getRespuestasHilo(req, res) {
+    if (req.params.page) {
+        var page = req.params.page;
+    } else {
+        var page = 1;
+    }
+    var consultas = req.params.consulta;
+
+    var itemsperpage = 500;
+
+    Respuesta.find().populate({
+        path: 'cliente', Model: 'Cliente'
+    }).populate({
+        path: 'consulta',
+        match: {
+            _id: consultas
+        }
+
+    }).sort('date').paginate(page, itemsperpage, function (err, respuestas, total) {
+        if (err) {
+            res.status(500).send({
+                message: 'error en la peticion al server'
+            });
+        } else {
+            if (!respuestas) {
+                res.status(404).send({
+                    message: 'No hay respuestas'
                 });
+            } else {
+
+                    return res.status(200).send({
+                        pages: total,
+                        respuestas: respuestas
+                    });
+
+                
 
             }
         }
@@ -166,9 +208,10 @@ function deleteConsulta(req, res) {
 
 module.exports = {
     getRespuesta,
-    getConsultas,
-    updateConsulta,   
+    getRespuestas,
+    updateRespuesta,
     saveRespuesta,
-    deleteConsulta,
+    deleteRespuesta,
+    getRespuestasHilo
 
 };

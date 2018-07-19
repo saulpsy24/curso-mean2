@@ -144,7 +144,7 @@ function deleteConsulta(req, res) {
                         if(!preguntaRemovida){
 
                         }else{
-                            res.status(200).send({message:'Turno Borrado Exitosamente',
+                            res.status(200).send({message:'COnsulta Borrado Exitosamente',
                             respuesta:preguntaRemovida,
                             consulta:consultaRemoved,
                             
