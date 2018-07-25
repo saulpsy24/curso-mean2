@@ -1,13 +1,13 @@
 <div *ngIf="identity"  class="navigation col-lg-12 col-xs-12" style="padding: 0px;">
-        <nav id="navigation" style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
+        <nav id="navigation"  style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
                
-                <a class="navbar-brand" [routerLink]="['/']">
+                <!-- <a class="navbar-brand" [routerLink]="['/']">
                     Inicio
-                </a>
+                </a> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
+                <div class="collapse navbar-collapse" id="navbarText" >
                  
                   <span class="navbar-text">
                     <ul class="navbar-nav mr-auto">
@@ -28,7 +28,33 @@
                                             </a>
                         
                                         </li>
+                                    <li class="nav-item">
+                                        
+                                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
+                                                
+                                                Clientes
+                                            </a>
+                        
+                                    </li>
+                                    <li class="nav-item">
                                     
+                                            <a [routerLink]="['/mis-datos']" class="nav-link" [routerLinkActive]="['actived']">
+                                                
+                                                
+                                                    Mi Perfil  
+                                                    <!-- {{identity.name}} -->
+                                                
+                                            </a>                                     
+                                            
+                                        </li>
+                                    <li class="nav-item">     
+                                                     
+                                                <a class="nav-link btn-logout" href="mailto:secretariacae@presstour.es" >
+                                              
+                                               Notificaciones
+                                           </a>
+                                          
+                                       </li>
                                    
                                     <li class="nav-item">     
                                                      
@@ -38,16 +64,7 @@
                                             </a>
                                            
                                         </li>
-                                        <li class="nav-item">
-                                            
-                                                <a [routerLink]="['/mis-datos']" class="nav-link" [routerLinkActive]="['actived']">
-                                                   
-                                                    
-                                                        Perfil de {{identity.name}}
-                                                 
-                                                </a>                                     
-                                                
-                                            </li>
+                                        
                                     <li class="nav-item">     
                                                        
                                              <a class="nav-link btn-logout" (click)="logout()" >

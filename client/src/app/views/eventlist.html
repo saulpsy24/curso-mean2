@@ -2,23 +2,19 @@
         <hr>
         <div class="row card2">
     
-            <div class="col-lg-3">
-                <h1>Eventos</h1>
-                <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" class="btn btn-primary">
-                    Añadir Evento
-                    <i class="fa fa-plus-circle"></i>
-                </a>
+            <div class="col-lg-2">
+                <h1>EVENTOS</h1>
     
             </div>
-            <div class="col-lg-9">
-                <div class="row">
+            <!-- <div class="col-lg-9"> -->
+                <!-- <div class="row">
                     Filtrar:
-                </div>
+                </div> -->
                 <div class="row">
                     
     
-                    <div class="col-md-4">
-                        <h2>Por provincia</h2>
+                    <div class="col-md-2">
+                        <h2 class="filtro">Provincia</h2>
                         <form id="filter">
                                 <select class="form-control"#name="ngModel" name="term" [(ngModel)]="term">
                                     <option selected="selected">Selecciona...</option>
@@ -79,8 +75,8 @@
     
                         </form>
                     </div>
-                    <div class="col-md-4">
-                        <h2>Por marca</h2>
+                    <div class="col-md-2">
+                        <h2 class="filtro">Marca</h2>
                         <div class="dropdown">
                             <select class="form-control"  [(ngModel)]="brand" >
     
@@ -92,8 +88,21 @@
                                 </select>                            
                         </div>
                     </div>
-                    <div class="col-md-4" *ngIf="identity.role=='ROLE_ADMIN'">
-                            <h2>Visibilidad</h2>
+                    <div class="col-md-2">
+                        <h2 class="filtro">Fecha</h2>
+                        <div class="dropdown">
+                            <select class="form-control"  [(ngModel)]="brand" >
+    
+                                    <option ng-selected="selected">Selecciona...</option>
+                                    <option value="Vichy">Vichy</option>
+                                    <option value="La Roche">La Roche-Posay</option>
+                                    <option value="Skinceuticals">Skinceuticals</option>
+                                    <option value="RogerGallet"> Roger Gallet</option>
+                                </select>                            
+                        </div>
+                    </div>
+                    <div class="col-md-2" *ngIf="identity.role=='ROLE_ADMIN'">
+                            <h2 class="filtro">Visibilidad</h2>
                             <div class="dropdown">
                                 <select  class="form-control"  [(ngModel)]="visible" >
         
@@ -103,8 +112,31 @@
                                     </select>                            
                             </div>
                         </div>
-    
-                </div>
+                    <div class="col-md-2">
+                            <h2 class="filtro">Campaña</h2>
+                            <div class="dropdown">
+                                <select class="form-control"  [(ngModel)]="brand" >
+        
+                                        <option ng-selected="selected">Selecciona...</option>
+                                        <option value="Vichy">Vichy</option>
+                                        <option value="La Roche">La Roche-Posay</option>
+                                        <option value="Skinceuticals">Skinceuticals</option>
+                                        <option value="RogerGallet"> Roger Gallet</option>
+                                    </select>                            
+                            </div>
+                        </div>
+                    <div class="col-lg-2">
+                        <br>
+                            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" class=" btn btn-primary">
+                                <FONT FACE="Gotham Light" SIZE=3 COLOR="white" >
+                                        Añadir Evento
+                                </FONT>
+                                
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                
+                        </div>
+                <!-- </div> -->
             </div>
         </div>
         <div class="row">
@@ -118,6 +150,7 @@
         <div class="row">
     
         </div>
+        <br>
         <div class="row card2">
     
     
@@ -142,26 +175,54 @@
     
                     <div class="card-action">
                         <div class="alinear">
-                            <a class="card-title" [routerLink]="['/detalle-evento',event._id] ">
-                                <!-- <i class="fas fa-user-tie"> </i> -->
-                                {{event.title}}
+                            <a  [routerLink]="['/detalle-evento',event._id]  ">
+                                <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184)">
+                                    {{event.title}} 
+                                </FONT>
+                               
                             </a>
-    
+
+                            <br>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" *ngIf="event.brand=='Vichy'">
+                                VICHY
+                            </FONT>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" *ngIf="event.brand=='Cerave'">
+                                CERAVE
+                            </FONT>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" *ngIf="event.brand=='Skinceuticals'">
+                                
+                                SKINCEUTICALS
+                            </FONT>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" *ngIf="event.brand=='La Roche'">
+                                LA ROCHE-POSAY
+                            </FONT>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" *ngIf="event.brand=='RogerGallet'">
+                                ROGER & GALLET
+                            </FONT>
                             <hr>
     
     
                         </div>
+
                         <p>
-                           <label><i class="fas fa-location-arrow"></i> Provincia: </label> {{event.province}}
+                           <label><img id="kDMY_0"   src="../../assets/images/mapa_grande.png" class="img-card">
+                            </label>
+                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" >
+                                    {{event.province}}
+                            </FONT> 
+                        </p>
+                        <p>
+                            <label><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card">
+                            </label> 
                         </p>
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
     
-                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-md btn-warning">
-                                <i class="fas fa-edit"></i>Editar</a>
-                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-danger">
-                                <i class="fas fa-window-close"></i>
-                                Borrar</a>
+                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-md btn-primary">
+                                Editar  <i class="fa fa-plus-circle"></i></a>
+                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-secondary">
+
+                                Eliminar <i class="fa fa-minus-circle"></i></a>
     
                         </div>
                         <div class="seguro animated fadeIn" *ngIf="confirmado==event._id">
@@ -175,12 +236,8 @@
     
             </div>
         </div>
-        <hr>
         <br>
-        <br>
-        <br>
-        <br>
-        <div class="row">
+        <div class="row card2">
     
             <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
                 <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
@@ -196,6 +253,6 @@
             </div>
     
         </div>
-        <hr>
+        <br>
     
     </div>

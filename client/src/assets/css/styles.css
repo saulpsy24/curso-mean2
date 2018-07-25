@@ -12,7 +12,7 @@ html, body{
 		height: 100%;
 		font-family: 'PT Sans', sans-serif;
 		overflow-x: hidden;
-		font-size:17px;
+		font-size:10px;
 
 	
 }
@@ -226,6 +226,11 @@ div{font-family: 'PT Sans', sans-serif;
 	background-clip: padding-box;
 	/* width: 40rem; */
 	transition: transform .2s; /* Animation */
+	background: #ffff;
+	border-style: solid;
+	border-width: 2px;
+	border-color:#C0C0C0;
+	width: 220px;
   }
   .card:hover {
     transform: scale(1.01); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -274,8 +279,10 @@ div{font-family: 'PT Sans', sans-serif;
 	background: #ffffff;
 		
   }
-  .card-title{
-	  font-weight: bold;
+  .card-titulo{
+	  /* font-weight: bold; */
+	  color: rgb(17,152,184);
+	  font-size: 4;
   }
   .card .card-title {
 	color: black;
@@ -312,6 +319,10 @@ div{font-family: 'PT Sans', sans-serif;
   .alinear{
 	  align-content: center;
   }
+  .img-card{
+	  width: 30px;
+	  height: 30px;
+  }
 
 
 
@@ -326,12 +337,17 @@ div{font-family: 'PT Sans', sans-serif;
 	background:#015F86!important;
 
 }
+.btn-secondary{
+	background:rgb(17,152,184)!important;
 
+}
 .card2 {
 	background: #ffff;
 	border-style: solid;
-	border-width: 1px;
-	border-color: #f2f2f2;
+	border-width: 2px;
+	border-color:#C0C0C0;
+
+	;
   }
   
   .card2 {
@@ -410,6 +426,10 @@ div{font-family: 'PT Sans', sans-serif;
 
 .coantainer:hover .middles {
   opacity: 1;
+}
+.filtro{
+	font-size: 15px;
+	color: rgb(127,127,127);
 }
 
 .texto {
