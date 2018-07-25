@@ -10,6 +10,9 @@ var Espacio = require('../models/espacio');
 var Asist = require('../models/assistant');
 var Turno = require('../models/turno');
 var ObjectId = require('mongodb').ObjectId;
+var dateFormat = require('dateformat');
+var Notificacion= require ('../models/notificacion');
+var replaceString= require('replace-string');
 
 function getEvent(req, res) {
     var idEvent = req.params.id;
@@ -36,18 +39,18 @@ function getEvent(req, res) {
 }
 
 
-
 //metodo para guardar artista sin imagen
 function saveEvent(req, res) {
     var event = new Evento();
     var params = req.body;
+    var noty = new Notificacion();
 
     event.title = params.title;
     event.description = params.description;
     event.brand = params.brand;
     event.province = params.province;
     event.visible=params.visible;
-
+   
 
     event.save((err, eventStored) => {
         if (err) {
@@ -61,9 +64,36 @@ function saveEvent(req, res) {
                     message: 'No se guardo evento'
                 });
             } else {
+                var fecha=new Date().toString("yyyyMMddHHmmss");
+                replaceString(fecha,'t',' ');
+                
+                noty.date=fecha;
+                noty.body='Se agrego evento: '+eventStored.title+' de la marca,'+eventStored.brand+'.';
+
+
+                noty.save((err,notySaved)=>{
+                    if(err){
+                        res.status(500).send({
+                            message:'No se almaceno notificación'
+                        })
+                    }else{
+                        if(!notySaved){
+                            res.status(404).send({
+                                message: 'No se guardo notificacion'
+                            });
+                        }else{
+                            
+                            
                 res.status(200).send({
-                    event: eventStored
+                    event: eventStored,
+                    noty:notySaved
                 });
+
+                        }
+                    }
+                });
+
+
             }
         }
     });

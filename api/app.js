@@ -12,6 +12,7 @@ var turno_routes = require('./routes/turno');
 var asist_routes = require('./routes/asist');
 var consulta_routes = require('./routes/consulta');
 var respuesta_routes = require ('./routes/respuesta');
+var noty_routes = require('./routes/notificacion');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json('application/json'));
@@ -36,5 +37,6 @@ app.use('/api',turno_routes);//turnos
 app.use('/api',asist_routes);//asistencia
 app.use('/api',consulta_routes);
 app.use('/api',respuesta_routes);
+app.use('/api',noty_routes);
 
 module.exports = app;

@@ -10,6 +10,7 @@ var Espacio = require('../models/espacio');
 var Asist = require('../models/assistant');
 var Turno = require('../models/turno');
 var Cliente = require('../models/cliente')
+var Notificacion = require('../models/notificacion')
 var ObjectId = require('mongodb').ObjectId;
 
 
@@ -47,7 +48,7 @@ function saveAsist(req, res) {
     var aforo2 = new Turno();
     asist.cliente = params.cliente;
     asist.turno = params.turno;
-    asist.check=params.check;
+    asist.check = params.check;
 
     Asist.findOne({
         'cliente': asist.cliente,
@@ -111,13 +112,62 @@ function saveAsist(req, res) {
                                                     message: 'Error guardando asistencia'
                                                 });
                                             } else {
-                                                res.status(200).send({
-                                                    asistSaved,
-                                                    turnoUpdated
+                                                Cliente.findById(asistSaved.cliente).exec((err, cliente) => {
+                                                    if (err) {
+                                                        res.status(500).send({ message: 'Error conectando al sv' });
+                                                    } else {
+                                                        if (!cliente) {
+                                                            res.status(404).send({ message: 'no existe cliente' });
+                                                        } else {
+                                                            Evento.findById(turnoUpdated.event).exec((err, evento) => {
+                                                                if (err) {
+                                                                    res.status(500).send({ message: 'error en server' });
+                                                                } else {
+                                                                    if (!evento) {
+                                                                        res.status(404).send({ message: 'no hay evento' });
+                                                                    } else {
+                                                                        var noty = new Notificacion();
+                                                                        noty.date=Date();
+                                                                        noty.body='El cliente: '+cliente.name+' se inscribio al evento '+ evento.title+' en turno: '+turnoUpdated.name+' .';
+                                                                            console.log(noty.body);
+                                                                            noty.save((err,notySaved)=>{
+                                                                                if(err){
+                                                                                    res.status(500).send({message:'error en server'});
+                                                                                }else{
+                                                                                    if(!notySaved){
+                                                                                        res.status(404).send({message:'no hay notificacion'});
+                                                                                    }else{
+                                                                                        res.status(200).send({
+                                                                                            asistSaved,
+                                                                                            turnoUpdated,
+                                                                                            notySaved
+                
+                
+                
+                                                                                        });
+                                                                                    }
+                                                                                }
+
+                                                                            })
+                                                                        
+
+                                                                    }
+                                                                }
+
+                                                            });
 
 
 
-                                                });
+
+
+                                                        }
+                                                    }
+
+                                                })
+
+
+
+
                                             }
                                         }
                                     });
@@ -226,14 +276,14 @@ function getAsistenciasCliente(req, res) {
         }
     })
 }
-function deleteAsistencia(req,res){
-    var idAsist= req.params.id;
-    Asist.findByIdAndRemove(idAsist, (err, asistRemoved)=>{
-        if(err){
-            res.send({message:'nosepudo'});
+function deleteAsistencia(req, res) {
+    var idAsist = req.params.id;
+    Asist.findByIdAndRemove(idAsist, (err, asistRemoved) => {
+        if (err) {
+            res.send({ message: 'nosepudo' });
 
-        }else{
-            res.send({asist:asistRemoved});
+        } else {
+            res.send({ asist: asistRemoved });
         }
 
     });
