@@ -9,22 +9,22 @@
             {{alertMessage}}
         </div>
     </div>
-    <div class="row card2">
+    <div class="card2">
         <form #formEvento="ngForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="col-md-2 col-xs-6 ">
+            <div class="row" >
+                <div class = "col-md-6">
                     <p>
                         <br>
-                        <label>Titulo:</label>
-                        <input type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <label ><img id="kDMY_0"   src="../../assets/images/titulo_evento.png" class="img-card"> Titulo:</label>
+                        <input style="width: 50%;" type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
                         <span *ngIf="!title.valid && title.touched"> El Titulo es obligatorio</span>
                     </p>
                     <br>
 
-                    <label for="brand">Marca:</label>
+                    <label for="brand"> <img id="kDMY_0"   src="../../assets/images/marca.png" class="img-card"> Marca:</label>
 
 
-                    <select class="form-control" id="brand" #brand="ngModel" name="brand" [(ngModel)]="evento.brand" required>
+                    <select style="width: 50%;" class="form-control" id="brand" #brand="ngModel" name="brand" [(ngModel)]="evento.brand" required>
 
                         <option ng-selected="selected">Selecciona...</option>
                         <option value="Vichy">Vichy</option>
@@ -57,8 +57,8 @@
                     <br>
 
 
-                    <label for="province">Provincia:</label>
-                    <select class="form-control" #province="ngModel" name="province" [(ngModel)]="evento.province" required id="province">
+                    <label for="province"> <img id="kDMY_0"   src="../../assets/images/mapa_grande.png" class="img-card"> Provincia:</label>
+                    <select style="width: 50%;" class="form-control" #province="ngModel" name="province" [(ngModel)]="evento.province" required id="province">
                         <option selected="selected">Selecciona...</option>
                         <option value="Albacete">Albacete</option>
                         <option value="Alicante/Alacant">Alicante/Alacant</option>
@@ -113,69 +113,111 @@
                         <option value="Zamora"> Zamora</option>
                         <option value="Zaragoza"> Zaragoza</option>
                     </select>
-                    <p>
-                        <br>
-                        <label>Dirección:</label>
-                        <input type="text" #direccion="ngModel" name="direccion" [(ngModel)]="evento.direccion" required class="form-control" />
-                        <span *ngIf="!direccion.valid && direccion.touched"> La Dirección es obligatoria</span>
-                    </p>
-
-
                 </div>
-            </div>
+            
             <!-- <div class="row"> -->
-                <div class="col-md-2 col-xs-6 ">
+                <div class = "col-md-6">
                     <p>
                         <br>
-                        <label>Campaña:</label>
-                        <input type="text" #campana="ngModel" name="campana" [(ngModel)]="evento.campana" required class="form-control" />
+                        <label><img id="kDMY_0"   src="../../assets/images/marca.png" class="img-card"> Campaña:</label>
+                        <input style="width: 50%;" type="text" #campana="ngModel" name="campana" [(ngModel)]="evento.campana" required class="form-control" />
                         <span *ngIf="!campana.valid && campana.touched"> La Campaña es obligatoria</span>
                     </p>
                     <p>
-                        <label>Descripcion:</label>
-                        <textarea class="form-control" #description="ngModel" name="description" [(ngModel)]="evento.description" rows="3"></textarea>
+                        <label><img id="kDMY_0"   src="../../assets/images/descripcion.png" class="img-card"> Descripcion:</label>
+                        <textarea style="width: 90%;" class="form-control" #description="ngModel" name="description" [(ngModel)]="evento.description" rows="3"></textarea>
 
 
                         <span *ngIf="!description.valid && description.touched">La Descripcion es obligatoria</span>
 
                     </p>
                 </div>
-
-            <div class="row">    
-                <div class="col-md-3 col-xs-3">
-                        <br>
-
-                        <label for="visible">Visible:</label>
-    
-    
-                        <select class="form-control" id="visible" #visible="ngModel" name="visible" [(ngModel)]="evento.visible" >
-    
-                            <option ng-selected="selected">Selecciona...</option>
-                            <option value="visible">Visible</option>
-                            <option value="oculto">Oculto</option>
-                        </select>
-
-                </div>
             </div>
-            <!-- </div> -->
-            <div class="row">
-                <div class="col-md-5" *ngIf="is_edit">
+            <div class="row">    
+                <div class="col-md-6 col-xs-6">
+                    <p>
+                            <br>
+                            <label> <img id="kDMY_0"   src="../../assets/images/direccion.png" class="img-card"> Dirección:</label>
+                            <input type="text" #direccion="ngModel" name="direccion" [(ngModel)]="evento.direccion" required class="form-control" />
+                            <span *ngIf="!direccion.valid && direccion.touched"> La Dirección es obligatoria</span>
+                        </p>
+                    <br>
+                </div>
+                <div class="col-md-6"  >
                     <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
                         <img src="{{url +'get-image-event/'+ evento.image}}" />
                     </div>
-
+                    <br>
                     <p>
                         <label>Sube la imagen del Evento</label>
+                        <br>
                         <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
                     </p>
                 </div>
-                <div class="col-md-4">
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p>
+                        <label ><img id="kDMY_0"   src="../../assets/images/lugar.png" class="img-card"> Lugar:</label>
+                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                    </p>
+                    <p>
+                        <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Inicio:</label>
+                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                    </p>
+                    <label for="visible"> <img id="kDMY_0"   src="../../assets/images/visible.png" class="img-card"> Visible:</label>
 
-                    <input type="submit"  value="{{titulo}}" class="btn btn-success" />
+
+                    <select   class="form-control" id="visible" #visible="ngModel" name="visible" [(ngModel)]="evento.visible" >
+
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="visible">Visible</option>
+                        <option value="oculto">Oculto</option>
+                    </select>
+                    <br>
+                </div>
+                <div class="col-md-3">
+                    <p>
+                        <label ><img id="kDMY_0"   src="../../assets/images/lugar.png" class="img-card"> Googlemaps:</label>
+                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                    </p>
+                    <p>
+                        <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Fin:</label>
+                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                    </p>
+                    <p>
+                        <label ><img id="kDMY_0"   src="../../assets/images/valor.png" class="img-card"> Valor formación:</label>
+                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <span *ngIf="!title.valid && title.touched"> El Valor formación es obligatorio</span>
+                    </p>
+                    <br>
+                </div>
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+                <div class="col-md-3">
+
+                </div>
+                
+                <div class="col-md-3">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>    
+                    <input type="submit"  value="Nueva Evento" class="btn btn-secondary" />
                     <br>
                     <br>
                     <button class="btn btn-primary" [routerLink]="['/evento',1]">
-                        <i class="fas fa-chevron-circle-left"> </i>Volver
+                        Volver   <i class="fas fa-arrow-circle-left"></i>
                     </button>
                 </div>
             </div>

@@ -382,9 +382,17 @@ div{
 	border-width: 1px;
 	border-color:#C0C0C0;
 
-	;
+	
   }
-  
+  .card3 {
+	background: #ffff;
+	border-style: solid;
+	border-width: 1px;
+	border-color:#C0C0C0;
+	
+
+	
+  }
   .card2 {
 	margin-top: 10px;
 	box-sizing: border-box;
