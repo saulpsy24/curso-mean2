@@ -1,146 +1,226 @@
-<div *ngIf="evento" class="container h-75">
+<div *ngIf="evento" class="container" style="min-height: 75%">
   <div class="row card2 h-75">
     <!-- <div class="col-lg-3"> -->
-      <div class="card col-md-3" style="
-      padding-right:  0px;
-      padding-left:  0px; " >
-        <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}" *ngIf="evento.image && evento.image!=='null'"
-          alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">{{evento.title}}</h3>
-          <p class="card-text">
-            <p><label class="card-title">Datos del Evento: </label><br>
-              {{evento.description}}
-            </p>
-            <a [routerLink]="['/evento',1] " class="btn btn-secondary">
-              <i class="fas fa-arrow-circle-left"></i> Volver</a>
-            <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-primary" *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" href="#">
-              <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
+    <div class="card col-lg-3">
+      <div class="card-image" style="margin-left:  -15px;
+            margin-right: -15px;    ">
 
-        </div>
-       
-   
-  </div>
-  <div class="col-md-9">
-    <div class="row card">
-      <div class="col-md-6">
-          <label>Campaña:</label>
+        <img src="{{ url +'/get-image-event/' + evento.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
 
       </div>
-      
-      
+
+
+      <div class="card-action">
+        <div class="alinear">
+          <a>
+            <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184)">
+              {{evento.title}}
+            </FONT>
+
+          </a>
+
+          <br>
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Vichy'">
+            VICHY
+          </FONT>
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Cerave'">
+            CERAVE
+          </FONT>
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Skinceuticals'">
+
+            SKINCEUTICALS
+          </FONT>
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='La Roche'">
+            LA ROCHE-POSAY
+          </FONT>
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='RogerGallet'">
+            ROGER & GALLET
+          </FONT>
+          <hr>
+
+
+        </div>
+
+        <p>
+          <label>
+            <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-card">
+          </label>
+          <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);">
+            {{evento.province}}
+          </FONT>
+        </p>
+        <p>
+          <label>
+            <img id="kDMY_0" src="../../assets/images/fecha.png" class="img-card">
+          </label> {{evento.date_s}}
+        </p>
+
+        <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+
+          <a [routerLink]="['/evento',1] " class="btn btn-md btn-primary">
+            Volver
+            <i class="fa fa-plus-circle"></i>
+          </a>
+          <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-md btn-secondary">
+
+            Turno
+            <i class="fa fa-minus-circle"></i>
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
-    <div class="row card">
-        <div class="page-item col-md-3 animated fadeInRight" *ngFor="let turno of turnos">
-            <!-- Card Projects -->
-      
-            <div class="card">
-              <div class="card-action2">
-                <div class="alinear">
-      
-      
-                  <ul class="list-group">
-                    <li class="list-group-item active">
-                      <a class="colorblanco">
-                        {{turno.name}}
-                      </a>
-                    </li>
-                    <li class="list-group-item">
-                      <label>
-                        <i class="fas fa-calendar-alt"></i> Fecha de inicio: </label> {{turno.date_start}}
-                      <br>
-                    </li>
-                    <li class="list-group-item">
-                      <label>
-                        <i class="fas fa-calendar"></i> Fecha de Finalizacion:</label> {{turno.date_end}}
-                      <br>
-                    </li>
-                    <li class="list-group-item">
-                      <label>
-                        <i class="fas fa-clock"></i> Hora de Inicio:</label> {{turno.start_h}}
-                      <br>
-                    </li>
-                    <li class="list-group-item">
-                        <label>
-                          <i class="fas fa-clock"></i> Hora de Fin:</label> {{turno.end_h}}
-                        <br>
-                      </li>
-                    <li class="list-group-item">
-                      <label>
-                        <i class="fas fa-users"></i> Plazas Disponibles:</label> {{turno.aforo}}
-                      <br>
-                    </li>
-                  </ul>
-      
-      
-                </div>
-                <div>
-                  <br>
+    <div class="col-md-8" style="margin-left: 15px;">
+      <div class="row  card2">
+        <div class="col-lg-6">
+          <label>Campaña:</label>
+          <p>
+            {{evento.campana}}
+          </p>
+
+        </div>
+        <div class="col-lg-6">
+          <label>GoogleMaps:</label>
+          <p>
+            <a class="btn btn-primary" href="{{evento.gmaps}}">Link Aqui</a>
+          </p>
+
+        </div>
+        <div class="col-lg-6">
+          <label>Lugar:</label>
+          <p>
+            {{evento.lugar}}
+          </p>
+
+        </div>
+        <div class="col-lg-6">
+
+
+        </div>
+        <div class="col-lg-6">
+          <label>Dirección:</label>
+          <p>
+            {{evento.direccion}}
+          </p>
+
+        </div>
+        <div class="col-lg-6">
+
+
+        </div>
+        <div class="col-lg-6">
+          <label>Descripción:</label>
+          <p>
+            {{evento.descripcion}}
+          </p>
+
+        </div>
+        <div class="col-lg-6">
+
+
+        </div>
+
+
+
+      </div>
+      <div class="row card2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Turno</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>
+              <th scope="col">Hora Inicio</th>
+              <th scope="col">Hora fin</th>
+              <th scope="col">Plazas Disponibles</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let turno of turnos">
+              <th scope="row">{{turno.name}}</th>
+              <td>{{turno.date_start}}</td>
+              <td>{{turno.date_end}}</td>
+              <td>{{turno.start_h}}</td>
+              <td>{{turno.end_h}}</td>
+              <td>{{turno.aforo}}</td>
+              <td>
+                <button *ngIf="!acciones" class="btn btn-primary" (click)="MostrarAcciones(turno._id)" value="Acciones">Actions</button>
+                <div *ngIf="acciones==turno._id">
                   <div class="btn-group animated fadeIn" role="group">
                     <!-- <button (click)="aquivaeleventoquetematricula()" *ngIf="showoptions==0" type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> -->
-                    <button [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" type="button" class="btn btn-primary">
+                    <button [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'"
+                      type="button" class="btn btn-primary">
                       Detalle</button>
-                    <button [routerLink]="['/assistant-add',turno._id] " *ngIf="showoptions==0" type="button" class="btn btn-primary">
+                    <button [routerLink]="['/assistant-add',turno._id] " *ngIf="showoptions==0" type="button" class="btn btn-secondary">
                       <i class="fas fa-plus-circle"></i>
                       Inscribirme!</button>
-                    <button [routerLink]="['/editar-turno',turno._id] " type="button" class="btn btn-secondary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+                    <button [routerLink]="['/editar-turno',turno._id] " type="button" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
                       <i class="fas fa-edit"></i>Editar</button>
-                    <button type="button" (click)="onDeleteConfirm(turno._id)" class="btn btn-danger" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
+                    <button type="button" (click)="onDeleteConfirm(turno._id)" class="btn btn-secondary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
                       <i class="fas fa-window-close"></i>
                       Borrar</button>
                   </div>
                   <div class="btn-group animated fadeIn seguro" role="group" *ngIf="confirmado==turno._id">
-                    <button class="btn btn-md btn-danger" (click)="onDeleteTurno(turno._id)">
+                    <button class="btn btn-md btn-primary" (click)="onDeleteTurno(turno._id)">
                       <i class="fas fa-window-close"></i> Borrar</button>
-                    <button class="btn btn-md" (click)="onCancelTurno()">
+                    <button class="btn btn-md btn-secondary" (click)="onCancelTurno()">
                       <i class="fas fa-ban"></i> Cancelar </button>
-      
-      
+
+
+
+
+
                   </div>
-      
-      
                 </div>
-              </div>
-      
-            </div>
-      
-      
-          </div>
-      
+              </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+
       </div>
-          
+
+    </div>
+
+    <!-- <div class="row card2"> -->
+
+    <!-- <div class="col-lg-9"> -->
+
+    <!-- </div> -->
+
+
+
+
   </div>
-
-  <!-- <div class="row card2"> -->
-
-      <!-- <div class="col-lg-9"> -->
-    
-  <!-- </div> -->
-  
-
-
-
-</div>
-<!-- <hr>
+  <!-- <hr>
   <br>
   <br>
   <br> -->
   <br>
-  <div class="row">
+  <div class="row card2">
 
-      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
-      </div>
-      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
-      </div>
-      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
-      </div>
-      <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;" class="col-md-3 col-xs-3">
-          <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
-      </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/CERAVE.png">
+    </div>
 
   </div>
   <hr>
