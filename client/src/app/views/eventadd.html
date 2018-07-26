@@ -165,6 +165,7 @@
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Inicio:</label>
                         <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
+                        <input [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" name="startDate" class="form-control"/>
                         <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
                     </p>
                     <label for="visible"> <img id="kDMY_0"   src="../../assets/images/visible.png" class="img-card"> Visible:</label>
