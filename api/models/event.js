@@ -15,7 +15,7 @@ var eventSchema = Schema({
     date_s:String,
     date_e:String,
     value:String,
-    campaña:String
+    campana:String
         
 });
 
