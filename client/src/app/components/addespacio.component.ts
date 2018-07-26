@@ -32,7 +32,7 @@ export class AddespComponent implements OnInit{
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
         this.url= GLOBAL.url;
-        this.evento = new Evento('','','','','','');
+        this.evento = new Evento('','','','','','','','','','','','','');
 	}
 
 	ngOnInit(){

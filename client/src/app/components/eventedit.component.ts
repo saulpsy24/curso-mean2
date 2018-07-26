@@ -26,10 +26,10 @@ export class EventeditComponent implements OnInit {
         private _eventService: EventService,
         private _uploadService:UploadService
     ) {
-        this.titulo = 'Actualizar Evento';
+        this.titulo = 'EDITAR EVENTO';
         this.is_edit = true;
         this.url = GLOBAL.url;
-        this.evento = new Evento('', '', '', '', '','');
+        this.evento = new Evento('', '', '', '', '','','','','','','','','');
 
         this.identity = this._clienteService.getidentity();
         this.token = this._clienteService.getToken();

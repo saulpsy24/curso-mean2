@@ -24,9 +24,9 @@ constructor(
     private _clienteService:ClienteService,
     private _eventService:EventService
 ){
-    this.titulo='Nuevo Evento';
+    this.titulo='AÑADIR EVENTO';
     this.url=GLOBAL.url;
-    this.evento= new Evento('','','','','','');
+    this.evento= new Evento('','','','','','','','','','','','','');
     
     this.identity=this._clienteService.getidentity();
     this.token=this._clienteService.getToken();
