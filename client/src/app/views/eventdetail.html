@@ -1,7 +1,7 @@
 <div *ngIf="evento" class="container">
   <div class="row card2">
     <!-- <div class="col-lg-3"> -->
-      <div class="card" style="width:30%;">
+      <div class="card col-md-3" >
         <img class="card-img-top" src="{{ url +'/get-image-event/' + evento.image}}" *ngIf="evento.image && evento.image!=='null'"
           alt="Card image cap">
         <div class="card-body">
@@ -16,7 +16,19 @@
               <i class="fas fa-plus-circle"></i> Agregar Turnos</a>
 
         </div>
+       
    
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      fila 1
+
+    </div>
+    <div class="row">
+      fila 2
+      
+      </div>
+          
   </div>
 
   <!-- <div class="row card2"> -->
