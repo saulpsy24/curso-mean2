@@ -98,6 +98,10 @@ export class EventDetailComponente implements OnInit {
 
     }
 
+public acciones = null;
+MostrarAcciones(id){
+    this.acciones=id;
+}
 
 
     public confirmado;
@@ -105,13 +109,17 @@ export class EventDetailComponente implements OnInit {
     onDeleteConfirm(id) {
         this.confirmado = id;
         this.showoptions = 1;
+        
+
     }
     onCancelTurno() {
         this.confirmado = null;
         this.showoptions = 0;
+        this.acciones=null;
     }
 
     onDeleteTurno(id) {
+        this.acciones=null;
         this.showoptions = 0;
         this._turnoService.deleteTurno(this.token, id).subscribe(
             response => {
