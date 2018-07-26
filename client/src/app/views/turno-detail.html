@@ -2,64 +2,79 @@
 
   <div class="clearfix"></div>
   <div id="turno-detail" *ngIf="assistant">
-    <div class="container card2">
+    <div class="container">
       <div id="print-section">
-        <h1>Listado de Asistentes</h1>
-        <h2>Evento: {{turno.event.title}}</h2>
-        
-        <hr>
-        <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
-            <table  class="table table-black">
-                <thead>
-                  <tr>
-                    
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Nombre del Turno</th>
-                    <th scope="col">Establecimiento</th>
-                    <th scope="col">Codigo</th>
-                    <th scope="col"> Asistencia</th>
-                  </tr>
-                </thead>
-                <tbody>
-               <tr *ngFor="let asistencias of assistant">
-                    
-                    <td scope="row">{{asistencias.cliente.name}}</td>
-                    <td>{{asistencias.cliente.surname}}</td>
-                    <td>{{asistencias.turno.name}}</td>
-                    <td>{{asistencias.cliente.nameEstablishment}}</td>
-                    <th >{{asistencias.cliente.code}}</th>
-                    <th><label><i *ngIf="asistencias.check" 
-                      class="fas fa-check-circle"></i></label>
-                      <input  type="checkbox" [checked]="asistencias.check" (change)="asistencias.check = !asistencias.check" />
-                    
-                    </th>
-                  </tr>
-      
-                </tbody>
-              </table>
-              <div class="row">
-                <div class="col-md-10">
+        <div class="row card2">
+          <h1>Listado de Asistentes</h1>
 
-                </div>
-                  <br>
-                    <div class="col-md-2">
-                        <input  type="submit" value="Pasar Asistencia" class="btn btn-secondary" />
-                    </div>
-                </div>
-              
-            </form>
-        
+        </div>
+        <div class="row card2 ">
 
-        
+        <form #formAssistant="ngForm" class="col-lg-12" (ngSubmit)="onSubmit()">
+          <table class="table table-black">
+            <thead>
+              <tr>
+
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Campaña</th>
+                <th scope="col">Turno</th>
+                <th scope="col">Establecimiento</th>
+                <th scope="col">Codigo Farmacia</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">e-Mail</th>
+                <th scope="col"> Asistencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let asistencias of assistant">
+
+                <td scope="row">{{asistencias.cliente.name}}</td>
+                <td>{{asistencias.cliente.surname}}</td>
+                <td>{{asistencias.turno.event}}</td>
+                <td>{{asistencias.turno.name}}</td>
+                <td>{{asistencias.cliente.nameEstablishment}}</td>
+                <th>{{asistencias.cliente.code}}</th>
+                <th><a href="tel:{{asistencias.cliente.phone}}">{{asistencias.cliente.phone}}</a></th>
+                <th><a href="mailto:{{asistencias.cliente.email}}">{{asistencias.cliente.email}}</a></th>
+                <th>
+                  <label>
+                    <i *ngIf="asistencias.check" class="fas fa-check-circle"></i>
+                  </label>
+                  <input type="checkbox" [checked]="asistencias.check" (change)="asistencias.check = !asistencias.check" />
+
+                </th>
+              </tr>
+
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-md-10">
+
+            </div>
+            <br>
+            <div class="col-md-2">
+              <input type="submit" value="Pasar Asistencia" class="btn btn-secondary" />
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+
+
 
       </div>
-      <br><br>
+      <br>
+      <br>
       <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
+
+      <a class="btn btn-secondary" href="{{url}}getreporte-asist/{{turno._id}}">Reporte CSV</a>
     
 
+
       <hr>
-      <a [routerLink]="['/evento',1]" class="btn btn-info">Regresar</a>
+      <a [routerLink]="['/detalle-evento',turno.event._id]" class="btn btn-secondary">Regresar</a>
     </div>
   </div>
 

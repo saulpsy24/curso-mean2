@@ -483,6 +483,32 @@ function ActulizaAsist(req, res) {
     });
 }
 
+var nodemailer = require('nodemailer');
+function sendMail(req,res){
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'sarlmnt.soul@gmail.com',
+            pass: 's@ul24zoo'
+        }
+ });
+ var mailOptions = {
+    from: 'Ing.Saul',
+    to: 'saul.ramirez@disolutionsmx.com',
+    subject: 'Tu evento',
+    html: '<a href="#">Contenido del email</a>'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+    if (error){
+        console.log(error);
+        res.send(500, error.message);
+    } else {
+        console.log("Email sent");
+        res.status(200).jsonp(req.body);
+    }
+});
+}
 
 
 
@@ -494,6 +520,7 @@ module.exports = {
     getAsistenciasCliente,
     deleteAsistencia,
     ActulizaAsist,
-    sacarcsv
+    sacarcsv,
+    sendMail
 
 }

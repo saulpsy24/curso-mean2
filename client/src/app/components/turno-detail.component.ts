@@ -46,6 +46,28 @@ export class TurnodetailComponent implements OnInit {
         console.log(this.turno);
         console.log(this.assistant);
     }
+    getReporte(idturno){
+      
+            let id =idturno
+            this._assistanService.getReporteAsistencia(this.token,id).subscribe(
+                response=>{
+                    if(!response){
+                        alert('No se pudo descargar reporte');
+                    }else{
+                        alert('Descargando reporte');
+                    }
+                },error=>{
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        this.alertMessage = body.message;
+                        console.log(error);
+                    }
+
+                }
+            )
+        
+    }
 
     getTurno() {
         console.log('funciona el metodo');

@@ -27,7 +27,7 @@ export class TurnoAddComponent implements OnInit {
         private _eventService: EventService,
         private _turnoservice: TurnoService
     ) {
-        this.titulo = 'Nuevo Turno';
+        this.titulo = 'Agregar Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 0, '');
 

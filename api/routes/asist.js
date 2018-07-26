@@ -16,6 +16,7 @@ api.get('/getreporte-asist/:id?',AsistController.sacarcsv);
 api.put('/asist/:id',md_auth.ensureAuth,AsistController.ActulizaAsist);
 
 api.get('/asistenciasc/:cliente?',md_auth.ensureAuth,AsistController.getAsistenciasCliente);
+api.post('/lista/mail',AsistController.sendMail);
 
 
 module.exports = api;
