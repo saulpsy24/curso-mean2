@@ -236,6 +236,88 @@ function getAsistencias(req, res) {
         }
     })
 }
+
+function sacarcsv(req, res) {
+    const Json2csvParser = require('json2csv').Parser;
+    const fields = [{
+        label: 'Nombre', value: 'cliente.name'
+    }, {
+        label: 'Apellidos',
+        value: 'cliente.surname'
+    }, {
+        label: 'Farmacia',
+        value: 'cliente.nameEstablishment'
+    }, {label:'email',value: 'cliente.email'},{label:'Codigo de Farmacia',value: 'cliente.code'}, {label:'Telefono',value:'cliente.phone'},
+     {label:'CP',value:'cliente.zip'}, {label:'NIF/CIF', value: 'cliente.nifCif'}, {label:'Direccion',value:'cliente.street'},
+     {label:'VICHY',value:'cliente.brandV'} ,{label:'ROCHE-POSAY', value:'cliente.brandLR'},{label:'RogerGallet',value: 'cliente.brandRG'},{label:'SKINS',value: 'cliente.brandSK'},
+     {label:'CeraVe',value: 'cliente.brandCV'},{label:'Rol',value: 'cliente.role'},
+    {label:'Evento',value:'turno.event.title'},{label:'Turno',value:'turno.name'},{label:'Asistio',value:'check'}];
+    const json2csvParser = new Json2csvParser({ fields });
+
+
+    var turnoId = req.params.id;
+    if (!turnoId) {
+        //sacar todos los albums de la DB
+        var find = Asist.find({}).sort('name').populate({
+            path: 'turno',
+            populate: {
+                path: 'event'
+            }
+    
+    
+        }).populate({
+            path: 'cliente'
+        });
+    } else {
+        var find = Asist.find({
+            turno: turnoId
+        }).sort('name').populate({
+            path: 'turno',
+            populate: {
+                path: 'event'
+            }
+    
+    
+        }).populate({
+            path: 'cliente'
+        });
+    }
+    
+    find.exec((err, asistencia) => {
+        if (err) {
+            res.status(500).send({
+                message: 'error'
+            });
+        } else {
+            if (!asistencia) {
+                res.status(404).send({
+                    message: 'no hay asistencias  asociadas'
+                });
+            } else {
+
+                const csv = json2csvParser.parse(asistencia);
+                var path = './exports/csv' + Date.now() + '.csv';
+                fs.writeFile(path, csv, function (err, data) {
+                    if (err) { throw err; }
+                    else {
+                        console.log('file Created');
+                        res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+                        res.set('Content-Type', 'text/csv');
+                        res.download(path)
+                    }
+                });
+
+            }
+        }
+    })
+
+
+}
+
+
+
+
+
 function getAsistenciasCliente(req, res) {
     var clienteId = req.params.cliente;
     if (!clienteId) {
@@ -411,6 +493,7 @@ module.exports = {
     deleteAsist,
     getAsistenciasCliente,
     deleteAsistencia,
-    ActulizaAsist
+    ActulizaAsist,
+    sacarcsv
 
 }

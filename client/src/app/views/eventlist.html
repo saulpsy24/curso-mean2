@@ -154,7 +154,7 @@
         <div class="row card2">
     
     
-            <div class="page-item col-md-3 animated fadeInRight" *ngFor="let event of eventos | filter:term:brand:date_s:visible:campana">
+            <div class="page-item col-md-3 col-sm-4 animated fadeInRight" *ngFor="let event of eventos | filter:term:brand:date_s:visible:campana">
                 <!-- Card Projects -->
     
                 <div class="card">
@@ -162,12 +162,7 @@
                         <div class="coantainer">
                             <img src="{{ url +'/get-image-event/' + event.image}}" alt="Avatar" class="img-responsive imasge" style="width:100%">
                             <div class="middles">
-                                <div class="texto">
-                                   <p>  <button class="btn btn-primary">
-                                    Ver más
-                                </button>
-                                </p>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
