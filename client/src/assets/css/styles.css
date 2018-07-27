@@ -41,7 +41,7 @@ html, body{
     background: white;
     margin: 0px;
 		height: 100%;
-		font-family: Gotham, sans-serif;
+		font-family: Gotham, sans-serif!important;
 		overflow-x: hidden;
 		font-size:10px;
 
@@ -53,19 +53,24 @@ html, body{
 }
 h1{
 	color: #1198b8;
+	font-family: Gotham, sans-serif !important;
 }
 h2{
 	color:#1198b8;
+	font-family: Gotham, sans-serif !important;
 }
 h3{
 	color:#1198b8;
+	font-family: Gotham, sans-serif !important;
 }
 h4{
 	color:#1198b8;
+	font-family: Gotham, sans-serif !important;
 }
 label{
 	color:#1198b8;
 	font-weight:600;
+	font-family: Gotham, sans-serif !important;
 }
 .navbar-light .navbar-nav .nav-link {
     color: white;
@@ -75,7 +80,7 @@ label{
 }
 div{
 	
-	font-family: Gotham, sans-serif;
+	font-family: Gotham, sans-serif !important;
 	font-weight: lighter;
 
 }
