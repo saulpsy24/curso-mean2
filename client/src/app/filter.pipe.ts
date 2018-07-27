@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(items: Array<any>, term: string, brand: string, dateS:String, visible: string, campana:string,name:string,email:string,establecimiento:string,phone:string) {
+    transform(items: Array<any>, term: string, brand: string, dateS:String, visible: string, campana:string,name:string,email:string,establecimiento:string,phone:string,cliente :String) {
         if (items && items.length) {
             return items.filter(item => {
                 if(item.province){
@@ -47,6 +47,12 @@ export class FilterPipe implements PipeTransform {
                         return false;
                     }
                 }
+                    if (cliente && item.cliente.toLowerCase().indexOf(cliente.toLowerCase()) === -1) {
+                       
+                       
+                        return false;
+                    }
+                
                 return true;
             })
         }

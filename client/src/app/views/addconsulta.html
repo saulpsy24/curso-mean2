@@ -3,14 +3,100 @@
 <div class="row card2">
     <h1>Listado de Consultas</h1>
 </div>
-<div class="row card2">
-        <div class="list-group col-lg-10">
-                <a href="#" *ngFor="let consultas of consultas" class="list-group-item list-group-item-action">
-                 prueba
-                </a>
+<div class="row card2" *ngIf="identity.role=='ROLE_ADMIN' || 'ROLE_USER'">
+    <h3>Eres: {{identity.name +' ' +identity.surname}}</h3> //dejar visible solo para user al final
+        <div class="list-group col-lg-12">
+            <table class="table table-black">
+                <thead>
+                  <tr>
+    
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Codigo de Farmacia</th>
+                    <th scope="col">Establecimiento</th>
+                    
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">e-Mail</th>
+                    <th scope="col">Responder</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let consultas of consultasc">
+    
+                    <td scope="row">{{consultas.cliente.name}}</td>
+                    <td>{{consultas.cliente.surname}}</td>
+                    <td>{{consultas.title}}</td>
+                    <td>{{consultas.cliente.code}}</td>
+                    <td>{{consultas.cliente.nameEstablishment}}</td>
+                    <th><a href="tel:{{consultas.cliente.phone}}">{{consultas.cliente.phone}}</a></th>
+                    <th> <a href="mailto:{{consultas.cliente.email}}">{{consultas.cliente.email}}</a></th>
+                    <th></th>
+                    
+                  </tr>
+    
+                </tbody>
+              </table>
+
                 
               </div>
 </div>
+<div class="row card2" *ngIf="identity.role=='ROLE_ADMIN'">
+    <h3>Bienvenido Administrador : {{identity.name +' ' +identity.surname}}</h3>
+        <div class="list-group col-lg-12">
+            <table class="table table-black">
+                <thead>
+                  <tr>
+    
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Codigo de Farmacia</th>
+                    <th scope="col">Establecimiento</th>
+                    
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">e-Mail</th>
+                    <th scope="col">Responder</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let consultas of consultas">
+    
+                    <td scope="row">{{consultas.cliente.name}}</td>
+                    <td>{{consultas.cliente.surname}}</td>
+                    <td>{{consultas.title}}</td>
+                    <td>{{consultas.cliente.code}}</td>
+                    <td>{{consultas.cliente.nameEstablishment}}</td>
+                    <th><a href="tel:{{consultas.cliente.phone}}">{{consultas.cliente.phone}}</a></th>
+                    <th> <a href="mailto:{{consultas.cliente.email}}">{{consultas.cliente.email}}</a></th>
+                    <th></th>
+                    
+                  </tr>
+    
+                </tbody>
+              </table>
+
+              </div>
+</div>
+<div class="row card2">
+
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+    </div>
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/CERAVE.png">
+    </div>
+
+  </div>
 
 
 </div>

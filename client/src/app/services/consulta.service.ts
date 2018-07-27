@@ -12,20 +12,41 @@ export class ConsultaService {
         this.url = GLOBAL.url;
     }
   
-    getConsulta(token,page=null) {
+    getConsultaC(token,cliente=null) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': token
 
         });
         let options = new RequestOptions({ headers: headers });
-        if(page==null){
+        if(cliente==null){
+            return this._http.get(this.url +'consultasc/', options).map(
+                res => res.json()
+            );
+
+        }else{
+            return this._http.get(this.url + 'consultasc/' + cliente, options).map(
+                res => res.json()
+            );
+
+        }
+        
+
+    }
+    getConsulta(token,cliente=null) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': token
+
+        });
+        let options = new RequestOptions({ headers: headers });
+        if(cliente==null){
             return this._http.get(this.url +'consultas/', options).map(
                 res => res.json()
             );
 
         }else{
-            return this._http.get(this.url + 'consultas/' + page, options).map(
+            return this._http.get(this.url + 'consultas/' + cliente, options).map(
                 res => res.json()
             );
 

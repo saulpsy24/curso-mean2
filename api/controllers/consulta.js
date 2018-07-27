@@ -14,11 +14,7 @@ var Consulta =require('../models/consulta');
 function getConsulta(req, res) {
     var idAsist = req.params.id;
 
-    Consulta.findById(idAsist).populate({
-        
-        path: 'cliente'
-    }
-    ).exec((err, consulta) => {
+    Consulta.findById(idAsist).exec((err, consulta) => {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion'
@@ -75,8 +71,31 @@ function getConsultas(req, res) {
 
     var itemsperpage = 10;
 
-    Consulta.find().populate({path:'cliente',Model:'Cliente'
-    }).sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
+    Consulta.find().populate({path:'cliente'}).sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
+        if (err) {
+            res.status(500).send({
+                message: 'error en la peticion al server'
+            });
+        } else {
+            if (!consultas) {
+                res.status(404).send({
+                    message: 'No hay consultas'
+                });
+            } else {
+                return res.status(200).send({
+                    pages: total,
+                    consultas: consultas
+                });
+            }
+        }
+
+    });
+}
+function getConsultasC(req, res) {
+   var cliente= req.params.cliente;
+    var itemsperpage = 100;
+
+    Consulta.find({cliente:cliente}).populate({path:'cliente'}).sort('date').paginate(1, itemsperpage, function (err, consultas, total) {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion al server'
@@ -171,5 +190,6 @@ module.exports = {
     updateConsulta,   
     saveConsulta,
     deleteConsulta,
+    getConsultasC
 
 };
