@@ -50,6 +50,9 @@
                             </a>
 
                         </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['/consulta-add']" class="nav-link" [routerLinkActive]="['actived']">Consultas</a>
+                        </li>
                         <li class="nav-item" *ngIf="identity.role==='ROLE_ADMIN'">
 
                             <a (click)="UpdateNotificacion();" class="nav-link" id="example" rel="popover" data-content="" data-original-title="Notificaciones" data-placement="bottom">

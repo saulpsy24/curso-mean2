@@ -33,6 +33,7 @@ import {TurnodetailComponent} from './components/turno-detail.component';
 import {misEventosComponent} from './components/miseventos.component';
 import { adminPanelComponent } from './components/adminpanel.component';
 import { ClienteDetailComponent } from './components/detallecliente.component';
+import { addConsultaComponent } from './components/addconsulta.component';
 
 const appRoutes: Routes = [
 
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
    
     {path:'mis-eventos',component:misEventosComponent},
     {path:'turno-detail/:id',component:TurnodetailComponent},
+    {path:'consulta-add',component:addConsultaComponent},
     
     {path:'eventedit/:id',component: EventeditComponent},
     // {path:'espacio/:page',component:EspacioComponent},

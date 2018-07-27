@@ -30,6 +30,7 @@ import {adminPanelComponent} from './components/adminpanel.component';
 import {ClienteaddComponent} from './components/cliente-add.component';
 import {ClienteDetailComponent} from './components/detallecliente.component';
 import {ClienteEditarComponent} from './components/editarclienteadmin.component';
+import {addConsultaComponent} from './components/addconsulta.component';
 
 
 
@@ -40,6 +41,7 @@ import {ClienteEditarComponent} from './components/editarclienteadmin.component'
       EspacioComponent,
       AddespComponent,
       HomeComponent,
+      addConsultaComponent,
   //    EventListComponent,
       EventaddComponent,
 	  EditespComponent,
