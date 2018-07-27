@@ -1,87 +1,86 @@
-<div *ngIf="identity"  class="navigation col-lg-12 col-xs-12" style="padding: 0px;">
-        <nav id="navigation"  style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
-               
-                <!-- <a class="navbar-brand" [routerLink]="['/']">
+<div *ngIf="identity" class="navigation col-lg-12 col-xs-12" style="padding: 0px;">
+    <nav id="navigation" style="width:100%; z-index: 1;box-shadow: 0px -1px 6px rgba(0,0,0,.2);" class="navbar navbar-expand-lg navbar-light ">
+
+        <!-- <a class="navbar-brand" [routerLink]="['/']">
                     Inicio
                 </a> -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" style="margin-right: 15%;" id="navbarText" >
-                 
-                  <span class="navbar-text">
-                        
-                      
-                    <ul class="navbar-nav ">
-                            <ul class="navbar-nav my-2 my-lg-0">
-                                    
-                                    <li class="nav-item">
-                                        
-                                      <a class="nav-link" [routerLink]="['/evento',1]" [routerLinkActive]="['actived']">
-                                          
-                                            Eventos
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                          
-                                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
-                                               
-                                                Mis Eventos
-                                            </a>
-                        
-                                        </li>
-                                    <li class="nav-item">
-                                        
-                                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
-                                                
-                                                Clientes
-                                            </a>
-                        
-                                    </li>
-                                    <li class="nav-item">
-                                    
-                                            <a [routerLink]="['/mis-datos']" class="nav-link" [routerLinkActive]="['actived']">
-                                                
-                                                
-                                                    Mi Perfil  
-                                                    <!-- {{identity.name}} -->
-                                                
-                                            </a>                                     
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" style="margin-right: 15%;" id="navbarText">
+
+            <span class="navbar-text">
+
+
+                <ul class="navbar-nav ">
+                    <ul class="navbar-nav my-2 my-lg-0">
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" [routerLink]="['/evento',1]" [routerLinkActive]="['actived']">
+
+                                Eventos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
+
+                                Mis Eventos
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+
+                            <a [routerLink]="['/mis-eventos']" [routerLinkActive]="['actived']" class="nav-link">
+
+                                Clientes
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+
+                            <a [routerLink]="['/mis-datos']" class="nav-link" [routerLinkActive]="['actived']">
+
+
+                                Mi Perfil
+                                <!-- {{identity.name}} -->
+
+                            </a>
+
+                        </li>
+                        <li class="nav-item" *ngIf="identity.role==='ROLE_ADMIN'">
+
+                            <a (click)="UpdateNotificacion();" class="nav-link" id="example" rel="popover" data-content="" data-original-title="Notificaciones" data-placement="bottom">
+                                Notificaciones <span class="badge badge-light">+</span>
+                            </a>
+
+                            <div id="popover_content_wrapper" style="display: none">
+                                    <ul class="list-group">
+                                            <li *ngFor="let notificaciones of notificacion" class="list-group-item">{{notificaciones.body}}<br><label style="font-size: 9px">{{notificaciones.date}}</label></li>
                                             
-                                        </li>
-                                    <li class="nav-item">     
-                                                     
-                                                <a class="nav-link btn-logout" href="mailto:secretariacae@presstour.es" >
-                                              
-                                               Notificaciones
-                                           </a>
-                                          
-                                       </li>
-                                   
-                                    <li class="nav-item">     
-                                                     
-                                                 <a class="nav-link btn-logout" href="mailto:secretariacae@presstour.es" >
-                                               
-                                                Contacto
-                                            </a>
-                                           
-                                        </li>
-                                        
-                                    <li class="nav-item">     
-                                                       
-                                             <a class="nav-link btn-logout" (click)="logout()" >
-                                           
-                                            Salir
-                                        </a>
-                                       
-                                    </li>
-                                </ul>
+                                          </ul>
+                            </div>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a class="nav-link btn-logout" (click)="logout()">
+
+                                Salir
+                            </a>
+
+                        </li>
                     </ul>
-                  </span>
-                </div>
-              </nav>
-            </div>
-<div  [style.display]="!identity?'none':'inherit'" class="central col-lg-12" style="background: #f2f2f2; height: 100%; padding: 0px;">
+                </ul>
+            </span>
+        </div>
+    </nav>
+</div>
+<div [style.display]="!identity?'none':'inherit'" class="central col-lg-12" style="background: #f2f2f2; height: 100%; padding: 0px;">
     <router-outlet></router-outlet>
 </div>
 
@@ -91,16 +90,16 @@
 
 <div class="row" style="width: 100% ;height:50%;" *ngIf="!identity">
     <div id="over" style="height: 100%;">
-        <img style="max-height: 150px;"  class="img-responsive" src="../assets/images/COSMÉTICA ACTIVA.png"  />
+        <img style="max-height: 150px;" class="img-responsive" src="../assets/images/COSMÉTICA ACTIVA.png" />
     </div>
 
 </div>
 
 <div class="row justify-content-center align-items-center loginform" style="height: 47%; font-family: Gotham-Book;" *ngIf="!identity">
-    
+
 
     <div class="col-lg-3">
-     
+
 
 
         <div *ngIf="errorMessage" class="alert alert-danger">

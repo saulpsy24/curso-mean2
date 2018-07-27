@@ -247,7 +247,21 @@ div{
 .espacio-item .espacio-name a{
 	color:white;
 }
-
+.popover-header {
+    padding: .5rem .75rem;
+    margin-bottom: 0;
+    font-size: 2rem;
+    color: inherit;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+}
+.popover-body {
+    padding: .5rem .75rem;
+	color: #212529;
+	font-size: 10px;
+}
 .jumbotron{
 
 	background-color: white!important;

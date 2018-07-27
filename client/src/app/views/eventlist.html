@@ -17,7 +17,7 @@
                         <h2 class="filtro">Provincia</h2>
                         <form id="filter">
                                 <select class="form-control"#name="ngModel" name="term" [(ngModel)]="term">
-                                    <option selected="selected">Selecciona...</option>
+                                    <option selected="selected" value="">Selecciona...</option>
                                     <option value="Albacete">Albacete</option>
                                     <option value="Alicante/Alacant">Alicante/Alacant</option>
                                     <option value="Almería">Almería</option>
@@ -99,7 +99,7 @@
                             <div class="dropdown">
                                 <select  class="form-control"  [(ngModel)]="visible" >
         
-                                        <option ng-selected="selected">Selecciona...</option>
+                                        <option ng-selected="selected" value="">Selecciona...</option>
                                         <option value="oculto">Ocultos</option>
                                         <option value="visible">Visibles</option>
                                     </select>                            

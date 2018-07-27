@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { GLOBAL} from './services/global';
 import { Cliente } from './models/cliente';
+import {Notification} from './models/notyfication';
 import { ClienteService } from './services/cliente.service'
+import {NotificationsService} from './services/notificaciones.service'
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    providers: [ClienteService]
+    providers: [ClienteService,NotificationsService]
 
 })
 
@@ -20,26 +22,69 @@ export class AppComponent implements OnInit {
     public errorMessage;
     public url:String;
    public clientHeight: number;
+    public notificacion :Notification[];
     
 
     constructor(
         private _route: ActivatedRoute,
 		private _router: Router,
         private _clienteService: ClienteService,
+        private _notificationService: NotificationsService
      
     ) {
         this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
          this.url=GLOBAL.url;
          this.clientHeight = window.innerHeight; 
+         
     }
     ngOnInit() {
         this.token = this._clienteService.getToken();
         this.identity = this._clienteService.getidentity();
         console.log(this.token);
         console.log(this.identity);
+        
+        console.log(this.notificacion);
+        
 
 
     }
+    UpdateNotificacion(){
+        this.getNotificaciones();
+
+    }
+
+    getNotificaciones() {
+        
+        
+          
+            this._notificationService.getNoty(this.token).subscribe(
+                response => {
+
+                    if (!response.notificaciones) {
+                        alert( 'Error en el Servidor');
+                        console.log('entro aqui')
+
+                    } else {
+                        this.notificacion = response.notificaciones;
+                        console.log(this.notificacion);
+                    }
+
+                },
+                error => {
+                    var errorMessage = <any>error;
+                    if (errorMessage != null) {
+                        var body = JSON.parse(error._body);
+                        
+                        console.log(error);
+                    }
+                }
+
+
+            );
+      
+
+}
+
     public onSubmit() {
 
         console.log(this.cliente);

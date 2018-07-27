@@ -50,7 +50,13 @@ function saveEvent(req, res) {
     event.brand = params.brand;
     event.province = params.province;
     event.visible=params.visible;
-   
+    event.direccion=params.direccion;
+    event.lugar= params.lugar;
+    event.gmaps=params.gmaps;
+    event.dateS=params.dateS;
+   event.dateE=params.dateE;
+    event.value=params.value;
+    event.campana=params.campana;
 
     event.save((err, eventStored) => {
         if (err) {

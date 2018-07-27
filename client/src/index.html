@@ -16,6 +16,18 @@
     <link rel="icon" href="https://www.loreal-paris.com.mx/img/favicon.png" type="image/png">
     <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <script>
+    
+  $(function(){
+    $('[rel=popover]').popover({ 
+      html : true, 
+      content: function() {
+        return $('#popover_content_wrapper').html();
+      }
+    });
+  });
+</script>
+  
   <!-- or -->
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"

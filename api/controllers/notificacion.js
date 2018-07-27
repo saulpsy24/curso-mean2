@@ -18,7 +18,7 @@ function getNotificaciones(req, res) {
         var page = 1;
     }
 
-    var itemsperpage = 100;
+    var itemsperpage = 10;
     var mysort={
         date:-1
     }
