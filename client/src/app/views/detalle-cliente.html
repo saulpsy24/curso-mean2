@@ -1,204 +1,192 @@
 <div *ngIf="cliente" class="container">
-    <div class="row">
-        <div class="row card2" style="width: 100%">
-            <!-- <div class="col-lg-3"> -->
-            <div class="col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h3 class="card-title">{{cliente.name}} {{cliente.surname}}</h3>
-                        <p class="card-text">
+    <div class="row card2" style="width: 100%">
+        <h1>PERFIL CLIENTE</h1>
+    </div>
+    <br>
+    <div class="row card2" style="width: 100%">
+        <!-- <div class="col-lg-3"> -->
+        <div class="col-lg-3">
+            <div class="card">
+                <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">{{cliente.name}}</h3>
+                    <h3 class="card-title">{{cliente.surname}}</h3>
+                    <p class="card-text">
 
-                            <a [routerLink]="['/panel-admin'] " class="btn btn-secondary">
-                                <i class="fas fa-arrow-circle-left"></i> Volver</a>
-                            <a (click)="mostrarEventos()" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'">
-                                <i class="fas fa-plus-circle"></i> Inscribir a Evento</a>
-
-                    </div>
+                        <a [routerLink]="['/panel-admin'] " class="btn btn-secondary">
+                        Editar <i class="fas fa-plus-circle"></i></a>
+                        <br>
+                        <br>
+                        <a (click)="mostrarEventos()" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN'">
+                         Inscribir a Evento <i class="fas fa-plus-circle"></i></a>
 
                 </div>
 
             </div>
-            <div class="row " style="width: 40%">
-                <div class="col-lg-8">
-                    <table class="egt">
-                        <!-- <tr>
 
-                        <th scope="row">Detalle</th>
-                    
-                    </tr>
-                    <hr> -->
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="fas fa-building"></i> Establecimiento:</strong>
-                            </th>
-
-                            <td>
-                                <label> {{cliente.nameEstablishment}}</label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="fas fa-barcode"></i> Codigo de Establecimiento:</strong>
-                            </th>
-
-                            <td>
-                                <label> {{cliente.code}}</label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="fas fa-envelope"></i> Email:</strong>
-                            </th>
-
-                            <td>
-                                <label> {{cliente.email}}</label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="far fa-address-card"></i> Nif/Cif:</strong>
-                            </th>
-
-                            <td>
-                                <label> {{cliente.nifCif}}</label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="fas fa-phone"></i> Telefono:</strong>
-                            </th>
-
-                            <td>
-                                <label> {{cliente.phone}}</label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                        <tr>
-
-                            <th>
-                                <strong>
-                                    <i class="fas fa-key"></i> Rol:</strong>
-                            </th>
-
-                            <td>
-                                    <!-- <label > {{cliente.role}} </label> -->
-                                <label *ngIf="cliente.role=='ROLE_ADMIN'" > Administrador </label>
-                                <label *ngIf="cliente.role=='ROLE_USER'"> Usuario </label>
-                                <label *ngIf="cliente.role=='ROLE_AGENTE'"> Agente </label>
-                                <label *ngIf="cliente.role=='ROLE_ENCARGADO'"> Encargado </label>
-                            </td>
-
-                        </tr>
-                        <hr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-4">
+        </div>
+        <div class="row " style="width: 40%">
+            <div class="col-lg-8">
                 <table class="egt">
+                    <tr>
+
+                        <th>
+                            <label> Farmacia:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.nameEstablishment}}</p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                        <th>
+                            <label>Código de Farmacia:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.code}}</p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                        <th>
+                            <label> Email:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.email}}</p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                        <th>
+                            <label>Telefono:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.phone}} </p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                        <th>
+                            <label>NIF/CIF:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.nifCif}}</p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                        <th>
+                            <label>Provincia:</label>
+                        </th>
+
+                        <td>
+                            <p> {{cliente.province}}</p>
+                        </td>
+
+                    </tr>
+                    <br>
+                    <tr>
+
+                            <th>
+                                <label>Dirección:</label>
+                            </th>
+    
+                            <td>
+                                <p> {{cliente.street}}</p>
+                            </td>
+    
+                    </tr>
+                    <br>
+                    <tr>
+
+                            <th>
+                                <label>Código Postal:</label>
+                            </th>
+    
+                            <td>
+                                <p> {{cliente.zip}}</p>
+                            </td>
+    
+                    </tr>
+                    <br>
+                    <tr>
                     
-                    <tr>
 
                         <th>
-                            <strong>
-                                <i class="fas fa-location-arrow"></i> Provincia:</strong>
+                            <label>Rol:</label>
                         </th>
 
                         <td>
-                            <label> {{cliente.province}}</label>
-                        </td>
-
-                    </tr>
-                    <hr>
-                    <tr>
-
-                        <th>
-                            <strong>
-                                <i class="fas fa-map-marker-alt"></i> Dirección:</strong>
-                        </th>
-
-                        <td>
-                            <label> {{cliente.street}}</label>
-                        </td>
-
-                    </tr>
-                    <hr>
-                    <tr>
-
-                        <th>
-                            <strong>
-                                <i class="fas fa-road"></i> Codigo Postal:</strong>
-                        </th>
-
-                        <td>
-                            <label> {{cliente.zip}}</label>
-                        </td>
-
-                    </tr>
-                    <hr>
-                    <tr>
-
-                        <th>
-                            <strong>
-                                <i class="far fa-registered"></i> Marcas:</strong>
-                        </th>
-
-                        <td>
-                            <label *ngIf="cliente.brandV=='1'" style="width: 100%">
-                                <i class="fas fa-dot-circle"></i> Vichy.
-                                <br> </label>
-
-                            <label *ngIf="cliente.brandSK=='1'" style="width: 100%">
-                                <i class="fas fa-dot-circle"></i> SkinCeuticals.
-                                <br> </label>
-
-                            <label *ngIf="cliente.brandLR=='1'" style="width: 100%">
-                                <i class="fas fa-dot-circle"></i> La Roche-Posay.
-                                <br> </label>
-
-                            <label *ngIf="cliente.brandRG=='1'" style="width: 100%">
-                                <i class="fas fa-dot-circle"></i> Roger&Gallet.
-                                <br>
-                            </label>
+                                <!-- <label > {{cliente.role}} </label> -->
+                            <p *ngIf="cliente.role=='ROLE_ADMIN'" > Administrador </p>
+                            <p *ngIf="cliente.role=='ROLE_USER'"> Usuario </p>
+                            <p *ngIf="cliente.role=='ROLE_AGENTE'"> Agente </p>
+                            <p *ngIf="cliente.role=='ROLE_ENCARGADO'"> Encargado </p>
                         </td>
 
                     </tr>
                 </table>
-                <div class="row">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <table class="egt">
+                
+                <tr>
 
-                    <div class="col-md-3">
-                        <div *ngIf="cliente.file && cliente.file !=null">
-                            <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+cliente.file}}">
-                                <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
-                        </div>
+                    <th>
+                        <label> Marcas:</label>
+                    </th>
+
+                    <td>
+                        <br>
+                        <br>
+                        <p *ngIf="cliente.brandV=='1'" style="width: 100%">
+                             Vichy. </p>
+
+                        <p *ngIf="cliente.brandSK=='1'" style="width: 100%">
+                             SkinCeuticals. </p>
+
+                        <p *ngIf="cliente.brandLR=='1'" style="width: 100%">
+                             La Roche-Posay. </p>
+
+                        <p *ngIf="cliente.brandRG=='1'" style="width: 100%">
+                             Roger&Gallet.
+                        </p>
+                    </td>
+
+                </tr>
+            </table>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div *ngIf="cliente.file && cliente.file !=null">
+                        <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+cliente.file}}">
+                            <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
                     </div>
                 </div>
-
             </div>
 
-
         </div>
+
+
     </div>
+    <br>
     <div class="row card2" *ngIf="oculto">
         <div *ngIf="!selected">
         <label for="Eventos">Seleccionar Evento:</label>
