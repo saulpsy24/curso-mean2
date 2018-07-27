@@ -71,7 +71,7 @@ function getConsultas(req, res) {
 
     var itemsperpage = 10;
 
-    Consulta.find().sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
+    Consulta.find().populate({path:'cliente'}).sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion al server'
@@ -95,7 +95,7 @@ function getConsultasC(req, res) {
    var cliente= req.params.cliente;
     var itemsperpage = 100;
 
-    Consulta.find({cliente:cliente}).sort('date').paginate(1, itemsperpage, function (err, consultas, total) {
+    Consulta.find({cliente:cliente}).populate({path:'cliente'}).sort('date').paginate(1, itemsperpage, function (err, consultas, total) {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion al server'

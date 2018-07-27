@@ -21,8 +21,9 @@ export class addConsultaComponent implements OnInit{
 	public token;
 	public url: String;
     public alertMessage: String;
-    public consultas:Consulta[];
-    public cliente:String;
+    public consultasc:Consulta[];
+	public cliente:String;
+	public consultas:Consulta[];
 	constructor(
 
 		private _clienteService: ClienteService,
@@ -38,7 +39,8 @@ export class addConsultaComponent implements OnInit{
 	}
 
 	ngOnInit(){
-        this.getConsultas();
+		this.getConsultasc();
+		this.getConsultas();
         console.log(this.cliente);
 
 		
@@ -46,10 +48,10 @@ export class addConsultaComponent implements OnInit{
     
    
 
-    getConsultas() {
+    getConsultasc() {
         this.cliente=this.identity._id;
         
-            this._consultaService.getConsulta(this.token).subscribe(
+            this._consultaService.getConsultaC(this.token,this.cliente).subscribe(
                 response => {
 
                     if (!response.consultas) {
@@ -57,8 +59,8 @@ export class addConsultaComponent implements OnInit{
                         console.log('entro aqui')
 
                     } else {
-                        this.consultas = response.consultas;
-                        console.log(this.consultas);
+                        this.consultasc = response.consultas;
+                        console.log(this.consultasc);
                     }
 
                 },
@@ -74,6 +76,36 @@ export class addConsultaComponent implements OnInit{
 
             );
     
+
+}
+getConsultas() {
+	this.cliente=this.identity._id;
+	
+		this._consultaService.getConsulta(this.token).subscribe(
+			response => {
+
+				if (!response.consultas) {
+					this.alertMessage = 'Error en el Servidor';
+					console.log('entro aqui')
+
+				} else {
+					this.consultas = response.consultas;
+					console.log(this.consultas);
+				}
+
+			},
+			error => {
+				var errorMessage = <any>error;
+				if (errorMessage != null) {
+					var body = JSON.parse(error._body);
+					this.alertMessage = body.message;
+					console.log(error);
+				}
+			}
+
+
+		);
+
 
 }
 
