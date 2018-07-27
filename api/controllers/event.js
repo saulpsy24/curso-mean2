@@ -108,7 +108,7 @@ function getEvents(req, res) {
         //mostrar solamente los albums de ese artista
         var find = Evento.find({
             event: eventId
-        }).sort('name');
+        }).sort('dateS');
     }
     find.populate({
         path: 'event',

@@ -17,7 +17,7 @@ export class FilterPipe implements PipeTransform {
                         return false;
                     }
                 }if (item.dateS) {
-                    if (dateS && item.dateS.toLowerCase().indexOf(dateS.toLowerCase()) === -1) {
+                    if (dateS && item.dateS.indexOf(dateS) === -1) {
                         return false;
                     }
                 }
