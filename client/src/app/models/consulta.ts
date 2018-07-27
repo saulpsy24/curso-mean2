@@ -1,7 +1,7 @@
 export class Consulta{
     constructor(
     public title: string,
-     public cliente: Object,
+     public cliente: string,
      public date:string
      
     ){}

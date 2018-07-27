@@ -22,7 +22,7 @@ export class addConsultaComponent implements OnInit{
 	public url: String;
     public alertMessage: String;
     public consultas:Consulta[];
-
+    public cliente:String;
 	constructor(
 
 		private _clienteService: ClienteService,
@@ -34,16 +34,20 @@ export class addConsultaComponent implements OnInit{
 		this.identity = this._clienteService.getidentity();
 		this.token= this._clienteService.getToken();
         this.url= GLOBAL.url;
+        
 	}
 
 	ngOnInit(){
         this.getConsultas();
+        console.log(this.cliente);
+
 		
     }
     
    
 
     getConsultas() {
+        this.cliente=this.identity._id;
         
             this._consultaService.getConsulta(this.token).subscribe(
                 response => {

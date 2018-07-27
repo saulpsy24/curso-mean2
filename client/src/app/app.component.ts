@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
         console.log(this.token);
         console.log(this.identity);
         
-        console.log(this.notificacion);
         
 
 

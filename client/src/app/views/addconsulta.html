@@ -4,9 +4,10 @@
     <h1>Listado de Consultas</h1>
 </div>
 <div class="row card2">
+    <h3>Eres: {{identity.name +' ' +identity.surname}}</h3>
         <div class="list-group col-lg-10">
-                <a href="#" *ngFor="let consultas of consultas" class="list-group-item list-group-item-action">
-                 prueba
+                <a  *ngFor="let consultas of consultas | filter:cliente" class="list-group-item list-group-item-action">
+                 {{consultas.title}}
                 </a>
                 
               </div>
