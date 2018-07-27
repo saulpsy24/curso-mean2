@@ -12,8 +12,8 @@ var eventSchema = Schema({
     direccion:String,
     lugar: String,
     gmaps:String,
-    date_s:String,
-    date_e:String,
+    dateS:String,
+    dateE:String,
     value:String,
     campana:String
         

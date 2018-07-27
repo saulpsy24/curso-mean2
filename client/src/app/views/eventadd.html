@@ -190,7 +190,7 @@
                     </p>
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Fin:</label>
-                        <input [ngModel]="evento.dateE | date:'dd-MM-yyyy'" (ngModelChange)="evento.dateE = $event" 
+                        <input [ngModel]="evento.dateE | date:'yyyy-MM-dd'"  (ngModelChange)="evento.dateE = $event" 
                             type="date" name="dateE" class="form-control"/>
                     </p>
                     <p>
