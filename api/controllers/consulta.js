@@ -91,6 +91,30 @@ function getConsultas(req, res) {
 
     });
 }
+function getConsultasC(req, res) {
+   var cliente= req.params.cliente;
+    var itemsperpage = 100;
+
+    Consulta.find({cliente:cliente}).sort('date').paginate(1, itemsperpage, function (err, consultas, total) {
+        if (err) {
+            res.status(500).send({
+                message: 'error en la peticion al server'
+            });
+        } else {
+            if (!consultas) {
+                res.status(404).send({
+                    message: 'No hay consultas'
+                });
+            } else {
+                return res.status(200).send({
+                    pages: total,
+                    consultas: consultas
+                });
+            }
+        }
+
+    });
+}
 
 
 //metodo para actualizar artistas
@@ -166,5 +190,6 @@ module.exports = {
     updateConsulta,   
     saveConsulta,
     deleteConsulta,
+    getConsultasC
 
 };
