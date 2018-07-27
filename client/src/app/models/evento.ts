@@ -10,8 +10,8 @@ export class Evento{
     public direccion:String,
     public lugar: String,
     public gmaps:String,
-    public date_s:String,
-    public date_e:String,
+    public dateS:String,
+    public dateE:String,
     public value:String,
     public campana:String
 ){}

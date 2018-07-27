@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-    transform(items: Array<any>, term: string, brand: string, date_s:String, visible: string,name:string,email:string,establecimiento:string,phone:string,campana:string) {
+    transform(items: Array<any>, term: string, brand: string, dateS:String, visible: string, campana:string,name:string,email:string,establecimiento:string,phone:string) {
         if (items && items.length) {
             return items.filter(item => {
                 if(item.province){
@@ -16,9 +16,17 @@ export class FilterPipe implements PipeTransform {
                     if (brand && item.brand.toLowerCase().indexOf(brand.toLowerCase()) === -1) {
                         return false;
                     }
+                }if (item.dateS) {
+                    if (dateS && item.dateS.toLowerCase().indexOf(dateS.toLowerCase()) === -1) {
+                        return false;
+                    }
                 }
                 if (item.visible) {
                     if (visible && item.visible.toLowerCase().indexOf(visible.toLowerCase()) === -1) {
+                        return false;
+                    }
+                }if (item.campana) {
+                    if (campana && item.campana.toLowerCase().indexOf(campana.toLowerCase()) === -1) {
                         return false;
                     }
                 }if (item.name) {
@@ -36,14 +44,6 @@ export class FilterPipe implements PipeTransform {
                     }
                 }if (item.phone) {
                     if (phone && item.phone.indexOf(phone) === -1) {
-                        return false;
-                    }
-                }if (item.name) {
-                    if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1) {
-                        return false;
-                    }
-                }if (item.campana) {
-                    if (campana && item.campana.toLowerCase().indexOf(campana.toLowerCase()) === -1) {
                         return false;
                     }
                 }

@@ -1,6 +1,6 @@
 <div class= "container" *ngIf="identity && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'">
     <br>
-    <div class="row card2">
+    <div class="card2">
         <h1>{{titulo}}</h1>
     </div>
     <br>
@@ -31,6 +31,7 @@
                         <option value="La Roche">La Roche-Posay</option>
                         <option value="Skinceuticals">Skinceuticals</option>
                         <option value="RogerGallet"> Roger Gallet</option>
+                        <option value="CeraVe"> CeraVe</option>
                     </select>
 
                 <!-- </div> -->
@@ -124,11 +125,11 @@
                         <span *ngIf="!campana.valid && campana.touched"> La Campaña es obligatoria</span>
                     </p>
                     <p>
-                        <label><img id="kDMY_0"   src="../../assets/images/descripcion.png" class="img-card"> Descripcion:</label>
+                        <label><img id="kDMY_0"   src="../../assets/images/descripcion.png" class="img-card"> Descripción:</label>
                         <textarea style="width: 90%;" class="form-control" #description="ngModel" name="description" [(ngModel)]="evento.description" rows="3"></textarea>
 
 
-                        <span *ngIf="!description.valid && description.touched">La Descripcion es obligatoria</span>
+                        <span *ngIf="!description.valid && description.touched">La Descripción es obligatoria</span>
 
                     </p>
                 </div>
@@ -143,13 +144,14 @@
                         </p>
                     <br>
                 </div>
-                <div class="col-md-6"  >
+                <div class="col-md-6" *ngIf="is_edit" >
                     <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
                         <img src="{{url +'get-image-event/'+ evento.image}}" />
                     </div>
                     <br>
+                    <br>
                     <p>
-                        <label>Sube la imagen del Evento</label>
+                        <label >Sube la imagen del Evento</label>
                         <br>
                         <input type="file" placeholder="Subir imagen.." (change)="fileChangeEvent($event)" />
                     </p>
@@ -164,9 +166,10 @@
                     </p>
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Inicio:</label>
-                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
-                        <input [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" name="startDate" class="form-control"/>
-                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                        <!-- <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" /> -->
+                        <!-- <input [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" name="startDate" class="form-control"/> -->
+                        <input [ngModel]="dateS | date:'yyyy-MM-dd'" (ngModelChange)="dateS = $event" type="date" name="dateS" class="form-control"/>
+                        <!-- <span *ngIf=" dateS.touched"> La fecha es obligatoria</span> -->
                     </p>
                     <label for="visible"> <img id="kDMY_0"   src="../../assets/images/visible.png" class="img-card"> Visible:</label>
 
@@ -182,18 +185,18 @@
                 <div class="col-md-3">
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/lugar.png" class="img-card"> Googlemaps:</label>
-                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
-                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                        <input  type="text" #gmaps="ngModel" name="gmaps" [(ngModel)]="evento.gmaps" required class="form-control" />
+                        <span *ngIf="!gmaps.valid && gmaps.touched"> El Lugar es obligatorio</span>
                     </p>
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Fin:</label>
-                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
-                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                        <input [ngModel]="dateE | date:'yyyy-MM-dd'" (ngModelChange)="dateE = $event" 
+                            type="date" name="dateE" class="form-control"/>
                     </p>
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/valor.png" class="img-card"> Valor formación:</label>
-                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
-                        <span *ngIf="!title.valid && title.touched"> El Valor formación es obligatorio</span>
+                        <input  type="text" #value="ngModel" name="value" [(ngModel)]="evento.value" required class="form-control" />
+                        <span *ngIf="!value.valid && value.touched"> El Valor formación es obligatorio</span>
                     </p>
                     <br>
                 </div>
@@ -214,7 +217,7 @@
                     <br>
                     <br>
                     <br>    
-                    <input type="submit"  value="Nueva Evento" class="btn btn-secondary" />
+                    <input type="submit"  value="{{titulo}}" class="btn btn-secondary" />
                     <br>
                     <br>
                     <button class="btn btn-primary" [routerLink]="['/evento',1]">
@@ -224,12 +227,10 @@
             </div>
         </form>
     </div>
-    <br>
 
     <div class="col-lg-4"*ngIf="!identity && !identity.role=='ROLE_ADMIN' || !identity.role=='ROLE_AGENTE' || !identity.role=='ROLE_ENCARGADO'">
         <h1>Error</h1>
         <p>No tienes acceso a esta parte del curso</p>
 
     </div>
-    <br>
 </div>

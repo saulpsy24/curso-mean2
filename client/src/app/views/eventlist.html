@@ -85,21 +85,14 @@
                                     <option value="La Roche">La Roche-Posay</option>
                                     <option value="Skinceuticals">Skinceuticals</option>
                                     <option value="RogerGallet"> Roger Gallet</option>
+                                    <option value="CeraVe"> CeraVe</option>
                                 </select>                            
                         </div>
                     </div>
                     <div class="col-md-2">
                         <h2 class="filtro">Fecha</h2>
-                        <div class="dropdown">
-                            <select class="form-control"  [(ngModel)]="brand" >
-    
-                                    <option ng-selected="selected">Selecciona...</option>
-                                    <option value="Vichy">Vichy</option>
-                                    <option value="La Roche">La Roche-Posay</option>
-                                    <option value="Skinceuticals">Skinceuticals</option>
-                                    <option value="RogerGallet"> Roger Gallet</option>
-                                </select>                            
-                        </div>
+                        <input [ngModel]="dateS | date:'yyyy-MM-dd'" (ngModelChange)="dateS = $event" 
+                        type="date" name="dateS" class="form-control"/>
                     </div>
                     <div class="col-md-2" *ngIf="identity.role=='ROLE_ADMIN'">
                             <h2 class="filtro">Visibilidad</h2>
@@ -112,18 +105,10 @@
                                     </select>                            
                             </div>
                         </div>
-                    <div class="col-md-2">
+                        <div class="col-md-2">
                             <h2 class="filtro">Campaña</h2>
-                            <div class="dropdown">
-                                <select class="form-control"  [(ngModel)]="brand" >
-        
-                                        <option ng-selected="selected">Selecciona...</option>
-                                        <option value="Vichy">Vichy</option>
-                                        <option value="La Roche">La Roche-Posay</option>
-                                        <option value="Skinceuticals">Skinceuticals</option>
-                                        <option value="RogerGallet"> Roger Gallet</option>
-                                    </select>                            
-                            </div>
+                            <input [ngModel]="campana" (ngModelChange)="campana = $event" 
+                            type="text" name="campana" class="form-control"/>
                         </div>
                     <div class="col-lg-2">
                         <br>
@@ -208,7 +193,7 @@
                         </p>
                         <p>
                             <label><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card">
-                            </label> {{event.date_s}}
+                            </label> {{event.dateS}}
                         </p>
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
