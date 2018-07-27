@@ -161,8 +161,8 @@
                 <div class="col-md-3">
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/lugar.png" class="img-card"> Lugar:</label>
-                        <input  type="text" #title="ngModel" name="title" [(ngModel)]="evento.title" required class="form-control" />
-                        <span *ngIf="!title.valid && title.touched"> El Lugar es obligatorio</span>
+                        <input  type="text" #lugar="ngModel" name="lugar" [(ngModel)]="evento.lugar" required class="form-control" />
+                        <span *ngIf="!lugar.valid && lugar.touched"> El Lugar es obligatorio</span>
                     </p>
                     <p>
                         <label ><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card"> Fecha Inicio:</label>
