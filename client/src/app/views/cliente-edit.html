@@ -1,288 +1,420 @@
 <div class="col-lg-12 " style="margin: 15px;" *ngIf="identity">
-    <hr/>
-<div class="container">
-        <div class="row" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role=='ROLE_AGENTE'" >
-        
-                <!-- <div class="col-md-9  card2">
-                        <hr>
-                    <div class="row">
-                       
-                    <div class="col-md-6">
-                           
-                    <h3>Admin Tools.</h3>
-        
-                    </div>
-                    <div class="row col-md-6">
-                     <div class="col-md-6"> <a *ngIf="identity.role=='ROLE_ADMIN'" type="button" class="btn btn-primary" href="#" data-toggle="modal"data-target="#exampleModalCenter">
-                            Reporte de Usuarios
-                        </a></div> 
-                   
-                  
-        
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Descargando Reporte de Usuarios.</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Los campos que incluye el reporte, son los siguientes:
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            "Nombre"
-                                         </li>
-                                        <li class="list-group-item">
-                                                "Apellidos
-        
-                                        </li>
-                                        <li class="list-group-item">
-                                                "Nombre del Establecimiento"
-        
-                                        </li>
-                                        <li class="list-group-item">
-                                                "email"
-                                        </li>
-                                        <li class="list-group-item">
-                                            "Codigo de Farmacia"
-                                        </li>
-                                        <li class="list-group-item">
-                                            "Codigo Postal"
-                                        </li>
-                                        <li class="list-group-item">
-                                                "Nif/Cif"
-        
-                                        </li>
-                                        <li class="list-group-item">
-                                            "Dirección"
-                                        </li>
-                                        <li class="list-group-item">
-                                            "Marcas asociadas."
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar <i class="fa fa-times"></i></button>
-                                    <a type="button"  href="http://178.128.68.146:3977/api/getreporte"  class="btn btn-success"> Descargar <i class="fa fa-arrow-down"></i></a>
-                                </div>
-                            </div>
+    <div class="container">
+        <div class="row card2">
+            <h1 > MI PERFIL </h1>
+        </div>
+        <div class="row card2" style="width: 100%">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">{{identity.name}}</h3>
+                            <h3 class="card-title">{{identity.surname}}</h3>
+                            <p class="card-text">
+                            <a [routerLink]="['/editarcliente',cliente._id]" class="btn btn-secondary">
+                            Editar <i class="fas fa-plus-circle"></i></a>
+                            <br>
                         </div>
                     </div>
                 </div>
-                </div>
-                <hr>
-            </div> -->
-           
-            </div>
+                <div class="row " style="width: 40%">
+                    <div class="col-lg-8">
+                        <table class="egt">
+                            <tr>
         
-            <div class="row  animated fadeInRight">
-                <div class="col-md-12 card2">
-                    <br>
-                    <br>
-                    <h2>{{titulo}}</h2>
-                    <hr class="lineatitle" />
+                                <th>
+                                    <label> Farmacia:</label>
+                                </th>
         
-                    <div *ngIf="AlertMessage" class="alert alert-warning">
-                        <strong>Respuesta:</strong>{{AlertMessage}}
+                                <td>
+                                    <p> {{identity.nameEstablishment}}</p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                <th>
+                                    <label>Código de Farmacia:</label>
+                                </th>
+        
+                                <td>
+                                    <p> {{identity.code}}</p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                <th>
+                                    <label> Email:</label>
+                                </th>
+        
+                                <td>
+                                    <p> {{identity.email}}</p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                <th>
+                                    <label>Teléfono:</label>
+                                </th>
+        
+                                <td>
+                                    <p> {{identity.phone}} </p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                <th>
+                                    <label>NIF/CIF:</label>
+                                </th>
+        
+                                <td>
+                                    <p> {{identity.nifCif}}</p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                <th>
+                                    <label>Provincia:</label>
+                                </th>
+        
+                                <td>
+                                    <p> {{identity.province}}</p>
+                                </td>
+        
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                    <th>
+                                        <label>Dirección:</label>
+                                    </th>
+            
+                                    <td>
+                                        <p> {{identity.street}}</p>
+                                    </td>
+            
+                            </tr>
+                            <br>
+                            <tr>
+        
+                                    <th>
+                                        <label>Código Postal:</label>
+                                    </th>
+            
+                                    <td>
+                                        <p> {{identity.zip}}</p>
+                                    </td>
+            
+                            </tr>
+                            <br>
+                            <tr>
+                            
+        
+                                <th>
+                                    <label>Rol:</label>
+                                </th>
+        
+                                <td>
+                                        <!-- <label > {{cliente.role}} </label> -->
+                                    <p *ngIf="cliente.role=='ROLE_ADMIN'" > Administrador </p>
+                                    <p *ngIf="cliente.role=='ROLE_USER'"> Usuario </p>
+                                    <p *ngIf="cliente.role=='ROLE_AGENTE'"> Agente </p>
+                                    <p *ngIf="cliente.role=='ROLE_ENCARGADO'"> Encargado </p>
+                                </td>
+        
+                            </tr>
+                        </table>
                     </div>
-                    <form #ClienteupdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-11">
-                        <div class="row">
+                </div>
+                <div class="col-lg-4">
+                    <table class="egt">
+                        
+                        <tr>
         
+                            <th>
+                                <label> Marcas:</label>
+                            </th>
+        
+                            <td>
+                                <br>
+                                <br>
+                                <p *ngIf="cliente.brandV=='1'" style="width: 100%">
+                                     Vichy. </p>
+        
+                                <p *ngIf="cliente.brandSK=='1'" style="width: 100%">
+                                     SkinCeuticals. </p>
+        
+                                <p *ngIf="cliente.brandLR=='1'" style="width: 100%">
+                                     La Roche-Posay. </p>
+        
+                                <p *ngIf="cliente.brandRG=='1'" style="width: 100%">
+                                     Roger&Gallet.
+                                </p>
+                                <p *ngIf="cliente.brandCV=='1'" style="width: 100%">
+                                    CeraVE
+                                </p>
+                            </td>
+        
+                        </tr>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>    
+                        <td style="text-align: right;">
+                            <br>
+                            <br>
+                            <br>
+                            <br>   
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <a [routerLink]="['/panel-admin']" class="btn btn-md btn-secondary" style="text-align: right;">
+                                Notificaciones
+                                <i class="fas fa-plus-circle"></i>
+                            </a>
+                            <br>
+                            <br>
+                            <a [routerLink]="['/evento/1']" class="btn btn-md btn-primary" style="text-align: right;">
+                                Volver
+                                <i class="fas fa-arrow-circle-left"></i>
+                            </a>
+                        </td>
+                    </table>
+                </div>
+                
+        
+        
+            </div>
+        <!-- <div class="row  animated fadeInRight">
+            <div class="col-md-12 card2">
+                <br>
+                <br>
+                <h2>{{titulo}}</h2>
+                <hr class="lineatitle" />
+
+                <div *ngIf="AlertMessage" class="alert alert-warning">
+                    <strong>Respuesta:</strong>{{AlertMessage}}
+                </div>
+                <form #ClienteupdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-11">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="form-group">
+                                <label for="name" class="cols-sm-2 control-label">Nombre:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user fa" aria-hidden="true"></i>
+                                        </span>&nbsp;
+                                        <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <div class="form-group">
+                                <label for="surname" class="cols-sm-2 control-label">Apellidos:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user fa" aria-hidden="true"> </i>
+                                        </span>&nbsp;
+                                        <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control" required placeholder="Introduce tus Apellidos"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-lg-12">
+                                <div class="image_for_edit" *ngIf="cliente.image && cliente.image !=null">
+                                    <img src="{{url+'get-image-user/'+cliente.image}}" class="useravatar" />
+                                </div>
+                                <br>
+
+                            </div>
+                            <div class="col-lg-12">
+
+                                <div class="upload-btn-wrapper">
+                                    <button class="btno">Seleccionar Foto</button>
+                                    <input type="file" placeholder="Browse" (change)="fileChangeEvent($event)" />
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="phone" class="cols-sm-2 control-label">Telefono:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-mobile fa"></i>
+                                        </span>&nbsp;
+                                        <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control" placeholder="Introduce tu Telefono"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <label for="nameEstablishment" class="cols-sm-2 control-label">Establecimiento:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-map fa"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.nameEstablishment}}" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+
+                            <div class="form-group">
+                                <label for="email" class="cols-sm-2 control-label">e-Mail:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-at fa"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.email}}" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <div class="form-group">
+                                <label for="nameEstablishment" class="cols-sm-2 control-label">Dirección:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fas fa-road fa"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.street}}" class="form-control" disabled/> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            
+                                <label>Codigo Postal:</label>
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-envelope-square"></i>
+                                </span>&nbsp;
+                                <input type="text" value="{{identity.zip}}" class="form-control" disabled/>
+                            </div>
+                            
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="role" class="cols-sm-2 control-label">Provincia:</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-map-marker"></i>
+                                        </span>&nbsp;
+                                        <input type="text" value="{{identity.province}}" class="form-control" disabled/> </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
                             <div class="col-sm-4">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
         
                                 <div class="form-group">
-                                    <label for="name" class="cols-sm-2 control-label">Nombre:</label>
+                                    <label for="email" class="cols-sm-2 control-label">Codigo de Farmacia:</label>
                                     <div class="cols-sm-10">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="fa fa-user fa" aria-hidden="true"></i>
+                                                    <i class="fab fa-periscope"></i>
                                             </span>&nbsp;
-                                            <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name" class="form-control" required placeholder="Introduce tu Nombre"
-                                            />
+                                            <input type="text" value="{{identity.code}}" class="form-control" disabled/>
                                         </div>
                                     </div>
                                 </div>
-        
                             </div>
                             <div class="col-sm-4">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
         
                                 <div class="form-group">
-                                    <label for="surname" class="cols-sm-2 control-label">Apellidos:</label>
+                                    <label for="nameEstablishment" class="cols-sm-2 control-label">NIF/CIF:</label>
                                     <div class="cols-sm-10">
                                         <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-user fa" aria-hidden="true"> </i>
+                                            <span class="input-group-addon"><i class="fas fa-id-card"></i>
                                             </span>&nbsp;
-                                            <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control" required placeholder="Introduce tus Apellidos"
-                                            />
-                                        </div>
+                                            <input type="text" value="{{identity.nifCif}}" class="form-control" disabled/> </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="col-lg-12">
-                                    <div class="image_for_edit" *ngIf="cliente.image && cliente.image !=null">
-                                        <img src="{{url+'get-image-user/'+cliente.image}}" class="useravatar" />
+                            <div class="col-sm-4"><br>
+                                    <div  *ngIf="cliente.file && cliente.file !=null">
+                                        <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+identity.file}}"> <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
                                     </div>
                                     <br>
-        
-                                </div>
-                                <div class="col-lg-12">
-        
-                                    <div class="upload-btn-wrapper">
-                                        <button class="btno">Seleccionar Foto</button>
-                                        <input type="file" placeholder="Browse" (change)="fileChangeEvent($event)" />
-                                    </div>
-        
-                                </div>
-        
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="phone" class="cols-sm-2 control-label">Telefono:</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-mobile fa"></i>
-                                            </span>&nbsp;
-                                            <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control" placeholder="Introduce tu Telefono"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                            <div class="col-sm-6">
-        
-                                <div class="form-group">
-                                    <label for="nameEstablishment" class="cols-sm-2 control-label">Establecimiento:</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-map fa"></i>
-                                            </span>&nbsp;
-                                            <input type="text" value="{{identity.nameEstablishment}}" class="form-control" disabled/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-        
-                                <div class="form-group">
-                                    <label for="email" class="cols-sm-2 control-label">e-Mail:</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-at fa"></i>
-                                            </span>&nbsp;
-                                            <input type="text" value="{{identity.email}}" class="form-control" disabled/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-        
-                                <div class="form-group">
-                                    <label for="nameEstablishment" class="cols-sm-2 control-label">Dirección:</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fas fa-road fa"></i>
-                                            </span>&nbsp;
-                                            <input type="text" value="{{identity.street}}" class="form-control" disabled/> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                
-                                    <label>Codigo Postal:</label>
-                                    <div class="input-group">
-                                    <span class="input-group-addon"><i class="fas fa-envelope-square"></i>
-                                    </span>&nbsp;
-                                    <input type="text" value="{{identity.zip}}" class="form-control" disabled/>
-                                </div>
-                                
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <label for="role" class="cols-sm-2 control-label">Provincia:</label>
-                                    <div class="cols-sm-10">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fas fa-map-marker"></i>
-                                            </span>&nbsp;
-                                            <input type="text" value="{{identity.province}}" class="form-control" disabled/> </div>
-                                    </div>
-                                </div>
-        
-                            </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-sm-4">
             
-                                    <div class="form-group">
-                                        <label for="email" class="cols-sm-2 control-label">Codigo de Farmacia:</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                        <i class="fab fa-periscope"></i>
-                                                </span>&nbsp;
-                                                <input type="text" value="{{identity.code}}" class="form-control" disabled/>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-sm-4">
-            
-                                    <div class="form-group">
-                                        <label for="nameEstablishment" class="cols-sm-2 control-label">NIF/CIF:</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fas fa-id-card"></i>
-                                                </span>&nbsp;
-                                                <input type="text" value="{{identity.nifCif}}" class="form-control" disabled/> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4"><br>
-                                        <div  *ngIf="cliente.file && cliente.file !=null">
-                                            <a class="btn btn-md btn-primary" href="{{url+'get-ficha/'+identity.file}}"> <i class="fas fa-file-download"></i>&nbsp;Descargar Ficha</a>
-                                        </div>
-                                        <br>
-                
-                                    </div>
-                              
-                            </div>
-                        
-                        <div class="row">
-                            <div class="col-lg-11"></div>
-                            <input type="submit" value="Actualizar Perfil" class="btn btn-primary">
+                            
                         </div>
-        
-        
-                    </form>
                     
-                    <br>
-                    <br>
-        
-        
-                </div>
+                    <div class="row">
+                        <div class="col-lg-11"></div>
+                        <input type="submit" value="Actualizar Perfil" class="btn btn-primary">
+                    </div>
+
+
+                </form>
+                
+                <br>
+                <br>
+
+
             </div>
-</div>
-    <!--Formulario-->
-   
+        </div> -->
+    </div>
 </div>

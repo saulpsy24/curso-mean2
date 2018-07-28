@@ -395,7 +395,10 @@ div{
   .img-register{
 	width: 20px;
 	height: 20px;
-  }
+	}
+	.capital{
+		text-transform: capitalize;
+	}
 
 
 
