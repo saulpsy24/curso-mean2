@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         private _notificationService: NotificationsService
      
     ) {
-        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','','no subida..');
          this.url=GLOBAL.url;
          this.clientHeight = window.innerHeight; 
          
@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
         this.identity = this._clienteService.getidentity();
         console.log(this.token);
         console.log(this.identity);
+        this.getNotificaciones();
         
         
 
@@ -154,7 +155,7 @@ export class AppComponent implements OnInit {
         localStorage.clear();
         this.identity = null;
         this.token = null;
-        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','');
+        this.cliente = new Cliente('','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','ROLE_USER','','no subida..');
         this._router.navigate(['/']);
     }
 
