@@ -29,8 +29,8 @@ export class ClienteaddComponent implements OnInit {
         private _uploadService: UploadService
      
     ) {
-        this.title= 'Registar'
-        this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
+        this.title= 'Añadir cliente'
+        this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','','', '','ROLE_USER','');
          this.url=GLOBAL.url;
          this.token=_clienteService.getToken();
         //  this.clientHeight = window.innerHeight; 

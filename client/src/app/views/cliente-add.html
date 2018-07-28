@@ -1,262 +1,340 @@
-<div clas container>
- <!-- <div class="row justify-content-center align-items-center loginform" style="height: 100%;" *ngIf="!identity">  -->
-<div class="row justify-content-center" > 
-<div class="row card2 row justify-content-center" style="width: 95%">
-    <div class="col-lg-10">
-        <div class="justify-content-center align-items-center">
-            <h1> {{Titulo}}</h1>
-        </div>
- 
-
+<div class="container">
+    <div class="row card2">
+        <h1> {{title}} </h1>
+    </div>
+    
+    <div class="row card2 " >
         <div *ngIf="errorMessage" class="alert alert-success">
             <strong>{{errorMessage}}</strong>
         </div> 
-        <div class="row" style="width: 100%">
-            <div style="width: 27%">
-        <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10">
-            <p>
-                <i class="fas fa-address-card"></i>
-                <label>Nombre:</label>
-                <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name"
-                 class="form-control" required placeholder="Introduce el nombre" />
-                <span *ngIf="!name.valid && name.touched">
-                    El nombre es obligatorio!
-                </span>
-            </p>
-            <p>
-                <i class="fas fa-address-card"></i>
-                <label>Apellidos:</label>
-                <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
-                    required placeholder="Introduce  apellidos"
-                />
-                <span *ngIf="!surname.valid && surname.touched">
-                    El Apellido es obligatorio!
-                </span>
-            </p>
-            <p>
-                <i class="fas fa-envelope"></i>
-                <label>Correo:</label>
-                <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
-                 required placeholder="Introduce tu e-mail" />
-                <span *ngIf="!email.valid && email.touched">
-                    El email es obligatorio!
-                </span>
-            </p>
-            <p>
-                <i class="far fa-address-card"></i>
-                <label>nif/cif:</label>
-                <input type="text" #nifCif="ngModel" name="nifCif" [(ngModel)]="cliente.nifCif" class="form-control"
-                    required placeholder="Introduce el nifCif"       />
-                <span *ngIf="!nifCif.valid && nifCif.touched">
-                    El nif/cif es obligatorio!
-                </span>
-            </p>
-            <p>
-                
-                <label><i class="fas fa-building"></i> Nombre del Establecimiento:</label>
-                <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
-                class="form-control" required placeholder="Introduce el nombre del establecimiento"
-                />
-                <span *ngIf="!nameEstablishment.valid && nameEstablishment.touched">
-                    El nombre del establecimiento es obligatorio!
-                </span>
-            </p>
-            <p>
-                <label><i class="fas fa-unlock-alt"></i> Contraseña:</label>
-                <input type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
-                class="form-control" required placeholder="Introduce la contraseña"
-                />
-                <span *ngIf="!password.valid && password.touched">
-                    La contraseña es obligatoria!
-                </span>
-            </p>        
-            
-            
-            </form>
-        </div>
-        <div style="width: 27%" >
-        <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10"> 
-            <p>
-                <i class="fas fa-barcode"></i>
-                <label>Codigo de la farmcia:</label>
-                <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.code" class="form-control"
-                 required placeholder="Introduce el codigo"       />
-                <span *ngIf="!code.valid && code.touched">
-                    El codigo de la farmacia es obligatorio!
-                </span>
-            </p>
-            <div >
-                <label for="province"><i class="fas fa-key"></i> Rol:</label>
-                <select class="form-control" #role="ngModel" name="role" [(ngModel)]="cliente.role" required id="role">
-                    <option selected="selected">Selecciona...</option>
-                    <option value="ROLE_ADMIN">Administrador</option>
-                    <option value="ROLE_USER">Usuario</option>
-                    <option value="ROLE_AGENTE">Agente</option>
-                    <option value="ROLE_ENCARGADO"> Encargado</option>
-                </select>
-
-                <br>
-
-            </div>
-            <p>
-                <i class="fas fa-phone"></i>
-                <label>Teléfono:</label>
-                <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control"
-                    required placeholder="Introduce el Teléfono"       />
-                <span *ngIf="!code.valid && code.touched">
-                    El Teléfono es obligatorio!
-                </span>
-            </p>
-            
-                       
-            <div >
-                <label for="province"><i class="fas fa-location-arrow"></i> Provincia:</label>
-                <select class="form-control" #province="ngModel" name="province" [(ngModel)]="cliente.province" required id="province">
-                    <option selected="selected">Selecciona...</option>
-                    <option value="Albacete">Albacete</option>
-                    <option value="Alicante/Alacant">Alicante/Alacant</option>
-                    <option value="Almería">Almería</option>
-                    <option value="Araba/Álava"> Araba/Álava</option>
-                    <option value="Asturias"> Asturias</option>
-                    <option value="Ávila"> Ávila</option>
-                    <option value="Badajoz"> Badajoz</option>
-                    <option value="Balears, Illes"> Balears, Illes</option>
-                    <option value="Barcelona"> Barcelona</option>
-                    <option value="Bizkaia"> Bizkaia</option>
-                    <option value="Burgos"> Burgos</option>
-                    <option value="Cáceres"> Cáceres</option>
-                    <option value="Cádiz"> Cádiz</option>
-                    <option value="Cantabria"> Cantabria</option>
-                    <option value="Castellón/Castelló"> Castellón/Castelló</option>
-                    <option value="Ceuta"> Ceuta</option>
-                    <option value="Ciudad Real"> Ciudad Real</option>
-                    <option value="Córdoba"> Córdoba</option>
-                    <option value="Coruña,A"> Coruña,A</option>
-                    <option value="Cuenca"> Cuenca</option>
-                    <option value="Gipuzkoa"> Gipuzkoa</option>
-                    <option value="Girona"> Girona</option>
-                    <option value="Granada"> Granada</option>
-                    <option value="Guadalajara"> Guadalajara</option>
-                    <option value="Huelva"> Huelva</option>
-                    <option value="Huesca"> Huesca</option>
-                    <option value="Jaén"> Jaén</option>
-                    <option value="León"> León</option>
-                    <option value="Lleidra"> Lleidra</option>
-                    <option value="Lugo"> Lugo</option>
-                    <option value="Madrid"> Madrid</option>
-                    <option value="Málaga"> Málaga</option>
-                    <option value="Melilla"> Melilla</option>
-                    <option value="Murcia"> Murcia</option>
-                    <option value="Navarra"> Navarra</option>
-                    <option value="Ourense"> Ourense</option>
-                    <option value="Palencia"> Palencia</option>
-                    <option value="Palmas, Las"> Palmas, Las</option>
-                    <option value="Pontevedra"> Pontevedra</option>
-                    <option value="Rioja, La"> Rioja, La</option>
-                    <option value="Salamanca"> Salamanca</option>
-                    <option value="Santa Cruz de Tenerife"> Santa Cruz de Tenerife</option>
-                    <option value="Segovia"> Segovia</option>
-                    <option value="Sevilla"> Sevilla</option>
-                    <option value="Soria"> Soria</option>
-                    <option value="Tarragona"> Tarragona</option>
-                    <option value="Teruel"> Teruel</option>
-                    <option value="Toledo"> Toledo</option>
-                    <option value="Valencia/Valéncia"> Valencia/Válencia</option>
-                    <option value="Valladolid"> Valladolid</option>
-                    <option value="Zamora"> Zamora</option>
-                    <option value="Zaragoza"> Zaragoza</option>
-                </select>
-
-                <br>
-
-            </div>
-            
-            <p>
-                <i class="fas fa-map-marker-alt"></i>
-                <label>Dirección:</label>
-                <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
-                    required placeholder="Introduce la direccion"       />
-                <span *ngIf="!street.valid && street.touched">
-                    La Dirección es obligatoria!
-                </span>
-            </p>
-            <p>
-                <i class="fas fa-road"></i>
-                <label>Codigo Postal:</label>
-                <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
-                    required placeholder="Introduce el Zip"       />
-                <span *ngIf="!zip.valid && zip.touched">
-                    El Codigo Postal es obligatorio!
-                </span>
-            </p>
+        <!-- <div class="row" > -->
+            <div class="col-md-4">
+                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/nombre.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Nombre:
+                        </FONT>
+                        <input type="text" #name="ngModel" name="name" [(ngModel)]="cliente.name"
+                        class="form-control" required placeholder="Introduce el nombre" />
+                        <span *ngIf="!name.valid && name.touched">
+                            El nombre es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/nombre.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Apellido:
+                        </FONT>
+                        <input type="text" #surname="ngModel" name="surname" [(ngModel)]="cliente.surname" class="form-control"
+                            required placeholder="Introduce  apellidos"
+                        />
+                        <span *ngIf="!surname.valid && surname.touched">
+                            El Apellido es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/telefono.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Teléfono:
+                        </FONT>
+                        <input type="text" #phone="ngModel" name="phone" [(ngModel)]="cliente.phone" class="form-control"
+                            required placeholder="Introduce el Teléfono"       />
+                        <span *ngIf="!code.valid && code.touched">
+                            El Teléfono es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/email.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Email:
+                        </FONT>
+                        <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
+                        required placeholder="Introduce tu e-mail" />
+                        <span *ngIf="!email.valid && email.touched">
+                            El email es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/nombre.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        CIF/NIF:
+                        </FONT>
+                        <input type="text" #nifCif="ngModel" name="nifCif" [(ngModel)]="cliente.nifCif" class="form-control"
+                            required placeholder="Introduce el nifCif"       />
+                        <span *ngIf="!nifCif.valid && nifCif.touched">
+                            El nif/cif es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/farmacia.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Farmacia:
+                        </FONT>
+                        <br>
+                        <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="cliente.nameEstablishment" 
+                        class="form-control" required placeholder="Introduce el nombre del establecimiento"
+                        />
+                        <span *ngIf="!nameEstablishment.valid && nameEstablishment.touched">
+                            El nombre del establecimiento es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/codigo.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Código de Farmacia:
+                        </FONT>
+                        <br>
+                        <input type="text" #code="ngModel" name="code" [(ngModel)]="cliente.code" class="form-control"
+                        required placeholder="Introduce el codigo"       />
+                        <span *ngIf="!code.valid && code.touched">
+                            El codigo de la farmacia es obligatorio!
+                        </span>
+                    </p>
+                    <p>
+                        <!-- <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register"> -->
+                        <img id="kDMY_0" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Contraseña:
+                        </FONT>
+                        <input type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
+                        class="form-control" required placeholder="Introduce la contraseña"
+                        />
+                        <span *ngIf="!password.valid && password.touched">
+                            La contraseña es obligatoria!
+                        </span>
+                    </p>        
                 </form>
             </div>
-            <div style="width: 46%" class="justify-content-center ">
-            <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-10"> 
-                    <div class="col-md-6 col-xs-6">
-                    <i class="far fa-registered"></i>
-                    <label for="brand">Marca:</label>
-                    <br>
-                    <p>Vichy:</p>
-                    <select class="form-control" id="brandV" #brandV="ngModel" name="brandV"
-                     [(ngModel)]="cliente.brandV" required>
-                        <option ng-selected="selected">Selecciona...</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                    </select>
-                    <br>
-                    <p>La Roche-Posay:</p>
-                    <select class="form-control" id="brandLR" #brandLR="ngModel" name="brandLR"
-                     [(ngModel)]="cliente.brandLR" required>
-                        <option ng-selected="selected">Selecciona...</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                    </select>
-                    <br>
-                    <p>Roger&Gallet:</p>
-                    <select class="form-control" id="brandRG" #brandRG="ngModel" name="brandRG"
-                     [(ngModel)]="cliente.brandRG" required>
-                        <option ng-selected="selected">Selecciona...</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                    </select>
-                    <br>
-                    <p>SkinCeuticals:</p>
-                    <select class="form-control" id="brandSK" #brandSK="ngModel" name="brandSK"
-                     [(ngModel)]="cliente.brandSK" required>
-                        <option ng-selected="selected">Selecciona...</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                    </select>
-
-                </div>
-                <br>
-                <!-- <div class="col-md-5">
-                    <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
-                        <img src="{{url +'get-image-cliente/'+ evento.image}}" />
+            <div class="col-md-4" >
+                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
+                    <div >
+                        <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Provincia:
+                        </FONT>
+                        <select class="form-control" #province="ngModel" name="province" [(ngModel)]="cliente.province" required id="province">
+                            <option selected="selected">Selecciona...</option>
+                            <option value="Albacete">Albacete</option>
+                            <option value="Alicante/Alacant">Alicante/Alacant</option>
+                            <option value="Almería">Almería</option>
+                            <option value="Araba/Álava"> Araba/Álava</option>
+                            <option value="Asturias"> Asturias</option>
+                            <option value="Ávila"> Ávila</option>
+                            <option value="Badajoz"> Badajoz</option>
+                            <option value="Balears, Illes"> Balears, Illes</option>
+                            <option value="Barcelona"> Barcelona</option>
+                            <option value="Bizkaia"> Bizkaia</option>
+                            <option value="Burgos"> Burgos</option>
+                            <option value="Cáceres"> Cáceres</option>
+                            <option value="Cádiz"> Cádiz</option>
+                            <option value="Cantabria"> Cantabria</option>
+                            <option value="Castellón/Castelló"> Castellón/Castelló</option>
+                            <option value="Ceuta"> Ceuta</option>
+                            <option value="Ciudad Real"> Ciudad Real</option>
+                            <option value="Córdoba"> Córdoba</option>
+                            <option value="Coruña,A"> Coruña,A</option>
+                            <option value="Cuenca"> Cuenca</option>
+                            <option value="Gipuzkoa"> Gipuzkoa</option>
+                            <option value="Girona"> Girona</option>
+                            <option value="Granada"> Granada</option>
+                            <option value="Guadalajara"> Guadalajara</option>
+                            <option value="Huelva"> Huelva</option>
+                            <option value="Huesca"> Huesca</option>
+                            <option value="Jaén"> Jaén</option>
+                            <option value="León"> León</option>
+                            <option value="Lleidra"> Lleidra</option>
+                            <option value="Lugo"> Lugo</option>
+                            <option value="Madrid"> Madrid</option>
+                            <option value="Málaga"> Málaga</option>
+                            <option value="Melilla"> Melilla</option>
+                            <option value="Murcia"> Murcia</option>
+                            <option value="Navarra"> Navarra</option>
+                            <option value="Ourense"> Ourense</option>
+                            <option value="Palencia"> Palencia</option>
+                            <option value="Palmas, Las"> Palmas, Las</option>
+                            <option value="Pontevedra"> Pontevedra</option>
+                            <option value="Rioja, La"> Rioja, La</option>
+                            <option value="Salamanca"> Salamanca</option>
+                            <option value="Santa Cruz de Tenerife"> Santa Cruz de Tenerife</option>
+                            <option value="Segovia"> Segovia</option>
+                            <option value="Sevilla"> Sevilla</option>
+                            <option value="Soria"> Soria</option>
+                            <option value="Tarragona"> Tarragona</option>
+                            <option value="Teruel"> Teruel</option>
+                            <option value="Toledo"> Toledo</option>
+                            <option value="Valencia/Valéncia"> Valencia/Válencia</option>
+                            <option value="Valladolid"> Valladolid</option>
+                            <option value="Zamora"> Zamora</option>
+                            <option value="Zaragoza"> Zaragoza</option>
+                        </select>
+                        <br>
                     </div>
-    
                     <p>
-                        <label>Subir la ficha del Usuario</label>
-                        <input type="file" placeholder="Subir Ficha.." (change)="fileChangeEvent($event)" />
+                        <img id="kDMY_0" src="../../assets/images/direccion.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Dirección:
+                        </FONT>
+                        <input type="text" #street="ngModel" name="street" [(ngModel)]="cliente.street" class="form-control"
+                            required placeholder="Introduce la direccion"       />
+                        <span *ngIf="!street.valid && street.touched">
+                            La Dirección es obligatoria!
+                        </span>
                     </p>
-                </div> -->
-                <div class="col-md-5" *ngIf="is_edit">
-                       
+                    <p>
+                        <img id="kDMY_0" src="../../assets/images/zip.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Código Postal:
+                        </FONT>
+                        <input type="text" #zip="ngModel" name="zip" [(ngModel)]="cliente.zip" class="form-control"
+                            required placeholder="Introduce el Zip"       />
+                        <span *ngIf="!zip.valid && zip.touched">
+                            El Codigo Postal es obligatorio!
+                        </span>
+                    </p>
+                    <!-- <p> -->
+                        <img id="kDMY_0" src="../../assets/images/marca.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                        Vichy:
+                        </FONT>
+                    <!-- </p> -->
+                    <select class="form-control" id="brandV" #brandV="ngModel" name="brandV"
+                    [(ngModel)]="cliente.brandV" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <!-- <p> -->
+                        <img id="kDMY_0" src="../../assets/images/marca.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                            La Roche-Posay:
+                        </FONT>
+                    <!-- </p> -->
+                    <select class="form-control" id="brandLR" #brandLR="ngModel" name="brandLR"
+                    [(ngModel)]="cliente.brandLR" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <!-- <p> -->
+                        <img id="kDMY_0" src="../../assets/images/marca.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                            Roger&Gallet:
+                        </FONT>
+                    <!-- </p> -->
+                    <select class="form-control" id="brandRG" #brandRG="ngModel" name="brandRG"
+                    [(ngModel)]="cliente.brandRG" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <!-- <p> -->
+                        <img id="kDMY_0" src="../../assets/images/marca.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                            SkinCeuticals:
+                        </FONT>
+                    <!-- </p> -->
+                    <select class="form-control" id="brandSK" #brandSK="ngModel" name="brandSK"
+                    [(ngModel)]="cliente.brandSK" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <!-- <p> -->
+                        <img id="kDMY_0" src="../../assets/images/marca.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                            CeraVe:
+                        </FONT>
+                    <!-- </p> -->
+                    <select class="form-control" id="brandCV" #brandCV="ngModel" name="brandCV"
+                    [(ngModel)]="cliente.brandCV" required>
+                        <option ng-selected="selected">Selecciona...</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <div >
+                        <img id="kDMY_0" src="../../assets/images/rol.png" class="img-register">
+                        <FONT SIZE=2 style="color: rgb(127,127,127);">
+                            Rol:
+                        </FONT>    
+                        <select class="form-control" #role="ngModel" name="role" [(ngModel)]="cliente.role" required id="role">
+                            <option selected="selected" value="">Selecciona...</option>
+                            <option value="ROLE_ADMIN">Administrador</option>
+                            <option value="ROLE_USER">Usuario</option>
+                            <option value="ROLE_AGENTE">Agente</option>
+                            <option value="ROLE_ENCARGADO"> Encargado</option>
+                        </select>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4" style="text-align: right">
+                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
+
+                    <!-- <div class="col-md-5">
+                        <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
+                            <img src="{{url +'get-image-cliente/'+ evento.image}}" />
+                        </div>
+        
+                        <p>
+                            <label>Subir la ficha del Usuario</label>
+                            <input type="file" placeholder="Subir Ficha.." (change)="fileChangeEvent($event)" />
+                        </p>
+                    </div> -->
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div  *ngIf="is_edit">
                         <p>
                             <label>Subir ficha</label>
+                            <br>
                             <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($event)" />
                         </p>
                     </div>
-                <br>
-            <input type="submit" value="Registrar" class="btn btn-primary">
-        </form> 
-        <br>
+                    <br>
+                    <input type="submit" value="{{title}}" class="btn btn-secondary">
+                    <br>
+                    <br>
+                    <a [routerLink]="['/panel-admin']" class="btn btn-md btn-primary">
+                        Volver
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </a>
+                </form> 
+            <br>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-success">
+                <strong>{{errorMessage}}</strong>
+            </div> 
+        <!-- </div> -->
     </div>
-        <div *ngIf="errorMessage" class="alert alert-success">
-            <strong>{{errorMessage}}</strong>
-        </div> 
-    </div>
-</div>
-</div>
 </div>

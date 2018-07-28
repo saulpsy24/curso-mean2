@@ -17,6 +17,7 @@ export class Cliente{
      public brandLR: string,
      public brandRG: string,
      public brandSK: string,
+     public brandCV: String,
      public password: string,
      public role:string,
      public file:string,

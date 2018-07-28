@@ -32,7 +32,7 @@ export class ClienteEditarComponent implements OnInit {
         
         this.is_edit = true;
         this.url=GLOBAL.url;
-        this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','', '','ROLE_USER','');
+        this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','','', '','ROLE_USER','');
         
         this.token=_clienteService.getToken();
         this.identity=_clienteService.getidentity();
