@@ -169,7 +169,7 @@ function getRespuestasHilo(req, res) {
 
     var itemsperpage = 500;
 
-    Respuesta.find().populate({
+    Respuesta.find({consulta:consultas}).populate({
         path: 'cliente', Model: 'Cliente'
     }).populate({
         path: 'consulta',
