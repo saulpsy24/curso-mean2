@@ -91,6 +91,7 @@ export class addConsultaComponent implements OnInit {
 	}
 	onSubmitResponse() {
 		this.respuesta.cliente = this.identity._id;
+		var hilo = this.respuesta.consulta;
 		
 
 
@@ -123,6 +124,7 @@ export class addConsultaComponent implements OnInit {
 				}
 			}
 		)
+		this.respuesta.body="";
 
 		this.getRespuestas(this.respuesta.consulta);
 

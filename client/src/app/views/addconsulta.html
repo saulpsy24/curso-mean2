@@ -152,12 +152,12 @@
             </div>
           </div>
           
-          
+          <hr>
         </div>
         <div class="type_msg">
           <div class="input_msg_write"><form  #formAssistant="ngForm" (ngSubmit)="onSubmitResponse()">
               <input type="text" placeholder="Escribe Aqui" #body="ngModel" name="body" [(ngModel)]="respuesta.body" required
-              class="form-control form-control-lg"  />
+              class="form-control form-control-lg"  (keyup.enter)="onSubmitResponse()" />
               <button class="msg_send_btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
              
 
