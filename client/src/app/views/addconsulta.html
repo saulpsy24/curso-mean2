@@ -1,83 +1,178 @@
 <div class="container">
 
 <div class="row card2">
+    <div class="col-lg-2">
     <h1>Listado de Consultas</h1>
-</div>
-<div class="row card2" *ngIf="identity.role=='ROLE_ADMIN' || 'ROLE_USER'">
-    <h3>Eres: {{identity.name +' ' +identity.surname}}</h3> //dejar visible solo para user al final
-        <div class="list-group col-lg-12">
-            <table class="table table-black">
-                <thead>
-                  <tr>
-    
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Codigo de Farmacia</th>
-                    <th scope="col">Establecimiento</th>
-                    
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">e-Mail</th>
-                    <th scope="col">Responder</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let consultas of consultasc">
-    
-                    <td scope="row">{{consultas.cliente.name}}</td>
-                    <td>{{consultas.cliente.surname}}</td>
-                    <td>{{consultas.title}}</td>
-                    <td>{{consultas.cliente.code}}</td>
-                    <td>{{consultas.cliente.nameEstablishment}}</td>
-                    <th><a href="tel:{{consultas.cliente.phone}}">{{consultas.cliente.phone}}</a></th>
-                    <th> <a href="mailto:{{consultas.cliente.email}}">{{consultas.cliente.email}}</a></th>
-                    <th></th>
-                    
-                  </tr>
-    
-                </tbody>
-              </table>
+  </div>
+  <div class="col-lg-8">
 
-                
-              </div>
+  </div>
+  <div class="col-lg-2"><br><br>
+   <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Agregar Consulta
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ponle un titulo a tu consulta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                   
+                    <div class="col-md-6 col-xs-6 ">
+                        <p>
+                            <br>
+                            <label>Titulo de la consulta:</label>
+                            <input type="text" #nameEstablishment="ngModel" name="nameEstablishment" [(ngModel)]="consult.title" required
+                                class="form-control form-control-lg"  />
+    
+                        </p>
+    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <input type="submit" value="{{'Inscribir'}}" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">salir</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
+<div class="row card2" *ngIf="identity.role=='ROLE_USER'">
+    <div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Consultas</h4>
+            </div>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar"  placeholder="Search" >
+                <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span> </div>
+            </div>
+          </div>
+          <div class="inbox_chat">
+            <div class="chat_list active_chat"(click)="getRespuestas(consultas._id)" *ngFor="let consultas of consultasc">
+              <div class="chat_people" >
+                <div class="chat_img"> <img src="{{url +'get-image-user/'+consultas.cliente.image}}" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>{{consultas.cliente.name+' '+consultas.cliente.surname}} <span class="chat_date">{{consultas.date}}</span></h5>
+                  <p>{{consultas.title}}</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="mesgs">
+          <div class="msg_history">
+            <div class="incoming_msg" *ngFor="let respuestas of respuestas">
+              <div class="incoming_msg_img"> <img src="{{url +'get-image-user/'+respuestas.cliente.image}}" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>{{respuestas.body}}</p>
+                  <span class="time_date"> {{respuestas.date}}</span></div>
+              </div>
+            </div>
+            
+            
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write"><form  #formAssistant="ngForm" (ngSubmit)="onSubmitResponse()">
+                <input type="text" placeholder="Escribe Aqui" #body="ngModel" name="body" [(ngModel)]="respuesta.body" required
+                class="form-control form-control-lg"  />
+                <button class="msg_send_btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+               
+  
+            </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  
+
 <div class="row card2" *ngIf="identity.role=='ROLE_ADMIN'">
-    <h3>Bienvenido Administrador : {{identity.name +' ' +identity.surname}}</h3>
-        <div class="list-group col-lg-12">
-            <table class="table table-black">
-                <thead>
-                  <tr>
-    
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Codigo de Farmacia</th>
-                    <th scope="col">Establecimiento</th>
-                    
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">e-Mail</th>
-                    <th scope="col">Responder</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let consultas of consultas">
-    
-                    <td scope="row">{{consultas.cliente.name}}</td>
-                    <td>{{consultas.cliente.surname}}</td>
-                    <td>{{consultas.title}}</td>
-                    <td>{{consultas.cliente.code}}</td>
-                    <td>{{consultas.cliente.nameEstablishment}}</td>
-                    <th><a href="tel:{{consultas.cliente.phone}}">{{consultas.cliente.phone}}</a></th>
-                    <th> <a href="mailto:{{consultas.cliente.email}}">{{consultas.cliente.email}}</a></th>
-                    <th></th>
-                    
-                  </tr>
-    
-                </tbody>
-              </table>
-
+  <div class="messaging">
+    <div class="inbox_msg">
+      <div class="inbox_people">
+        <div class="headind_srch">
+          <div class="recent_heading">
+            <h4>Consultas</h4>
+          </div>
+         
+        </div>
+        <div class="inbox_chat">
+          <div class="chat_list active_chat"(click)="getRespuestas(consultas._id)" *ngFor="let consultas of consultas">
+            <div class="chat_people" >
+              <div class="chat_img"> <img src="{{url +'get-image-user/'+consultas.cliente.image}}" alt="sunil"> </div>
+              <div class="chat_ib">
+                <h5>{{consultas.cliente.name+' '+consultas.cliente.surname}} <span class="chat_date">{{consultas.date}}</span></h5>
+                <p>{{consultas.title}}</p>
               </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="mesgs">
+        <div class="msg_history">
+
+            
+          <div [class.incoming_msg]="respuestas.cliente._id!=identity._id" [class.outgoing_msg]="identity._id==respuestas.cliente._id" *ngFor="let respuestas of respuestas">
+            
+            <div  [class.received_msg]="respuestas.cliente._id!=identity._id" [class.sent_msg]="identity._id==respuestas.cliente._id">
+              <div [class.received_withd_msg]="respuestas.cliente._id!=identity._id">
+                <p>{{respuestas.body}}</p>
+                <span class="time_date"> {{respuestas.date}}</span></div>
+            </div>
+          </div>
+          
+          
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write"><form  #formAssistant="ngForm" (ngSubmit)="onSubmitResponse()">
+              <input type="text" placeholder="Escribe Aqui" #body="ngModel" name="body" [(ngModel)]="respuesta.body" required
+              class="form-control form-control-lg"  />
+              <button class="msg_send_btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+             
+
+          </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
 </div>
+
+
 <div class="row card2">
 
     <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
