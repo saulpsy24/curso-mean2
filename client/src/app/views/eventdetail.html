@@ -23,7 +23,7 @@
           <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Vichy'">
             VICHY
           </FONT>
-          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Cerave'">
+          <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='CeraVe'">
             CERAVE
           </FONT>
           <FONT SIZE=3 style="color: rgb(127,127,127);" *ngIf="evento.brand=='Skinceuticals'">
@@ -45,25 +45,28 @@
           <label>
             <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-card">
           </label>
-          <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);">
+          <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
             {{evento.province}}
           </FONT>
         </p>
         <p>
           <label>
             <img id="kDMY_0" src="../../assets/images/fecha.png" class="img-card">
-          </label> {{evento.date_s}}
+          </label>
+          <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
+            {{evento.dateS}}
+          </FONT>
         </p>
 
         <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
 
-          <a [routerLink]="['/evento',1] " class="btn btn-md btn-primary">
+          <a [routerLink]="['/evento',1] " class="btn btn-sm btn-primary" style="width: 30%">
             Volver
             <i class="fas fa-arrow-circle-left"></i>
           </a>
-          <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-md btn-secondary">
-
-            Nuevo Turno
+          <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-sm btn-secondary" style="width: 53%">
+            
+            Agregar Turno
             <i class="fa fa-plus-circle"></i>
           </a>
 
@@ -129,46 +132,97 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">Turno</th>
-              <th scope="col">Fecha Inicio</th>
-              <th scope="col">Fecha Fin</th>
-              <th scope="col">Hora Inicio</th>
-              <th scope="col">Hora fin</th>
-              <th scope="col">Plazas Disponibles</th>
-              <th scope="col">Acciones</th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Turno
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Fecha Inicio
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Fecha Fin
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Hora Inicio
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Hora Fin
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Plazas Disponibles
+                </FONT>
+              </th>
+              <th scope="col">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  Acción
+                </FONT>
+              </th>
             </tr>
           </thead>
           <tbody>
 
             <tr *ngFor="let turno of turnos">
-              <th scope="row">{{turno.name}}</th>
-              <td>{{turno.date_start}}</td>
-              <td>{{turno.date_end}}</td>
-              <td>{{turno.start_h}}</td>
-              <td>{{turno.end_h}}</td>
-              <td>{{turno.aforo}}</td>
+              <th scope="row">
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.name}}
+                </FONT>
+              </th>
+              <th >
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.date_start}}
+                </FONT>
+              </th>
+              <th >
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.date_end}}
+                </FONT>
+              </th>
+              <th >
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.start_h}}
+                </FONT>
+              </th>
+              <th >
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.end_h}}
+                </FONT>
+              </th>
+              <th >
+                <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
+                  {{turno.aforo}}
+                </FONT>
+              </th>
               <td>
-                <button *ngIf="!acciones" class="btn btn-primary" (click)="MostrarAcciones(turno._id)" value="Acciones">Actions</button>
+                <button *ngIf="!acciones" class="btn btn-primary" (click)="MostrarAcciones(turno._id)" value="Acciones">Más <i class="fas fa-plus-circle"> </i></button>
                 <div *ngIf="acciones==turno._id">
                   <div class="btn-group animated fadeIn" role="group">
                     <!-- <button (click)="aquivaeleventoquetematricula()" *ngIf="showoptions==0" type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> -->
-                    <button [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'"
+                    <button   [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'"
                       type="button" class="btn btn-primary">
-                      Detalle</button>
+                      Detalle <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
                     <button [routerLink]="['/assistant-add',turno._id] " *ngIf="showoptions==0" type="button" class="btn btn-secondary">
-                      <i class="fas fa-plus-circle"></i>
-                      Inscribirme!</button>
+                      
+                      Inscribirme <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
                     <button [routerLink]="['/editar-turno',turno._id] " type="button" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-                      <i class="fas fa-edit"></i>Editar</button>
+                      Editar <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
                     <button type="button" (click)="onDeleteConfirm(turno._id)" class="btn btn-secondary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-                      <i class="fas fa-window-close"></i>
-                      Borrar</button>
+                      Borrar <i class="fas fa-minus-circle"></i></button>&nbsp;&nbsp;
                   </div>
                   <div class="btn-group animated fadeIn seguro" role="group" *ngIf="confirmado==turno._id">
                     <button class="btn btn-md btn-primary" (click)="onDeleteTurno(turno._id)">
-                      <i class="fas fa-window-close"></i> Borrar</button>
+                      <i class="fas fa-window-close"></i> Borrar</button>&nbsp;&nbsp;
                     <button class="btn btn-md btn-secondary" (click)="onCancelTurno()">
-                      <i class="fas fa-ban"></i> Cancelar </button>
+                      <i class="fas fa-ban"></i> Cancelar </button>&nbsp;&nbsp;
 
 
 
@@ -198,18 +252,18 @@
   <br> -->
   <br>
   <div class="row card2">
-
+    
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+    </div>
     <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
       <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
     </div>
     <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
-      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
-    </div>
-    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
       <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
     </div>
-    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
-      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+    <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+      <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
     </div>
     <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
       <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/CERAVE.png">
