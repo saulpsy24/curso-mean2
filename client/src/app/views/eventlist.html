@@ -14,7 +14,7 @@
                     
     
                     <div class="col-md-2">
-                        <h2 class="filtro">Provincia</h2>
+                        <p class="filtro">Provincia</p>
                         <form id="filter">
                                 <select class="form-control"#name="ngModel" name="term" [(ngModel)]="term">
                                     <option selected="selected" value="">Selecciona...</option>
@@ -76,7 +76,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <h2 class="filtro">Marca</h2>
+                        <p class="filtro">Marca</p>
                         <div class="dropdown">
                             <select class="form-control"  [(ngModel)]="brand" >
     
@@ -90,12 +90,12 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <h2 class="filtro">Fecha</h2>
+                        <p class="filtro">Fecha</p>
                         <input [ngModel]="dateS | date:'yyyy-MM-dd'" (ngModelChange)="dateS = $event" 
                         type="date" name="dateS" class="form-control"/>
                     </div>
                     <div class="col-md-2" *ngIf="identity.role=='ROLE_ADMIN'">
-                            <h2 class="filtro">Visibilidad</h2>
+                            <p class="filtro">Visibilidad</p>
                             <div class="dropdown">
                                 <select  class="form-control"  [(ngModel)]="visible" >
         
@@ -106,13 +106,13 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <h2 class="filtro">Campaña</h2>
+                            <p class="filtro">Campaña</p>
                             <input [ngModel]="campana" (ngModelChange)="campana = $event" 
                             type="text" name="campana" class="form-control"/>
                         </div>
                     <div class="col-lg-2">
                         <br>
-                            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" class=" btn btn-primary">
+                            <a [routerLink]="['/event-add']" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'" class="btn btn-primary btn-sm">
                                 <FONT FACE="Gotham Light" SIZE=3 COLOR="white" >
                                         Añadir Evento
                                 </FONT>
@@ -185,13 +185,16 @@
                         <p>
                            <label><img id="kDMY_0"   src="../../assets/images/mapa_grande.png" class="img-card">
                             </label>
-                            <FONT FACE="Gotham Light" SIZE=3 style="color: rgb(127,127,127);" >
+                            <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);" >
                                     {{event.province}}
                             </FONT> 
                         </p>
                         <p>
                             <label><img id="kDMY_0"   src="../../assets/images/fecha.png" class="img-card">
-                            </label> {{event.dateS}}
+                            </label> 
+                            <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);" >
+                                {{event.dateS}}
+                            </FONT> 
                         </p>
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
@@ -216,18 +219,17 @@
         </div>
         <br>
         <div class="row card2">
-
+                <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
+                    <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+                </div>
                 <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
                   <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roche.jpeg">
                 </div>
                 <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
-                  <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
-                </div>
-                <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
                   <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/skins.jpeg">
                 </div>
-                <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
-                  <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
+                <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%; width: 20%;">
+                  <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/roger.jpeg">
                 </div>
                 <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
                   <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/CERAVE.png">
