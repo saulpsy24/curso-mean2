@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { IfObservable } from '../../node_modules/rxjs/observable/IfObservable';
+import { CodegenComponentFactoryResolver } from '../../node_modules/@angular/compiler/src/private_import_core';
 
 @Pipe({
     name: 'filter'
@@ -7,6 +9,12 @@ export class FilterPipe implements PipeTransform {
     transform(items: Array<any>, term: string, brand: string, dateS:String, visible: string, campana:string,name:string,email:string,establecimiento:string,phone:string,cliente :String) {
         if (items && items.length) {
             return items.filter(item => {
+                if(item.code){
+                    if(establecimiento && item.code.toLowerCase().indexOf(establecimiento.toLowerCase())===-1){
+                        return false;
+                    }
+                }
+   
                 if(item.province){
                     if (term && item.province.toLowerCase().indexOf(term.toLowerCase()) === -1) {
                         return false;
@@ -38,14 +46,11 @@ export class FilterPipe implements PipeTransform {
                     }
                 }
                 if (item.email) {
+                    console.log(email);
                     if (email && item.email.toLowerCase().indexOf(email.toLowerCase()) === -1) {
                         return false;
                     }
-                } if (item.nameEstablishment) {
-                    if (establecimiento && item.nameEstablishment.toLowerCase().indexOf(establecimiento.toLowerCase()) === -1) {
-                        return false;
-                    }
-                }if (item.phone) {
+                } if (item.phone) {
                     if (phone && item.phone.indexOf(phone) === -1) {
                         return false;
                     }

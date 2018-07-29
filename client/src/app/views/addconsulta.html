@@ -24,8 +24,9 @@
           </button>
         </div>
         <div class="modal-body">
-            <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
+            <form #formAssistant="ngForm" >
                 <div class="row">
+                  <div class="col-md-3"></div>
                    
                     <div class="col-md-6 col-xs-6 ">
                         <p>
@@ -39,15 +40,16 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-3"></div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <input type="submit" value="{{'Inscribir'}}" class="btn btn-primary" />
+                        <button type="button" (click)='onSubmit()' data-dismiss="modal" value="{{'Agregar'}}" class="btn btn-primary" >Continuar</button>
                     </div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">salir</button>
+          <button type="button" data-dismiss="modal" class="btn btn-secondary" >salir</button>
         
         </div>
       </div>
@@ -76,7 +78,7 @@
               <div class="chat_people" >
                 <div class="chat_img"> <img src="{{url +'get-image-user/'+consultas.cliente.image}}" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5>{{consultas.cliente.name+' '+consultas.cliente.surname}} <span class="chat_date">{{consultas.date}}</span></h5>
+                  <label>{{consultas.cliente.name+' '+consultas.cliente.surname}}</label> <span class="chat_date"><a href="{{'tel:'+consultas.cliente.phone}}"><i class="fas fa-phone"></i></a></span>
                   <p>{{consultas.title}}</p>
                 </div>
               </div>
@@ -126,13 +128,13 @@
           </div>
          
         </div>
-        <div class="inbox_chat">
+        <div class="inbox_chat" >
           <div class="chat_list active_chat"(click)="getRespuestas(consultas._id)" *ngFor="let consultas of consultas">
             <div class="chat_people" >
               <div class="chat_img"> <img src="{{url +'get-image-user/'+consultas.cliente.image}}" alt="sunil"> </div>
               <div class="chat_ib">
-                <h5>{{consultas.cliente.name+' '+consultas.cliente.surname}} <span class="chat_date">{{consultas.date}}</span></h5>
-                <p>{{consultas.title}}</p>
+                  <label>{{consultas.cliente.name+' '+consultas.cliente.surname+' '}}</label><span class="chat_date"><a href="{{'mailto:'+consultas.cliente.email}}"> <i class="fas fa-envelope"></i></a></span> <span class="chat_date"><a href="{{'tel:'+consultas.cliente.phone}}"> <i class="fas fa-phone"></i></a></span>
+                 <p>{{consultas.title}}</p>
               </div>
             </div>
           </div>
@@ -140,11 +142,11 @@
         </div>
       </div>
       <div class="mesgs">
-        <div class="msg_history">
+        <div class="msg_history" #container>
 
             
           <div [class.incoming_msg]="respuestas.cliente._id!=identity._id" [class.outgoing_msg]="identity._id==respuestas.cliente._id" *ngFor="let respuestas of respuestas">
-            
+              <div *ngIf="respuestas.cliente._id!=identity._id" class="incoming_msg_img"> <img src="{{url+'get-image-user/'+respuestas.cliente.image}}" alt="sunil"> </div>
             <div  [class.received_msg]="respuestas.cliente._id!=identity._id" [class.sent_msg]="identity._id==respuestas.cliente._id">
               <div [class.received_withd_msg]="respuestas.cliente._id!=identity._id">
                 <p>{{respuestas.body}}</p>

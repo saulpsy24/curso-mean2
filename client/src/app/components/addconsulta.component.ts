@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Consulta } from '../models/consulta';
 import { Respuesta } from '../models/respuesta';
@@ -16,6 +16,7 @@ import { ConsultaService } from '../services/consulta.service';
 })
 
 export class addConsultaComponent implements OnInit {
+	@ViewChild('container') container: ElementRef;
 	public titulo: String;
 	public evento: Evento;
 	public consult: Consulta;
@@ -89,6 +90,9 @@ export class addConsultaComponent implements OnInit {
 
 
 	}
+	private scrollToBottom() {
+        this.container.nativeElement.scrollTop = this.container.nativeElement.scrollHeight;
+    }
 	onSubmitResponse() {
 		this.respuesta.cliente = this.identity._id;
 		var hilo = this.respuesta.consulta;
@@ -157,8 +161,8 @@ export class addConsultaComponent implements OnInit {
 				}
 			}
 		)
+		this.scrollToBottom();
 	}
-
 
 	onSubmit() {
 

@@ -78,6 +78,11 @@ label{
 .navbar-light .navbar-text a {
     color: white;
 }
+ hr{
+	 margin-bottom: 5px;
+	 margin-top:5px;
+ }
+
 div{
 	
 	font-family: Gotham, sans-serif !important;
@@ -94,7 +99,7 @@ div{
 	margin-right: auto;
 	display: block;
 	margin-bottom: 2%;
-	margin-top: 2%;
+	margin-top: 8%;
 }
 .head-title{
 	font-size: 15px;
@@ -606,7 +611,7 @@ background: orange;
 	border-radius: 50%
 }
 .inbox_people {
-	background: #f8f8f8 none repeat scroll 0 0;
+	background: #ffffff none repeat scroll 0 0;
 	float: left;
 	overflow: hidden;
 	width: 40%; border-right:1px solid #c4c4c4;
@@ -663,7 +668,7 @@ background: orange;
   }
   .inbox_chat { height: 550px; overflow-y: scroll;}
   
-  .active_chat{ background:#ebebeb;}
+  .active_chat{ background:#ffffff;}
   
   .incoming_msg_img {
 	display: inline-block;

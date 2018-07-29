@@ -59,7 +59,7 @@
                         </th>
 
                         <td>
-                            <p> {{cliente.email}}</p>
+                            {{cliente.email}}
                         </td>
 
                     </tr>
@@ -71,7 +71,7 @@
                         </th>
 
                         <td>
-                            <p> {{cliente.phone}} </p>
+                            {{cliente.phone}} 
                         </td>
 
                     </tr>
@@ -83,7 +83,7 @@
                         </th>
 
                         <td>
-                            <p> {{cliente.nifCif}}</p>
+                            {{cliente.nifCif}}
                         </td>
 
                     </tr>
@@ -95,7 +95,7 @@
                         </th>
 
                         <td>
-                            <p> {{cliente.province}}</p>
+                             {{cliente.province}}
                         </td>
 
                     </tr>
@@ -107,7 +107,7 @@
                             </th>
     
                             <td>
-                                <p> {{cliente.street}}</p>
+                                 {{cliente.street}}
                             </td>
     
                     </tr>
@@ -119,7 +119,7 @@
                             </th>
     
                             <td>
-                                <p> {{cliente.zip}}</p>
+                                {{cliente.zip}}
                             </td>
     
                     </tr>
@@ -224,6 +224,7 @@
                     <th scope="col">Hora Fin</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Fin</th>
+                    <th scope="col">Plazas disponibles</th>
                     <th scope="col">Inscribir</th>
                 </tr>
             </thead>
@@ -235,6 +236,7 @@
                     <td>{{turno.end_h}}</td>
                     <td>{{turno.date_start}}</td>
                     <td>{{turno.date_end}}</td>
+                    <td>{{turno.aforo}}</td>
                     <td>
                         <a (click)="GeneraAsistencia(turno)" class="btn btn-primary btn-md">
                                 <i class="fas fa-plus-circle"></i> Inscribir</a>
@@ -278,7 +280,7 @@
                             <td>{{asist.turno.name}}</td>
                             <td><div class="buttons animated fadeIn" *ngIf="showoptions==0">
 
-                                    <a (click)="onDeleteConfirm(asist._id)" *ngIf="identity.role=='ROLE_ADMIN'" class="btn btn-md btn-danger">
+                                    <a (click)="onDeleteConfirm(asist._id)" *ngIf="identity.role=='ROLE_ADMIN'" class="btn btn-md btn-primary">
                                         <i class="fas fa-window-close"></i>
                                         Dar de Baja</a>
         

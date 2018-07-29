@@ -1,10 +1,15 @@
-<div class="col-lg-8" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
+<div class="container" *ngIf="identity && identity.role == 'ROLE_ADMIN'">
+    
+    <div class="row card2">
+        
     <h1>{{titulo}}</h1>
-</div>
+
+    </div>
+
 <div *ngIf="alertMessage" class="alert alert-warning">
     <strong>Respuesta:</strong>{{alertMessage}}
 </div>
-<div class="container">
+
     <div class="row card2">
 
         <form #formAssistant="ngForm" (ngSubmit)="onSubmit()">
@@ -32,11 +37,12 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <input type="submit" value="{{'Inscribir'}}" class="btn btn-success" />
+                    <input type="submit" value="{{'Inscribir'}}" class="btn btn-primary" />
                 </div>
             </div>
         </form>
 
     </div>
+
 
 </div>

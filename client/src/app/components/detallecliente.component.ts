@@ -163,7 +163,7 @@ export class ClienteDetailComponent implements OnInit {
         this.confirmado = id;
         this.showoptions = 1;
     }
-    onCancelTurno() {
+    onCancelAsistencia() {
         this.confirmado = null;
         this.showoptions = 0;
     }

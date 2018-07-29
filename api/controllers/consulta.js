@@ -71,7 +71,7 @@ function getConsultas(req, res) {
 
     var itemsperpage = 10;
 
-    Consulta.find().populate({path:'cliente'}).sort('date').paginate(page, itemsperpage, function (err, consultas, total) {
+    Consulta.find().populate({path:'cliente'}).sort({date:-1}).paginate(page, itemsperpage, function (err, consultas, total) {
         if (err) {
             res.status(500).send({
                 message: 'error en la peticion al server'
