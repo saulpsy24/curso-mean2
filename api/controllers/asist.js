@@ -127,29 +127,29 @@ function saveAsist(req, res) {
                                                                         res.status(404).send({ message: 'no hay evento' });
                                                                     } else {
                                                                         var noty = new Notificacion();
-                                                                        noty.date=Date();
-                                                                        noty.body='El cliente: '+cliente.name+' se inscribio al evento '+ evento.title+' en turno: '+turnoUpdated.name+' .';
-                                                                            console.log(noty.body);
-                                                                            noty.save((err,notySaved)=>{
-                                                                                if(err){
-                                                                                    res.status(500).send({message:'error en server'});
-                                                                                }else{
-                                                                                    if(!notySaved){
-                                                                                        res.status(404).send({message:'no hay notificacion'});
-                                                                                    }else{
-                                                                                        res.status(200).send({
-                                                                                            asistSaved,
-                                                                                            turnoUpdated,
-                                                                                            notySaved
-                
-                
-                
-                                                                                        });
-                                                                                    }
-                                                                                }
+                                                                        noty.date = Date();
+                                                                        noty.body = 'El cliente: ' + cliente.name + ' se inscribio al evento ' + evento.title + ' en turno: ' + turnoUpdated.name + ' .';
+                                                                        console.log(noty.body);
+                                                                        noty.save((err, notySaved) => {
+                                                                            if (err) {
+                                                                                res.status(500).send({ message: 'error en server' });
+                                                                            } else {
+                                                                                if (!notySaved) {
+                                                                                    res.status(404).send({ message: 'no hay notificacion' });
+                                                                                } else {
+                                                                                    res.status(200).send({
+                                                                                        asistSaved,
+                                                                                        turnoUpdated,
+                                                                                        notySaved
 
-                                                                            })
-                                                                        
+
+
+                                                                                    });
+                                                                                }
+                                                                            }
+
+                                                                        })
+
 
                                                                     }
                                                                 }
@@ -247,11 +247,11 @@ function sacarcsv(req, res) {
     }, {
         label: 'Farmacia',
         value: 'cliente.nameEstablishment'
-    }, {label:'email',value: 'cliente.email'},{label:'Codigo de Farmacia',value: 'cliente.code'}, {label:'Telefono',value:'cliente.phone'},
-     {label:'CP',value:'cliente.zip'}, {label:'NIF/CIF', value: 'cliente.nifCif'}, {label:'Direccion',value:'cliente.street'},
-     {label:'VICHY',value:'cliente.brandV'} ,{label:'ROCHE-POSAY', value:'cliente.brandLR'},{label:'RogerGallet',value: 'cliente.brandRG'},{label:'SKINS',value: 'cliente.brandSK'},
-     {label:'CeraVe',value: 'cliente.brandCV'},{label:'Rol',value: 'cliente.role'},
-    {label:'Evento',value:'turno.event.title'},{label:'Turno',value:'turno.name'},{label:'Asistio',value:'check'}];
+    }, { label: 'email', value: 'cliente.email' }, { label: 'Codigo de Farmacia', value: 'cliente.code' }, { label: 'Telefono', value: 'cliente.phone' },
+    { label: 'CP', value: 'cliente.zip' }, { label: 'NIF/CIF', value: 'cliente.nifCif' }, { label: 'Direccion', value: 'cliente.street' },
+    { label: 'VICHY', value: 'cliente.brandV' }, { label: 'ROCHE-POSAY', value: 'cliente.brandLR' }, { label: 'RogerGallet', value: 'cliente.brandRG' }, { label: 'SKINS', value: 'cliente.brandSK' },
+    { label: 'CeraVe', value: 'cliente.brandCV' }, { label: 'Rol', value: 'cliente.role' },
+    { label: 'Evento', value: 'turno.event.title' }, { label: 'Turno', value: 'turno.name' }, { label: 'Asistio', value: 'check' }];
     const json2csvParser = new Json2csvParser({ fields });
 
 
@@ -263,8 +263,8 @@ function sacarcsv(req, res) {
             populate: {
                 path: 'event'
             }
-    
-    
+
+
         }).populate({
             path: 'cliente'
         });
@@ -276,13 +276,13 @@ function sacarcsv(req, res) {
             populate: {
                 path: 'event'
             }
-    
-    
+
+
         }).populate({
             path: 'cliente'
         });
     }
-    
+
     find.exec((err, asistencia) => {
         if (err) {
             res.status(500).send({
@@ -482,25 +482,26 @@ function ActulizaAsist(req, res) {
         }
     });
 }
-
 var nodemailer = require('nodemailer');
-function sendMail(req,res){
+function sendMail(req, res) {
+    var params=req.params.html;
+    
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: 'sarlmnt.soul@gmail.com',
             pass: 's@ul24zoo'
         }
- });
- var mailOptions = {
-    from: 'Ing.Saul',
-    to: 'saul.ramirez@disolutionsmx.com',
-    subject: 'Tu evento',
-    html: '<a href="#">Contenido del email</a>'
+    });
+    var mailOptions = {
+        from: 'Ing.Saul',
+        to: 'saul.ramirez@disolutionsmx.com',
+        subject: 'Tu evento',
+        html: params
 };
 
-transporter.sendMail(mailOptions, function(error, info){
-    if (error){
+transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
         console.log(error);
         res.send(500, error.message);
     } else {

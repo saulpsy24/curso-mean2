@@ -25,11 +25,14 @@ export class FilterPipe implements PipeTransform {
                     if (visible && item.visible.toLowerCase().indexOf(visible.toLowerCase()) === -1) {
                         return false;
                     }
-                }if (item.campana) {
+                }
+                if (item.campana) {
                     if (campana && item.campana.toLowerCase().indexOf(campana.toLowerCase()) === -1) {
                         return false;
-                    }
-                }if (item.name) {
+                    } 
+                  
+                } 
+                if (item.name) {
                     if (name && item.name.toLowerCase().indexOf(name.toLowerCase()) === -1) {
                         return false;
                     }
@@ -46,12 +49,35 @@ export class FilterPipe implements PipeTransform {
                     if (phone && item.phone.indexOf(phone) === -1) {
                         return false;
                     }
-                }
+                }if (item.cliente){
                     if (cliente && item.cliente.toLowerCase().indexOf(cliente.toLowerCase()) === -1) {
                        
                        
                         return false;
                     }
+                }if(item.turno){
+                    if (item.turno.event.brand) {
+                        if (brand && item.turno.event.brand.toLowerCase().indexOf(brand.toLowerCase()) === -1) {
+                            return false;
+                        }
+                    } if(item.turno.event.campana){
+                        console.log(campana)
+                        if (campana && item.turno.event.campana.toLowerCase().indexOf(campana.toLowerCase()) === -1) {
+                            return false;
+                        }
+    
+                    }
+                    if(item.turno.event.province){
+                        if (term && item.turno.event.province.toLowerCase().indexOf(term.toLowerCase()) === -1) {
+                            return false;
+                        }
+                    }
+                    if (item.turno.event.dateS) {
+                        if (dateS && item.turno.event.dateS.indexOf(dateS) === -1) {
+                            return false;
+                        }
+                    }
+                }
                 
                 return true;
             })
