@@ -28,7 +28,14 @@ export class ClienteEditComponent implements OnInit {
         this.cliente = this.identity;
 
     }
+    toggleVisibility(evento){
+        console.log(evento);
 
+    }
+    update($event) {
+        console.log($event, $event.target, $event.currentTarget);
+       
+      }
     ngOnInit() {
         this.token = this._clienteService.getToken();
         this.identity = this._clienteService.getidentity();
@@ -85,6 +92,18 @@ export class ClienteEditComponent implements OnInit {
     fileChangeEvent(fileInput:any){
         
         this.filesToUpload=<Array<File>>fileInput.target.files;
+        if(this.filesToUpload){
+            this.makeFileRequest(this.url+'upload-image-user/'+this.cliente._id,[],this.filesToUpload).then(
+                (result:any)=>{
+                    this.cliente.image=result.image;
+                    localStorage.setItem('identity',JSON.stringify(this.cliente));
+                    let image_path = this.url+'get-image-user/'+this.cliente.image;
+                    document.getElementById("user_image_logged").setAttribute('src',image_path);
+
+
+                }
+            );
+        }
         
     }
     makeFileRequest(url:string,params:Array<string>,files:Array<File>){

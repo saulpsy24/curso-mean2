@@ -46,12 +46,12 @@
                             El Teléfono es obligatorio!
                         </span>
                     </p>
-                    <p>
+                    <p *ngIf="!is_edit">
                         <img id="kDMY_0" src="../../assets/images/email.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Email:
                         </FONT>
-                        <input type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
+                        <input  type="email" #email="ngModel" name="email" [(ngModel)]="cliente.email" class="form-control"
                         required placeholder="Introduce tu e-mail" />
                         <span *ngIf="!email.valid && email.touched">
                             El email es obligatorio!
@@ -93,9 +93,9 @@
                             El codigo de la farmacia es obligatorio!
                         </span>
                     </p>
-                    <p *ngIf="is_edit">
+                    <p >
                         <!-- <input type="checkbox" id="edit" /> Editar contraseña -->
-                        <input type="checkbox"  (change)="toggleVisibility($event)"/>
+                        <input type="checkbox" (change)="handleChange($event)"/>
                                Editar contraseña 
                     </p>
                     <!-- <label class="container">    
@@ -111,11 +111,9 @@
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Contraseña:
                         </FONT>
-                        <input  type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
+                        <input *ngIf="checked" type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
                         class="form-control" required placeholder="Introduce la contraseña"/>
-                        <span *ngIf="!password.valid && password.touched">
-                            La contraseña es obligatoria!
-                        </span>
+                       
                     </p>       
                 </form>
             </div>
@@ -270,7 +268,7 @@
                         <option value="0">No</option>
                     </select>
                     <br>
-                    <div >
+                    <div *ngIf="admin">
                         <img id="kDMY_0" src="../../assets/images/rol.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                             Rol:
