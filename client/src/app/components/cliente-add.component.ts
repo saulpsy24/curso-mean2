@@ -20,6 +20,7 @@ export class ClienteaddComponent implements OnInit {
     public errorMessage;
     public url:String;
    public clientHeight: number;
+   public admin;
     
 
     constructor(
@@ -33,6 +34,14 @@ export class ClienteaddComponent implements OnInit {
         this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','','', '','ROLE_USER','');
          this.url=GLOBAL.url;
          this.token=_clienteService.getToken();
+         this.identity=_clienteService.getidentity();
+         if(this.identity.role=='ROLE_ADMIN'){
+            this.admin=true;
+            console.log(this.identity);
+            }else{
+                this.admin=null;
+                console.log(this.identity);
+            }
         //  this.clientHeight = window.innerHeight; 
     }
     ngOnInit() {
@@ -41,6 +50,14 @@ export class ClienteaddComponent implements OnInit {
 
 
     }
+    toggleVisibility(evento){
+        console.log(evento);
+
+    }
+    update() {
+        console.log('entra');
+        
+      }
      
     public onSubmit() {
         console.log(this.cliente);

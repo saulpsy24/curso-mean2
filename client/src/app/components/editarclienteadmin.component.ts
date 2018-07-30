@@ -21,6 +21,8 @@ export class ClienteEditarComponent implements OnInit {
     public errorMessage;
     public url : string;
     public is_edit;
+    public checked;
+    public admin;
 
     constructor(
         private _route: ActivatedRoute,
@@ -37,6 +39,13 @@ export class ClienteEditarComponent implements OnInit {
         
         this.token=_clienteService.getToken();
         this.identity=_clienteService.getidentity();
+        if(this.identity.role=='ROLE_ADMIN'){
+        this.admin=true;
+        console.log(this.identity);
+        }else{
+            this.admin=null;
+            console.log(this.identity);
+        }
 
     }
     public filesToUpload:Array<File>;
@@ -52,7 +61,18 @@ export class ClienteEditarComponent implements OnInit {
         //lamar usuario por id
         this.getUsuario();
     }
-
+    handleChange(e) {
+        var isChecked = e.target.checked;
+        if (isChecked) {
+            console.log(isChecked);
+            this.checked=true;
+        }
+        else {
+            console.log(isChecked);
+            this.checked=null;
+           
+        }
+    }
     getUsuario(){
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
@@ -86,6 +106,10 @@ export class ClienteEditarComponent implements OnInit {
     onSubmit(){
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
+            if(this.cliente.password==""){
+                delete this.cliente.password;
+            }
+
             this._clienteService.editCliente(this.token,id, this.cliente).subscribe(
                 response => {
 
@@ -95,8 +119,10 @@ export class ClienteEditarComponent implements OnInit {
                     } else {
                        // this.evento = response.event;
                         //this._router.navigate(['/editar-evento'],response.evento._id);
+                        console.log(this.cliente);
                         this.errorMessage = 'Cliente Actualizado Correctamente';
                         //subir foto
+                        if(this.filesToUpload){
                         this._uploadService.makeFileRequest(this.url+'upload-ficha/'+id,[],this.filesToUpload,this.token,'file')
                         .then(
                             (result)=>{
@@ -109,7 +135,7 @@ export class ClienteEditarComponent implements OnInit {
 
                             }
 
-                        );
+                        );}
                     }
 
                 },
