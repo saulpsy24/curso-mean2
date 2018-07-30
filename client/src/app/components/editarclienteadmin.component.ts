@@ -14,7 +14,7 @@ import { UploadService } from '../services/upload.service';
 })
 
 export class ClienteEditarComponent implements OnInit {
-    public titulo: String;
+    public title: String;
     public cliente: Cliente;
     public identity;
     public token;
@@ -28,8 +28,9 @@ export class ClienteEditarComponent implements OnInit {
         private _clienteService: ClienteService,
         private _uploadService: UploadService
     ) {
-        this.titulo = 'Actualiza Usuario';
+        this.title = 'Actualiza Usuario';
         
+
         this.is_edit = true;
         this.url=GLOBAL.url;
         this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','','', '','ROLE_USER','');
@@ -63,6 +64,8 @@ export class ClienteEditarComponent implements OnInit {
                     } else {
 
                         this.cliente = response.cliente;
+                        response.cliente.password='';
+                        
 
                     }
                 },

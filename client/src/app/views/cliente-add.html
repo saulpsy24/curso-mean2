@@ -2,11 +2,13 @@
     <div class="row card2">
         <h1 class= "capital"> {{title}} </h1>
     </div>
+    <br>
+    <div *ngIf="errorMessage" class="alert alert-success">
+        <strong>{{errorMessage}}</strong>
+    </div> 
     
     <div class="row card2 " >
-        <div *ngIf="errorMessage" class="alert alert-success">
-            <strong>{{errorMessage}}</strong>
-        </div> 
+        
         <!-- <div class="row" > -->
             <div class="col-md-4">
                 <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
@@ -91,19 +93,30 @@
                             El codigo de la farmacia es obligatorio!
                         </span>
                     </p>
-                    <p>
+                    <p *ngIf="is_edit">
+                        <!-- <input type="checkbox" id="edit" /> Editar contraseña -->
+                        <input type="checkbox"  (change)="toggleVisibility($event)"/>
+                               Editar contraseña 
+                    </p>
+                    <!-- <label class="container">    
+                            <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck 
+                             (change)="toggleVisibility($event)"/>
+                               Checkbox is <span *ngIf="marked">checked</span><span 
+                              *ngIf="!marked">unchecked</span>
+                              <span class="checkmark"></span>
+                         </label> -->
+                    <p *ngIf="checked">
                         <!-- <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register"> -->
-                        <img id="kDMY_0" class="img-register">
+                        <!-- <img id="kDMY_0" class="img-register"> -->
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Contraseña:
                         </FONT>
-                        <input type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
-                        class="form-control" required placeholder="Introduce la contraseña"
-                        />
+                        <input  type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
+                        class="form-control" required placeholder="Introduce la contraseña"/>
                         <span *ngIf="!password.valid && password.touched">
                             La contraseña es obligatoria!
                         </span>
-                    </p>        
+                    </p>       
                 </form>
             </div>
             <div class="col-md-4" >
@@ -315,9 +328,13 @@
                     <br>
                     <br>
                     <div  *ngIf="is_edit">
+                        <p style="text-align: center">
+                            <FONT SIZE=2 style="color: rgb(127,127,127);">
+                                Subir Ficha:
+                            </FONT>
+                        </p>
+                        
                         <p>
-                            <label>Subir ficha</label>
-                            <br>
                             <input type="file" placeholder="Subir imagen.." (change)="fileChangeCliente($event)" />
                         </p>
                     </div>
@@ -332,9 +349,13 @@
                 </form> 
             <br>
             </div>
-            <div *ngIf="errorMessage" class="alert alert-success">
+            <!-- <div *ngIf="errorMessage" class="alert alert-success">
                 <strong>{{errorMessage}}</strong>
-            </div> 
+            </div>  -->
         <!-- </div> -->
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
