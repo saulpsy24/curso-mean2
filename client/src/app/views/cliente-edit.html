@@ -9,8 +9,13 @@
                         <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h3 class="card-title">{{identity.name}}</h3>
-                            <h3 class="card-title">{{identity.surname}}</h3>
+                            <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184); text-transform: capitalize">
+                                {{identity.name}}
+                            </FONT>
+                            <br>
+                            <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184)">
+                                {{identity.surname}}
+                            </FONT>
                             <p class="card-text">
                             <a [routerLink]="['/editarcliente',cliente._id]" class="btn btn-secondary">
                             Editar <i class="fas fa-plus-circle"></i></a>
@@ -24,11 +29,15 @@
                             <tr>
         
                                 <th>
-                                    <label> Farmacia:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Farmacia:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.nameEstablishment}}</p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.nameEstablishment}}
+                                    </FONT>
                                 </td>
         
                             </tr>
@@ -36,11 +45,15 @@
                             <tr>
         
                                 <th>
-                                    <label>Código de Farmacia:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                        Código de Farmacia:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.code}}</p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.code}}
+                                    </FONT>  
                                 </td>
         
                             </tr>
@@ -48,11 +61,15 @@
                             <tr>
         
                                 <th>
-                                    <label> Email:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Email:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.email}}</p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.email}}
+                                    </FONT> 
                                 </td>
         
                             </tr>
@@ -60,11 +77,15 @@
                             <tr>
         
                                 <th>
-                                    <label>Teléfono:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Teléfono:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.phone}} </p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.phone}}
+                                    </FONT> 
                                 </td>
         
                             </tr>
@@ -72,11 +93,15 @@
                             <tr>
         
                                 <th>
-                                    <label>NIF/CIF:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                        NIF/CIF:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.nifCif}}</p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.nifCif}}
+                                    </FONT>
                                 </td>
         
                             </tr>
@@ -84,52 +109,72 @@
                             <tr>
         
                                 <th>
-                                    <label>Provincia:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Provincia:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                    <p> {{identity.province}}</p>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.province}}
+                                    </FONT>
                                 </td>
         
                             </tr>
                             <br>
                             <tr>
         
-                                    <th>
-                                        <label>Dirección:</label>
-                                    </th>
+                                <th>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Dirección:
+                                    </FONT>
+                                </th>
+        
+                                <td>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.street}}
+                                    </FONT>
+                                </td>
             
-                                    <td>
-                                        <p> {{identity.street}}</p>
-                                    </td>
-            
                             </tr>
                             <br>
                             <tr>
+    
+                                <th>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                            Código Postal:
+                                    </FONT>
+                                </th>
         
-                                    <th>
-                                        <label>Código Postal:</label>
-                                    </th>
-            
-                                    <td>
-                                        <p> {{identity.zip}}</p>
-                                    </td>
-            
+                                <td>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                        {{identity.zip}}
+                                    </FONT>
+                                </td>
                             </tr>
                             <br>
                             <tr>
                             
         
                                 <th>
-                                    <label>Rol:</label>
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                        Rol:
+                                    </FONT>
                                 </th>
         
                                 <td>
-                                        <!-- <label > {{cliente.role}} </label> -->
-                                    <p *ngIf="cliente.role=='ROLE_ADMIN'" > Administrador </p>
-                                    <p *ngIf="cliente.role=='ROLE_USER'"> Usuario </p>
-                                    <p *ngIf="cliente.role=='ROLE_AGENTE'"> Agente </p>
-                                    <p *ngIf="cliente.role=='ROLE_ENCARGADO'"> Encargado </p>
+                                    <FONT *ngIf="identity.role=='ROLE_ADMIN'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                            Administrador
+                                    </FONT>
+                                    <FONT *ngIf="identity.role=='ROLE_USER'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                            Usuario
+                                    </FONT>
+                                    <FONT *ngIf="identity.role=='ROLE_AGENTE'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                            Agente
+                                    </FONT>
+                                    <FONT *ngIf="identity.role=='ROLE_ENCARGADO'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                            Encargado
+                                    </FONT>
                                 </td>
         
                             </tr>
@@ -142,27 +187,33 @@
                         <tr>
         
                             <th>
-                                <label> Marcas:</label>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                        Marcas:
+                                </FONT>
                             </th>
         
-                            <td>
+                            <td >
+                                    <br>
+                                    <br>
+                                <FONT *ngIf="cliente.brandV=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
+                                        Vichy
+                                </FONT>
                                 <br>
+                                <FONT *ngIf="cliente.brandSK=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
+                                        SkinCeuticals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </FONT>
                                 <br>
-                                <p *ngIf="cliente.brandV=='1'" style="width: 100%">
-                                     Vichy. </p>
-        
-                                <p *ngIf="cliente.brandSK=='1'" style="width: 100%">
-                                     SkinCeuticals. </p>
-        
-                                <p *ngIf="cliente.brandLR=='1'" style="width: 100%">
-                                     La Roche-Posay. </p>
-        
-                                <p *ngIf="cliente.brandRG=='1'" style="width: 100%">
-                                     Roger&Gallet.
-                                </p>
-                                <p *ngIf="cliente.brandCV=='1'" style="width: 100%">
-                                    CeraVE
-                                </p>
+                                <FONT *ngIf="cliente.brandLR=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        La Roche-Posay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </FONT>
+                                <br>
+                                <FONT *ngIf="cliente.brandRG=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        Roger&Gallet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </FONT>
+                                <br>
+                                <FONT *ngIf="cliente.brandCV=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        CeraVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </FONT>
                             </td>
         
                         </tr>
