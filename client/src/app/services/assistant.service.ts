@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import{Observable}from 'rxjs/Observable';
 import{GLOBAL}from './global';
 import { Assistant } from '../models/assistant';
-
+import { email } from '../models/email';
 @Injectable()
 export class AssistantService{
     
@@ -79,6 +79,18 @@ export class AssistantService{
         return this._http.get(this.url+'getreporte-asist/'+id,options).map(
             res=>res.json()
         );
+
+    }
+
+    enviarMail(token,mail:email){
+        let params = JSON.stringify(mail);
+        let headers= new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+
+        });
+        return this._http.post(this.url+'/lista/mail',params,{headers:headers})
+                            .map(res=>res.json());
 
     }
 

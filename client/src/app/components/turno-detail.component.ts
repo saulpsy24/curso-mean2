@@ -7,7 +7,9 @@ import { Turno } from '../models/turno';
 import { Assistant } from '../models/assistant';
 import { TurnoService } from '../services/turno.service';
 import { AssistantService } from '../services/assistant.service';
-
+import {email} from '../models/email';
+import {Cliente} from '../models/cliente'
+import { Client } from '_debugger';
 @Component({
     selector: 'turno-detail',
     templateUrl: '../views/turno-detail.html',
@@ -16,11 +18,13 @@ import { AssistantService } from '../services/assistant.service';
 export class TurnodetailComponent implements OnInit {
     public titulo: String;
     public turno: Turno;
+    public email: email;
     public assistant: Assistant;
     public identity;
     public token;
     public url: string;
     public alertMessage;
+    public cliente: Cliente;
 
     constructor(
         private _route: ActivatedRoute,
@@ -32,6 +36,8 @@ export class TurnodetailComponent implements OnInit {
         this.titulo = 'Detalle del Turno';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 0, '');
+        this.email = new email('','','','','','','');
+        this.cliente= new Cliente('','','','','','','','','','','','','','','','','','','','');
     
 
         this.identity = this._clienteService.getidentity();
@@ -46,6 +52,9 @@ export class TurnodetailComponent implements OnInit {
         console.log(this.turno);
         console.log(this.assistant);
     }
+
+    
+
     getReporte(idturno){
       
             let id =idturno
@@ -182,7 +191,7 @@ export class TurnodetailComponent implements OnInit {
                         } else {
                            // this.evento = response.event;
                             //this._router.navigate(['/editar-evento'],response.evento._id);
-                            this.alertMessage = 'Evento Actualizado Correctamente';
+                            this.alertMessage = 'Asistencia Actualizado Correctamente';
                             console.log(this.assistant[i]+'enviada')
                             //subir foto
                            
@@ -214,4 +223,53 @@ export class TurnodetailComponent implements OnInit {
 
 
     }
+
+
+    enviarMail() {
+       
+           
+            for (var i in this.assistant){
+                this.email.username= this.assistant[i].cliente.name+' '+this.assistant[i].cliente.surname;
+                this.email.evento=this.assistant[i].turno.event.title;
+                this.email.fecha=this.assistant[i].turno.event.dateS;
+                this.email.lugar=this.assistant[i].turno.event.lugar;
+                this.email.gmaps=this.assistant[i].turno.event.gmaps;
+                this.email.direccion=this.assistant[i].turno.event.direccion;
+                this.email.destino=this.assistant[i].cliente.email;
+                
+                this._assistanService.enviarMail(this.token, this.email).subscribe(
+                    response => {
+                        if(!response.info){
+                            this.alertMessage=null;
+    
+                        }else{
+                            console.log(i+" correos enviados;");
+                            
+                            
+                        }
+    
+    
+                    },error => {
+                        var errorMessage =<any>error;
+                        if(errorMessage!=null){
+                            var body =JSON.parse(error.body);
+                            this.alertMessage =body.message;
+                            console.log(error);
+                        }
+    
+                    }
+    
+                );
+
+              
+
+
+            }
+            this.alertMessage='Lista de correo enviada correctamente!';
+           
+
+
+
+    }
+
 }

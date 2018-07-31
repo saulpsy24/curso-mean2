@@ -2,8 +2,8 @@
     export class Assistant{
         constructor(
        
-         public cliente: Object,
-         public turno: Object,
+         public cliente: any,
+         public turno: any,
          public check: boolean
         ){}
     }

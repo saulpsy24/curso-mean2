@@ -70,6 +70,11 @@
       <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
 
       <a class="btn btn-secondary" href="{{url}}getreporte-asist/{{turno._id}}">Reporte CSV</a>
+      <a class="btn btn-primary" (click)="enviarMail();">Recordar via  Mail</a>
+      <div *ngIf="alertMessage" class="alert alert-success">
+        <strong>{{alertMessage}}</strong>
+    </div> 
+    
     
 
 
