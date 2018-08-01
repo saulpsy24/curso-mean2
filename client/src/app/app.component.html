@@ -31,7 +31,7 @@
                             </a>
 
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'">
 
                             <a [routerLink]="['/panel-admin']" [routerLinkActive]="['actived']" class="nav-link">
 
@@ -67,11 +67,19 @@
                             </div>
 
                         </li>
+                        <li class="nav-item" *ngIf="identity && identity.role == 'ROLE_USER'">
+
+                            <a href="http://canarfarma.com" [routerLinkActive]="['actived']" class="nav-link">
+
+                                Canal Farma
+                            </a>
+
+                        </li>
 
 
                         <li class="nav-item">
 
-                            <a class="nav-link btn-logout" (click)="logout()">
+                            <a class="nav-link btn-logout" (click)="logout()" *ngIf="identity && identity.role == 'ROLE_ADMIN' || identity.role =='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'">
 
                                 Salir
                             </a>
