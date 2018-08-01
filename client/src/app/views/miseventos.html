@@ -172,16 +172,23 @@
                                 {{asist.turno.event.dateS}}
                             </FONT>
                         </p>
-                        <a (click)="onDeleteConfirm(asist._id)" class="btn btn-md btn-primary">
+                        <!-- <a (click)="onDeleteConfirm(asist._id)" class=" btn btn-primary">
                             <i class="fas fa-window-close"></i>
-                            Darme de Baja </a>
+                            Darme de Baja </a> -->
+                        <button (click)="onDeleteConfirm(asist._id)" class="btn btn-secondary" >
+                        Darme de Baja <i class="fas fa-minus-circle"> </i></button>
 
                     </div>
                     <div class="seguro animated fadeIn" *ngIf="confirmado==asist._id">
-                        <a (click)="onDeleteAsistencia(asist._id)" class="btn btn-md btn-danger">
-                            <i class="fas fa-window-close"></i> confirmado</a>
-                        <a (click)="onCancelAsistencia()" class="btn btn-md btn-secondary">
-                            <i class="fas fa-ban"></i> Cancelar</a>
+                        <!-- <a (click)="onDeleteAsistencia(asist._id)" class="btn btn-md btn-danger">
+                        <i class="fas fa-window-close"></i> Confirmado</a> -->
+                        <button (click)="onDeleteAsistencia(asist._id)" class="btn btn-primary" >
+                        Confirmado <i class="fas fa-window-close"></i></button>
+                        <button (click)="onCancelAsistencia()" class="btn btn-secondary" >
+                        Cancelar <i class="fas fa-ban"></i></button>
+                        <!-- <a (click)="onCancelAsistencia()" class="btn btn-md btn-secondary">
+                            <i class="fas fa-ban"></i> Cancelar</a> -->
+                            
                     </div>
                 </div>
 

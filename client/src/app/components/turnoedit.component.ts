@@ -13,6 +13,7 @@ import { TurnoService } from '../services/turno.service';
 })
 export class TurnoEditComponent implements OnInit {
     public titulo: String;
+    public boton: String;
     public turno: Turno;
     public identity;
     public token;
@@ -27,7 +28,8 @@ export class TurnoEditComponent implements OnInit {
         private _eventService: EventService,
         private _turnoservice: TurnoService
     ) {
-        this.titulo = 'Editar Turno';
+        this.titulo = 'EDITAR TURNO';
+        this.boton = 'Actualizar';
         this.url = GLOBAL.url;
         this.turno = new Turno('', '', '', '', '', 50, '');
 

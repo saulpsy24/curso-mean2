@@ -12,6 +12,7 @@ import{EventService} from '../services/event.service'
 })
 export class EventaddComponent implements OnInit{
 public titulo: String;
+public boton: String;
 public evento:Evento;
 public identity;
 public token;
@@ -25,6 +26,7 @@ constructor(
     private _eventService:EventService
 ){
     this.titulo='AÑADIR EVENTO';
+    this.boton= 'Añadir Evento';
     this.url=GLOBAL.url;
     this.evento= new Evento('','','','','','','','','','','','','');
     

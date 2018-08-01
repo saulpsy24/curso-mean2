@@ -217,7 +217,8 @@
                     <br>
                     <br>
                     <br>    
-                    <input type="submit"  value="{{titulo}}" class="btn btn-secondary" />
+                    <button (click)="submit" class="btn btn-secondary" >
+                        {{boton}} <i class="fas fa-plus-circle"> </i></button>
                     <br>
                     <br>
                     <button class="btn btn-primary" [routerLink]="['/evento',1]">

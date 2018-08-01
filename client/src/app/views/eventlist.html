@@ -199,16 +199,22 @@
     
                         <div  class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
     
-                            <a [routerLink]="['/eventedit',event._id] " class="btn btn-md btn-primary">
-                                Editar  <i class="fa fa-plus-circle"></i></a>
-                            <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-secondary">
-
-                                Eliminar <i class="fa fa-minus-circle"></i></a>
-    
+                            <!-- <a [routerLink]="['/eventedit',event._id] " class="btn btn-md btn-primary">
+                            Editar  <i class="fa fa-plus-circle"></i></a> -->
+                            <button [routerLink]="['/eventedit',event._id] " class="btn btn-primary" >
+                                Editar   <i class="fa fa-plus-circle"></i>
+                            </button> &nbsp;&nbsp;&nbsp;
+                                <!-- <a (click)="onDeleteConfirm(event._id)" class="btn btn-md btn-secondary">
+                            Eliminar <i class="fa fa-minus-circle"></i></a> -->
+                            <button (click)="onDeleteConfirm(event._id)" class="btn btn-secondary" >
+                                Eliminar   <i class="fa fa-minus-circle"></i>
+                            </button>
                         </div>
                         <div class="seguro animated fadeIn" *ngIf="confirmado==event._id">
-                            <a (click)="onDeleteEvento(event._id)" class="btn btn-md btn-danger"><i class="fas fa-window-close"></i> Borrar</a>
-                            <a (click)="onCancelEvento()" class="btn btn-md btn-secondary"><i class="fas fa-ban"></i> Cancelar</a>
+                            <a (click)="onDeleteEvento(event._id)" class="btn btn-md btn-primary">
+                                <i class="fas fa-window-close"></i> Borrar</a>
+                            <a (click)="onCancelEvento()" class="btn btn-md btn-secondary">
+                                <i class="fas fa-ban"></i> Cancelar</a>
                         </div>
                     </div>
     
@@ -217,6 +223,7 @@
     
             </div>
         </div>
+        <br>
         <div class="row">
             <a class="btn btn-secondary" href="{{url+'getreporte-asist/'}}">
                 Reporte csv

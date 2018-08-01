@@ -13,6 +13,7 @@ import { UploadService } from '../services/upload.service'
 })
 export class EventeditComponent implements OnInit {
     public titulo: String;
+    public boton: String;
     public evento: Evento;
     public identity;
     public token;
@@ -27,6 +28,7 @@ export class EventeditComponent implements OnInit {
         private _uploadService:UploadService
     ) {
         this.titulo = 'EDITAR EVENTO';
+        this.boton = 'Actualizar';
         this.is_edit = true;
         this.url = GLOBAL.url;
         this.evento = new Evento('', '', '', '', '','','','','','','','','');

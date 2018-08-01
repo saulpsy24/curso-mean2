@@ -59,17 +59,10 @@
         </p>
 
         <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-
-          <a [routerLink]="['/evento',1] " class="btn btn-primary" style="width: 30%">
-            <FONT FACE="Gotham Light" SIZE=1 style="color:white">
-              Volver
-            </FONT>
-            <i class="fas fa-arrow-circle-left"></i>
-          </a>
-          <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-sm btn-secondary" style="width: 53%">
-            Agregar Turno
-            <i class="fa fa-plus-circle"></i>
-          </a>
+          <button [routerLink]="['/evento',1] " class="btn btn-primary" >
+          Volver <i class="fas fa-arrow-circle-left"> </i></button> &nbsp;&nbsp;
+          <button [routerLink]="['/crear-turno',evento._id] " class="btn btn-secondary" >
+            Agregar Turno <i class="fas fa-plus-circle"> </i></button>
 
         </div>
 
@@ -79,18 +72,21 @@
     <div class="col-md-8" style="margin-left: 15px;">
       <div class="row  card2">
         <div class="col-lg-6">
-          <label>Campaña:</label>
+            
+          <label>
+            Campaña:
+          </label>
           <p>
             {{evento.campana}}
           </p>
 
         </div>
+        
         <div class="col-lg-6">
           <label>GoogleMaps:</label>
           <p>
             <a class="btn btn-primary" href="{{evento.gmaps}}">Link Aqui</a>
           </p>
-
         </div>
         <div class="col-lg-6">
           <label>Lugar:</label>

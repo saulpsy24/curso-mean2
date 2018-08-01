@@ -5,7 +5,7 @@
     <div class="container">
       <div id="print-section">
         <div class="row card2">
-          <h1>Listado de Asistentes</h1>
+          <h1>LISTA ASISTENCIA</h1>
 
         </div>
         <div class="row card2 ">
@@ -20,10 +20,10 @@
                 <th scope="col">Campaña</th>
                 <th scope="col">Turno</th>
                 <th scope="col">Establecimiento</th>
-                <th scope="col">Codigo Farmacia</th>
+                <th scope="col">Código Farmacia</th>
                 <th scope="col">Teléfono</th>
                 <th scope="col">e-Mail</th>
-                <th scope="col"> Asistencia</th>
+                <th scope="col">Asistencia</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                 <td>{{asistencias.turno.name}}</td>
                 <td>{{asistencias.cliente.nameEstablishment}}</td>
                 <th>{{asistencias.cliente.code}}</th>
-                <th><a href="tel:{{asistencias.cliente.phone}}">{{asistencias.cliente.phone}}</a></th>
+                <th>{{asistencias.cliente.phone}}</th>
                 <th><a href="mailto:{{asistencias.cliente.email}}">{{asistencias.cliente.email}}</a></th>
                 <th>
                   <label>
@@ -48,15 +48,15 @@
 
             </tbody>
           </table>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-10">
 
             </div>
             <br>
             <div class="col-md-2">
-              <input type="submit" value="Pasar Asistencia" class="btn btn-secondary" />
+
             </div>
-          </div>
+          </div> -->
 
         </form>
       </div>
@@ -67,19 +67,30 @@
       </div>
       <br>
       <br>
-      <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
-
-      <a class="btn btn-secondary" href="{{url}}getreporte-asist/{{turno._id}}">Reporte CSV</a>
-      <a class="btn btn-primary" (click)="enviarMail();">Recordar via  Mail</a>
-      <div *ngIf="alertMessage" class="alert alert-success">
-        <strong>{{alertMessage}}</strong>
-    </div> 
-    
-    
-
-
-      <hr>
-      <a [routerLink]="['/detalle-evento',turno.event._id]" class="btn btn-secondary">Regresar</a>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary" (click)="print()">Imprimir Reporte /Generar PDF</button>
+          <br>
+          <br>
+          <a class="btn btn-secondary" href="{{url}}getreporte-asist/{{turno._id}}">
+          Reporte CSV <i class="fa fa-plus-circle"> </i></a>
+          <br>
+          <br>
+          <a [routerLink]="['/detalle-evento',turno.event._id]" class="btn btn-primary">
+          Volver <i class="fas fa-arrow-circle-left"> </i></a>
+          <br>
+          <br>
+          <div *ngIf="alertMessage" class="alert alert-success">
+            <strong>{{alertMessage}}</strong>
+          </div> 
+        </div>
+        <div class="col-md-6" style="text-align: right">
+          <a class="btn btn-primary" (click)="enviarMail();">Enviar Mensaje</a>
+          <br>
+          <br>
+          <input type="submit" value="Pasar Asistencia" class="btn btn-secondary" />
+        </div>
+      </div>
     </div>
   </div>
 
