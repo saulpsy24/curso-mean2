@@ -14,6 +14,7 @@ import { UploadService } from '../services/upload.service'
 
 export class ClienteaddComponent implements OnInit {
     public title = 'Regritro de Usuarios';
+    public boton = 'Agregar Cliente';
     public cliente: Cliente;
     public identity;
     public token;
@@ -30,7 +31,8 @@ export class ClienteaddComponent implements OnInit {
         private _uploadService: UploadService
      
     ) {
-        this.title= 'Añadir cliente'
+        this.title= 'AÑADIR CLIENTE';
+        this.boton = 'Agregar Cliente';
         this.cliente = new Cliente('','','', '', '', '', '', '', '', '', '', '', '', '', '','','', '','ROLE_USER','');
          this.url=GLOBAL.url;
          this.token=_clienteService.getToken();

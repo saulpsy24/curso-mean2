@@ -115,10 +115,10 @@
                         class="form-control" required placeholder="Introduce la contraseña"/>
                        
                     </p>       
-                </form>
+                <!-- </form> -->
             </div>
             <div class="col-md-4" >
-                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
+                <!-- <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >  -->
                     <div >
                         <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
@@ -282,10 +282,10 @@
                         </select>
                         <br>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
             <div class="col-md-4" style="text-align: right">
-                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
+                <!-- <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >  -->
 
                     <!-- <div class="col-md-5">
                         <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
@@ -337,7 +337,10 @@
                         </p>
                     </div>
                     <br>
-                    <input type="submit" value="{{title}}" class="btn btn-secondary">
+                    <!-- <input type="submit" value="{{title}}" class="btn btn-secondary"> -->
+                    <button (click)="submit" class="btn btn-secondary" >
+                        {{boton}} <i class="fa fa-plus-circle"></i></button>
+                    <br>
                     <br>
                     <br>
                     <a [routerLink]="['/panel-admin']" class="btn btn-md btn-primary">
