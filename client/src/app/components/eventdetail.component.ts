@@ -5,9 +5,12 @@ import { GLOBAL } from '../services/global';
 import { Evento } from '../models/evento';
 import { EventService } from '../services/event.service';
 
+
 import { TurnoService } from '../services/turno.service';
 import { TurnoAddComponent } from './turnoadd.component';
 import { Turno } from '../models/turno'
+import { SafeResourceUrl } from '../../../node_modules/@angular/platform-browser';
+
 
 @Component({
     selector: 'eventdetail',
@@ -15,6 +18,7 @@ import { Turno } from '../models/turno'
     providers: [ClienteService, EventService, TurnoService]
 })
 export class EventDetailComponente implements OnInit {
+    link: SafeResourceUrl;
 
     public evento: Evento;
     public identity;
@@ -23,6 +27,7 @@ export class EventDetailComponente implements OnInit {
     public alertMessage;
     public is_edit;
     public turnos: Turno[];
+    
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,

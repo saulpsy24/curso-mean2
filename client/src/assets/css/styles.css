@@ -14,7 +14,7 @@
 	src: url('../Gotham-Font/Gotham-Light.otf'),
 }
 font{
-	font-family: Gotham, sans-serif;
+	font-family: Gotham-Light, sans-serif;
 }
 html {
 	position: relative;

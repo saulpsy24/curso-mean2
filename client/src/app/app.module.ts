@@ -15,6 +15,7 @@ import {HomeComponent} from './components/home.component';
 import {EditespComponent} from './components/editespacio.component';
 import {DetailespacioComponent} from './components/detailespacio.component';
 import { FilterPipe } from './filter.pipe';
+import {SafePipe} from './safe.pipe';
 import {EventlistComponent} from  './components/eventlist.component';
 import {EventaddComponent} from './components/eventadd.componenet';
 import {EventeditComponent} from './components/eventedit.component';
@@ -59,7 +60,8 @@ import {addConsultaComponent} from './components/addconsulta.component';
     TurnodetailComponent,
     adminPanelComponent,
     ClienteaddComponent,
-    ClienteEditarComponent
+    ClienteEditarComponent,
+    SafePipe
 
   ],
   imports: [

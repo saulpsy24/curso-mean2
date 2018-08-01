@@ -59,10 +59,14 @@
         </p>
 
         <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-          <button [routerLink]="['/evento',1] " class="btn btn-primary" >
-          Volver <i class="fas fa-arrow-circle-left"> </i></button> &nbsp;&nbsp;
-          <button [routerLink]="['/crear-turno',evento._id] " class="btn btn-secondary" >
-            Agregar Turno <i class="fas fa-plus-circle"> </i></button>
+          <button [routerLink]="['/evento',1] " class="btn btn-primary">
+            Volver
+            <i class="fas fa-arrow-circle-left"> </i>
+          </button> &nbsp;&nbsp;
+          <button [routerLink]="['/crear-turno',evento._id] " class="btn btn-secondary">
+            Agregar Turno
+            <i class="fas fa-plus-circle"> </i>
+          </button>
 
         </div>
 
@@ -72,7 +76,7 @@
     <div class="col-md-8" style="margin-left: 15px;">
       <div class="row  card2">
         <div class="col-lg-6">
-            
+
           <label>
             Campaña:
           </label>
@@ -81,12 +85,37 @@
           </p>
 
         </div>
-        
+
         <div class="col-lg-6">
           <label>GoogleMaps:</label>
-          <p>
-            <a class="btn btn-primary" href="{{evento.gmaps}}">Link Aquí</a>
-          </p>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+           Ver en Google Maps
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Ubicacion en Maps</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id='attachment' [src]="evento.gmaps | safe" width='460' height='315' frameborder='0' allowfullscreen></iframe>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <a class="btn btn-primary" href="{{evento.gmaps}}">Link Aquí</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
         </div>
         <div class="col-lg-6">
           <label>Lugar:</label>
@@ -174,46 +203,56 @@
                   {{turno.name}}
                 </FONT>
               </th>
-              <th >
+              <th>
                 <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
                   {{turno.date_start}}
                 </FONT>
               </th>
-              <th >
+              <th>
                 <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
                   {{turno.date_end}}
                 </FONT>
               </th>
-              <th >
+              <th>
                 <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
                   {{turno.start_h}}
                 </FONT>
               </th>
-              <th >
+              <th>
                 <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
                   {{turno.end_h}}
                 </FONT>
               </th>
-              <th >
+              <th>
                 <FONT FACE="Gotham Light" SIZE=1 style="color: rgb(127,127,127)">
                   {{turno.aforo}}
                 </FONT>
               </th>
               <td>
-                <button *ngIf="!acciones" class="btn btn-primary" (click)="MostrarAcciones(turno._id)" value="Acciones">Más <i class="fas fa-plus-circle"> </i></button>
+                <button *ngIf="!acciones" class="btn btn-primary" (click)="MostrarAcciones(turno._id)" value="Acciones">Más
+                  <i class="fas fa-plus-circle"> </i>
+                </button>
                 <div *ngIf="acciones==turno._id">
                   <div class="btn-group animated fadeIn" role="group">
                     <!-- <button (click)="aquivaeleventoquetematricula()" *ngIf="showoptions==0" type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> -->
-                    <button   [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'"
+                    <button [routerLink]="['/turno-detail',turno._id] " *ngIf="showoptions==0 && identity.role=='ROLE_ADMIN' || identity.role=='ROLE_AGENTE' || identity.role=='ROLE_ENCARGADO'"
                       type="button" class="btn btn-primary">
-                      Detalle <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
+                      Detalle
+                      <i class="fas fa-plus-circle"></i>
+                    </button>&nbsp;&nbsp;
                     <button [routerLink]="['/assistant-add',turno._id] " *ngIf="showoptions==0" type="button" class="btn btn-secondary">
-                      
-                      Inscribirme <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
+
+                      Inscribirme
+                      <i class="fas fa-plus-circle"></i>
+                    </button>&nbsp;&nbsp;
                     <button [routerLink]="['/editar-turno',turno._id] " type="button" class="btn btn-primary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-                      Editar <i class="fas fa-plus-circle"></i></button>&nbsp;&nbsp;
+                      Editar
+                      <i class="fas fa-plus-circle"></i>
+                    </button>&nbsp;&nbsp;
                     <button type="button" (click)="onDeleteConfirm(turno._id)" class="btn btn-secondary" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
-                      Borrar <i class="fas fa-minus-circle"></i></button>&nbsp;&nbsp;
+                      Borrar
+                      <i class="fas fa-minus-circle"></i>
+                    </button>&nbsp;&nbsp;
                   </div>
                   <div class="btn-group animated fadeIn seguro" role="group" *ngIf="confirmado==turno._id">
                     <button class="btn btn-md btn-primary" (click)="onDeleteTurno(turno._id)">
@@ -249,7 +288,7 @@
   <br> -->
   <br>
   <div class="row card2">
-    
+
     <div id="kDMYz" style="display:inline-block; padding-left: 3%; padding-right:3%;width: 20%;">
       <img id="kDMY_0" style="width:100%;" class="img-responsive" src="../../assets/images/vichy.jpeg">
     </div>
