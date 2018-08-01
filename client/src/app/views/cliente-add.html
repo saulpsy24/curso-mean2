@@ -93,11 +93,11 @@
                             El codigo de la farmacia es obligatorio!
                         </span>
                     </p>
-                    <p >
+                    <!-- <p > -->
                         <!-- <input type="checkbox" id="edit" /> Editar contraseña -->
-                        <input type="checkbox" (change)="handleChange($event)"/>
+                        <!-- <input type="checkbox" (change)="handleChange($event)"/>
                                Editar contraseña 
-                    </p>
+                    </p> -->
                     <!-- <label class="container">    
                             <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck 
                              (change)="toggleVisibility($event)"/>
@@ -105,20 +105,20 @@
                               *ngIf="!marked">unchecked</span>
                               <span class="checkmark"></span>
                          </label> -->
-                    <p *ngIf="checked">
+                    <p >
                         <!-- <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register"> -->
                         <!-- <img id="kDMY_0" class="img-register"> -->
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Contraseña:
                         </FONT>
-                        <input *ngIf="checked" type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
+                        <input  type="password" #password="ngModel" name="password" [(ngModel)]="cliente.password" 
                         class="form-control" required placeholder="Introduce la contraseña"/>
                        
                     </p>       
-                <!-- </form> -->
+                </form>
             </div>
             <div class="col-md-4" >
-                <!-- <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >  -->
+                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
                     <div >
                         <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
@@ -282,21 +282,11 @@
                         </select>
                         <br>
                     </div>
-                <!-- </form> -->
+                </form>
             </div>
             <div class="col-md-4" style="text-align: right">
-                <!-- <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >  -->
+                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
 
-                    <!-- <div class="col-md-5">
-                        <div class="espacio_image-for-edit" *ngIf="evento.image && evento.image != 'null'">
-                            <img src="{{url +'get-image-cliente/'+ evento.image}}" />
-                        </div>
-        
-                        <p>
-                            <label>Subir la ficha del Usuario</label>
-                            <input type="file" placeholder="Subir Ficha.." (change)="fileChangeEvent($event)" />
-                        </p>
-                    </div> -->
                     <br>
                     <br>
                     <br>
@@ -337,7 +327,6 @@
                         </p>
                     </div>
                     <br>
-                    <!-- <input type="submit" value="{{title}}" class="btn btn-secondary"> -->
                     <button (click)="submit" class="btn btn-secondary" >
                         {{boton}} <i class="fa fa-plus-circle"></i></button>
                     <br>
@@ -350,10 +339,6 @@
                 </form> 
             <br>
             </div>
-            <!-- <div *ngIf="errorMessage" class="alert alert-success">
-                <strong>{{errorMessage}}</strong>
-            </div>  -->
-        <!-- </div> -->
     </div>
 </div>
 <br>

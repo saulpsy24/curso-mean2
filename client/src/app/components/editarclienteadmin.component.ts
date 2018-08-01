@@ -15,6 +15,7 @@ import { UploadService } from '../services/upload.service';
 
 export class ClienteEditarComponent implements OnInit {
     public title: String;
+    public boton: String;
     public cliente: Cliente;
     public identity;
     public token;
@@ -30,7 +31,8 @@ export class ClienteEditarComponent implements OnInit {
         private _clienteService: ClienteService,
         private _uploadService: UploadService
     ) {
-        this.title = 'Actualiza Usuario';
+        this.title = 'EDITAR CLIENTE';
+        this.boton='Editar Cleinte';
         
 
         this.is_edit = true;
