@@ -32,7 +32,7 @@ export class ClienteEditarComponent implements OnInit {
         private _uploadService: UploadService
     ) {
         this.title = 'EDITAR CLIENTE';
-        this.boton='Editar Cleinte';
+        this.boton = 'Actualizar '
         
 
         this.is_edit = true;
