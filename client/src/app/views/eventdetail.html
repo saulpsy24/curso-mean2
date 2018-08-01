@@ -60,12 +60,13 @@
 
         <div class="buttons animated fadeIn" *ngIf="identity.role=='ROLE_ADMIN' && showoptions==0">
 
-          <a [routerLink]="['/evento',1] " class="btn btn-sm btn-primary" style="width: 30%">
-            Volver
+          <a [routerLink]="['/evento',1] " class="btn btn-primary" style="width: 30%">
+            <FONT FACE="Gotham Light" SIZE=1 style="color:white">
+              Volver
+            </FONT>
             <i class="fas fa-arrow-circle-left"></i>
           </a>
           <a [routerLink]="['/crear-turno',evento._id] " class="btn btn-sm btn-secondary" style="width: 53%">
-            
             Agregar Turno
             <i class="fa fa-plus-circle"></i>
           </a>
