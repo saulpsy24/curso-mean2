@@ -89,7 +89,7 @@ export class AssistantService{
             'Authorization':token
 
         });
-        return this._http.post(this.url+'/lista/mail',params,{headers:headers})
+        return this._http.post(this.url+'lista/mail',params,{headers:headers})
                             .map(res=>res.json());
 
     }
