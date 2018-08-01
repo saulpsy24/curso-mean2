@@ -92,7 +92,8 @@ export class addConsultaComponent implements OnInit {
 	}
 	private scrollToBottom() {
         this.container.nativeElement.scrollTop = this.container.nativeElement.scrollHeight;
-    }
+	}
+	
 	onSubmitResponse() {
 		this.respuesta.cliente = this.identity._id;
 		var hilo = this.respuesta.consulta;
@@ -190,6 +191,7 @@ export class addConsultaComponent implements OnInit {
 					this.consult = response.consulta;
 					this.alertMessage = 'Consulta creada Correctamente';
 					this.getConsultas();
+					this.getConsultasc();
 
 				}
 
