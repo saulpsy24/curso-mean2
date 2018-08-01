@@ -1,262 +1,280 @@
 <div class="col-lg-12 " style="margin: 15px;" *ngIf="identity">
     <div class="container">
         <div class="row card2" style="width: 100%">
-            <h1 > MI PERFIL </h1>
+            <h1> MI PERFIL </h1>
         </div>
         <div class="row card2" style="width: 100%">
-                <div class="col-lg-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184); text-transform: capitalize">
-                                {{identity.name}}
-                            </FONT>
-                            <br>
-                            <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184)">
-                                {{identity.surname}}
-                            </FONT>
-                            <p class="card-text">
+            <div class="col-lg-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{ url +'/get-image-user/' + cliente.image}}" *ngIf="cliente.image && cliente.image!=='null'"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184); text-transform: capitalize">
+                            {{identity.name}}
+                        </FONT>
+                        <br>
+                        <FONT FACE="Gotham Light" SIZE=4 style="color: rgb(17,152,184)">
+                            {{identity.surname}}
+                        </FONT>
+                        <p class="card-text">
                             <a [routerLink]="['/editarcliente',cliente._id]" class="btn btn-secondary">
-                            Editar <i class="fas fa-plus-circle"></i></a>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                <div class="row " style="width: 40%">
-                    <div class="col-lg-8">
-                        <table class="egt">
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Farmacia:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.nameEstablishment}}
-                                    </FONT>
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                        Código de Farmacia:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                            &nbsp;{{identity.code}}
-                                    </FONT>  
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Email:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.email}}
-                                    </FONT> 
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Teléfono:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.phone}}
-                                    </FONT> 
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                        NIF/CIF:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.nifCif}}
-                                    </FONT>
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Provincia:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.province}}
-                                    </FONT>
-                                </td>
-        
-                            </tr>
-                            <br>
-                            <tr>
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Dirección:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.street}}
-                                    </FONT>
-                                </td>
-            
-                            </tr>
-                            <br>
-                            <tr>
-    
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                            Código Postal:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                        {{identity.zip}}
-                                    </FONT>
-                                </td>
-                            </tr>
-                            <br>
-                            <tr>
-                            
-        
-                                <th>
-                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                        Rol:
-                                    </FONT>
-                                </th>
-        
-                                <td>
-                                    <FONT *ngIf="identity.role=='ROLE_ADMIN'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                            Administrador
-                                    </FONT>
-                                    <FONT *ngIf="identity.role=='ROLE_USER'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                            Usuario
-                                    </FONT>
-                                    <FONT *ngIf="identity.role=='ROLE_AGENTE'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                            Agente
-                                    </FONT>
-                                    <FONT *ngIf="identity.role=='ROLE_ENCARGADO'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
-                                            Encargado
-                                    </FONT>
-                                </td>
-        
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <table class="egt">
-                        
-                        <tr>
-        
-                            <th>
-                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
-                                       <p> Marcas:</p>
-                                </FONT>
-                            </th>
-        
-                            <td >
-                                <br>
-                                <FONT *ngIf="identity.brandV=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
-                                        <p style="width: 100%">Vichy</p>
-                                </FONT>
-                                <FONT *ngIf="identity.brandSK=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
-                                        SkinCeuticals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </FONT>
-                                <FONT *ngIf="identity.brandLR=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
-                                        La Roche-Posay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </FONT>
-                                <FONT *ngIf="identity.brandRG=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
-                                        Roger&Gallet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </FONT>
-                                <FONT *ngIf="identity.brandCV=='1'"  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
-                                        CeraVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </FONT>
-                            </td>
-        
-                        </tr>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>    
-                        <td style="text-align: right;">
-                            <br>
-                            <br>
-                            <br>
-                            <br>   
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <a [routerLink]="['/panel-admin']" class="btn btn-md btn-secondary" style="text-align: right;">
-                                Notificaciones
+                                Editar
                                 <i class="fas fa-plus-circle"></i>
                             </a>
                             <br>
-                            <br>
-                            <a [routerLink]="['/evento/1']" class="btn btn-md btn-primary" style="text-align: right;">
-                                Volver
-                                <i class="fas fa-arrow-circle-left"></i>
-                            </a>
-                        </td>
+                    </div>
+                </div>
+            </div>
+            <div class="row " style="width: 40%">
+                <div class="col-lg-8">
+                    <table class="egt">
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Farmacia:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.nameEstablishment}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Código de Farmacia:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    &nbsp;{{identity.code}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Email:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.email}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Teléfono:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.phone}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    NIF/CIF:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.nifCif}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Provincia:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.province}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Dirección:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.street}}
+                                </FONT>
+                            </td>
+
+                        </tr>
+                        <br>
+                        <tr>
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Código Postal:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    {{identity.zip}}
+                                </FONT>
+                            </td>
+                        </tr>
+                        <br>
+                        <tr>
+
+
+                            <th>
+                                <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                    Rol:
+                                </FONT>
+                            </th>
+
+                            <td>
+                                <FONT *ngIf="identity.role=='ROLE_ADMIN'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    Administrador
+                                </FONT>
+                                <FONT *ngIf="identity.role=='ROLE_USER'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    Usuario
+                                </FONT>
+                                <FONT *ngIf="identity.role=='ROLE_AGENTE'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    Agente
+                                </FONT>
+                                <FONT *ngIf="identity.role=='ROLE_ENCARGADO'" FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127)">
+                                    Encargado
+                                </FONT>
+                            </td>
+
+                        </tr>
                     </table>
                 </div>
-                
-        
-        
             </div>
+            <div class="col-lg-4">
+                <table class="egt">
+
+                    <tr>
+
+                        <th>
+                            <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(17,152,184)">
+                                <p> Marcas:</p>
+                            </FONT>
+                        </th>
+
+                        <td>
+                            <ul class="list-group">
+                                <li *ngIf="identity.brandV=='1'" class="list-group-item">
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
+                                        Vichy
+                                    </FONT>
+                                </li>
+                                <li  *ngIf="identity.brandSK=='1'" class="list-group-item">
+                                    <FONT FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127);">
+                                        SkinCeuticals
+                                    </FONT>
+                                </li>
+                                <li *ngIf="identity.brandLR=='1'" class="list-group-item">
+                                    <FONT  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        La Roche-Posay
+                                    </FONT>
+                                </li>
+                                <li *ngIf="identity.brandRG=='1'" class="list-group-item">
+                                    <FONT  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        Roger&Gallet
+                                    </FONT>
+                                </li>
+                                <li *ngIf="identity.brandCV=='1'" class="list-group-item">
+                                    <FONT  FACE="Gotham Light" SIZE=2 style="color: rgb(127,127,127); ">
+                                        CeraVE
+                                    </FONT>
+                                </li>
+                            </ul>
+
+
+
+
+
+                        </td>
+
+                    </tr>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <td style="text-align: right;">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <a [routerLink]="['/panel-admin']" class="btn btn-md btn-secondary" style="text-align: right;">
+                            Notificaciones
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                        <br>
+                        <br>
+                        <a [routerLink]="['/evento/1']" class="btn btn-md btn-primary" style="text-align: right;">
+                            Volver
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </a>
+                    </td>
+                </table>
+            </div>
+
+
+
+        </div>
         <!-- <div class="row  animated fadeInRight">
             <div class="col-md-12 card2">
                 <br>
