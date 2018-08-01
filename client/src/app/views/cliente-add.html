@@ -6,12 +6,14 @@
     <div *ngIf="errorMessage" class="alert alert-success">
         <strong>{{errorMessage}}</strong>
     </div> 
+    <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
     
     <div class="row card2 " >
-        
+            
         <!-- <div class="row" > -->
             <div class="col-md-4">
-                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
+               
+                    
                     <p>
                         <img id="kDMY_0" src="../../assets/images/nombre.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
@@ -93,10 +95,15 @@
                             El codigo de la farmacia es obligatorio!
                         </span>
                     </p>
+<<<<<<< HEAD
                     <!-- <p > -->
+=======
+                    <p   *ngIf="is_edit">
+>>>>>>> 786fbcd2a2b80c8a97db7fb84ab9f54ed20f71d3
                         <!-- <input type="checkbox" id="edit" /> Editar contraseña -->
                         <!-- <input type="checkbox" (change)="handleChange($event)"/>
                                Editar contraseña 
+<<<<<<< HEAD
                     </p> -->
                     <!-- <label class="container">    
                             <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck 
@@ -108,6 +115,11 @@
                     <p >
                         <!-- <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register"> -->
                         <!-- <img id="kDMY_0" class="img-register"> -->
+=======
+                    </p>
+                   
+                    <p *ngIf="checked">
+>>>>>>> 786fbcd2a2b80c8a97db7fb84ab9f54ed20f71d3
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Contraseña:
                         </FONT>
@@ -117,6 +129,7 @@
                     </p>       
                 </form>
             </div>
+       
             <div class="col-md-4" >
                 <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" > 
                     <div >
@@ -336,10 +349,15 @@
                         Volver
                         <i class="fas fa-arrow-circle-left"></i>
                     </a>
-                </form> 
+                
             <br>
             </div>
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 786fbcd2a2b80c8a97db7fb84ab9f54ed20f71d3
     </div>
+</form> 
 </div>
 <br>
 <br>

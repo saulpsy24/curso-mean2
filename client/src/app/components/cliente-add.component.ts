@@ -62,9 +62,11 @@ export class ClienteaddComponent implements OnInit {
       }
      
     public onSubmit() {
-        console.log(this.cliente);
+        
     this._clienteService.register(this.token,this.cliente).subscribe(
+        
         response=>{
+            console.log('es esto'+this.cliente);
             
             if(!response.cliente){
                this.errorMessage='Error en el Servidor';
@@ -86,6 +88,7 @@ export class ClienteaddComponent implements OnInit {
 
         },
         error=>{
+            console.log('es error '+this.cliente);
             var errorMessage= <any> error;
             if(errorMessage!=null){
                 var body = JSON.parse(error._body);
