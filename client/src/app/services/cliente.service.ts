@@ -75,6 +75,7 @@ export class ClienteService{
 
     }
     register(token,cliente:Cliente){
+        console.log('entro al servicio '+cliente);
         let json = JSON.stringify(cliente);
         let params =json;
         let headers= new Headers ({'Content-Type':'application/json','Authorization':token});

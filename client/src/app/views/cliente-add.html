@@ -6,12 +6,14 @@
     <div *ngIf="errorMessage" class="alert alert-success">
         <strong>{{errorMessage}}</strong>
     </div> 
+    <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
     
     <div class="row card2 " >
-        
+            
         <!-- <div class="row" > -->
             <div class="col-md-4">
-                <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >
+               
+                    
                     <p>
                         <img id="kDMY_0" src="../../assets/images/nombre.png" class="img-register">
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
@@ -93,21 +95,13 @@
                             El codigo de la farmacia es obligatorio!
                         </span>
                     </p>
-                    <p >
+                    <p   *ngIf="is_edit">
                         <!-- <input type="checkbox" id="edit" /> Editar contraseña -->
                         <input type="checkbox" (change)="handleChange($event)"/>
                                Editar contraseña 
                     </p>
-                    <!-- <label class="container">    
-                            <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck 
-                             (change)="toggleVisibility($event)"/>
-                               Checkbox is <span *ngIf="marked">checked</span><span 
-                              *ngIf="!marked">unchecked</span>
-                              <span class="checkmark"></span>
-                         </label> -->
+                   
                     <p *ngIf="checked">
-                        <!-- <img id="kDMY_0" src="../../assets/images/mapa_grande.png" class="img-register"> -->
-                        <!-- <img id="kDMY_0" class="img-register"> -->
                         <FONT SIZE=2 style="color: rgb(127,127,127);">
                         Contraseña:
                         </FONT>
@@ -117,6 +111,7 @@
                     </p>       
                 <!-- </form> -->
             </div>
+       
             <div class="col-md-4" >
                 <!-- <form #regiterForm="ngForm" (ngSubmit)="onSubmit()" >  -->
                     <div >
@@ -347,14 +342,12 @@
                         Volver
                         <i class="fas fa-arrow-circle-left"></i>
                     </a>
-                </form> 
+                
             <br>
             </div>
-            <!-- <div *ngIf="errorMessage" class="alert alert-success">
-                <strong>{{errorMessage}}</strong>
-            </div>  -->
-        <!-- </div> -->
+            
     </div>
+</form> 
 </div>
 <br>
 <br>
