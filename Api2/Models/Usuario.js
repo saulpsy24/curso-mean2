@@ -10,6 +10,7 @@ var UsuarioSchema = schema({
     profiles: String,
     role: String,
     email: String,
+    password: String,
     status: String,
     avatar: String
 });
