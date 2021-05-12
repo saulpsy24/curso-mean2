@@ -24,7 +24,7 @@
     "mongoose": "^5.1.6",
     "mongoose-pagination": "^1.0.0",
     "mongoose-to-csv": "^0.1.1",
-    "nodemailer": "^4.6.7",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7",
     "replace-string": "^1.1.0"
   },
